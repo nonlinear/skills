@@ -1,0 +1,8 @@
+{
+  "name": "system-detective",
+  "version": "1.0.0",
+  "description": "Auto-detect the right tool to investigate systems, URLs, or topics (Jira, Figma, NAS, books, web)",
+  "triggers": ["investiga", "consulta", "vê", "sniff", "inspeciona"],
+  "author": "Claw",
+  "created": "2026-02-05"
+}
