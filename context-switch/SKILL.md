@@ -1,7 +1,13 @@
 ---
 name: context-switch
-description: Switch between projects/epics with HEALTH checks. Handles morning/evening rituals. Use when user says "bom dia", "vamos trabalhar no X", "boa noite".
-metadata: {"openclaw":{"emoji":"🔄","requires":{"bins":["jq"]}}}
+description: "Conscious project/epic transitions with HEALTH checks. Triggers: 'bom dia' (morning load main+wiley M-F), 'vamos trabalhar no X' (switch to project/epic), 'boa noite' (evening close + victory lap). Prevents context confusion, enforces HEALTH rituals, detects gaps between docs and reality."
+type: public
+version: 1.0.0
+status: stable
+dependencies:
+  - jq
+author: nonlinear
+license: MIT
 ---
 
 # Context Switch - Project & Epic Management

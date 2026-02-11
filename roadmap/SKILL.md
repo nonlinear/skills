@@ -1,3 +1,15 @@
+---
+name: roadmap
+description: "Manage backstage roadmaps across projects. Add items, create epics, groom with emoji shortcuts. Triggers: 'add to roadmap X', '[project]: add roadmap item Y', 'merge 5️⃣ on 6️⃣', 'move 8️⃣ before 7️⃣'. Tracks main + project-specific roadmaps. Use for: epic planning, priority management, roadmap grooming."
+type: public
+version: 1.0.0
+status: stable
+dependencies:
+  - https://github.com/yourusername/backstage-skill
+author: nonlinear
+license: MIT
+---
+
 # Roadmap Skill
 
 **Purpose:** Manage roadmaps across projects (main + project-specific). Add items, create epics, groom with numbered emoji shortcuts.

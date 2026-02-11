@@ -1,3 +1,16 @@
+---
+name: notify
+description: "Detect user presence (idle/active) and choose notification channel. Triggers: 'me avisa quando X', 'let me know when Y', 'lmk Z'. Monitors task completion, notifies via Telegram (away) or in-chat (active). Uses macOS ioreg for idle detection."
+type: public
+version: 1.0.0
+status: stable
+dependencies:
+  - ioreg
+  - telegram-api
+author: nonlinear
+license: MIT
+---
+
 # Notify Skill
 
 **Detects user presence and chooses notification channel.**

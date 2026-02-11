@@ -1,3 +1,14 @@
+---
+name: system-detective
+description: "Auto-detect investigation context and route to right tool. Triggers: 'investiga X', 'consulta Y', 'vê Z', 'sniff', 'inspeciona'. Decision tree: Jira → jira-check.py, URLs → web-fetch/browser, systems → exec/process, topics → librarian. Reduces tool selection overhead."
+type: public
+version: 1.0.0
+status: testing
+dependencies: []
+author: nonlinear
+license: MIT
+---
+
 # System Detective Skill
 
 **Triggers:** `investiga`, `consulta`, `vê`, `sniff`, `inspeciona`
