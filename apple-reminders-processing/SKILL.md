@@ -1,7 +1,14 @@
 ---
 name: apple-reminders-processing
-description: Process Apple Reminders without notes - different behavior per list (claw=system solutions, shopping=price comparison, others=research)
-metadata: {"openclaw":{"emoji":"💎","os":["darwin"],"requires":{"bins":["remindctl","jq"]}}}
+description: "Process Apple Reminders without notes. Smart research: custom instructions (book + web search constraints), list-based defaults (claw=system solutions, shopping=price comparison, generic=how-to tutorials). Result tracking with 💎 signifier. Triggers: reminders without notes, heartbeat 2x/day."
+type: public
+version: 3.0.0
+status: stable
+dependencies:
+  - remindctl
+  - jq
+author: nonlinear
+license: MIT
 ---
 
 # Apple Reminders Processing - Smart Research System

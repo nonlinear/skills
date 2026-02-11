@@ -1,3 +1,14 @@
+---
+name: i-ching
+description: "I Ching divination (hexagrams, trigrams, oracles). Companion, not fortune-teller—reflects what you know but can't see. Triggers: 'hexagrama X', 'I Ching pergunta Y', 'trigrama acima/abaixo', 'moedas'. Methods: hexagram number, trigram pair, coin throws (with changing lines). Philosophy: 'muito na chincha' (deeply aligned, profoundly useful)."
+type: public
+version: 1.0.0
+status: stable
+dependencies: []
+author: nonlinear
+license: MIT
+---
+
 # I Ching Skill - Divination & Guidance
 
 **Trigger words:** I Ching, hexagrama, trigrama, oracle, divination, moedas

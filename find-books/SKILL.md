@@ -1,3 +1,14 @@
+---
+name: find-books
+description: "Search foundational/seminal books on topics via Anna's Archive. Triggers: 'procura livros sobre X', 'find canonical works on Y', 'livros fundacionais/seminais'. Returns piracy links (fuck copyright hypocrisy). Use for: discovering authoritative sources, building reading lists, research foundation."
+type: public
+version: 1.0.0
+status: stable
+dependencies: []
+author: nonlinear
+license: MIT
+---
+
 # SKILL: find-books
 
 **Purpose:** Search for foundational/seminal books on specific topics using Anna's Archive
