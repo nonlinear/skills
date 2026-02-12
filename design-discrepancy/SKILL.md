@@ -23,18 +23,18 @@ license: MIT
 
 ```mermaid
 flowchart TD
-    1["1<br/>Trigger + exercise name 2️⃣"]
-    2{"2<br/>Detects if exercise exists"}
-    3["3<br/>Loads exercise MD 1️⃣"]
-    4["4<br/>Creates new exercise MD<br/>from template"]
-    5["5<br/>Asks critical info 3️⃣"]
-    5a["5a<br/>Checks access to each<br/>critical point, updates table 4️⃣"]
-    6["6<br/>Component inventory 5️⃣"]
-    6a["6a<br/>Document matching 6️⃣"]
-    6b{"6b<br/>Loop thru list"}
-    7["7<br/>Discrepancy checks 7️⃣"]
-    8["8<br/>Document discrepancies 8️⃣"]
-    13["13<br/>Informs of<br/>past and next phases"]
+    1["Trigger + exercise name 2️⃣"]
+    2{"Detects if exercise exists"}
+    3["Loads exercise MD 1️⃣"]
+    4["Creates new exercise MD<br/>from template"]
+    5["Asks critical info 3️⃣"]
+    5a["Checks access to each<br/>critical point, updates table 4️⃣"]
+    6["Component inventory 5️⃣"]
+    6a["Document matching 6️⃣"]
+    6b{"Loop thru list"}
+    7["Discrepancy checks 7️⃣"]
+    8["Document discrepancies 8️⃣"]
+    13["Informs of<br/>past and next phases"]
     
     1 --> 2
     2 -->|No exercise found| 4
