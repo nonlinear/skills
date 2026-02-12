@@ -33,7 +33,7 @@ flowchart TD
     6a["6a<br/>Document matching 6️⃣"]
     6b{"6b<br/>Loop thru list"}
     7["7<br/>Discrepancy checks 7️⃣"]
-    8["8<br/>Document deltas 8️⃣"]
+    8["8<br/>Document discrepancies 8️⃣"]
     13["13<br/>Informs of<br/>past and next phases"]
     
     1 --> 2
@@ -69,7 +69,7 @@ flowchart TD
 
 **7️⃣ Discrepancy checks:** Run 3 tests per component: System vs Docs, WCAG 2.2, States. **Only document if tests fail. If pass, no delta.**
 
-**8️⃣ Document deltas:** Add row to Excel with columns below, **check component on MD** (`- [x]`), **update Progress** (e.g., "4 of 12 completed"). Then loop back to 6b.
+**8️⃣ Document discrepancies:** Add row to Excel with columns below, **check component on MD** (`- [x]`), **update Progress** (e.g., "4 of 12 completed"). Then loop back to 6b.
 - **ID** (sequential)
 - **Title** (brief description)
 - **Jira task** (linked if related)
