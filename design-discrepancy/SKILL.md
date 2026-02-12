@@ -19,6 +19,79 @@ license: MIT
 
 ---
 
+## Workflow Diagram
+
+```mermaid
+flowchart TD
+    1["1<br/>Trigger + exercise name 2️⃣"]
+    2{"2<br/>Detects if exercise exists"}
+    3["3<br/>Loads exercise MD 1️⃣"]
+    4["4<br/>Creates new exercise MD<br/>from template"]
+    5["5<br/>Asks critical info 3️⃣"]
+    5a["5a<br/>Checks access to each<br/>critical point, updates table 4️⃣"]
+    6["6<br/>Component inventory 5️⃣"]
+    6a["6a<br/>Document matching 6️⃣"]
+    6b{"6b<br/>Loop thru list"}
+    7["7<br/>Discrepancy checks 7️⃣"]
+    8["8<br/>Document deltas 8️⃣"]
+    9["9<br/>Review findings"]
+    13["13<br/>Informs of<br/>past and next phases"]
+    
+    1 --> 2
+    2 -->|No exercise found| 4
+    2 -->|Exercise found| 3
+    
+    4 --> 3
+    3 --> 13
+    13 --> 5
+    
+    5 --> 5a
+    5a --> 6
+    6 --> 6a
+    6b --> 7
+    7 --> 8
+    8 --> 6b
+    8 --> 9
+    
+    style 5 fill:#E8F5E9
+    style 6 fill:#FFF9C4
+    style 7 fill:#FFECB3
+    style 8 fill:#E1F5FE
+    style 11 fill:#FCE4EC
+    style 10 fill:#C8E6C9
+```
+
+**Notes:**
+
+**1️⃣ Loads exercise MD:** Opens in Typora for parity
+
+**2️⃣ Trigger + exercise name:** Where do we keep track of exercise name and corresponding MD? Can user ask for list?
+
+**3️⃣ Asks critical info:** Anything under [brackets] in template. Skill knows: date, status.
+
+**4️⃣ Checks access:** Verify access to Figma API, Jira API, Relay ON, etc. Add "Connection" column to Documents table.
+
+**5️⃣ Component inventory:** Runs over each page on system, finds all components and subcomponents, lists them on MD in ordered list.
+
+**6️⃣ Document matching:** Matches all components found against documentation, renames according to documentation. Lists all components not part of documentation (icons, etc). Use `- [ ]` checkbox format. Add progress tracker (e.g., "3 of 12 completed").
+
+**7️⃣ Discrepancy checks:** Run 3 tests per component: System vs Docs, WCAG 2.2, States. **Only document if tests fail. If pass, no delta.**
+
+**8️⃣ Document deltas:** Add row to Excel with columns below, **check component on MD** (`- [x]`), **update Progress** (e.g., "4 of 12 completed"). Then loop back to 6b.
+- **ID** (sequential)
+- **Title** (brief description)
+- **Jira task** (linked if related)
+- **Priority** (blank)
+- **Status** (default: "To triage")
+- **Description** (why discrepancy exists, A→B: system/docs, docs/WCAG, etc)
+- **Library version** (Figma link)
+- **System version** (all page links where discrepancy found)
+- **System image** (screenshot if needed)
+- **Proposed solution** (blank)
+- **Pattern alignment notes** (blank)
+
+---
+
 ## When to Use
 
 **Trigger patterns:**
@@ -36,19 +109,9 @@ license: MIT
 
 ---
 
-## Exercise Types
+## Phase Details
 
-**Existing exercise:**
-- Consult matching MD (ask user if needed)
-- Continue where left off
-
-**New exercise:**
-- Check for existing MD (groom if found)
-- Create new MD if doesn't exist
-
----
-
-## 5-Phase Protocol
+*See workflow diagram above for complete flow. Details per phase:*
 
 ### Phase 1: Environment
 
