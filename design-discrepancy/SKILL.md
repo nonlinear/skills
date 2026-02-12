@@ -61,7 +61,7 @@ flowchart TD
 
 **3️⃣ Asks critical info:** Anything under [brackets] in template. Skill knows: date, status.
 
-**4️⃣ Checks access:** Verify access to Figma API, Jira API, Relay ON, etc. **Updates table for each access.** **Read `~/Documents/life/connections/SERVICE.md` FIRST** - follow documented methods, don't ask/invent.
+**4️⃣ Checks access:** Verify access to Figma API, Jira API, Relay ON, etc. **Updates table for each access.** **Follow Connection column links** (e.g., `figma.md`, `jira.md`) - read those files, follow documented methods, don't ask/invent.
 
 **5️⃣ Component inventory:** Runs over each page on system, finds all components and subcomponents, lists them on MD in ordered list.
 
