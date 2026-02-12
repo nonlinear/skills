@@ -34,7 +34,6 @@ flowchart TD
     6b{"6b<br/>Loop thru list"}
     7["7<br/>Discrepancy checks 7️⃣"]
     8["8<br/>Document deltas 8️⃣"]
-    9["9<br/>Review findings"]
     13["13<br/>Informs of<br/>past and next phases"]
     
     1 --> 2
@@ -48,10 +47,10 @@ flowchart TD
     5 --> 5a
     5a --> 6
     6 --> 6a
+    6a --> 6b
     6b --> 7
     7 --> 8
     8 --> 6b
-    8 --> 9
     
     style 5 fill:#E8F5E9
     style 6 fill:#FFF9C4
@@ -69,7 +68,7 @@ flowchart TD
 
 **3️⃣ Asks critical info:** Anything under [brackets] in template. Skill knows: date, status.
 
-**4️⃣ Checks access:** Verify access to Figma API, Jira API, Relay ON, etc. Add "Connection" column to Documents table.
+**4️⃣ Checks access:** Verify access to Figma API, Jira API, Relay ON, etc. **Updates table for each access.**
 
 **5️⃣ Component inventory:** Runs over each page on system, finds all components and subcomponents, lists them on MD in ordered list.
 
