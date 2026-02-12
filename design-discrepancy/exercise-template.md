@@ -5,8 +5,6 @@
 **Status:** [TEMPLATE]
 **Progress:** *pending*
 
-## 📁 Documents
-
 | #   | Type              | Item          | Value                             | Connection |
 | --- | ----------------- | ------------- | --------------------------------- | ---------- |
 | 1   | **Documentation** | Design source | [URL]                             | [status]   |
