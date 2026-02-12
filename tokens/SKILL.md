@@ -19,6 +19,10 @@
 
 ### When receiving a new token:
 
+0. **Git commit (if applicable)**
+   - If .env is in a git repo: `cd ~/Documents/life && git add -A && git commit -m "Before updating TOKEN_NAME"`
+   - Safety first!
+
 1. **Ask for expiration date**
    - "Quando esse token expira?"
    - Format: YYYY-MM-DD or "1 year" / "never"
