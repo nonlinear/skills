@@ -51,13 +51,6 @@ flowchart TD
     6b --> 7
     7 --> 8
     8 --> 6b
-    
-    style 5 fill:#E8F5E9
-    style 6 fill:#FFF9C4
-    style 7 fill:#FFECB3
-    style 8 fill:#E1F5FE
-    style 11 fill:#FCE4EC
-    style 10 fill:#C8E6C9
 ```
 
 **Notes:**
