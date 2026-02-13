@@ -53,36 +53,153 @@ Force context awareness (project/epic/design architecture) to prevent drift.
 
 ---
 
-## Workflow Diagram (DRAFT)
+## POLICY & HEALTH Enforcement
+
+**Backstage-skill enforces ALL rules in POLICY.md and HEALTH.md (global + project).**
+
+### Enforcement Model
 
 ```mermaid
 flowchart TD
-    START["Trigger 1️⃣"]
+    START[Read POLICY + HEALTH<br/>global + project]
+    CONFLICT{Conflict?}
+    MERGE[Merge compatible rules]
+    PROJECT[Project wins]
+    
+    SEPARATE[Separate enforcement types]
+    EXEC[Executable<br/>Deterministic rules]
+    INTERP[Interpretive<br/>Contextual rules]
+    
+    SH[checks.sh executes]
+    SH_OK[✅ Enforced]
+    SH_FAIL[❌ Error reported]
+    
+    AI[AI interprets + acts]
+    AI_ACT[✅ Enforce or discuss]
+    AI_AMBIG[⚠️ Ask user]
+    AI_FAIL[❌ Needs rewrite]
+    
+    REPORT[Integrated report]
+    
+    START --> CONFLICT
+    CONFLICT -->|No| MERGE
+    CONFLICT -->|Yes| PROJECT
+    MERGE --> SEPARATE
+    PROJECT --> SEPARATE
+    
+    SEPARATE --> EXEC
+    SEPARATE --> INTERP
+    
+    EXEC --> SH
+    SH -->|Success| SH_OK
+    SH -->|Fail| SH_FAIL
+    
+    INTERP --> AI
+    AI -->|Clear| AI_ACT
+    AI -->|Ambiguous| AI_AMBIG
+    AI -->|Can't parse| AI_FAIL
+    
+    SH_OK --> REPORT
+    SH_FAIL --> REPORT
+    AI_ACT --> REPORT
+    AI_AMBIG --> REPORT
+    AI_FAIL --> REPORT
+```
+
+**Two enforcement domains:**
+
+1. **Executable (Deterministic)**
+   - Code blocks in HEALTH.md
+   - Templates in POLICY.md (navigation blocks, versions)
+   - File structure rules (must have 🤖 markers)
+   - **Enforced by:** checks.sh (extracts + executes)
+
+2. **Interpretive (Contextual)**
+   - Prose rules in POLICY.md
+   - Quality guidelines ("surgical changes", "clear and prompt-like")
+   - Context decisions ("README is special")
+   - **Enforced by:** AI (reads + interprets + acts/discusses)
+
+**Guarantee:** EVERY rule is attempted (executable → SH, interpretive → AI). Failures reported to user.
+
+**Self-contained:** All prompts in SKILL.md (no external prompt files needed).
+
+---
+
+## Polycentric Governance (How It Works)
+
+```mermaid
+flowchart TD
+    GLOBAL[Global POLICY.md<br/>Universal rules]
+    PROJECT[Project POLICY.md<br/>Project-specific overrides]
+    
+    GLOBAL_HEALTH[Global HEALTH.md<br/>Universal tests]
+    PROJECT_HEALTH[Project HEALTH.md<br/>Project-specific tests]
+    
+    AI[AI reads both]
+    CONFLICT{Conflict?}
+    
+    GLOBAL --> AI
+    PROJECT --> AI
+    GLOBAL_HEALTH --> AI
+    PROJECT_HEALTH --> AI
+    
+    AI --> CONFLICT
+    CONFLICT -->|Yes| PROJECT
+    CONFLICT -->|No| MERGE[Merge rules]
+    
+    MERGE --> ACTION[Execute workflow]
+    PROJECT --> ACTION
+```
+
+**This skill enforces polycentric governance:**
+- Reads BOTH global + project POLICY/HEALTH files
+- Merges when compatible
+- Prefers project rules on conflict
+- Executes workflow based on merged understanding
+
+**Triggered by:** "good morning", "good night", "backstage start/end"
+
+---
+
+## Workflow Diagram
+
+```mermaid
+flowchart TD
+    START["Trigger 1️⃣<br/>[SH]"]
     MODE{"Session mode?"}
     
+    %% Common checks module (expanded)
+    CHECKS["checks.sh 6️⃣"]
+    READ_POLICY["Read POLICY<br/>global + project<br/>[AI reads MD]"]
+    READ_HEALTH["Read HEALTH<br/>global + project<br/>[AI reads MD]"]
+    
+    SEPARATE["Separate enforcement<br/>[AI logic]"]
+    EXEC["Executable rules<br/>[SH domain]"]
+    INTERP["Interpretive rules<br/>[AI domain]"]
+    
+    SH_EXEC["Execute deterministic<br/>[SH runs]"]
+    AI_INTERP["Interpret contextual<br/>[AI acts/discusses]"]
+    
+    INTEGRATE["Integrated report<br/>[AI formats]"]
+    CHECKS_GATE{"All pass?"}
+    
     %% Start Branch
-    START_BRANCH["Read README 🤖 block 2️⃣"]
-    START_FILES["Locate status files 3️⃣"]
-    START_GIT["Check git branch 4️⃣"]
-    START_EPIC{"On epic branch?"}
-    START_STATUS["Show epic status"]
-    START_CHOOSE["Choose epic / groom"]
-    START_WORK["Analyze changes 5️⃣"]
-    START_CHECK["Run HEALTH checks 6️⃣"]
-    START_GATE{"All pass?"}
-    START_FIX["🛑 STOP: Fix issues"]
-    START_UPDATE["Update docs 7️⃣"]
-    START_REPORT["Developer context 8️⃣"]
-    START_PUSH["Push / Groom 9️⃣"]
+    START_BRANCH["Read README 🤖 block 2️⃣<br/>[MD → AI]"]
+    START_FILES["Locate status files 3️⃣<br/>[SH]"]
+    START_GIT["Check git branch 4️⃣<br/>[SH]"]
+    START_WORK["Analyze changes 5️⃣<br/>[SH]"]
+    START_FIX["🛑 STOP: Fix issues<br/>[AI + SH]"]
+    START_UPDATE["Update docs 7️⃣<br/>[SH writes MD]"]
+    START_REPORT["Developer context 8️⃣<br/>[AI reads MD]"]
+    START_PUSH["Push / Groom 9️⃣<br/>[SH]"]
     
     %% End Branch
-    END_CHECK["Run HEALTH checks 🔟"]
-    END_GATE{"All pass?"}
-    END_FIXES["Add fixes to roadmap"]
-    END_PUSH["Commit + push"]
-    END_VICTORY["Victory lap 🏆"]
-    END_BODY["Body check ⏸️"]
-    END_CLOSE["Close VS Code 🌙"]
+    END_FIXES["Add fixes to roadmap<br/>[AI writes MD]"]
+    END_PUSH["Commit + push<br/>[SH]"]
+    END_VICTORY["Victory lap 🏆<br/>[AI reads MD]"]
+    END_BODY["Body check ⏸️<br/>[AI prompt]"]
+    END_CLOSE["Close VS Code 🌙<br/>[SH]"]
     END_SILENT["[STAY SILENT]"]
     
     %% Flow
@@ -91,29 +208,54 @@ flowchart TD
     MODE -->|Start| START_BRANCH
     START_BRANCH --> START_FILES
     START_FILES --> START_GIT
-    START_GIT --> START_EPIC
-    START_EPIC -->|Yes| START_STATUS
-    START_EPIC -->|No| START_CHOOSE
-    START_STATUS --> START_WORK
-    START_CHOOSE --> START_WORK
-    START_WORK --> START_CHECK
-    START_CHECK --> START_GATE
-    START_GATE -->|No| START_FIX
-    START_FIX --> START_CHECK
-    START_GATE -->|Yes| START_UPDATE
+    START_GIT --> START_WORK
+    START_WORK --> CHECKS
+    
+    CHECKS --> READ_POLICY
+    CHECKS --> READ_HEALTH
+    READ_POLICY --> SEPARATE
+    READ_HEALTH --> SEPARATE
+    
+    SEPARATE --> EXEC
+    SEPARATE --> INTERP
+    
+    EXEC --> SH_EXEC
+    INTERP --> AI_INTERP
+    
+    SH_EXEC --> INTEGRATE
+    AI_INTERP --> INTEGRATE
+    INTEGRATE --> CHECKS_GATE
+    
+    CHECKS_GATE -->|No, start mode| START_FIX
+    START_FIX --> CHECKS
+    CHECKS_GATE -->|Yes| START_UPDATE
     START_UPDATE --> START_REPORT
     START_REPORT --> START_PUSH
     
-    MODE -->|End| END_CHECK
-    END_CHECK --> END_GATE
-    END_GATE -->|No| END_FIXES
-    END_GATE -->|Yes| END_PUSH
+    MODE -->|End| CHECKS
+    CHECKS_GATE -->|No, end mode| END_FIXES
+    CHECKS_GATE -->|Yes| END_PUSH
     END_FIXES --> END_VICTORY
     END_PUSH --> END_VICTORY
     END_VICTORY --> END_BODY
     END_BODY --> END_CLOSE
     END_CLOSE --> END_SILENT
 ```
+
+**Domain labels:**
+- **[MD]** - Markdown file (POLICY.md, HEALTH.md, ROADMAP.md) = Human/AI prompts
+- **[SH]** - Shell script (checks.sh, backstage-start.sh) = Machine executables
+- **[AI reads MD]** - AI parses markdown, understands rules/prompts
+- **[AI writes MD]** - AI generates markdown content
+- **[SH writes MD]** - Script modifies markdown files (checkboxes, navigation blocks)
+- **[SH runs]** - Script executes deterministic rules
+- **[AI acts/discusses]** - AI interprets contextual rules, enforces or asks user
+- **[AI logic]** - AI separates executable from interpretive
+
+**Critical separation:**
+- **MD files are prompts** - AI reads, interprets, acts
+- **SH files are executors** - Bash runs commands directly
+- **AI intermediates** - Reads POLICY/HEALTH, separates enforcement types, calls SH for deterministic rules, handles contextual rules itself
 
 **Notes:**
 
@@ -126,7 +268,7 @@ flowchart TD
 **3️⃣ Locate status files:** Use paths from 🤖 block. If missing, STOP and ask user where to create them. Check BOTH global (`backstage/global/`) and project (`backstage/`) for polycentric governance.
 - **Code:** `backstage-start.sh::locate_status_files()`
 
-**4️⃣ Check git branch:** Run `git branch --show-current`. If on epic branch (e.g., `v0.4.0`) → status update mode. If on main → choose epic or groom.
+**4️⃣ Check git branch:** Run `git branch --show-current`. Determine work context.
 - **Code:** `backstage-start.sh::check_branch()`
 
 **5️⃣ Analyze changes:** 
@@ -139,8 +281,19 @@ git log --oneline "${LAST_VERSION}..HEAD"
 Categorize: patch/minor/major. Compare with ROADMAP. Match reality to plans.
 - **Code:** `backstage-start.sh::analyze_changes()`
 
-**6️⃣ Run HEALTH checks:** Execute ALL tests from BOTH `backstage/global/HEALTH.md` AND `backstage/HEALTH.md`. If conflict, project wins. Report results in table.
-- **Code:** `backstage-start.sh::run_health_checks()`
+**6️⃣ checks.sh - Unified POLICY + HEALTH enforcement:**
+1. **Read POLICY** (global + project, project wins)
+2. **Enforce POLICY** - Detect doc drift (system ≠ docs), fix docs
+3. **Read HEALTH** (global + project, project wins)
+4. **Run HEALTH checks** - Execute tests
+5. **Fix what we can** (bugs, connection issues, missing files)
+6. **Report errors** (what we CAN'T fix)
+
+**Mode behavior:**
+- **Start mode:** Hard fail (block commit if checks fail)
+- **End mode:** Soft fail (warn, add to ROADMAP)
+
+- **Code:** `checks.sh` (called by both start/end)
 
 **7️⃣ Update docs:** If checks pass, auto-update ROADMAP (mark checkboxes) and CHANGELOG (add new entries at TOP, append-only). Bump version. Add navigation menu to all status files.
 - **Code:** `backstage-start.sh::update_docs()`
@@ -150,9 +303,6 @@ Categorize: patch/minor/major. Compare with ROADMAP. Match reality to plans.
 
 **9️⃣ Push / Groom:** If checks passed, commit with appropriate message (progress/release). If grooming mode, just update ROADMAP priorities.
 - **Code:** `backstage-start.sh::prompt_push()`
-
-**🔟 Run HEALTH checks (end mode):** Same as 6️⃣ but soft fail policy (warn, don't block).
-- **Code:** `backstage-end.sh::run_health_checks()`
 
 **Victory lap 🏆:** Brief reminder of achievements (3 main items max + stats). Keep it short.
 - **Code:** `backstage-end.sh::victory_lap()`
