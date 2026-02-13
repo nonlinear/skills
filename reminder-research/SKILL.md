@@ -7,6 +7,19 @@ status: stable
 dependencies:
   - remindctl
   - jq
+requires:
+  apis:
+    - brave-search (optional - for web research)
+  credentials:
+    - BRAVE_API_KEY (optional - set via openclaw configure --section web)
+  binaries:
+    - remindctl (brew install steipete/tap/remindctl)
+    - jq (brew install jq)
+notes:
+  - Requires macOS (Apple Reminders)
+  - Cron scheduling recommended (skill includes process-reminders.sh detection script)
+  - Web research requires Brave Search API key (or falls back to general knowledge)
+  - Librarian skill integration optional (for book research)
 author: nonlinear
 license: MIT
 ---
@@ -15,7 +28,33 @@ license: MIT
 
 **v3 Evolution:** Custom instructions + auto-processing + result tracking
 
+## 🔧 Setup
 
+**Required:**
+1. Install `remindctl`: `brew install steipete/tap/remindctl`
+2. Install `jq`: `brew install jq`
+3. Grant Reminders permission: `remindctl authorize`
+
+**Optional (for web research):**
+1. Get Brave Search API key: https://brave.com/search/api/
+2. Configure: `openclaw configure --section web`
+3. Set `BRAVE_API_KEY` when prompted
+
+**Optional (for book research):**
+- Install librarian skill (requires external project)
+
+**Cron scheduling (recommended):**
+```bash
+# Add via OpenClaw cron tool
+cron add --schedule "0 3 * * *" --payload "Run reminder-research skill..."
+```
+
+Or run manually:
+```bash
+~/Documents/skills/reminder-research/process-reminders.sh
+```
+
+---
 
 ```mermaid
 graph TD
