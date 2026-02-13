@@ -1,6 +1,20 @@
-# Tokens Skill
+---
+name: token-management
+description: "Centralized API token management workflow. Store tokens in .env with expiration dates, test permissions via script battery, document capabilities in connections/, set calendar renewal reminders. Prevents re-asking for credentials, ensures token security, tracks expiration."
+type: public
+version: 1.0.0
+status: stable
+dependencies:
+  - python3
+  - requests
+  - gog (for calendar reminders)
+author: nonlinear
+license: MIT
+---
 
-**Purpose:** Centralize API token management - storage + documentation.
+# Token Management
+
+**Purpose:** Centralize API token management - storage, testing, documentation, expiration tracking.
 
 **Triggers:**
 - "adiciona token X"
