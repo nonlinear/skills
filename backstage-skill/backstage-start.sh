@@ -13,10 +13,10 @@ NC='\033[0m' # No Color
 
 # Node 2️⃣: Read README 🤖 block
 read_navigation_block() {
-    echo -e "${BLUE}📖 Reading README navigation block...${NC}"
+    echo -e "${BLUE}📖 Reading README navigation block...${NC}" >&2
     
     if [[ ! -f README.md ]]; then
-        echo -e "${RED}❌ No README.md found${NC}"
+        echo -e "${RED}❌ No README.md found${NC}" >&2
         exit 1
     fi
     
@@ -36,20 +36,23 @@ read_navigation_block() {
             fi
         elif [[ $in_block -eq 1 ]]; then
             # Parse markdown links: [TEXT](path)
-            if [[ "$line" =~ ROADMAP.*'('[^')']+')'  ]]; then
-                roadmap_path="${BASH_REMATCH[1]:-}"
-            elif [[ "$line" =~ CHANGELOG.*'('[^')']+')'  ]]; then
-                changelog_path="${BASH_REMATCH[1]:-}"
-            elif [[ "$line" =~ CHECKS.*'('[^')']+')'  ]] || [[ "$line" =~ HEALTH.*'('[^')']+')'  ]]; then
-                health_path="${BASH_REMATCH[1]:-}"
-            elif [[ "$line" =~ POLICY.*'('[^')']+')'  ]]; then
-                policy_path="${BASH_REMATCH[1]:-}"
+            # Use sed to extract path from [TEXT](path) format
+            if echo "$line" | grep -q "\[ROADMAP\]"; then
+                roadmap_path=$(echo "$line" | sed -n 's/.*\[ROADMAP\](\([^)]*\)).*/\1/p')
+            elif echo "$line" | grep -q "\[CHANGELOG\]"; then
+                changelog_path=$(echo "$line" | sed -n 's/.*\[CHANGELOG\](\([^)]*\)).*/\1/p')
+            elif echo "$line" | grep -q "\[CHECKS\]"; then
+                health_path=$(echo "$line" | sed -n 's/.*\[CHECKS\](\([^)]*\)).*/\1/p')
+            elif echo "$line" | grep -q "\[HEALTH\]"; then
+                health_path=$(echo "$line" | sed -n 's/.*\[HEALTH\](\([^)]*\)).*/\1/p')
+            elif echo "$line" | grep -q "\[POLICY\]"; then
+                policy_path=$(echo "$line" | sed -n 's/.*\[POLICY\](\([^)]*\)).*/\1/p')
             fi
         fi
     done < README.md
     
     if [[ -z "$roadmap_path" ]]; then
-        echo -e "${RED}❌ ROADMAP not found in README 🤖 block${NC}"
+        echo -e "${RED}❌ ROADMAP not found in README 🤖 block${NC}" >&2
         exit 1
     fi
     
