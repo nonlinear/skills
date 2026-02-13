@@ -78,25 +78,6 @@ body_check() {
     sleep 2
 }
 
-# Close VS Code
-close_vscode() {
-    echo -e "\n${YELLOW}🌙 Closing VS Code in 5 seconds... (Ctrl+C to cancel)${NC}"
-    
-    for i in {5..1}; do
-        echo -n "$i... "
-        sleep 1
-    done
-    echo
-    
-    # Close VS Code
-    osascript -e 'quit app "Visual Studio Code"' 2>/dev/null || true
-    
-    echo -e "${GREEN}✅ VS Code closed. Good night! 🌙${NC}"
-    
-    # CRITICAL: Stay silent after this (no more output)
-    # If we output anything, VS Code will prompt "unsaved changes"
-}
-
 # Read README navigation block
 read_navigation_block() {
     if [[ ! -f README.md ]]; then
@@ -116,9 +97,9 @@ read_navigation_block() {
                 break
             fi
         elif [[ $in_block -eq 1 ]]; then
-            if [[ "$line" =~ ROADMAP.*\(([^)]+)\) ]]; then
+            if [[ "$line" =~ ROADMAP.*'('[^')']+')'  ]]; then
                 roadmap_path="${BASH_REMATCH[1]}"
-            elif [[ "$line" =~ CHECKS.*\(([^)]+)\) ]] || [[ "$line" =~ HEALTH.*\(([^)]+)\) ]]; then
+            elif [[ "$line" =~ CHECKS.*'('[^')']+')'  ]] || [[ "$line" =~ HEALTH.*'('[^')']+')'  ]]; then
                 health_path="${BASH_REMATCH[1]}"
             fi
         fi
@@ -164,10 +145,7 @@ main() {
     # Body check
     body_check
     
-    # Close VS Code
-    close_vscode
-    
-    # STAY SILENT after this point
+    echo -e "\n${GREEN}✅ Session closed. Good night! 🌙${NC}"
 }
 
 main "$@"
