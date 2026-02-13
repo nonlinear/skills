@@ -10,6 +10,15 @@
 >
 > 🤖
 
+```mermaid
+graph LR
+    A[🏗️ v0.1.0 Promoting Skills] --> B[📋 v0.2.0 backstage-skill]
+    B --> C[📋 v1.0.0 arch]
+    C --> D[📋 v1.1.0 i-ching]
+    D --> E[📋 v1.2.0 context-switch]
+    E --> F[📋 v1.3.0 design-discrepancy]
+```
+
 ## 
 
 ### v0.1.0 - Promoting Skills
