@@ -81,12 +81,16 @@ flowchart TD
 **Notes:**
 
 **1️⃣ Trigger:** "backstage start", "vamos trabalhar no X", "whatsup" (start mode) OR "backstage end", "boa noite", "wrap up" (end mode)
+- **Code:** `backstage-start.sh` OR `backstage-end.sh`
 
 **2️⃣ Read README 🤖 block:** Find navigation block between `> 🤖` markers. Extract all status file paths (ROADMAP, CHANGELOG, HEALTH, POLICY). This is ONLY source of truth for file locations.
+- **Code:** `backstage-start.sh::read_navigation_block()`
 
 **3️⃣ Locate status files:** Use paths from 🤖 block. If missing, STOP and ask user where to create them. Check BOTH global (`backstage/global/`) and project (`backstage/`) for polycentric governance.
+- **Code:** `backstage-start.sh::locate_status_files()`
 
 **4️⃣ Check git branch:** Run `git branch --show-current`. If on epic branch (e.g., `v0.4.0`) → status update mode. If on main → choose epic or groom.
+- **Code:** `backstage-start.sh::check_branch()`
 
 **5️⃣ Analyze changes:** 
 ```bash
@@ -96,22 +100,31 @@ LAST_VERSION=$(grep -m1 "^## v" CHANGELOG.md | cut -d' ' -f2)
 git log --oneline "${LAST_VERSION}..HEAD"
 ```
 Categorize: patch/minor/major. Compare with ROADMAP. Match reality to plans.
+- **Code:** `backstage-start.sh::analyze_changes()`
 
 **6️⃣ Run HEALTH checks:** Execute ALL tests from BOTH `backstage/global/HEALTH.md` AND `backstage/HEALTH.md`. If conflict, project wins. Report results in table.
+- **Code:** `backstage-start.sh::run_health_checks()`
 
 **7️⃣ Update docs:** If checks pass, auto-update ROADMAP (mark checkboxes) and CHANGELOG (add new entries at TOP, append-only). Bump version. Add navigation menu to all status files.
+- **Code:** `backstage-start.sh::update_docs()`
 
 **8️⃣ Developer context:** Generate outcome-based summary (5 possible states: 🛑 Failed, ⚠️ Mismatch, 🧑 Grooming, ✅ Progress, 🎉 Complete). Show: When, What, Why, Status, Next.
+- **Code:** `backstage-start.sh::show_developer_context()`
 
 **9️⃣ Push / Groom:** If checks passed, commit with appropriate message (progress/release). If grooming mode, just update ROADMAP priorities.
+- **Code:** `backstage-start.sh::prompt_push()`
 
 **🔟 Run HEALTH checks (end mode):** Same as 6️⃣ but soft fail policy (warn, don't block).
+- **Code:** `backstage-end.sh::run_health_checks()`
 
 **Victory lap 🏆:** Brief reminder of achievements (3 main items max + stats). Keep it short.
+- **Code:** `backstage-end.sh::victory_lap()`
 
 **Body check ⏸️:** Ask: Hungry? Thirsty? Tired? Need to stretch? What does body NEED right now?
+- **Code:** `backstage-end.sh::body_check()`
 
 **Close VS Code 🌙:** Run countdown + `osascript -e 'quit app "Visual Studio Code"'`. CRITICAL: Agent must NOT send ANY message after this or VS Code will prompt "unsaved changes".
+- **Code:** `backstage-end.sh::close_vscode()`
 
 **[STAY SILENT]:** No reply after closing VS Code (prevents unsaved prompt).
 
