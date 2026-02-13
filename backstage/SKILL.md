@@ -2,281 +2,222 @@
 name: backstage
 description: "Manage backstage workflow in projects (ROADMAP, POLICY, HEALTH, CHANGELOG). Triggers: 'backstage start', 'vamos trabalhar no X', 'backstage health'. Installs protocol if missing, updates global rules, runs health checks, shows active epics. Use for: epic planning, project setup, quality enforcement, context switching."
 type: public
-version: 0.3.0
-status: stable
-dependencies:
-  - https://github.com/nonlinear/backstage
-  - curl
-  - bash
-  - jq
+version: 1.0.0
+status: draft
 author: nonlinear
 license: MIT
 ---
 
-# Backstage - Project Management Protocol
+# Backstage Skill
 
-**Standalone skill for backstage workflow management.**
+**Nickname:** `backstage:`
 
----
-
-## What It Does
-
-Manages the backstage protocol in any project:
-- Install backstage structure (ROADMAP, POLICY, HEALTH, CHANGELOG)
-- Update global rules from GitHub
-- Run health checks (project + global)
-- Display active epics
-
-**Philosophy:** Every project has backstage/ folder. ROADMAP = what you're building. POLICY = how you build. HEALTH = what you test.
+**Objective:** Universal project status management for AI-assisted development. Ensures documentation matches reality before every commit.
 
 ---
 
-## Trigger
+## Workflow Diagram (DRAFT)
 
-User says:
-- "backstage start" / "vamos trabalhar no X"
-- "backstage health"
-- "context switch to [project]"
-- Any variation requesting project context
+```mermaid
+flowchart TD
+    START["Trigger 1️⃣"]
+    MODE{"Session mode?"}
+    
+    %% Start Branch
+    START_BRANCH["Read README 🤖 block 2️⃣"]
+    START_FILES["Locate status files 3️⃣"]
+    START_GIT["Check git branch 4️⃣"]
+    START_EPIC{"On epic branch?"}
+    START_STATUS["Show epic status"]
+    START_CHOOSE["Choose epic / groom"]
+    START_WORK["Analyze changes 5️⃣"]
+    START_CHECK["Run HEALTH checks 6️⃣"]
+    START_GATE{"All pass?"}
+    START_FIX["🛑 STOP: Fix issues"]
+    START_UPDATE["Update docs 7️⃣"]
+    START_REPORT["Developer context 8️⃣"]
+    START_PUSH["Push / Groom 9️⃣"]
+    
+    %% End Branch
+    END_CHECK["Run HEALTH checks 🔟"]
+    END_GATE{"All pass?"}
+    END_FIXES["Add fixes to roadmap"]
+    END_PUSH["Commit + push"]
+    END_VICTORY["Victory lap 🏆"]
+    END_BODY["Body check ⏸️"]
+    END_CLOSE["Close VS Code 🌙"]
+    END_SILENT["[STAY SILENT]"]
+    
+    %% Flow
+    START --> MODE
+    
+    MODE -->|Start| START_BRANCH
+    START_BRANCH --> START_FILES
+    START_FILES --> START_GIT
+    START_GIT --> START_EPIC
+    START_EPIC -->|Yes| START_STATUS
+    START_EPIC -->|No| START_CHOOSE
+    START_STATUS --> START_WORK
+    START_CHOOSE --> START_WORK
+    START_WORK --> START_CHECK
+    START_CHECK --> START_GATE
+    START_GATE -->|No| START_FIX
+    START_FIX --> START_CHECK
+    START_GATE -->|Yes| START_UPDATE
+    START_UPDATE --> START_REPORT
+    START_REPORT --> START_PUSH
+    
+    MODE -->|End| END_CHECK
+    END_CHECK --> END_GATE
+    END_GATE -->|No| END_FIXES
+    END_GATE -->|Yes| END_PUSH
+    END_FIXES --> END_VICTORY
+    END_PUSH --> END_VICTORY
+    END_VICTORY --> END_BODY
+    END_BODY --> END_CLOSE
+    END_CLOSE --> END_SILENT
+```
 
----
+**Notes:**
 
-## Flow
+**1️⃣ Trigger:** "backstage start", "vamos trabalhar no X", "whatsup" (start mode) OR "backstage end", "boa noite", "wrap up" (end mode)
 
-### 1. Check if backstage exists
+**2️⃣ Read README 🤖 block:** Find navigation block between `> 🤖` markers. Extract all status file paths (ROADMAP, CHANGELOG, HEALTH, POLICY). This is ONLY source of truth for file locations.
 
+**3️⃣ Locate status files:** Use paths from 🤖 block. If missing, STOP and ask user where to create them. Check BOTH global (`backstage/global/`) and project (`backstage/`) for polycentric governance.
+
+**4️⃣ Check git branch:** Run `git branch --show-current`. If on epic branch (e.g., `v0.4.0`) → status update mode. If on main → choose epic or groom.
+
+**5️⃣ Analyze changes:** 
 ```bash
-PROJECT_PATH="${PROJECT_PATH:-.}"
-
-if [ ! -d "$PROJECT_PATH/backstage" ]; then
-  INSTALL_NEEDED=true
-else
-  INSTALL_NEEDED=false
-fi
+git diff --name-status
+git diff --stat
+LAST_VERSION=$(grep -m1 "^## v" CHANGELOG.md | cut -d' ' -f2)
+git log --oneline "${LAST_VERSION}..HEAD"
 ```
+Categorize: patch/minor/major. Compare with ROADMAP. Match reality to plans.
 
-**If not found:** Ask user: "No backstage/ folder found. Install? (y/n)"
+**6️⃣ Run HEALTH checks:** Execute ALL tests from BOTH `backstage/global/HEALTH.md` AND `backstage/HEALTH.md`. If conflict, project wins. Report results in table.
+
+**7️⃣ Update docs:** If checks pass, auto-update ROADMAP (mark checkboxes) and CHANGELOG (add new entries at TOP, append-only). Bump version. Add navigation menu to all status files.
+
+**8️⃣ Developer context:** Generate outcome-based summary (5 possible states: 🛑 Failed, ⚠️ Mismatch, 🧑 Grooming, ✅ Progress, 🎉 Complete). Show: When, What, Why, Status, Next.
+
+**9️⃣ Push / Groom:** If checks passed, commit with appropriate message (progress/release). If grooming mode, just update ROADMAP priorities.
+
+**🔟 Run HEALTH checks (end mode):** Same as 6️⃣ but soft fail policy (warn, don't block).
+
+**Victory lap 🏆:** Brief reminder of achievements (3 main items max + stats). Keep it short.
+
+**Body check ⏸️:** Ask: Hungry? Thirsty? Tired? Need to stretch? What does body NEED right now?
+
+**Close VS Code 🌙:** Run countdown + `osascript -e 'quit app "Visual Studio Code"'`. CRITICAL: Agent must NOT send ANY message after this or VS Code will prompt "unsaved changes".
+
+**[STAY SILENT]:** No reply after closing VS Code (prevents unsaved prompt).
 
 ---
 
-### 2. Install Backstage (if needed)
+## When to Use
 
-**Source:** `github.com/nonlinear/backstage` branch `main`
+**Trigger patterns:**
 
-**Files to copy:**
-1. Templates → `backstage/` (ROADMAP, CHANGELOG, POLICY, HEALTH)
-2. Global rules → `backstage/global/` (POLICY, HEALTH)
+**Start mode:**
+- "backstage start"
+- "whatsup"
+- "vamos trabalhar no X"
+- "what's the status"
+- Before every commit (especially after long breaks)
 
-```bash
-mkdir -p backstage/global
-
-# Fetch templates
-for file in ROADMAP CHANGELOG POLICY HEALTH; do
-  curl -fsSL "https://raw.githubusercontent.com/nonlinear/backstage/main/templates/${file}-template.md" \
-    -o "backstage/${file}.md"
-done
-
-# Fetch global files
-for file in POLICY.md HEALTH.md; do
-  curl -fsSL "https://raw.githubusercontent.com/nonlinear/backstage/main/global/${file}" \
-    -o "backstage/global/${file}"
-done
-```
-
-**Result:** "✅ Backstage installed! Edit backstage/ROADMAP.md to plan"
+**End mode:**
+- "backstage end"
+- "boa noite"
+- "wrap up"
+- "pause work"
+- End of work session, when tired, or context-switch
 
 ---
 
-### 3. Check for updates (if backstage exists)
+## Key Principles
 
-**Version detection:**
-
-```bash
-LOCAL_VERSION=$(grep "backstage rules" backstage/README.md | grep -oE 'v[0-9.]+' | head -1)
-REMOTE_VERSION=$(curl -s "https://raw.githubusercontent.com/nonlinear/backstage/main/README.md" | grep "backstage rules" | grep -oE 'v[0-9.]+' | head -1)
-```
-
-**Update check:** Once per day (tracked via `.last-update-check`)
-
-**If versions differ:**
-- Show tease message (changelog highlights)
-- Ask: "Update? (y/n)"
-- Save answer to skip re-asking today
+1. **README's 🤖 block = Single source of truth** for file locations
+2. **Status files = AI prompts** (HEALTH = tests, POLICY = rules, ROADMAP = backlog, CHANGELOG = history)
+3. **Polycentric governance** (global + project rules, project wins on conflict)
+4. **Checks must pass** before commit (non-negotiable for start mode, soft fail for end mode)
+5. **CHANGELOG is append-only** (never edit old entries, add NEW entry for corrections)
+6. **5 possible outcomes** (Failed, Mismatch, Grooming, Progress, Complete)
+7. **Documentation auto-syncs** with reality (mark checkboxes, bump versions, move epics)
+8. **Body check at end** (mental health + momentum preservation)
+9. **Silent after VS Code close** (prevent unsaved prompt)
+10. **Works on ANY project** (no hardcoded paths, reads README first)
 
 ---
 
-### 4. Update Backstage (if user says yes)
+## The 5 States (Start Mode)
 
-**What to update:** `backstage/global/` only (replace, no merge)
-
-```bash
-rm -rf backstage/global
-mkdir -p backstage/global
-
-for file in POLICY.md HEALTH.md; do
-  curl -fsSL "https://raw.githubusercontent.com/nonlinear/backstage/main/global/${file}" \
-    -o "backstage/global/${file}"
-done
-```
-
-**After update:** "✅ Updated! Run 'backstage start' again"
+| State               | When         | Action            | Can Push? |
+|---------------------|--------------|-------------------|-----------|
+| 🛑 Failed Checks    | Tests fail   | Fix issues        | ❌ NO     |
+| ⚠️ Docs Mismatch    | Code ≠ docs  | Auto-update docs  | ✅ YES    |
+| 🧑 Grooming         | No changes   | Plan next work    | N/A       |
+| ✅ In Progress      | Partial work | Update checkboxes | ✅ YES    |
+| 🎉 Version Complete | All done!    | Move to CHANGELOG | ✅ YES 🎉 |
 
 ---
 
-### 5. Execute POLICY protocol
+## Check Policy
 
-**Read both:**
-- `backstage/global/POLICY.md`
-- `backstage/POLICY.md` (if exists)
+**From HEALTH.md:**
 
-**Rule:** Project POLICY wins over global (polycentric governance)
-
-**What POLICY does:**
-- Updates navigation blocks in core files
-- Updates version numbers
-- Creates/updates progress diagrams (mermaid)
-
-*(Currently placeholder - full logic in GitHub repo)*
+- **Epic branches:** Soft fail (warn but allow)
+- **Main branch:** Hard fail (block merge)
+- **Wrap-up (end mode):** Soft fail (list fixes, don't push)
 
 ---
 
-### 6. Execute HEALTH protocol
+## The 3-Level System
 
-**Read both:**
-- `backstage/global/HEALTH.md`
-- `backstage/HEALTH.md` (if exists)
+**Level 1: Personal** (not tracked)
+- Your books, notes, local config
+- Not part of any project
 
-**Rule:** Project HEALTH wins over global
+**Level 2: Project-Specific** (e.g., Librarian MCP)
+- Generic tool others can use
+- Has status files (ROADMAP, CHANGELOG, HEALTH, POLICY)
+- Example flagship project for Level 3
 
-**What HEALTH does:**
-
-Extract and run bash code blocks:
-
-```bash
-grep -A 50 '```bash' HEALTH.md | while IFS= read -r line; do
-  # Run checks, report results
-done
-```
-
-**Results:**
-- ✅ All pass → "All health checks passed!"
-- ❌ Some fail → "Failed: [list]"
-
-**Auto-fix:** Try simple fixes (create missing files, etc)
-**Recheck:** Run again after auto-fix
-**If still failing:** Report to user, continue (don't block)
+**Level 3: Meta-Workflow** (this skill)
+- Works for ANY project
+- No hardcoded paths
+- Reads README to find everything
+- Can be copied anywhere
 
 ---
 
-### 7. Display "What's next?"
+## Reference Prompts
 
-**Show active epics from ROADMAP:**
+**Original prompts (for future refinement):**
+- `backstage-start.prompt.md` - Full start workflow specification
+- `backstage-close.prompt.md` - Full end workflow specification
 
-```bash
-grep -E '^## v[0-9.]+|^### ' backstage/ROADMAP.md | while read line; do
-  echo "  • v${VERSION} - ${TITLE}"
-done
-```
+**Location:** `/Users/nfrota/Documents/nonlinear/.github/prompts/`
 
-**Result:**
-
-```
-📌 What's next?
-
-Active epics:
-  • v0.1.0 - Environment Setup
-  • v0.2.0 - Navigation Logic
-
-✅ Session ready! 🚀
-```
+**Note:** This SKILL.md is a DRAFT distillation of those prompts. Future refinements will improve diagram, add emoji notes, clarify steps. The original prompts contain ALL details.
 
 ---
 
-## Error Handling
+## TODO / Future Refinements
 
-**Network errors:**
-- Warn: "⚠️ Network error - couldn't check updates"
-- Continue workflow (don't block)
-
-**Missing files:**
-- Auto-create if possible
-- Otherwise: warn + continue
-
-**Health check failures:**
-- Show which checks failed
-- Suggest fixes (case-by-case)
-- Don't block session start
+- [ ] **Add emoji notes** (like design-discrepancy 1️⃣-8️⃣ format)
+- [ ] **Simplify diagram** (too many nodes, need consolidation)
+- [ ] **Add code execution points** (where scripts run, if any)
+- [ ] **Create templates** (for new projects without status files)
+- [ ] **Document edge cases** (no git, no README, corrupted files)
+- [ ] **Add examples** (successful runs, failed runs, grooming sessions)
+- [ ] **Test on multiple projects** (validate universal workflow)
+- [ ] **Consider splitting** (start vs end as separate skills?)
 
 ---
 
-## Commands
-
-**Main workflow:**
-```
-backstage start [project-path]
-```
-
-**Health checks only:**
-```
-backstage health
-```
-
-**Manual install:**
-```
-backstage install
-```
-
-**Force update:**
-```
-backstage update
-```
-
----
-
-## Integration with Other Skills
-
-**context-switch:** Calls backstage start when switching projects
-**roadmap:** Edits backstage/ROADMAP.md
-**Skills project:** Uses backstage for its own management
-
-**Backstage = meta-skill** (manages projects that use skills)
-
----
-
-## Philosophy
-
-**Backstage exists to reduce metabolic cost:**
-- ROADMAP = visible priorities (ADHD-friendly)
-- HEALTH = automated quality checks
-- POLICY = documented conventions
-- CHANGELOG = what we did (memory aid)
-
-**Polycentric governance:**
-- Global rules = defaults
-- Project rules = override
-- No central authority
-
-**Rituals:**
-- Morning: backstage start (load context)
-- Evening: backstage health (close clean)
-- Switch: backstage start [project] (new context)
-
-**Diagram > prose:** Mermaid flows show system state visually.
-
----
-
-## Notes
-
-**This skill is standalone** (no external prompt needed).
-
-**Backstage repo:** https://github.com/nonlinear/backstage
-
-**Use cases:**
-- Project setup (new repo)
-- Epic planning (ROADMAP grooming)
-- Quality enforcement (HEALTH checks)
-- Context switching (load project state)
-
-**Related skills:**
-- context-switch (uses backstage)
-- roadmap (edits ROADMAP.md)
+**Created:** 2026-02-12
+**Status:** DRAFT (needs refinement)
+**Location:** `~/Documents/skills/backstage/SKILL.md`
