@@ -12,6 +12,24 @@
 
 ## 
 
+### v0.2.0 - backstage-skill
+
+**Status:** 📋 BACKLOG
+
+**Description:** Universal pre-commit workflow skill (published to ClawHub)
+
+**Tasks:**
+- [ ] Auto-create backstage files if missing (ROADMAP, CHANGELOG, HEALTH, POLICY templates)
+- [ ] Merge context-switch skill logic (project transitions + HEALTH checks)
+- [ ] Merge roadmap skill logic (epic planning, grooming, emoji shortcuts)
+- [ ] Add README.md to backstage-skill/ folder
+- [ ] Document skill usage examples
+- [ ] Test on multiple projects (life, librarian, wiley)
+
+**Published:** https://clawhub.ai/skills/backstage (v0.1.0)
+
+---
+
 ### v1.0.0 - arch
 
 **Status:** 📋 BACKLOG
