@@ -37,6 +37,15 @@
 ## Backstage
 
 > 🤖
+
+```mermaid
+graph LR
+    A[🏗️ v0.1.0 Promoting Skills] --> B[📋 v0.2.0 backstage-skill]
+    B --> C[🏗️ v0.3.0 Companion Skills]
+    C --> D[📋 v1.0.0 arch]
+    D --> E[📋 v1.1.0 i-ching]
+    E --> F[📋 v1.2.0 context-switch]
+```
 > | Backstage files | Description |
 > | ---------------------------------------------------------------------------- | ------------------ |
 > | [README](README.md) | Our project |
@@ -50,8 +59,9 @@
 ```mermaid
 graph LR
     A[🏗️ v0.1.0 Promoting Skills] --> B[📋 v0.2.0 backstage-skill]
-    B --> C[📋 v1.0.0 arch]
-    C --> D[📋 v1.1.0 i-ching]
-    D --> E[📋 v1.2.0 context-switch]
-    E --> F[📋 v1.3.0 design-discrepancy]
+    B --> C[🏗️ v0.3.0 Companion Skills]
+    C --> D[📋 v1.0.0 arch]
+    D --> E[📋 v1.1.0 i-ching]
+    E --> F[📋 v1.2.0 context-switch]
 ```
+

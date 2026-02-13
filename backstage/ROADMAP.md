@@ -13,10 +13,10 @@
 ```mermaid
 graph LR
     A[🏗️ v0.1.0 Promoting Skills] --> B[📋 v0.2.0 backstage-skill]
-    B --> C[📋 v1.0.0 arch]
-    C --> D[📋 v1.1.0 i-ching]
-    D --> E[📋 v1.2.0 context-switch]
-    E --> F[📋 v1.3.0 design-discrepancy]
+    B --> C[🏗️ v0.3.0 Companion Skills]
+    C --> D[📋 v1.0.0 arch]
+    D --> E[📋 v1.1.0 i-ching]
+    E --> F[📋 v1.2.0 context-switch]
 ```
 
 ## 
@@ -64,6 +64,37 @@ Skills published to ClawHub need better visibility and discovery.
 - [ ] Test on multiple projects (life, librarian, wiley)
 
 **Published:** https://clawhub.ai/skills/backstage (v0.1.0)
+
+---
+
+### v0.3.0 - Dealing with Companion Skills
+
+**Status:** 🏗️ ACTIVE
+
+**Description:** Version parity, symlinks, update detection for external skills
+
+**Problem:**
+- Companion skills (backstage-skill, librarian) live outside skills project
+- Version mismatches between skill and project expectations
+- Symlink dependencies (backstage/global/)
+- No update detection
+
+**Tasks:**
+- [x] Phase 1: Symlink strategy (admin vs external users)
+- [ ] Phase 2: Parity detection (version checks, self-report, parity file)
+- [ ] Phase 3: Graceful degradation (hard fail vs soft warn vs feature detect)
+- [ ] Phase 4: Update prompts (suggest updates when detected)
+
+**Open questions:**
+- Symlink for everyone? (admin vs external)
+- Parity on SOME projects, not others? (project-specific versions)
+- Skill says "update me"? (where, when, how)
+
+**Success:**
+- Version mismatches detected automatically
+- Clear update path
+- Graceful degradation when features missing
+- Projects can pin specific companion skill versions
 
 ---
 
