@@ -3,7 +3,7 @@ name: token-management
 description: "Centralized API token management workflow. Store tokens in .env with expiration dates, test permissions via script battery, document capabilities in connections/, set calendar renewal reminders. Prevents re-asking for credentials, ensures token security, tracks expiration."
 type: public
 version: 1.0.0
-status: stable
+status: published
 dependencies:
   - python3
   - requests
@@ -13,6 +13,8 @@ license: MIT
 ---
 
 # Token Management
+
+**Published:** https://clawhub.com/skills/token-management
 
 **Purpose:** Centralize API token management - storage, testing, documentation, expiration tracking.
 
