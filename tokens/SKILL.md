@@ -45,7 +45,33 @@
        --description "Token expires YYYY-MM-DD. Renew at: [RENEWAL_URL]"
      ```
 
-4. **Document in connections/**
+4. **Test token permissions**
+   - Run test battery to discover what token can do
+   - **Script:** Use template below (adapt per service)
+   - Document results in connections/ file
+   - **Example:**
+     ```python
+     # Test Jira token
+     import requests, base64
+     
+     TOKEN = "..."
+     EMAIL = "user@example.com"
+     auth = base64.b64encode(f"{EMAIL}:{TOKEN}".encode()).decode()
+     
+     tests = [
+         ("Get user", "GET", "/rest/api/3/myself"),
+         ("List projects", "GET", "/rest/api/3/project"),
+         ("Search issues", "GET", "/rest/api/3/search", {"jql": "assignee=currentUser()"}),
+     ]
+     
+     for name, method, endpoint, *params in tests:
+         r = requests.get(f"https://DOMAIN{endpoint}", 
+                         headers={'Authorization': f'Basic {auth}'},
+                         params=params[0] if params else None)
+         print(f"{'✅' if r.ok else '❌'} {name}: {r.status_code}")
+     ```
+
+5. **Document in connections/**
    - Create or update `~/Documents/life/connections/SERVICE.md`
    - **Include:**
      - What token offers (read/write/scope)
