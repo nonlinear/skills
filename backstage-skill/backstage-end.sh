@@ -98,9 +98,9 @@ read_navigation_block() {
             fi
         elif [[ $in_block -eq 1 ]]; then
             if [[ "$line" =~ ROADMAP.*'('[^')']+')'  ]]; then
-                roadmap_path="${BASH_REMATCH[1]}"
+                roadmap_path="${BASH_REMATCH[1]:-}"
             elif [[ "$line" =~ CHECKS.*'('[^')']+')'  ]] || [[ "$line" =~ HEALTH.*'('[^')']+')'  ]]; then
-                health_path="${BASH_REMATCH[1]}"
+                health_path="${BASH_REMATCH[1]:-}"
             fi
         fi
     done < README.md
