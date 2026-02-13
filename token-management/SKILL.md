@@ -121,13 +121,16 @@ license: MIT
 
 **Location:** `~/Documents/life/.env`
 
+**Example tokens:**
+
 | Service | Variable | Scope | Expires | Connection Doc |
 |---------|----------|-------|---------|----------------|
-| Figma | `FIGMA_TOKEN` | read-write | ? | [figma.md](~/Documents/life/connections/figma.md) |
-| Jira (Wiley) | `WILEY_JIRA_TOKEN` | read-write | 2027-02-12 | [jira.md](~/Documents/life/connections/jira.md) |
-| NAS | `NAS_HOST`, `NAS_USER`, `NAS_PASS` | SSH/SMB access | - | [mac.md](~/Documents/life/connections/mac.md) |
-| Home Assistant | `HA_URL`, `HA_TOKEN` | read-write | 2085-06-06 | TOOLS.md |
-| Telegram | `TELEGRAM_CHAT_ID`, `TELEGRAM_PHONE` | messaging | - | - |
+| Figma | `FIGMA_TOKEN` | read-write | YYYY-MM-DD | [figma.md](~/Documents/life/connections/figma.md) |
+| Jira | `JIRA_TOKEN` | read-write | YYYY-MM-DD | [jira.md](~/Documents/life/connections/jira.md) |
+| Slack | `SLACK_TOKEN` | bot permissions | Never | [slack.md](~/Documents/life/connections/slack.md) |
+| GitHub | `GITHUB_TOKEN` | repo, gist | YYYY-MM-DD | [github.md](~/Documents/life/connections/github.md) |
+
+**Your index:** Keep your own list in this section (local copy of skill).
 
 ---
 
@@ -164,16 +167,16 @@ cat ~/Documents/life/.env
 **Python usage:**
 ```python
 from dotenv import load_dotenv
-load_dotenv('/Users/nfrota/Documents/life/.env')
+load_dotenv('~/Documents/life/.env')  # Or absolute path
 ```
 
 **Shell usage:**
 ```bash
 source ~/Documents/life/.env
-echo $FIGMA_TOKEN
+echo $YOUR_TOKEN_NAME
 ```
 
 ---
 
 **Created:** 2026-02-12  
-**Location:** `~/Documents/skills/tokens/SKILL.md`
+**Updated:** 2026-02-13 (sanitized for publication)
