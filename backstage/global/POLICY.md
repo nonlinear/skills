@@ -6,6 +6,8 @@
 > Edit project-specific `backstage/POLICY.md` instead.
 > Changes here will be overwritten by sync.
 >
+> Uses backstage protocol: https://github.com/nonlinear/backstage
+>
 > ⚠️
 
 > Universal workflow rules that apply across all projects using this backstage system.
