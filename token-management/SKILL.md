@@ -2,7 +2,7 @@
 name: token-management
 description: "Centralized API token management workflow. Store tokens in .env with expiration dates, test permissions via script battery, document capabilities in connections/, set calendar renewal reminders. Prevents re-asking for credentials, ensures token security, tracks expiration."
 type: public
-version: 1.0.0
+version: 1.0.1
 status: published
 dependencies:
   - python3
