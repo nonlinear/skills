@@ -36,13 +36,13 @@ read_navigation_block() {
             fi
         elif [[ $in_block -eq 1 ]]; then
             # Parse markdown links: [TEXT](path)
-            if [[ "$line" =~ ROADMAP.*\(([^)]+)\) ]]; then
+            if [[ "$line" =~ ROADMAP.*'('[^')']+')'  ]]; then
                 roadmap_path="${BASH_REMATCH[1]}"
-            elif [[ "$line" =~ CHANGELOG.*\(([^)]+)\) ]]; then
+            elif [[ "$line" =~ CHANGELOG.*'('[^')']+')'  ]]; then
                 changelog_path="${BASH_REMATCH[1]}"
-            elif [[ "$line" =~ CHECKS.*\(([^)]+)\) ]] || [[ "$line" =~ HEALTH.*\(([^)]+)\) ]]; then
+            elif [[ "$line" =~ CHECKS.*'('[^')']+')'  ]] || [[ "$line" =~ HEALTH.*'('[^')']+')'  ]]; then
                 health_path="${BASH_REMATCH[1]}"
-            elif [[ "$line" =~ POLICY.*\(([^)]+)\) ]]; then
+            elif [[ "$line" =~ POLICY.*'('[^')']+')'  ]]; then
                 policy_path="${BASH_REMATCH[1]}"
             fi
         fi
