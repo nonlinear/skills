@@ -16,13 +16,27 @@
 
 ## What's Here
 
-This repository contains OpenClaw skills at various stages of development.
+**Public skills** (alphabetical):
+
+- **arch** - Architecture design exercises (collaborative diagrams before coding)
+- **backstage-skill** - Project context switching with HEALTH checks
+- **context-switch** - Conscious project/epic transitions with parity detection
+- **design-discrepancy** - Compare reference docs with live systems (design vs implementation gaps)
+- **find-books** - Search foundational/seminal books via Anna's Archive
+- **i-ching** - I Ching divination (hexagrams, trigrams, oracles)
+- **librarian** - Book research via semantic search (requires external project)
+- **notify** - Presence-aware notifications (idle detection + channel routing)
+- **[reminder-research](https://clawhub.com/skills/reminder-research)** ⭐ - Process Apple Reminders with custom instructions
+- **roadmap** - Backstage roadmap management across projects
+- **system-detective** - Auto-detect investigation context and route to correct tool
+- **[token-management](https://clawhub.com/skills/token-management)** ⭐ - Manage API tokens/credentials across projects
+- **use-for** - Skill suggester (meta-skill for skill discovery)
+
+⭐ = Published on ClawHub
 
 **Skill types:**
 - **public** - Standalone or dependent on external projects, publishable to ClawHub
 - **private** - Work-specific, NOT publishable, NOT tracked in git (see .gitignore)
-
-**Published skills** are listed on [clawhub.com/publishers/nonlinear](https://clawhub.com/publishers/nonlinear).
 
 See [POLICY.md](backstage/POLICY.md) for frontmatter spec and development workflow.
 
