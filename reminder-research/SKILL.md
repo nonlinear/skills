@@ -197,7 +197,7 @@ CUSTOM_ITEM|<id>|<list>|<title>|<instructions>  # Custom instructions (Gen 3)
 
 | List | Action | Output Format |
 |------|--------|---------------|
-| 🛒 Groceries | SKIP | (no processing) |
+| Groceries | SKIP | (no processing) |
 | claw | System analysis | 💎 Pattern + solutions |
 | Shopping | Product search | 💎 Links + prices |
 | Others | Generic research | 💎 Summary + sources |
