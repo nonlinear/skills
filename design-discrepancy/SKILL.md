@@ -113,7 +113,15 @@ Found: 16px (paddingLeft on div.MuiBox-root.css-1snnggj)
 Expected: 8px (Figma node 249:7049 Masthead specification)
 ```
 
-**One row = one discrepancy on one page.** If same discrepancy on 2 pages → 2 rows. If 2 different discrepancies on 1 page → 2 rows.
+**System version (col G) rules:**
+- **1 page affected:** `=HYPERLINK(page_url, "Page Name")` (blue underline)
+- **Multiple pages affected:** Plain text list "Page1, Page2, Page3" (no links)
+
+**Title (col B) rules:**
+- **1 page:** "Component - Check type - Page name"
+- **Multiple pages:** "Component - Check type" (no page name)
+
+**One discrepancy = one row.** If same issue affects multiple pages → 1 row with page list. If different issues on same page → separate rows.
 
 ---
 
