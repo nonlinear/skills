@@ -16,6 +16,34 @@ license: MIT
 
 ---
 
+## 🔴 Why This Skill Exists (Anti-Drift)
+
+**Problem:** Work happens outside context → drift → broken trust → triple metabolic cost
+
+**Without backstage:**
+- Work scattered across projects without epic context
+- Changes made without HEALTH checks
+- Architecture decisions undocumented
+- ROADMAP diverges from reality
+- Trust erodes (map ≠ territory)
+
+**With backstage:**
+- ✅ **"good morning X"** → automatic context load (project/epic)
+- ✅ **Work inside boundaries** → epic constraints enforced
+- ✅ **Architecture-first** → design before code
+- ✅ **HEALTH checks** → prevent chaos, catch drift early
+- ✅ **Paridade maintained** → docs match reality
+
+**Core principle:** Force context awareness (project/epic/design architecture) to prevent drift.
+
+**Metabolic cost equation:**
+- **Drift work:** Original work + Explain methodology + Define where learning goes = **3x cost**
+- **Backstage work:** Original work (within documented context) = **1x cost**
+
+**This skill makes the investment worth it.** Nicholas teaches once → Kin internalizes → plateau reached → triple work becomes simple work.
+
+---
+
 ## Workflow Diagram (DRAFT)
 
 ```mermaid
