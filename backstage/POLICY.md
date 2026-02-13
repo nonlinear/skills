@@ -315,3 +315,45 @@ git commit -m "Fix regex syntax error"
 git push
 clawhub publish ~/Documents/skills/backstage-skill --slug backstage --name "Backstage" --version 0.1.1 --tags latest --changelog "Fix regex syntax error in backstage-start.sh"
 ```
+
+---
+
+## Adding New Skills
+
+**Workflow:**
+
+1. **Create folder:** `~/Documents/skills/skill-name/`
+2. **Add SKILL.md** with complete frontmatter (see Frontmatter Specification above)
+3. **If private:** Add to `.gitignore` (NEVER commit work-specific skills)
+4. **If public:** Add to ROADMAP epic (track development)
+5. **Run HEALTH checks** before committing:
+   ```bash
+   ~/Documents/skills/backstage-skill/backstage-start.sh
+   ```
+6. **Test thoroughly** (scripts, dependencies, edge cases)
+7. **Publish** (public skills only):
+   ```bash
+   clawhub publish ~/Documents/skills/skill-name --slug skill-name --name "Display Name" --version 1.0.0 --tags latest
+   ```
+
+**Frontmatter template:**
+```yaml
+---
+name: skill-name
+description: "Triggers, use cases, problems solved. Write for AI suggestion."
+type: public|private
+version: 1.0.0
+status: concept|draft|stable|published
+dependencies: 
+  - https://github.com/user/repo  # external projects
+  - system-package  # bins/libs
+author: nonlinear
+license: MIT
+---
+```
+
+**Critical rules:**
+- **Private skills:** MUST be in `.gitignore`, NEVER mention in README
+- **Public skills:** List in README.md with ClawHub links if published
+- **Status progression:** concept → draft → stable → published (public only)
+- **HEALTH enforcement:** Run before every commit
