@@ -1,11 +1,10 @@
 ---
 name: design-discrepancy
-description: "Compare reference docs (Figma, specs) with live system via Chrome Relay. Surface design vs implementation gaps for QA reports. Triggers: 'compare X with Y', 'check discrepancies', 'design vs implementation', 'Figma vs live site'. Private: Wiley internal work."
-type: private
+description: "Compare reference docs (Figma, specs) with live system via Chrome Relay. Surface design vs implementation gaps for QA reports. Triggers: 'compare X with Y', 'check discrepancies', 'design vs implementation', 'Figma vs live site'."
+type: public
 version: 1.0.0
 status: stable
 dependencies:
-  - https://github.com/yourusername/rpm-design-system
   - chrome-relay
 author: nonlinear
 license: MIT
