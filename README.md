@@ -2,6 +2,16 @@
 
 **Collection of OpenClaw skills (public + private)**
 
+> 🤖
+>
+> - [README](README.md) - Our project
+> - [CHANGELOG](backstage/CHANGELOG.md) — What we did
+> - [ROADMAP](backstage/ROADMAP.md) — What we wanna do
+> - [POLICY](backstage/POLICY.md) — How we do it
+> - [HEALTH](backstage/HEALTH.md) — What we accept
+>
+> 🤖
+
 ---
 
 ## What's Here
