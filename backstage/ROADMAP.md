@@ -12,6 +12,34 @@
 
 ## 
 
+### v0.1.0 - Promoting Skills
+
+**Status:** 🏗️ ACTIVE
+
+**Description:** Marketing and visibility strategy for published skills
+
+**Problem:**
+Skills published to ClawHub need better visibility and discovery.
+
+**Solution:**
+1. **Portfolio page:** Link published skills on nonlinear.nyc (where? how?)
+2. **Better descriptions:** Mermaid diagrams, clear use cases, screenshots
+3. **Promotion pipeline:** Newsletter? Social media pins? Community engagement?
+
+**Tasks:**
+- [ ] Research: Where to link skills on nonlinear.nyc? (portfolio section, skills page, blog?)
+- [ ] Design: Skill showcase template (diagram + description + link)
+- [ ] Document: Promotion checklist (when to promote, which channels)
+- [ ] Implement: Create portfolio/skills page on nonlinear.nyc
+- [ ] Test: Promote reminder-research as pilot (measure installs, feedback)
+
+**Success:**
+- Published skills get 10+ installs
+- Clear path: publish → promote → measure
+- Repeatable promotion workflow
+
+---
+
 ### v0.2.0 - backstage-skill
 
 **Status:** 📋 BACKLOG
