@@ -50,7 +50,7 @@ license: MIT
 - `description` - How/when to use (for AI suggestion). Include: triggers, use cases, problems solved.
 - `type` - `public` (publishable) or `private` (not publishable, in .gitignore)
 - `version` - Semantic versioning (1.0.0)
-- `status` - `live` (published on ClawdHub), `stable` (works, not published), `testing` (in epic, changing)
+- `status` - `concept`, `draft`, `stable`, or `published` (see Status Definitions below)
 - `dependencies` - Array of GitHub repos (external projects) or system packages
 - `author` - Creator name
 - `license` - MIT, Unlicense, etc.
@@ -82,21 +82,43 @@ license: MIT
 
 ### Status Definitions
 
-**published:**
-- Published on ClawHub
-- Users can install via `clawhub install <slug>`
-- Appears on https://clawhub.com/@nonlinear
-- Maintained (updates republished as needed)
+**concept:**
+- Placeholder, idea stage
+- May have SKILL.md skeleton but incomplete
+- Not functional yet
+- Use to capture ideas before building
+
+**draft:**
+- Work in progress, actively developing
+- Functional but unstable, testing features
+- Not ready for daily use
+- Usually tied to an epic
 
 **stable:**
 - Feature complete, tested, working
-- Not yet published (or not intended for publication)
 - Ready for daily use
+- Not yet published (or not intended for publication)
 
-**testing:**
-- In active development (usually tied to an epic)
-- Unstable, changing
-- Document what's pending in epic notes
+**published:**
+- Published on ClawHub at https://clawhub.com/@nonlinear
+- Users can install via `clawhub install <slug>`
+- Maintained (updates republished as needed)
+- Include ClawHub link in SKILL.md
+
+---
+
+### Type + Status Matrix
+
+| Type | Allowed Statuses | Git Tracked | Publishable |
+|------|-----------------|-------------|-------------|
+| `public` | concept, draft, stable, published | ✅ Yes | ✅ Yes (when stable/published) |
+| `private` | concept, draft, stable | ❌ No (.gitignore) | ❌ Never |
+
+**Private skills:**
+- NEVER reach `published` status
+- NEVER committed to git (must be in .gitignore)
+- NEVER shared on ClawHub
+- Examples: work-specific, sensitive data
 
 ---
 
