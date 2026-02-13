@@ -259,3 +259,36 @@ another-private-skill/
 6. Document ClawdHub package name in SKILL.md
 
 **Private skills:** NEVER publish. Skip this process entirely.
+
+---
+
+### ClawHub Republish Protocol
+
+**If skill is published (check frontmatter `status: live`):**
+
+1. **Before editing:** Git commit current state
+2. **Edit skill:** Make changes (code, docs, etc.)
+3. **Test:** Run all skill tests, verify functionality
+4. **Version bump:** 
+   - PATCH for bug fixes (0.1.0 → 0.1.1)
+   - MINOR for new features (0.1.0 → 0.2.0)
+   - MAJOR for breaking changes (0.1.0 → 1.0.0)
+5. **Git commit + push:** Commit changes, push to GitHub
+6. **Republish to ClawHub:**
+   ```bash
+   clawhub publish /path/to/skill --slug skill-name --name "Display Name" --version X.Y.Z --tags latest --changelog "What changed"
+   ```
+7. **Verify:** Check https://clawhub.ai/skills/skill-name shows new version
+
+**Why this matters:**
+- ClawHub users install from registry (not GitHub)
+- Edits don't reach users until republished
+- Version bumps track changes (semver contract)
+
+**Example:**
+```bash
+# Edit backstage-skill/backstage-start.sh (bug fix)
+git commit -m "Fix regex syntax error"
+git push
+clawhub publish ~/Documents/skills/backstage-skill --slug backstage --name "Backstage" --version 0.1.1 --tags latest --changelog "Fix regex syntax error in backstage-start.sh"
+```
