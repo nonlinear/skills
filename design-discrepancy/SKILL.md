@@ -55,18 +55,25 @@ flowchart TD
 **Notes:**
 
 **1️⃣ Loads exercise MD:** Opens in Typora for parity
+- **Code:** `check-discrepancy.py::load_exercise()`
 
 **2️⃣ Trigger + exercise name:** Where do we keep track of exercise name and corresponding MD? Can user ask for list?
+- **Code:** `check-discrepancy.py::detect_exercise()`
 
 **3️⃣ Asks critical info:** Anything under [brackets] in template. Skill knows: date, status.
+- **Code:** `check-discrepancy.py::ask_critical_info()`
 
 **4️⃣ Checks access:** Verify access to Figma API, Jira API, Relay ON, etc. **Updates table for each access.** **Follow Connection column links** (e.g., `figma.md`, `jira.md`) - read those files, follow documented methods, don't ask/invent.
+- **Code:** `check-discrepancy.py::check_access()`
 
 **5️⃣ Component inventory:** Runs over each page on system, finds all components and subcomponents, lists them on MD in ordered list.
+- **Code:** `check-discrepancy.py::component_inventory()`
 
 **6️⃣ Document matching:** Matches all components found against documentation, renames according to documentation. Lists all components not part of documentation (icons, etc). Use `- [ ]` checkbox format. Add progress tracker (e.g., "3 of 12 completed").
+- **Code:** `check-discrepancy.py::document_matching()`
 
 **7️⃣ Discrepancy checks:** **Kin only does SPACING checks.** Nicholas does: States, Color, Typography, WCAG.
+- **Code:** `check-discrepancy.py::check_spacing()`
 
 **Spacing checks (Kin automation):**
 - **Padding:** Compare `paddingLeft`, `paddingRight`, `paddingTop`, `paddingBottom` (computed styles vs Figma)
@@ -84,6 +91,7 @@ flowchart TD
 **Nicholas does manually:** States (hover, focus, etc.), Color (hex matching), Typography (font family/weight/size), WCAG compliance
 
 **8️⃣ Document discrepancies:** Add row to Excel with columns below, **check component on MD** (`- [x]`), **update Progress** (e.g., "4 of 12 completed"). Then loop back to 6b.
+- **Code:** `check-discrepancy.py::document_to_excel()`
 
 **Excel columns (10 total):**
 - **ID** (sequential)
