@@ -3,7 +3,7 @@
 ## File Structure
 
 ```
-~/.openclaw/workspace/skills/apple-reminders-processing/
+~/.openclaw/workspace/skills/reminder-research/
 ├── SKILL.md                    # Skill documentation (user-facing)
 ├── ARCHITECTURE.md             # This file (system design)
 ├── process-reminders.sh        # Detection script (outputs categorized items)
@@ -121,7 +121,7 @@ CUSTOM_ITEM|<id>|<list>|<title>|<instructions>
 ```json
 {
   "kind": "agentTurn",
-  "message": "Run apple-reminders-processing skill: Check for reminders without notes or custom instructions, process them according to Gen 3 logic (custom instructions or list-based defaults), update notes with 💎 results. Use ~/.openclaw/workspace/skills/apple-reminders-processing/process-reminders.sh to detect items, then process each type appropriately."
+  "message": "Run reminder-research skill: Check for reminders without notes or custom instructions, process them according to Gen 3 logic (custom instructions or list-based defaults), update notes with 💎 results. Use ~/.openclaw/workspace/skills/reminder-research/process-reminders.sh to detect items, then process each type appropriately."
 }
 ```
 

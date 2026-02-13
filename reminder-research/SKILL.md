@@ -1,5 +1,5 @@
 ---
-name: apple-reminders
+name: reminder-research
 description: "Process Apple Reminders. Smart research: custom instructions (book + web search constraints), list-based defaults (claw=system solutions, shopping=price comparison, generic=how-to tutorials). Result tracking with 💎 signifier. Triggers: reminders without notes, heartbeat automated processing."
 type: public
 version: 1.0.0
@@ -11,7 +11,7 @@ author: nonlinear
 license: MIT
 ---
 
-# Apple Reminders
+# Reminder Research
 
 **v3 Evolution:** Custom instructions + auto-processing + result tracking
 
