@@ -67,7 +67,12 @@ flowchart TD
 
 **6️⃣ Document matching:** Matches all components found against documentation, renames according to documentation. Lists all components not part of documentation (icons, etc). Use `- [ ]` checkbox format. Add progress tracker (e.g., "3 of 12 completed").
 
-**7️⃣ Discrepancy checks:** Run 3 tests per component: System vs Docs, WCAG 2.2, States. **Only document if tests fail. If pass, no delta.**
+**7️⃣ Discrepancy checks:** Run 5 checks per component. **Only document if tests fail. If pass, no delta.**
+- **States (7 total):** default, filled, error, alert, disabled, hover, active. *How to test?* Chrome Relay + DevTools simulate (hover: `:hover` CSS, disabled: toggle attribute, etc.). Document method per exercise.
+- **Color:** Do colors match documentation? Compare hex/rgb (background, text, border). If not → mark discrepancy.
+- **Typography:** Family, size, weight match documentation? Compare computed styles vs Figma specs.
+- **Spacing:** Padding, margin, borders match? Compare px/rem values.
+- **Typography hierarchy:** Nesting correct? (e.g., not h2 inside h3, semantic HTML proper). Check heading levels, ARIA roles.
 
 **8️⃣ Document discrepancies:** Add row to Excel with columns below, **check component on MD** (`- [x]`), **update Progress** (e.g., "4 of 12 completed"). Then loop back to 6b.
 - **ID** (sequential)
