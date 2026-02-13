@@ -18,29 +18,38 @@ license: MIT
 
 ## 🔴 Why This Skill Exists (Anti-Drift)
 
-**Problem:** Work happens outside context → drift → broken trust → triple metabolic cost
+**Backstage-skill = ANTI-DRIFT:**
+- ✅ Force context awareness (project/epic)
+- ✅ HEALTH checks prevent chaos
+- ✅ Architecture-first workflow
+- ✅ Roadmap visibility = no surprises
 
-**Without backstage:**
-- Work scattered across projects without epic context
-- Changes made without HEALTH checks
-- Architecture decisions undocumented
-- ROADMAP diverges from reality
-- Trust erodes (map ≠ territory)
+**WITHOUT IT:**  
+Work happens outside backstage → drift → broken trust → triple metabolic cost
 
-**With backstage:**
-- ✅ **"good morning X"** → automatic context load (project/epic)
-- ✅ **Work inside boundaries** → epic constraints enforced
-- ✅ **Architecture-first** → design before code
-- ✅ **HEALTH checks** → prevent chaos, catch drift early
-- ✅ **Paridade maintained** → docs match reality
+**WITH IT:**  
+"good morning X" → automatic context load → work inside boundaries → paridade maintained
 
-**Core principle:** Force context awareness (project/epic/design architecture) to prevent drift.
+---
 
-**Metabolic cost equation:**
-- **Drift work:** Original work + Explain methodology + Define where learning goes = **3x cost**
-- **Backstage work:** Original work (within documented context) = **1x cost**
+**The Metabolic Cost Problem:**
 
-**This skill makes the investment worth it.** Nicholas teaches once → Kin internalizes → plateau reached → triple work becomes simple work.
+Without backstage, delegation costs **triple**:
+1. The work itself
+2. Explicating methodology (ethics, preferences, protocols)
+3. Defining WHERE that learning gets stored (VISION? SOUL? SKILL? memory?)
+
+This is **exhausting** for the human.
+
+**Investment is worth it ONLY IF plateau is reached:**
+- Human teaches ONCE → AI internalizes
+- Each session: READ context files → act according to ethics
+- Each session: LESS explanation needed
+- Plateau = Human delegates, AI executes without supervision
+
+**This skill enforces stabilization.**  
+Force context awareness (project/epic/design architecture) to prevent drift.  
+**3x work becomes 1x work.**
 
 ---
 
