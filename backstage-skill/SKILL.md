@@ -126,6 +126,51 @@ flowchart TD
 
 ---
 
+## Mermaid Diagram Generation (Interpretive)
+
+**Purpose:** Automatically generate + propagate ROADMAP diagram to all backstage files.
+
+**Workflow:**
+
+1. **Parse ROADMAP.md** (deterministic - SH):
+   ```bash
+   parse-roadmap.sh backstage/ROADMAP.md
+   # Output: version|status_emoji|name
+   ```
+
+2. **Read POLICY diagram rules** (interpretive - AI):
+   - Global POLICY.md defines default format (linear graph, all epics, sequential)
+   - Project POLICY.md can override (gantt, flowchart, or `diagram: none`)
+   - Project wins on conflict
+
+3. **Generate mermaid** (interpretive - AI):
+   - Apply POLICY rules to parsed data
+   - Create mermaid syntax matching specification
+   - Example (default):
+     ```mermaid
+     graph LR
+         A[🏗️ v0.1.0 Active Epic] --> B[📋 v0.2.0 Backlog Epic]
+     ```
+
+4. **Propagate to all files** (deterministic - SH):
+   - Insert after `> 🤖` marker
+   - README.md, ROADMAP.md, CHANGELOG.md, POLICY.md, HEALTH.md
+   - Remove old diagrams (anti-drift)
+
+**AI Prompt (when running backstage-start/end):**
+
+> Read global/POLICY.md and project/POLICY.md mermaid diagram rules.
+> Run `parse-roadmap.sh` to extract epics.
+> Generate mermaid diagram following POLICY rules (prefer project over global).
+> Insert diagram after navigation block (`> 🤖`) in all backstage files.
+> If project POLICY says `diagram: none`, skip generation.
+
+**Tools:**
+- `parse-roadmap.sh` - Extract version|status|name from ROADMAP.md
+- POLICY.md - Diagram format rules (type, include/exclude logic, status mapping)
+
+---
+
 ## Polycentric Governance (How It Works)
 
 ```mermaid
