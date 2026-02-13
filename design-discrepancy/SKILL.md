@@ -68,24 +68,39 @@ flowchart TD
 **6️⃣ Document matching:** Matches all components found against documentation, renames according to documentation. Lists all components not part of documentation (icons, etc). Use `- [ ]` checkbox format. Add progress tracker (e.g., "3 of 12 completed").
 
 **7️⃣ Discrepancy checks:** Run 5 checks per component. **Only document if tests fail. If pass, no delta.**
-- **States (7 total):** default, filled, error, alert, disabled, hover, active. *How to test?* Chrome Relay + DevTools simulate (hover: `:hover` CSS, disabled: toggle attribute, etc.). Document method per exercise.
+- **States (7 total):** default, filled, hover, active (focus, simulate keyboard navigation). *How to test?* Chrome Relay + DevTools simulate (hover: `:hover` CSS, disabled: toggle attribute, etc.). Document method per exercise.
 - **Color:** Do colors match documentation? Compare hex/rgb (background, text, border). If not → mark discrepancy.
 - **Typography:** Family, size, weight match documentation? Compare computed styles vs Figma specs.
 - **Spacing:** Padding, margin, borders match? Compare px/rem values.
 - **Typography hierarchy:** Nesting correct? (e.g., not h2 inside h3, semantic HTML proper). Check heading levels, ARIA roles.
 
 **8️⃣ Document discrepancies:** Add row to Excel with columns below, **check component on MD** (`- [x]`), **update Progress** (e.g., "4 of 12 completed"). Then loop back to 6b.
+
+**Excel columns (10 total):**
 - **ID** (sequential)
-- **Title** (brief description)
-- **Jira task** (linked if related)
-- **Priority** (blank)
+- **Title** (Component - Check type - Page name, e.g., "Masthead - Color mismatch - Login")
+- **Jira task** (linked if related, `=HYPERLINK(url, "CODE: TITLE")`)
 - **Status** (default: "To triage")
-- **Description** (why discrepancy exists, A→B: system/docs, docs/WCAG, etc)
-- **Library version** (Figma link)
-- **System version** (all page links where discrepancy found)
+- **Description** (forensic detail, ENGLISH):
+  - **Found:** [actual value + how measured, e.g., "#F5F5F5 (Chrome computed style, element ref=e6)"]
+  - **Expected:** [target value + source, e.g., "#FFFFFF (Figma node 249:7049)"]
+  - **Impact:** [why it matters]
+  - **Tested:** [date/time + method]
+- **Library version** (WHERE expected value lives, e.g., `=HYPERLINK(figma_url, "RPM Pattern Library: Masthead")`)
+- **System version** (WHERE found value lives, e.g., `=HYPERLINK(page_url, "RPM Login")`)
 - **System image** (screenshot if needed)
-- **Proposed solution** (blank)
-- **Pattern alignment notes** (blank)
+- **Proposed solution** (blank, filled by UX later)
+- **Pattern alignment notes** (blank, filled by UX later)
+
+**Description format (always ENGLISH):**
+```
+Found: [actual value + measurement method]
+Expected: [target value + source reference]
+Impact: [why discrepancy matters]
+Tested: [YYYY-MM-DD HH:MM TZ via tool/method]
+```
+
+**One row = one discrepancy on one page.** If same discrepancy on 2 pages → 2 rows. If 2 different discrepancies on 1 page → 2 rows.
 
 ---
 
