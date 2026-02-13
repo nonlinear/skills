@@ -1,8 +1,8 @@
 ---
-name: apple-reminders-processing
-description: "Process Apple Reminders without notes. Smart research: custom instructions (book + web search constraints), list-based defaults (claw=system solutions, shopping=price comparison, generic=how-to tutorials). Result tracking with 💎 signifier. Triggers: reminders without notes, heartbeat 2x/day."
+name: apple-reminders
+description: "Process Apple Reminders. Smart research: custom instructions (book + web search constraints), list-based defaults (claw=system solutions, shopping=price comparison, generic=how-to tutorials). Result tracking with 💎 signifier. Triggers: reminders without notes, heartbeat automated processing."
 type: public
-version: 3.0.0
+version: 1.0.0
 status: stable
 dependencies:
   - remindctl
@@ -11,9 +11,49 @@ author: nonlinear
 license: MIT
 ---
 
-# Apple Reminders Processing - Smart Research System
+# Apple Reminders
 
 **v3 Evolution:** Custom instructions + auto-processing + result tracking
+
+
+
+```mermaid
+graph TD
+    A[HEARTBEAT trigger] -->|spawns| B[Isolated Session Sub-agent]
+    B -->|runs| C[process-reminders.sh]
+    
+    C -->|queries| D[remindctl all --json]
+    D -->|returns| E{Filter incomplete}
+    
+    E -->|has 💎?| F[SKIP - already processed]
+    E -->|no 💎| G{Notes empty?}
+    
+    G -->|nothing to process| H[NO_REMINDERS_TO_PROCESS]
+    H --> I[Exit 0 tokens]
+    
+    G -->|yes| J[Gen 2: List-based]
+    G -->|no| K[Gen 3: Custom]
+    
+    J -->|claw list| L[CLAW_ITEM]
+    J -->|Shopping| M[SHOPPING_ITEM]
+    J -->|other| N[GENERIC_ITEM]
+    
+    K --> O[CUSTOM_ITEM]
+    
+    L -->|memory_search| P[System analysis]
+    M -->|web_search| Q[Product research]
+    N -->|web_search| R[Generic research]
+    O -->|parse instructions| S[Multi-source: books+web+constraints]
+    
+    P --> T[Format: 💎 + analysis]
+    Q --> T
+    R --> T
+    S --> T
+    
+    T -->|remindctl edit| U[Update notes]
+    U --> V[Announce summary]
+    V --> W[Session ends]
+```
 
 ## 🎯 Three Generations
 
@@ -147,17 +187,19 @@ Where to buy. Budget under $50. Avoid Amazon.
 
 ## 🔄 Heartbeat Integration
 
-**Runs 2x/day** (morning + evening):
+**Triggered by HEARTBEAT** (configurable schedule):
 ```bash
-RESULT=$(~/.openclaw/skills/reminders/process-reminders.sh)
+RESULT=$(process-reminders.sh)
 
-if [ "$RESULT" != "NO_REMINDERS_TO_PROCESS" ]; then
-  # Parse each item type
-  # Execute appropriate research
-  # Update notes with 💎 result
-  # Notify Telegram when batch complete
+if [ "$RESULT" = "NO_REMINDERS_TO_PROCESS" ]; then
+  # Exit immediately - 0 tokens spent
+  exit 0
 fi
+
+# Otherwise: Parse each item type, research, update notes
 ```
+
+**Lean behavior:** If nothing needs processing → script exits, no AI session spawned, zero cost.
 
 ## 📝 Update Reminder Notes
 
@@ -208,6 +250,10 @@ Notes: "Find React examples on GitHub. Check if any use Framer Motion. Budget: M
 - ✅ Notes start with 💎 → already processed, skip
 - ✅ List = 🛒 Groceries → no research needed
 - ✅ Completed reminders → ignored
+
+## Architecture
+
+For system design, data flow, and implementation details, see [references/architecture.md](references/architecture.md).
 
 ## Dependencies
 - `remindctl` (Apple Reminders CLI)
