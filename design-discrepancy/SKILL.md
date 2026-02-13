@@ -67,37 +67,51 @@ flowchart TD
 
 **6️⃣ Document matching:** Matches all components found against documentation, renames according to documentation. Lists all components not part of documentation (icons, etc). Use `- [ ]` checkbox format. Add progress tracker (e.g., "3 of 12 completed").
 
-**7️⃣ Discrepancy checks:** Run 5 checks per component. **Only document if tests fail. If pass, no delta.**
-- **States (7 total):** default, filled, hover, active (focus, simulate keyboard navigation). *How to test?* Chrome Relay + DevTools simulate (hover: `:hover` CSS, disabled: toggle attribute, etc.). Document method per exercise.
-- **Color:** Do colors match documentation? Compare hex/rgb (background, text, border). If not → mark discrepancy.
-- **Typography:** Family, size, weight match documentation? Compare computed styles vs Figma specs.
-- **Spacing:** Padding, margin, borders match? Compare px/rem values.
-- **Typography hierarchy:** Nesting correct? (e.g., not h2 inside h3, semantic HTML proper). Check heading levels, ARIA roles.
+**7️⃣ Discrepancy checks:** **Kin only does SPACING checks.** Nicholas does: States, Color, Typography, WCAG.
+
+**Spacing checks (Kin automation):**
+- **Padding:** Compare `paddingLeft`, `paddingRight`, `paddingTop`, `paddingBottom` (computed styles vs Figma)
+- **Margin:** Compare `marginLeft`, `marginRight`, `marginTop`, `marginBottom` (computed styles vs Figma)
+- **Borders:** Compare `borderTop`, `borderBottom`, `borderLeft`, `borderRight` (width, style, color)
+- **Height/Width:** Compare fixed dimensions if specified in Figma
+
+**Method:**
+1. Get Figma specs (already documented in exercise MD or fetch via API)
+2. Find element in Chrome Relay (via snapshot + selector)
+3. Run `window.getComputedStyle(element)` for spacing properties
+4. Compare Found vs Expected
+5. If mismatch → document in Excel
+
+**Nicholas does manually:** States (hover, focus, etc.), Color (hex matching), Typography (font family/weight/size), WCAG compliance
 
 **8️⃣ Document discrepancies:** Add row to Excel with columns below, **check component on MD** (`- [x]`), **update Progress** (e.g., "4 of 12 completed"). Then loop back to 6b.
 
 **Excel columns (10 total):**
 - **ID** (sequential)
-- **Title** (Component - Check type - Page name, e.g., "Masthead - Color mismatch - Login")
-- **Jira task** (linked if related, `=HYPERLINK(url, "CODE: TITLE")`)
+- **Title** (Component - Check type - Page name, e.g., "Masthead - Spacing (padding left) - Login")
+- **Jira task** (linked if related, `=HYPERLINK(url, "CODE: Component Name")` with blue underline style)
 - **Status** (default: "To triage")
 - **Description** (forensic detail, ENGLISH):
-  - **Found:** [actual value + how measured, e.g., "#F5F5F5 (Chrome computed style, element ref=e6)"]
-  - **Expected:** [target value + source, e.g., "#FFFFFF (Figma node 249:7049)"]
-  - **Impact:** [why it matters]
-  - **Tested:** [date/time + method]
-- **Library version** (WHERE expected value lives, e.g., `=HYPERLINK(figma_url, "RPM Pattern Library: Masthead")`)
-- **System version** (WHERE found value lives, e.g., `=HYPERLINK(page_url, "RPM Login")`)
-- **System image** (screenshot if needed)
-- **Proposed solution** (blank, filled by UX later)
+  - **Found:** [actual value + property/element, e.g., "16px (paddingLeft on div.MuiBox-root.css-1snnggj)"]
+  - **Expected:** [target value + source, e.g., "8px (Figma node 249:7049 Masthead specification)"]
+  - **NO "Impact:" line** (redundant when Title already says check type)
+  - **NO "Tested:" line** (Excel file metadata = timestamp)
+  - **NO "Chrome computed style" term** (just property name + element)
+- **Library version** (WHERE expected value lives, `=HYPERLINK(figma_url, "RPM Pattern Library: Component")` with blue underline)
+- **System version** (WHERE found value lives, `=HYPERLINK(page_url, "Page Name")` with blue underline)
+- **System image** (blank, screenshots not needed for spacing)
+- **Proposed solution** (repeat Figma spec as fix, e.g., "Set padding-left: 8px on Masthead container")
 - **Pattern alignment notes** (blank, filled by UX later)
 
-**Description format (always ENGLISH):**
+**Excel styling:**
+- Copy ALL styles from existing rows (wrap text, alignment, borders, fonts)
+- Hyperlinks: blue (`0563C1`) + underline (`single`)
+- Use `openpyxl.styles.Font` + `copy()` for style inheritance
+
+**Description format (simplified, ENGLISH only):**
 ```
-Found: [actual value + measurement method]
-Expected: [target value + source reference]
-Impact: [why discrepancy matters]
-Tested: [YYYY-MM-DD HH:MM TZ via tool/method]
+Found: 16px (paddingLeft on div.MuiBox-root.css-1snnggj)
+Expected: 8px (Figma node 249:7049 Masthead specification)
 ```
 
 **One row = one discrepancy on one page.** If same discrepancy on 2 pages → 2 rows. If 2 different discrepancies on 1 page → 2 rows.
