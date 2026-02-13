@@ -1,25 +1,6 @@
 # Skills - Roadmap
 
-> 🤖
->
-> - [README](../README.md) - Our project
-> - [CHANGELOG](CHANGELOG.md) — What we did
-> - [ROADMAP](ROADMAP.md) — What we wanna do
-> - [POLICY](POLICY.md) — How we do it
-> - [HEALTH](HEALTH.md) — What we accept
->
-> 🤖
 
-```mermaid
-graph LR
-    A[🏗️ v0.1.0 Promoting Skills] --> B[📋 v0.2.0 backstage-skill]
-    B --> C[🏗️ v0.3.0 Companion Skills]
-    C --> D[📋 v1.0.0 arch]
-    D --> E[📋 v1.1.0 i-ching]
-    E --> F[📋 v1.2.0 context-switch]
-```
-
-## 
 
 ### v0.1.0 - Promoting Skills
 
@@ -84,6 +65,8 @@ Skills published to ClawHub need better visibility and discovery.
 - [ ] Phase 2: Parity detection (version checks, self-report, parity file)
 - [ ] Phase 3: Graceful degradation (hard fail vs soft warn vs feature detect)
 - [ ] Phase 4: Update prompts (suggest updates when detected)
+- [ ] **Debug: Global POLICY syntax not reverberating on skill** (template changes don't propagate to READMEs)
+- [ ] **Resolve auto-push/auto-commit rules** (need rules for in/out of branches)
 
 **Open questions:**
 - Symlink for everyone? (admin vs external)
