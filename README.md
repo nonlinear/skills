@@ -16,29 +16,15 @@
 
 ## What's Here
 
-**Public skills:**
-- `arch` - Architecture design exercises
-- `i-ching` - I Ching divination
-- `context-switch` - Project/epic transitions with HEALTH checks
-- `apple-reminders-processing` - Process reminders without notes
-- `notify` - Presence-aware notifications
-- `roadmap` - Backstage roadmap management
-- `system-detective` - Auto-detect investigation context
-- `find-books` - Find foundational/seminal books
-- `use-for` - Skill suggester (meta)
-- `librarian` - Book research via semantic search (requires external project)
+This repository contains OpenClaw skills at various stages of development.
 
-**Private skills:**
-- `design-discrepancy` - Design system validation (Wiley internal, not publishable)
+**Skill types:**
+- **public** - Standalone or dependent on external projects, publishable to ClawHub
+- **private** - Work-specific, NOT publishable, NOT tracked in git (see .gitignore)
 
----
+**Published skills** are listed on [clawhub.com/publishers/nonlinear](https://clawhub.com/publishers/nonlinear).
 
-## Skill Types
-
-- **public** - Standalone or dependent on external projects, publishable
-- **private** - Work-specific, NOT publishable, in .gitignore
-
-See [POLICY.md](backstage/POLICY.md) for frontmatter spec.
+See [POLICY.md](backstage/POLICY.md) for frontmatter spec and development workflow.
 
 ---
 
