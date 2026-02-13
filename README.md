@@ -2,16 +2,6 @@
 
 **Collection of OpenClaw skills (public + private)**
 
-> 🤖
->
-> - [README](README.md) - Our project
-> - [CHANGELOG](backstage/CHANGELOG.md) — What we did
-> - [ROADMAP](backstage/ROADMAP.md) — What we wanna do
-> - [POLICY](backstage/POLICY.md) — How we do it
-> - [HEALTH](backstage/HEALTH.md) — What we accept
->
-> 🤖
-
 ---
 
 ## What's Here
@@ -34,18 +24,20 @@
 
 ⭐ = Published on ClawHub
 
+**Companion skills** (external projects):
+- **[backstage-skill](https://clawhub.com/skills/backstage)** ⭐ - Universal project status management (ROADMAP/POLICY/HEALTH/CHANGELOG enforcement)
+- **librarian** - Book research via semantic search (requires `~/Documents/librarian/` project)
+
 **Skill types:**
 - **public** - Standalone or dependent on external projects, publishable to ClawHub
 - **private** - Work-specific, NOT publishable, NOT tracked in git (see .gitignore)
 
-See [POLICY.md](backstage/POLICY.md) for frontmatter spec and development workflow.
+>  🤖
 
----
+- [README](README.md) - Our project
+- [CHANGELOG](backstage/CHANGELOG.md) — What we did
+- [ROADMAP](backstage/ROADMAP.md) — What we wanna do
+- [POLICY](backstage/POLICY.md) — How we do it
+- [HEALTH](backstage/HEALTH.md) — What we accept
 
-## Backstage
-
-This project uses backstage workflow:
-- [ROADMAP.md](backstage/ROADMAP.md) - What we're building
-- [POLICY.md](backstage/POLICY.md) - How to develop skills (workflow, standards, frontmatter)
-- [HEALTH.md](backstage/HEALTH.md) - Automated quality checks
-- [CHANGELOG.md](backstage/CHANGELOG.md) - What we built
+🤖
