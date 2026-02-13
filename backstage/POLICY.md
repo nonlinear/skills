@@ -82,9 +82,11 @@ license: MIT
 
 ### Status Definitions
 
-**live:**
-- Published on ClawdHub
-- Must include ClawdHub package name in SKILL.md
+**published:**
+- Published on ClawHub
+- Users can install via `clawhub install <slug>`
+- Appears on https://clawhub.com/@nonlinear
+- Maintained (updates republished as needed)
 
 **stable:**
 - Feature complete, tested, working
@@ -251,12 +253,11 @@ another-private-skill/
 
 ### Publication Process (Public Skills Only)
 
-1. Ensure `status: stable` or `status: live`
+1. Ensure `status: stable`
 2. Run HEALTH checks (all pass)
 3. Test locally
-4. Publish to ClawdHub
-5. Update `status: live` in frontmatter
-6. Document ClawdHub package name in SKILL.md
+4. Publish to ClawHub
+5. Update `status: published` in frontmatter
 
 **Private skills:** NEVER publish. Skip this process entirely.
 
@@ -264,7 +265,7 @@ another-private-skill/
 
 ### ClawHub Republish Protocol
 
-**If skill is published (check frontmatter `status: live`):**
+**If skill is published (check frontmatter `status: published`):**
 
 1. **Before editing:** Git commit current state
 2. **Edit skill:** Make changes (code, docs, etc.)
