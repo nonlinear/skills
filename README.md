@@ -46,35 +46,6 @@ See [POLICY.md](backstage/POLICY.md) for frontmatter spec and development workfl
 
 This project uses backstage workflow:
 - [ROADMAP.md](backstage/ROADMAP.md) - What we're building
-- [POLICY.md](backstage/POLICY.md) - Standards and quality checks
-- [HEALTH.md](backstage/HEALTH.md) - Automated tests
+- [POLICY.md](backstage/POLICY.md) - How to develop skills (workflow, standards, frontmatter)
+- [HEALTH.md](backstage/HEALTH.md) - Automated quality checks
 - [CHANGELOG.md](backstage/CHANGELOG.md) - What we built
-
----
-
-## Adding New Skills
-
-1. Create folder: `~/Documents/skills/skill-name/`
-2. Add `SKILL.md` with complete frontmatter (see POLICY.md)
-3. If private: Add to `.gitignore`
-4. If public: Add to ROADMAP epic
-5. Run HEALTH checks before committing
-6. Test and publish (public only)
-
-**Frontmatter template:**
-```yaml
----
-name: skill-name
-description: "Triggers, use cases, problems solved. Write for AI suggestion."
-type: public|private
-version: 1.0.0
-status: live|stable|testing
-dependencies: 
-  - https://github.com/user/repo  # external projects
-  - system-package  # bins/libs
-author: nonlinear
-license: MIT
----
-```
-
-See [POLICY.md](backstage/POLICY.md) for full spec.
