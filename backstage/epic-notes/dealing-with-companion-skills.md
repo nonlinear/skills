@@ -105,6 +105,74 @@ Update: clawhub install backstage
 
 ---
 
+## Current Work (2026-02-13 Evening)
+
+### Debug: Global POLICY Template Not Propagating
+
+**Problem:**
+- Changed global/POLICY.md → "backstageeee protocol" (test)
+- Symlinks work (skills/life see change via `backstage/global/`)
+- **But READMEs didn't update** after "bom dia"
+- Skill should read template → update all READMEs
+- Not happening
+
+**Expected behavior:**
+1. Read `backstage/global/POLICY.md` (navigation block template)
+2. Extract "We use **[backstageeee protocol]**, v0.3.4"
+3. Update README.md with new text
+4. Commit change
+
+**Actual behavior:**
+- READMEs still say "backstage protocol" (old text)
+- Skill not reading template
+- Manual edits required
+
+**Investigation needed:**
+- Where does skill read template? (SKILL.md prompt? checks.sh?)
+- Why isn't it executing? (logic missing? conditional skipped?)
+- Should this be deterministic (checks.sh) or interpretive (AI)?
+
+**Related:** v0.5.0 Harden Skill (migrate AI logic → executable)
+
+---
+
+### Branch Logic for Skills Project
+
+**Problem:**
+- Skills project has git branches (for epic work)
+- Live skills IN USE by Nicholas (e.g., backstage-skill, context-switch)
+- **Question:** How do branches affect live skills?
+
+**Scenarios:**
+
+1. **Working on epic/v0.4.0-onboarding:**
+   - Edit `backstage-skill/onboarding.sh`
+   - Nicholas runs "bom dia" → which version executes?
+   - Main branch? Current branch? Latest commit?
+
+2. **Rebase vs merge:**
+   - Epic branch diverges from main
+   - Does rebase cover mismatches?
+   - What if live skill called mid-rebase?
+
+3. **Publishing from branch:**
+   - ClawHub publish from `epic/v1.0.0-arch`?
+   - Or must merge to main first?
+   - Version tags on branches?
+
+**Need to define:**
+- [ ] **Execution environment:** Skills always run from main? Or current HEAD?
+- [ ] **Safety:** Can we work on skills while using them? (test namespace?)
+- [ ] **Release process:** Branch → test → merge → tag → publish?
+- [ ] **Rollback:** If published skill breaks, how to revert?
+
+**Related questions:**
+- Does OpenClaw cache skill files? (stale vs fresh reads)
+- Can we have test skills (`backstage-skill-test/`)? (parallel installation)
+- Should epic branches be short-lived? (minimize divergence)
+
+---
+
 ## Open Questions
 
 1. **Symlink for everyone?**
