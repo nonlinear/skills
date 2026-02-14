@@ -64,7 +64,7 @@ graph LR
 - [x] Move backstage-skill/ to backstage/skill/, create symlink ✅
 - [x] Update OpenClaw system prompt (auto-updated via dynamic skill discovery)
 - [x] Create symlink for librarian skill (already exists)
-- [ ] **Approve to merge**
+- [x] **Approve to merge**
 
 **Philosophy:**
 "Companion skills pertencem ao projeto que participam"
