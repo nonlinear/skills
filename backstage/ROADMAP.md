@@ -62,8 +62,8 @@ graph LR
 - [x] POLICY: Every SKILL.md must have diagram after frontmatter ✅
 - [x] Remove backstage-skill/ and librarian/ from skills folder (duplicates, are companions)
 - [x] Move backstage-skill/ to backstage/skill/, create symlink ✅
-- [ ] Update OpenClaw system prompt (remove backstage-skill/librarian from available_skills)
-- [ ] Create symlink for librarian skill (backstage already done)
+- [x] Update OpenClaw system prompt (auto-updated via dynamic skill discovery)
+- [x] Create symlink for librarian skill (already exists)
 - [ ] **Approve to merge**
 
 **Philosophy:**
