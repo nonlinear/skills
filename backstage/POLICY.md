@@ -1,4 +1,14 @@
 # Project Policy
+> 🤖
+>
+> - [README](../README.md) - Our project
+> - [CHANGELOG](CHANGELOG.md) — What we did
+> - [ROADMAP](ROADMAP.md) — What we wanna do
+> - [POLICY](POLICY.md) — How we do it
+> - [HEALTH](HEALTH.md) — What we accept
+>
+> 🤖
+
 
 ---
 
