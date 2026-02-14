@@ -8,7 +8,7 @@
 > | [POLICY](POLICY.md) | How we do it |
 > | [HEALTH](HEALTH.md) | What we accept |
 >
-> We use **[backstage protocol](https://github.com/nonlinear/backstage)**
+> We use **[backstage protocol](https://github.com/nonlinear/backstage)**, v0.3.4
 > 🤖
 
 ```mermaid
