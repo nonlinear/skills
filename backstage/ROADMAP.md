@@ -34,9 +34,9 @@ graph LR
 
 
 
-## v0.1.0 - Skill Reordering
+## v0.1.0
 
-**Status:** 🏗️ ACTIVE
+### Skill Reordering
 
 **Description:** Reorganize skills structure + promote published skills
 
@@ -81,9 +81,9 @@ graph LR
 
 ---
 
-## v0.2.0 - Skill Protocol
+## v0.2.0
 
-**Status:** 📋 BACKLOG
+### Skill Protocol
 
 **Description:** Universal skill formatting rules (frontmatter, diagrams, statuses)
 
@@ -95,11 +95,16 @@ graph LR
 - [ ] Document diagram requirements (when mandatory, when optional)
 - [ ] Define status values (draft, testing, stable, published)
 
+**Success:**
+- Clear protocol documented
+- All skills follow same format
+- Companions reference protocol (no drift)
+
 ---
 
-## v1.0.0 - arch
+## v1.0.0
 
-**Status:** 📋 BACKLOG
+### arch
 
 **Description:** Architecture design exercises
 
@@ -111,11 +116,16 @@ graph LR
 - [ ] Diary?
 - [ ] Test and validate
 
+**Success:**
+- Architecture exercises documented
+- Clear workflow (start, continue, parallel)
+- Integration with librarian (optional)
+
 ---
 
-## v1.1.0 - i-ching
+## v1.1.0
 
-**Status:** 📋 BACKLOG
+### i-ching
 
 **Description:** I Ching divination
 
@@ -130,11 +140,16 @@ graph LR
 - [ ] iching oracle diary?
 - [ ] Test and validate
 
+**Success:**
+- Multiple divination methods working
+- Librarian integration (optional)
+- Oracle diary tracking
+
 ---
 
-## v1.4.0 - notify
+## v1.4.0
 
-**Status:** 📋 BACKLOG
+### notify
 
 **Description:** Notifications
 
@@ -142,11 +157,14 @@ graph LR
 
 - [ ] Whats this?
 
+**Success:**
+- TBD
+
 ---
 
-## v1.6.0 - system-detective
+## v1.6.0
 
-**Status:** 📋 BACKLOG
+### system-detective
 
 **Description:** System diagnostics
 
@@ -154,22 +172,30 @@ graph LR
 - [ ] Hmmmm... isso conectar com relay ON, ne?
 - [ ] rlay ON keystroke
 
+**Success:**
+- Chrome Relay integration
+- Keystroke automation
+
 ---
 
-## v1.7.0 - find-books
+## v1.7.0
 
-**Status:** 📋 BACKLOG
+### find-books
 
 **Description:** Book search
 
 **Tasks:**
 - [ ] it is librarian, but cant be toooo close since its piracy
 
+**Success:**
+- Book search working
+- Separate from librarian (piracy concerns)
+
 ---
 
-## v2.0.0 - open-with
+## v2.0.0
 
-**Status:** 📋 BACKLOG
+### open-with
 
 **Description:** "Open in app" as a skill - maps file types/contexts to default apps
 
@@ -191,11 +217,16 @@ graph LR
 - `open data.xlsx` → Excel (local app)
 - `open https://example.com` → Chrome
 
+**Success:**
+- File type mapping working
+- Context-aware app selection
+- User preferences supported
+
 ---
 
-## v2.1.0 - use-for
+## v2.1.0
 
-**Status:** 📋 BACKLOG
+### use-for
 
 **Description:** Skill suggester (scans all skills, suggests based on context)
 
@@ -204,5 +235,10 @@ graph LR
 - [ ] Add SKILL.md with frontmatter
 - [ ] Document usage examples
 - [ ] Test and validate
+
+**Success:**
+- Context-based skill suggestions
+- Auto-discovery working
+- User gets right skill for task
 
 ---
