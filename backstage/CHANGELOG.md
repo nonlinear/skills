@@ -10,14 +10,6 @@
 >
 > 🤖
 
-```mermaid
-graph LR
-    A[🏗️ v0.1.0 Skill Reordering] --> B[📋 v1.0.0 arch]
-    B --> C[📋 v1.1.0 i-ching]
-    C --> D[📋 v1.4.0 notify]
-    D --> E[📋 v1.6.0 system-detective]
-    E --> F[📋 v2.0.0 open-with]
-```
 
 ---
 
