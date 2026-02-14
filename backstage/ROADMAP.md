@@ -101,6 +101,8 @@ graph LR
 - All skills follow same format
 - Companions reference protocol (no drift)
 
+- [ ] **Approve to merge**
+
 ---
 
 ## v1.0.0
@@ -121,6 +123,8 @@ graph LR
 - Architecture exercises documented
 - Clear workflow (start, continue, parallel)
 - Integration with librarian (optional)
+
+- [ ] **Approve to merge**
 
 ---
 
@@ -146,6 +150,8 @@ graph LR
 - Librarian integration (optional)
 - Oracle diary tracking
 
+- [ ] **Approve to merge**
+
 ---
 
 ## v1.4.0
@@ -160,6 +166,8 @@ graph LR
 
 **Success:**
 - TBD
+
+- [ ] **Approve to merge**
 
 ---
 
@@ -177,6 +185,8 @@ graph LR
 - Chrome Relay integration
 - Keystroke automation
 
+- [ ] **Approve to merge**
+
 ---
 
 ## v1.7.0
@@ -191,6 +201,8 @@ graph LR
 **Success:**
 - Book search working
 - Separate from librarian (piracy concerns)
+
+- [ ] **Approve to merge**
 
 ---
 
@@ -223,6 +235,8 @@ graph LR
 - Context-aware app selection
 - User preferences supported
 
+- [ ] **Approve to merge**
+
 ---
 
 ## v2.1.0
@@ -241,5 +255,7 @@ graph LR
 - Context-based skill suggestions
 - Auto-discovery working
 - User gets right skill for task
+
+- [ ] **Approve to merge**
 
 ---
