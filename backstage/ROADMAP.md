@@ -48,17 +48,52 @@ Skills published to ClawHub need better visibility and discovery.
 
 ---
 
-### v0.3.0 - Dealing with Companion Skills
+### v0.3.0 - Companion Reordering
 
 **Status:** 🏗️ ACTIVE
 
-**Description:** Version parity, symlinks, update detection for external skills
+**Description:** Move companion skills to their projects, symlink for discovery
 
 **Problem:**
-- Companion skills (backstage-skill, librarian) live outside skills project
+- Companion skills (backstage-skill, librarian) currently live in skills/
+- Should live in their projects (paridade: skill versioning = project versioning)
+- OpenClaw needs symlinks for discovery
+- README should auto-generate from frontmatter
+
+**Tasks:**
+- [ ] Move reels-library from life/tasks/ to skills/ (transform to skill epic)
+- [ ] Create epic: v2.0.0 - open-with ("abra X" → app mapping)
+- [ ] Refactor README.md (table format, frontmatter-driven status)
+- [ ] Move backstage-skill/ to backstage/skill/, create symlink
+- [ ] Move librarian/ to librarian/skill/ (on epic/v0.15.0-skill-protocol branch), create symlink
+- [ ] Create companion-skills.md blueprint documentation
+- [ ] Move companion epics from skills/ROADMAP to project roadmaps
+- [ ] Script: auto-generate README table from SKILL.md frontmatters
+
+**Philosophy:**
+"Companion skills pertencem ao projeto que participam"
+- Source in project (git, commits, paridade)
+- Discovery via symlinks (~/.openclaw/workspace/skills/)
+- Versioning follows project ROADMAP
+
+**Success:**
+- Companion skills live in projects, symlinked for discovery
+- README auto-generates from frontmatter
+- Clear separation: standalone vs companion skills
+- Repeatable pattern for future companions
+
+---
+
+### v0.4.0 - Dealing with Companion Skills (Version Parity)
+
+**Status:** 📋 BACKLOG
+
+**Description:** Version parity, update detection for external skills
+
+**Problem:**
 - Version mismatches between skill and project expectations
-- Symlink dependencies (backstage/global/)
 - No update detection
+- Need graceful degradation
 
 **Tasks:**
 - [x] Phase 1: Symlink strategy (admin vs external users)
@@ -69,7 +104,6 @@ Skills published to ClawHub need better visibility and discovery.
 - [ ] **Resolve auto-push/auto-commit rules** (need rules for in/out of branches)
 
 **Open questions:**
-- Symlink for everyone? (admin vs external)
 - Parity on SOME projects, not others? (project-specific versions)
 - Skill says "update me"? (where, when, how)
 
@@ -187,7 +221,33 @@ Skills published to ClawHub need better visibility and discovery.
 
 ## 
 
-### v2.0.0 - use-for
+### v2.0.0 - open-with
+
+**Status:** 📋 BACKLOG
+
+**Description:** "Open in app" as a skill - maps file types/contexts to default apps
+
+**Problem:**
+- "Abra X" should open in correct app (Typora, VSCode, Excel, etc.)
+- Context matters: README → Typora, .py → VSCode, .xlsx → Excel
+- Need extensible mapping (user preferences, project defaults)
+
+**Tasks:**
+- [ ] Define open-with mapping (file extensions → apps)
+- [ ] Support context overrides (project-specific apps)
+- [ ] Handle URLs (browser tabs, specific profiles)
+- [ ] Document usage examples
+- [ ] Test and validate
+
+**Examples:**
+- `open README.md` → Typora
+- `open script.py` → VSCode
+- `open data.xlsx` → Excel (local app)
+- `open https://example.com` → Chrome
+
+---
+
+### v2.1.0 - use-for
 
 **Status:** 📋 BACKLOG
 

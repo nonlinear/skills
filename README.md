@@ -1,36 +1,51 @@
 # Skills Project
 
-**Collection of OpenClaw skills (public + private)**
+**Collection of OpenClaw skills**
 
 ---
 
 ## What's Here
 
-**Public skills** (alphabetical):
+| Name | Description | Status |
+|------|-------------|--------|
+| **arch** | Architecture design exercises (collaborative diagrams before coding) | 📋 Backlog |
+| **context-switch** | Conscious project/epic transitions with parity detection | 📋 Backlog |
+| **design-discrepancy** | Compare reference docs with live systems (design vs implementation gaps) | 📋 Backlog |
+| **find-books** | Search foundational/seminal books via Anna's Archive | 📋 Backlog |
+| **i-ching** | I Ching divination (hexagrams, trigrams, oracles) | 📋 Backlog |
+| **notify** | Presence-aware notifications (idle detection + channel routing) | 📋 Backlog |
+| **[reminder-research](https://clawhub.com/skills/reminder-research)** | Process Apple Reminders with custom instructions | ⭐ Published |
+| **reels-library** | Instagram reels scraping, transcription, and tagging | 🚧 In Progress |
+| **roadmap** | Backstage roadmap management across projects | 📋 Backlog |
+| **system-detective** | Auto-detect investigation context and route to correct tool | 📋 Backlog |
+| **[token-management](https://clawhub.com/skills/token-management)** | Manage API tokens/credentials across projects | ⭐ Published |
+| **use-for** | Skill suggester (meta-skill for skill discovery) | 📋 Backlog |
 
-- **arch** - Architecture design exercises (collaborative diagrams before coding)
-- **backstage-skill** - Project context switching with HEALTH checks
-- **context-switch** - Conscious project/epic transitions with parity detection
-- **design-discrepancy** - Compare reference docs with live systems (design vs implementation gaps)
-- **find-books** - Search foundational/seminal books via Anna's Archive
-- **i-ching** - I Ching divination (hexagrams, trigrams, oracles)
-- **librarian** - Book research via semantic search (requires external project)
-- **notify** - Presence-aware notifications (idle detection + channel routing)
-- **[reminder-research](https://clawhub.com/skills/reminder-research)** ⭐ - Process Apple Reminders with custom instructions
-- **roadmap** - Backstage roadmap management across projects
-- **system-detective** - Auto-detect investigation context and route to correct tool
-- **[token-management](https://clawhub.com/skills/token-management)** ⭐ - Manage API tokens/credentials across projects
-- **use-for** - Skill suggester (meta-skill for skill discovery)
+**Skill Statuses:**
+- ⭐ **Published** - Available on ClawHub
+- 🚧 **In Progress** - Active development
+- 📋 **Backlog** - Planned, not yet started
 
-⭐ = Published on ClawHub
+---
 
-**Companion skills** (external projects):
-- **[backstage-skill](https://clawhub.com/skills/backstage)** ⭐ - Universal project status management (ROADMAP/POLICY/HEALTH/CHANGELOG enforcement)
-- **librarian** - Book research via semantic search (requires `~/Documents/librarian/` project)
+## Project Policy
 
-**Skill types:**
-- **public** - Standalone or dependent on external projects, publishable to ClawHub
-- **private** - Work-specific, NOT publishable, NOT tracked in git (see .gitignore)
+**How to work with skills:**
+
+1. **Companion skills live in their projects** (librarian, backstage, etc.)
+   - Symlinked into `~/.openclaw/workspace/skills/` for OpenClaw discovery
+   - Versioning follows project roadmap
+   - See `backstage/epic-notes/dealing-with-companion-skills.md`
+
+2. **Standalone skills live here**
+   - Self-contained (no external project dependency)
+   - Can be published to ClawHub
+
+3. **Private skills** (work-specific, NOT in git)
+   - See `.gitignore` for exclusions
+   - NOT publishable to ClawHub
+
+4. **Adding new skills** - See `backstage/POLICY.md`
 
 ---
 
@@ -57,4 +72,3 @@ graph LR
     D --> E[📋 v1.1.0 i-ching]
     E --> F[📋 v1.2.0 context-switch]
 ```
-

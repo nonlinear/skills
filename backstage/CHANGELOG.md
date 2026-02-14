@@ -1,15 +1,6 @@
 # Skills - Changelog
 
 > 🤖
-
-```mermaid
-graph LR
-    A[🏗️ v0.1.0 Promoting Skills] --> B[📋 v0.2.0 backstage-skill]
-    B --> C[🏗️ v0.3.0 Companion Skills]
-    C --> D[📋 v1.0.0 arch]
-    D --> E[📋 v1.1.0 i-ching]
-    E --> F[📋 v1.2.0 context-switch]
-```
 >
 > - [README](../README.md) - Our project
 > - [CHANGELOG](CHANGELOG.md) — What we did
@@ -28,3 +19,8 @@ graph LR
     E --> F[📋 v1.2.0 context-switch]
 ```
 
+---
+
+_Completed epics will be moved here from ROADMAP.md_
+
+_If you have existing changelog entries, paste them here and run backstage-start to sync format_
