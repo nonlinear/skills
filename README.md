@@ -1,15 +1,5 @@
 # Skills
 
-> 🤖
->
-> - [README](README.md)
-> - [ROADMAP](backstage/ROADMAP.md)
-> - [CHANGELOG](backstage/CHANGELOG.md)
-> - [POLICY](backstage/POLICY.md)
-> - [HEALTH](backstage/HEALTH.md)
->
-> 🤖
-
 
 [Nonlinear](https://nonlinear.nyc)'s openclaw skills collection
 
