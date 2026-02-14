@@ -34,7 +34,7 @@ graph LR
 
 
 
-### v0.1.0 - Skill Reordering
+## v0.1.0 - Skill Reordering
 
 **Status:** 🏗️ ACTIVE
 
@@ -60,15 +60,10 @@ graph LR
 - [x] Remove librarian .git (follows parent project) ✅
 - [x] Add "Diagram" column to README tables (link to SKILL.md) ✅
 - [x] POLICY: Every SKILL.md must have diagram after frontmatter ✅
-- [ ] Script: Auto-generate missing diagrams (preserve existing, create from skill logic)
 - [x] Remove backstage-skill/ and librarian/ from skills folder (duplicates, are companions)
+- [x] Move backstage-skill/ to backstage/skill/, create symlink ✅
 - [ ] Update OpenClaw system prompt (remove backstage-skill/librarian from available_skills)
-- [ ] Move backstage-skill/ to backstage/skill/, create symlink
-- [ ] Create skill-protocol.md (frontmatter/formatting rules for all skills)
-- [ ] Update skills/POLICY.md to reference skill-protocol.md
-- [ ] Companion skills reference skill-protocol.md (prevent drift)
-- [ ] Create companion-skills.md blueprint documentation
-- [ ] Move companion epics from skills/ROADMAP to project roadmaps
+- [ ] Create symlink for librarian skill (backstage already done)
 
 **Philosophy:**
 "Companion skills pertencem ao projeto que participam"
@@ -86,7 +81,23 @@ graph LR
 
 ---
 
-### v1.0.0 - arch
+## v0.2.0 - Skill Protocol
+
+**Status:** 📋 BACKLOG
+
+**Description:** Universal skill formatting rules (frontmatter, diagrams, statuses)
+
+**Tasks:**
+- [ ] Create skill-protocol.md (frontmatter/formatting rules for all skills)
+- [ ] Update skills/POLICY.md to reference skill-protocol.md
+- [ ] Companion skills reference skill-protocol.md (prevent drift)
+- [ ] Create companion-skills.md blueprint documentation
+- [ ] Document diagram requirements (when mandatory, when optional)
+- [ ] Define status values (draft, testing, stable, published)
+
+---
+
+## v1.0.0 - arch
 
 **Status:** 📋 BACKLOG
 
@@ -102,7 +113,7 @@ graph LR
 
 ---
 
-### v1.1.0 - i-ching
+## v1.1.0 - i-ching
 
 **Status:** 📋 BACKLOG
 
@@ -121,7 +132,7 @@ graph LR
 
 ---
 
-### v1.4.0 - notify
+## v1.4.0 - notify
 
 **Status:** 📋 BACKLOG
 
@@ -133,7 +144,7 @@ graph LR
 
 ---
 
-### v1.6.0 - system-detective
+## v1.6.0 - system-detective
 
 **Status:** 📋 BACKLOG
 
@@ -145,7 +156,7 @@ graph LR
 
 ---
 
-### v1.7.0 - find-books
+## v1.7.0 - find-books
 
 **Status:** 📋 BACKLOG
 
@@ -154,9 +165,9 @@ graph LR
 **Tasks:**
 - [ ] it is librarian, but cant be toooo close since its piracy
 
-## 
+---
 
-### v2.0.0 - open-with
+## v2.0.0 - open-with
 
 **Status:** 📋 BACKLOG
 
@@ -182,7 +193,7 @@ graph LR
 
 ---
 
-### v2.1.0 - use-for
+## v2.1.0 - use-for
 
 **Status:** 📋 BACKLOG
 
