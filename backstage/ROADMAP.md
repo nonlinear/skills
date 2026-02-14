@@ -32,59 +32,8 @@ graph LR
 
 
 
-
-
 ## v0.1.0
 
-### Skill Reordering
-
-**Description:** Reorganize skills structure + promote published skills
-
-**Problem:**
-- Companion skills (backstage-skill, librarian) live in skills/ but should live in projects
-- Published skills need better visibility and discovery
-- README should auto-generate from frontmatter
-
-**Tasks:**
-
-**Companion skills reordering:**
-- [x] Move reels-library from life/tasks/ to skills/ (transform to skill epic)
-- [x] Create epic: v2.0.0 - open-with ("abra X" → app mapping)
-- [x] Refactor README.md (table format, frontmatter-driven status)
-- [x] Update skills/POLICY.md (README table = frontmatter-driven, auto-discovery, top-aligned)
-- [x] Regenerate README table from SKILL.md frontmatters (HTML, valign=top)
-- [x] Update POLICY: companions auto-discovered via ~/Documents/*/skill/
-- [x] Update POLICY: status without emoji (raw frontmatter values)
-- [x] Decide: two tables (standalone + companions) ✅
-- [x] Move librarian/ to librarian/skill/ (on epic/v0.15.0-skill-protocol branch), create symlink ✅
-- [x] Remove librarian .git (follows parent project) ✅
-- [x] Add "Diagram" column to README tables (link to SKILL.md) ✅
-- [x] POLICY: Every SKILL.md must have diagram after frontmatter ✅
-- [x] Remove backstage-skill/ and librarian/ from skills folder (duplicates, are companions)
-- [x] Move backstage-skill/ to backstage/skill/, create symlink ✅
-- [x] Update OpenClaw system prompt (auto-updated via dynamic skill discovery)
-- [x] Create symlink for librarian skill (already exists)
-- [x] **Approve to merge**
-
-**Philosophy:**
-"Companion skills pertencem ao projeto que participam"
-- Source in project (git, commits, paridade)
-- Discovery via symlinks (~/.openclaw/workspace/skills/)
-- Versioning follows project ROADMAP
-- **Only show in main branch** (epic branches = WIP, sandboxed)
-
-**Success:**
-- Companion skills live in projects, symlinked for discovery
-- README auto-generates from frontmatter
-- Only stable companions appear (main branch only)
-- Clear path: sandbox → test → merge main → appear in README
-- Repeatable pattern for future companions
-
----
-
-## v0.2.0
-
-### Skill Protocol
 
 **Description:** Universal skill formatting rules (frontmatter, diagrams, statuses)
 
