@@ -26,10 +26,10 @@
 - [x] Decide: two tables (standalone + companions) ✅
 - [x] Move librarian/ to librarian/skill/ (on epic/v0.15.0-skill-protocol branch), create symlink ✅
 - [x] Remove librarian .git (follows parent project) ✅
-- [ ] Add "Diagram" column to README tables (link to SKILL.md)
-- [ ] POLICY: Every SKILL.md must have diagram after frontmatter
+- [x] Add "Diagram" column to README tables (link to SKILL.md) ✅
+- [x] POLICY: Every SKILL.md must have diagram after frontmatter ✅
 - [ ] Script: Auto-generate missing diagrams (preserve existing, create from skill logic)
-- [ ] Remove backstage-skill/ and librarian/ from skills folder (duplicates, are companions)
+- [x] Remove backstage-skill/ and librarian/ from skills folder (duplicates, are companions)
 - [ ] Update OpenClaw system prompt (remove backstage-skill/librarian from available_skills)
 - [ ] Move backstage-skill/ to backstage/skill/, create symlink
 - [ ] Create skill-protocol.md (frontmatter/formatting rules for all skills)
@@ -37,26 +37,19 @@
 - [ ] Companion skills reference skill-protocol.md (prevent drift)
 - [ ] Create companion-skills.md blueprint documentation
 - [ ] Move companion epics from skills/ROADMAP to project roadmaps
-- [ ] Script: auto-generate README table from SKILL.md frontmatters (automate)
-
-**Skill promotion:**
-- [ ] Research: Where to link skills on nonlinear.nyc? (portfolio section, skills page, blog?)
-- [ ] Design: Skill showcase template (diagram + description + link)
-- [ ] Document: Promotion checklist (when to promote, which channels)
-- [ ] Implement: Create portfolio/skills page on nonlinear.nyc
-- [ ] Test: Promote reminder-research as pilot (measure installs, feedback)
 
 **Philosophy:**
 "Companion skills pertencem ao projeto que participam"
 - Source in project (git, commits, paridade)
 - Discovery via symlinks (~/.openclaw/workspace/skills/)
 - Versioning follows project ROADMAP
+- **Only show in main branch** (epic branches = WIP, sandboxed)
 
 **Success:**
 - Companion skills live in projects, symlinked for discovery
 - README auto-generates from frontmatter
-- Published skills get 10+ installs
-- Clear path: publish → promote → measure
+- Only stable companions appear (main branch only)
+- Clear path: sandbox → test → merge main → appear in README
 - Repeatable pattern for future companions
 
 ---

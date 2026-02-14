@@ -1,10 +1,6 @@
-# Skills Project
+# Skills
 
-**Collection of OpenClaw skills**
-
----
-
-## What's Here
+[Nonlinear](https://nonlinear.nyc)'s openclaw skills collection
 
 <table>
 <tr>
@@ -23,7 +19,7 @@
 <td>stable</td>
 </tr>
 <tr valign="top">
-<td><strong>design-discrepancy</strong></td>
+<td><strong>design-discrepancy</strong><br><a href="design-discrepancy/SKILL.md#diagram">flow diagram</a></td>
 <td>Compare reference docs (Figma, specs) with live system via Chrome Relay. Surface design vs implementation gaps for QA reports. Triggers: 'compare X with Y', 'check discrepancies', 'design vs implementation', 'Figma vs live site'.</td>
 <td>stable</td>
 </tr>
@@ -43,7 +39,7 @@
 <td>stable</td>
 </tr>
 <tr valign="top">
-<td><strong><a href="https://clawhub.com/skills/reminder-research">reminder-research</a></strong></td>
+<td><strong>reminder-research</strong><br><a href="https://clawhub.com/skills/reminder-research">published</a></td>
 <td>Process Apple Reminders. Smart research: custom instructions (book + web search constraints), list-based defaults (claw=system solutions, shopping=price comparison, generic=how-to tutorials). Result tracking with 💎 signifier. Triggers: reminders without notes, heartbeat automated processing.</td>
 <td>published</td>
 </tr>
@@ -58,18 +54,19 @@
 <td>testing</td>
 </tr>
 <tr valign="top">
-<td><strong><a href="https://clawhub.com/skills/token-management">token-management</a></strong></td>
+<td><strong>token-management</strong><br><a href="https://clawhub.com/skills/token-management">published</a></td>
 <td>Centralized API token management workflow. Store tokens in .env with expiration dates, test permissions via script battery, document capabilities in connections/, set calendar renewal reminders. Prevents re-asking for credentials, ensures token security, tracks expiration.</td>
 <td>published</td>
 </tr>
 <tr valign="top">
 <td><strong>use-for</strong></td>
-<td>Meta skill: Scans all SKILL.md frontmatter descriptions and suggests which skill helps with user's current task/struggle. Triggers: 'how do I...?', 'is there a skill for X?', repeated failed attempts, uncertainty. Returns top 3 matches with name + description. Reduces skill discovery overhead.</td>
+<td>Meta skill: Scans all SKILL.md frontmatter descriptions and suggests which skill helps with user's current task/struggle. Triggers: 'how do I...?', 'is there a skill for X?', repeated failed attempts, uncertainty. Returns top 3 matches with name + description. Reduces tool selection overhead.</td>
 <td>stable</td>
 </tr>
 </table>
+## Companion Skills
 
-## Companion Skills (belong to other projects)
+### belong to other projects
 
 <table>
 <tr>
@@ -78,55 +75,8 @@
 <th align="left">Status</th>
 </tr>
 <tr valign="top">
-<td><strong><a href="https://clawhub.com/skills/backstage">backstage</a></strong></td>
+<td><strong>backstage</strong><br><a href="https://clawhub.com/skills/backstage">published</a><br><a href="../backstage/skill/SKILL.md#diagram">flow diagram</a></td>
 <td>Manage backstage workflow in projects (ROADMAP, POLICY, HEALTH, CHANGELOG). Triggers: 'backstage start', 'vamos trabalhar no X', 'backstage health'. Installs protocol if missing, updates global rules, runs health checks, shows active epics. Use for: epic planning, project setup, quality enforcement, context switching.<br>companion for <a href="https://github.com/nonlinear/backstage">backstage</a></td>
 <td>published</td>
 </tr>
 </table>
-
----
-
-## Project Policy
-
-**How to work with skills:**
-
-1. **Companion skills live in their projects** (librarian, backstage, etc.)
-   - Symlinked into `~/.openclaw/workspace/skills/` for OpenClaw discovery
-   - Versioning follows project roadmap
-   - See `backstage/epic-notes/dealing-with-companion-skills.md`
-
-2. **Standalone skills live here**
-   - Self-contained (no external project dependency)
-   - Can be published to ClawHub
-
-3. **Private skills** (work-specific, NOT in git)
-   - See `.gitignore` for exclusions
-   - NOT publishable to ClawHub
-
-4. **Adding new skills** - See `backstage/POLICY.md`
-
----
-
-## Backstage
-
-> 🤖
-> | Backstage files | Description |
-> | ---------------------------------------------------------------------------- | ------------------ |
-> | [README](README.md) | Our project |
-> | [CHANGELOG](backstage/CHANGELOG.md) | What we did |
-> | [ROADMAP](backstage/ROADMAP.md) | What we wanna do |
-> | POLICY: [project](backstage/POLICY.md), [global](backstage/global/POLICY.md) | How we go about it |
-> | HEALTH: [project](backstage/HEALTH.md), [global](backstage/global/HEALTH.md) | What we accept |
->
-> We use **[backstage protocol](https://github.com/nonlinear/backstage)**, v0.3.4
->
-> 🤖
-
-```mermaid
-graph LR
-    A[🏗️ v0.1.0 Promoting Skills] --> B[📋 v0.2.0 backstage-skill]
-    B --> C[🏗️ v0.3.0 Companion Skills]
-    C --> D[📋 v1.0.0 arch]
-    D --> E[📋 v1.1.0 i-ching]
-    E --> F[📋 v1.2.0 context-switch]
-```
