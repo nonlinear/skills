@@ -1,89 +1,113 @@
 # Skills - Roadmap
+> 🤖
+> | Backstage files | Description |
+> | --------------- | ----------- |
+> | [README](../README.md) | Our project |
+> | [ROADMAP](ROADMAP.md) | What we wanna do |
+> | [CHANGELOG](CHANGELOG.md) | What we did |
+> | [POLICY](POLICY.md) | How we do it |
+> | [HEALTH](HEALTH.md) | What we accept |
+>
+> We use **[backstage protocol](https://github.com/nonlinear/backstage)**, v0.3.4
+> 🤖
+
+```mermaid
+graph LR
+    A[🏗️ v0.1.0 Skill Reordering]
+    B[📋 v1.0.0 arch]
+    A --> B
+    C[📋 v1.1.0 i-ching]
+    B --> C
+    D[📋 v1.4.0 notify]
+    C --> D
+    E[📋 v1.6.0 system-detective]
+    D --> E
+    F[📋 v1.7.0 find-books]
+    E --> F
+    G[📋 v2.0.0 open-with]
+    F --> G
+    H[📋 v2.1.0 use-for]
+    G --> H
+```
 
 
 
-### v0.1.0 - Promoting Skills
 
-**Status:** 🏗️ ACTIVE
 
-**Description:** Marketing and visibility strategy for published skills
+## v0.1.0
 
-**Problem:**
-Skills published to ClawHub need better visibility and discovery.
+### Skill Reordering
 
-**Solution:**
-1. **Portfolio page:** Link published skills on nonlinear.nyc (where? how?)
-2. **Better descriptions:** Mermaid diagrams, clear use cases, screenshots
-3. **Promotion pipeline:** Newsletter? Social media pins? Community engagement?
-
-**Tasks:**
-- [ ] Research: Where to link skills on nonlinear.nyc? (portfolio section, skills page, blog?)
-- [ ] Design: Skill showcase template (diagram + description + link)
-- [ ] Document: Promotion checklist (when to promote, which channels)
-- [ ] Implement: Create portfolio/skills page on nonlinear.nyc
-- [ ] Test: Promote reminder-research as pilot (measure installs, feedback)
-
-**Success:**
-- Published skills get 10+ installs
-- Clear path: publish → promote → measure
-- Repeatable promotion workflow
-
----
-
-### v0.2.0 - backstage-skill
-
-**Status:** 📋 BACKLOG
-
-**Description:** Universal pre-commit workflow skill (published to ClawHub)
-
-**Tasks:**
-- [ ] Auto-create backstage files if missing (ROADMAP, CHANGELOG, HEALTH, POLICY templates)
-- [ ] Merge context-switch skill logic (project transitions + HEALTH checks)
-- [ ] Merge roadmap skill logic (epic planning, grooming, emoji shortcuts)
-- [ ] Add README.md to backstage-skill/ folder
-- [ ] Document skill usage examples
-- [ ] Test on multiple projects (life, librarian, wiley)
-
-**Published:** https://clawhub.ai/skills/backstage (v0.1.0)
-
----
-
-### v0.3.0 - Dealing with Companion Skills
-
-**Status:** 🏗️ ACTIVE
-
-**Description:** Version parity, symlinks, update detection for external skills
+**Description:** Reorganize skills structure + promote published skills
 
 **Problem:**
-- Companion skills (backstage-skill, librarian) live outside skills project
-- Version mismatches between skill and project expectations
-- Symlink dependencies (backstage/global/)
-- No update detection
+- Companion skills (backstage-skill, librarian) live in skills/ but should live in projects
+- Published skills need better visibility and discovery
+- README should auto-generate from frontmatter
 
 **Tasks:**
-- [x] Phase 1: Symlink strategy (admin vs external users)
-- [ ] Phase 2: Parity detection (version checks, self-report, parity file)
-- [ ] Phase 3: Graceful degradation (hard fail vs soft warn vs feature detect)
-- [ ] Phase 4: Update prompts (suggest updates when detected)
-- [ ] **Debug: Global POLICY syntax not reverberating on skill** (template changes don't propagate to READMEs)
-- [ ] **Resolve auto-push/auto-commit rules** (need rules for in/out of branches)
 
-**Open questions:**
-- Symlink for everyone? (admin vs external)
-- Parity on SOME projects, not others? (project-specific versions)
-- Skill says "update me"? (where, when, how)
+**Companion skills reordering:**
+- [x] Move reels-library from life/tasks/ to skills/ (transform to skill epic)
+- [x] Create epic: v2.0.0 - open-with ("abra X" → app mapping)
+- [x] Refactor README.md (table format, frontmatter-driven status)
+- [x] Update skills/POLICY.md (README table = frontmatter-driven, auto-discovery, top-aligned)
+- [x] Regenerate README table from SKILL.md frontmatters (HTML, valign=top)
+- [x] Update POLICY: companions auto-discovered via ~/Documents/*/skill/
+- [x] Update POLICY: status without emoji (raw frontmatter values)
+- [x] Decide: two tables (standalone + companions) ✅
+- [x] Move librarian/ to librarian/skill/ (on epic/v0.15.0-skill-protocol branch), create symlink ✅
+- [x] Remove librarian .git (follows parent project) ✅
+- [x] Add "Diagram" column to README tables (link to SKILL.md) ✅
+- [x] POLICY: Every SKILL.md must have diagram after frontmatter ✅
+- [x] Remove backstage-skill/ and librarian/ from skills folder (duplicates, are companions)
+- [x] Move backstage-skill/ to backstage/skill/, create symlink ✅
+- [x] Update OpenClaw system prompt (auto-updated via dynamic skill discovery)
+- [x] Create symlink for librarian skill (already exists)
+- [x] **Approve to merge**
+
+**Philosophy:**
+"Companion skills pertencem ao projeto que participam"
+- Source in project (git, commits, paridade)
+- Discovery via symlinks (~/.openclaw/workspace/skills/)
+- Versioning follows project ROADMAP
+- **Only show in main branch** (epic branches = WIP, sandboxed)
 
 **Success:**
-- Version mismatches detected automatically
-- Clear update path
-- Graceful degradation when features missing
-- Projects can pin specific companion skill versions
+- Companion skills live in projects, symlinked for discovery
+- README auto-generates from frontmatter
+- Only stable companions appear (main branch only)
+- Clear path: sandbox → test → merge main → appear in README
+- Repeatable pattern for future companions
 
 ---
 
-### v1.0.0 - arch
+## v0.2.0
 
-**Status:** 📋 BACKLOG
+### Skill Protocol
+
+**Description:** Universal skill formatting rules (frontmatter, diagrams, statuses)
+
+**Tasks:**
+- [ ] Create skill-protocol.md (frontmatter/formatting rules for all skills)
+- [ ] Update skills/POLICY.md to reference skill-protocol.md
+- [ ] Companion skills reference skill-protocol.md (prevent drift)
+- [ ] Create companion-skills.md blueprint documentation
+- [ ] Document diagram requirements (when mandatory, when optional)
+- [ ] Define status values (draft, testing, stable, published)
+
+**Success:**
+- Clear protocol documented
+- All skills follow same format
+- Companions reference protocol (no drift)
+
+- [ ] **Approve to merge**
+
+---
+
+## v1.0.0
+
+### arch
 
 **Description:** Architecture design exercises
 
@@ -95,11 +119,18 @@ Skills published to ClawHub need better visibility and discovery.
 - [ ] Diary?
 - [ ] Test and validate
 
+**Success:**
+- Architecture exercises documented
+- Clear workflow (start, continue, parallel)
+- Integration with librarian (optional)
+
+- [ ] **Approve to merge**
+
 ---
 
-### v1.1.0 - i-ching
+## v1.1.0
 
-**Status:** 📋 BACKLOG
+### i-ching
 
 **Description:** I Ching divination
 
@@ -114,36 +145,18 @@ Skills published to ClawHub need better visibility and discovery.
 - [ ] iching oracle diary?
 - [ ] Test and validate
 
----
+**Success:**
+- Multiple divination methods working
+- Librarian integration (optional)
+- Oracle diary tracking
 
-### v1.2.0 - context-switch
-
-**Status:** 📋 BACKLOG
-
-**Description:** Project/epic transitions with HEALTH checks
-
-**Tasks:**
-- [ ] merge with backstage skill
+- [ ] **Approve to merge**
 
 ---
 
-### v1.3.0 - apple-reminders-processing
+## v1.4.0
 
-**Status:** 📋 BACKLOG
-
-**Description:** Process reminders without notes
-
-**Tasks:**
-- [ ] why is it a skill? isnt it a HEARTBEAT?
-- [ ] extend to apple notes
-- [ ] Document usage examples
-- [ ] Test and validate
-
----
-
-### v1.4.0 - notify
-
-**Status:** 📋 BACKLOG
+### notify
 
 **Description:** Notifications
 
@@ -151,22 +164,16 @@ Skills published to ClawHub need better visibility and discovery.
 
 - [ ] Whats this?
 
----
+**Success:**
+- TBD
 
-### v1.5.0 - roadmap
-
-**Status:** 📋 BACKLOG
-
-**Description:** Roadmap management
-
-**Tasks:**
-- [ ] merge to backstage
+- [ ] **Approve to merge**
 
 ---
 
-### v1.6.0 - system-detective
+## v1.6.0
 
-**Status:** 📋 BACKLOG
+### system-detective
 
 **Description:** System diagnostics
 
@@ -174,22 +181,67 @@ Skills published to ClawHub need better visibility and discovery.
 - [ ] Hmmmm... isso conectar com relay ON, ne?
 - [ ] rlay ON keystroke
 
+**Success:**
+- Chrome Relay integration
+- Keystroke automation
+
+- [ ] **Approve to merge**
+
 ---
 
-### v1.7.0 - find-books
+## v1.7.0
 
-**Status:** 📋 BACKLOG
+### find-books
 
 **Description:** Book search
 
 **Tasks:**
 - [ ] it is librarian, but cant be toooo close since its piracy
 
-## 
+**Success:**
+- Book search working
+- Separate from librarian (piracy concerns)
 
-### v2.0.0 - use-for
+- [ ] **Approve to merge**
 
-**Status:** 📋 BACKLOG
+---
+
+## v2.0.0
+
+### open-with
+
+**Description:** "Open in app" as a skill - maps file types/contexts to default apps
+
+**Problem:**
+- "Abra X" should open in correct app (Typora, VSCode, Excel, etc.)
+- Context matters: README → Typora, .py → VSCode, .xlsx → Excel
+- Need extensible mapping (user preferences, project defaults)
+
+**Tasks:**
+- [ ] Define open-with mapping (file extensions → apps)
+- [ ] Support context overrides (project-specific apps)
+- [ ] Handle URLs (browser tabs, specific profiles)
+- [ ] Document usage examples
+- [ ] Test and validate
+
+**Examples:**
+- `open README.md` → Typora
+- `open script.py` → VSCode
+- `open data.xlsx` → Excel (local app)
+- `open https://example.com` → Chrome
+
+**Success:**
+- File type mapping working
+- Context-aware app selection
+- User preferences supported
+
+- [ ] **Approve to merge**
+
+---
+
+## v2.1.0
+
+### use-for
 
 **Description:** Skill suggester (scans all skills, suggests based on context)
 
@@ -199,28 +251,11 @@ Skills published to ClawHub need better visibility and discovery.
 - [ ] Document usage examples
 - [ ] Test and validate
 
----
+**Success:**
+- Context-based skill suggestions
+- Auto-discovery working
+- User gets right skill for task
 
-## Companion Skills (Reference Only)
-
-**These skills live in other projects:**
-
-- `librarian-companion` → See `~/Documents/librarian/backstage/ROADMAP.md`
-- `design-discrepancy` → See `~/Documents/wiley/backstage/ROADMAP.md` (if exists)
-- `backstage` → See `~/.openclaw/skills/backstage/` (global skill)
+- [ ] **Approve to merge**
 
 ---
-
-## Deprecated/Cleanup
-
-### v0.1.0 - Cleanup
-
-**Status:** 📋 BACKLOG
-
-**Tasks:**
-- [ ] Delete `iching` (old version, use `i-ching`)
-- [ ] Resolve `mapping-to-roadmap` (delete or document)
-
----
-
-_Add more epics as you plan features_

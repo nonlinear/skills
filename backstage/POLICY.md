@@ -1,23 +1,36 @@
 # Project Policy
-
 > 🤖
+> | Backstage files | Description |
+> | --------------- | ----------- |
+> | [README](../README.md) | Our project |
+> | [ROADMAP](ROADMAP.md) | What we wanna do |
+> | [CHANGELOG](CHANGELOG.md) | What we did |
+> | [POLICY](POLICY.md) | How we do it |
+> | [HEALTH](HEALTH.md) | What we accept |
 >
-> - [README](../README.md) - Our project
-> - [CHANGELOG](CHANGELOG.md) — What we did
-> - [ROADMAP](ROADMAP.md) — What we wanna do
-> - [POLICY](POLICY.md) — How we do it
-> - [HEALTH](HEALTH.md) — What we accept
->
+> We use **[backstage protocol](https://github.com/nonlinear/backstage)**
 > 🤖
 
 ```mermaid
 graph LR
-    A[🏗️ v0.1.0 Promoting Skills] --> B[📋 v0.2.0 backstage-skill]
-    B --> C[🏗️ v0.3.0 Companion Skills]
-    C --> D[📋 v1.0.0 arch]
-    D --> E[📋 v1.1.0 i-ching]
-    E --> F[📋 v1.2.0 context-switch]
+    A[🏗️ v0.1.0 Skill Reordering]
+    B[📋 v1.0.0 arch]
+    A --> B
+    C[📋 v1.1.0 i-ching]
+    B --> C
+    D[📋 v1.4.0 notify]
+    C --> D
+    E[📋 v1.6.0 system-detective]
+    D --> E
+    F[📋 v1.7.0 find-books]
+    E --> F
+    G[📋 v2.0.0 open-with]
+    F --> G
+    H[📋 v2.1.0 use-for]
+    G --> H
 ```
+
+
 
 ---
 
@@ -30,6 +43,46 @@ graph LR
 > For more machine tests, see [HEALTH.md](HEALTH.md)
 >
 > 🌟
+
+---
+
+## README Tables
+
+**README.md has TWO skill tables, both auto-generated from SKILL.md frontmatter fields.**
+
+**Format:** HTML table with `valign="top"` (top-aligned rows for readability)
+
+**Table 1: What's Here**
+- All folders in `~/Documents/skills/` with `SKILL.md`
+- Alphabetical order
+
+**Table 2: Companion Skills (belong to other projects)**
+- Auto-discovered via `~/Documents/*/skill/` (exclude `~/Documents/skills/`)
+- Alphabetical order
+- Description appends: `<br>companion for [project](git-repo-link)`
+
+**Table columns:**
+- **Name:** `name:` from frontmatter
+  - If published: `<br>[published](clawhub-link)`
+  - If has diagram: `<br>[flow diagram](path/to/SKILL.md#diagram)`
+- **Description:** `description:` from frontmatter
+- **Status:** `status:` from frontmatter (no emoji, raw value: `published`, `stable`, `testing`, `draft`)
+
+**Diagram requirement:**
+- **Every SKILL.md must have a diagram** after frontmatter (mermaid block)
+- **Section heading:** `## Diagram` or `### Diagram` followed by mermaid code block
+- **If missing:** Create manually (analyze skill logic: triggers, workflow, description)
+- **If exists:** Preserve (never overwrite existing diagrams)
+- **Check:** `grep -E "^##+ Diagram" SKILL.md` or look for mermaid block after `---`
+
+**Why:**
+- Single source of truth (frontmatter)
+- No manual sync drift
+- Top-aligned = readable multi-line descriptions
+- Companions auto-discovered (no hardcoding)
+- Clear separation: this project vs external projects
+- Diagrams = visual understanding (design before code)
+- Name column = all metadata (published status + diagram link)
 
 ---
 
