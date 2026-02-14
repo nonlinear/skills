@@ -30,9 +30,18 @@
 - Description appends: `<br>companion for [project](git-repo-link)`
 
 **Table columns:**
-- **Name:** `name:` from frontmatter (with ClawHub link if published)
+- **Name:** `name:` from frontmatter
+  - If published: `<br>[published](clawhub-link)`
+  - If has diagram: `<br>[flow diagram](path/to/SKILL.md#diagram)`
 - **Description:** `description:` from frontmatter
 - **Status:** `status:` from frontmatter (no emoji, raw value: `published`, `stable`, `testing`, `draft`)
+
+**Diagram requirement:**
+- **Every SKILL.md must have a diagram** after frontmatter (mermaid block)
+- **Section heading:** `## Diagram` or `### Diagram` followed by mermaid code block
+- **If missing:** Create manually (analyze skill logic: triggers, workflow, description)
+- **If exists:** Preserve (never overwrite existing diagrams)
+- **Check:** `grep -E "^##+ Diagram" SKILL.md` or look for mermaid block after `---`
 
 **Why:**
 - Single source of truth (frontmatter)
@@ -40,6 +49,8 @@
 - Top-aligned = readable multi-line descriptions
 - Companions auto-discovered (no hardcoding)
 - Clear separation: this project vs external projects
+- Diagrams = visual understanding (design before code)
+- Name column = all metadata (published status + diagram link)
 
 ---
 
