@@ -85,13 +85,13 @@
 ---
 
 > 🤖
-> | Backstage files                                              | Description        |
-> | ------------------------------------------------------------ | ------------------ |
-> | [README](path/to/README.md)                                  | Our project        |
-> | [CHANGELOG](path/to/CHANGELOG.md)                            | What we did        |
-> | [ROADMAP](path/to/ROADMAP.md)                                | What we wanna do   |
-> | POLICY: [project](path/to/POLICY.md), [global](path/to/global/POLICY.md) | How we go about it |
-> | HEALTH: [project](path/to/HEALTH.md), [global](path/to/global/HEALTH.md) | What we accept     |
+> | Backstage files | Description |
+> | --------------- | ----------- |
+> | [README](README.md) | Our project |
+> | [ROADMAP](backstage/ROADMAP.md) | What we wanna do |
+> | [CHANGELOG](backstage/CHANGELOG.md) | What we did |
+> | [POLICY](backstage/POLICY.md) | How we do it |
+> | [HEALTH](backstage/HEALTH.md) | What we accept |
 >
-> We use **[backstage protocol](https://github.com/nonlinear/backstage)**, v0.3.4
+> We use **[backstage protocol](https://github.com/nonlinear/backstage)**
 > 🤖
