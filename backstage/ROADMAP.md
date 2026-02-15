@@ -34,9 +34,20 @@ graph LR
     I --> J
 ```
 
-
-
 ## v1.1.0
+
+### Arch
+
+- [ ] html engine, "wrapping" an md
+- [ ] Bootstrap
+- [ ] Css-as-protocol, everything moves from it
+- [ ] test on librarian, with proper colors/states
+- [ ] how to keep globsl css but be able to see it on github too, WITHOUT engine?
+- [ ] move legend to a modal
+
+---
+
+## v1.1.1
 
 ### Architecture Design Workflow
 
