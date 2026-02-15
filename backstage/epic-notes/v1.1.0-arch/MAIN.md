@@ -134,11 +134,13 @@ Display diagram in browser
 **Mermaid code stays vanilla:**
 ```mermaid
 graph LR
-    A[Task 1] --> B[Task 2]
-    B --> C[Task 3]
+    A[Task 1]:::default --> B[Task 2]:::approved
+    B --> C[Task 3]:::developed
 ```
 
-**CSS applies classes automatically** via selectors (no manual classDef in diagram).
+**CSS applies via class selectors** (:::default, :::approved, etc.)
+
+**NO inline styling** in mermaid code (stays portable, works on GitHub)
 
 ### 3. Engine = Reusable (Not Project-Specific)
 
@@ -146,6 +148,63 @@ graph LR
 - Point to different MD files (tapes)
 - Same CSS system (consistent colors)
 - Same localhost workflow
+
+### 4. Auto-Injection of linkStyle (Arrow Colors)
+
+**Problem:** Arrows need to inherit border color from source node.
+
+**Solution:** Engine auto-injects `linkStyle` before rendering.
+
+**How it works:**
+1. Engine reads mermaid code from tape
+2. Parses nodes with classes (`:::default`, `:::approved`, etc.)
+3. Maps arrows to source nodes
+4. Generates `linkStyle N stroke:COLOR` for each arrow
+5. Injects at end of mermaid code (overwrites any previous)
+6. Renders with mermaid.js
+
+**Example transformation:**
+```mermaid
+// TAPE (clean):
+flowchart LR
+    A[".default"]:::default --> B[".approved"]:::approved
+    B --> C[".blocker"]:::blocker
+```
+
+```mermaid
+// ENGINE INJECTED (at render time):
+flowchart LR
+    A[".default"]:::default --> B[".approved"]:::approved
+    B --> C[".blocker"]:::blocker
+    
+    linkStyle 0 stroke:#666        // A (default border)
+    linkStyle 1 stroke:#F9A825     // B (approved border)
+```
+
+**Benefits:**
+- ✅ **Source of truth = ENGINE** (tapes stay clean)
+- ✅ **GitHub compatibility** (diagrams render without colors, structure visible)
+- ✅ **Hot reload support** (re-injects every load)
+- ✅ **Future-proof** (change colors in engine, all diagrams update)
+- ✅ **Portability** (tapes work in GitHub, engine adds colors when loaded)
+
+**Color mapping (hardcoded in engine):**
+```javascript
+const classColorMap = {
+    'default': '#666',           // --node-border
+    'approved': '#F9A825',       // --approved-border
+    'blocker': '#D32F2F',        // --blocker-border
+    'developed': '#388E3C',      // --developed-border
+    'developed-notes': '#1976D2', // --developed-notes-border
+    'partial': '#7B1FA2'         // --partial-border
+};
+```
+
+**Regex patterns:**
+- Node detection: `/(\w+)\[.*?\]:::(\w+)/g`
+- Arrow detection: `/(\w+)\s*(?:-->|==>|-\.->|---)\s*(?:\|.*?\|)?\s*(\w+)/g`
+
+**Implementation:** `injectLinkStyles()` function in `index.html`
 
 ---
 
