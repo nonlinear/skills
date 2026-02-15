@@ -241,6 +241,36 @@ graph LR
 
 ---
 
+## v2.3.0
+
+### proton-mail-finder
+
+**Description:** Proton Mail search URL builder (direct links to search results)
+
+**Problem:** Proton Mail has powerful search syntax but no CLI/API access
+
+**Solution:** Build URLs with search parameters for quick access (metadata search + content search)
+
+**Tasks:**
+- [ ] Research Proton Mail search syntax (from/to, subject, date range, folder, advanced operators)
+- [ ] Build URL pattern library (from=X, to=Y, subject=Z, folder=inbox, etc.)
+- [ ] Support advanced syntax (OR |, NOT !, phrase "", proximity ~N, wildcards)
+- [ ] Check Proton Pass API (is there similar search/URL pattern?)
+- [ ] Create SKILL.md with examples
+- [ ] Test URL builders (verify links work in Proton Mail web UI)
+
+**Details:** [epic-notes/v2.3.0-proton-mail-finder.md](epic-notes/v2.3.0-proton-mail-finder.md)
+
+**Success Criteria:**
+- URL builder creates valid Proton Mail search links
+- Advanced syntax supported (OR, NOT, wildcards)
+- Proton Pass research complete (API/URL patterns documented)
+- Examples documented (common searches)
+
+- [ ] **Approve to merge**
+
+---
+
 ## v2.2.0
 
 ### git-flipbook
