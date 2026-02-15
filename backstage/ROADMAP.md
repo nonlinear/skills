@@ -13,26 +13,30 @@
 
 ```mermaid
 graph LR
-    A[🏗️ v0.1.0 Skill Reordering]
-    B[📋 v1.0.0 arch]
+    A[🏗️ v1.0.0 Skill Protocol]
+    B[📋 v1.1.0 arch]
     A --> B
-    C[📋 v1.1.0 i-ching]
+    C[📋 v1.2.0 i-ching]
     B --> C
-    D[📋 v1.4.0 notify]
+    D[📋 v1.3.0 notify]
     C --> D
-    E[📋 v1.6.0 system-detective]
+    E[📋 v1.4.0 system-detective]
     D --> E
-    F[📋 v1.7.0 find-books]
+    F[📋 v1.5.0 find-books]
     E --> F
-    G[📋 v2.0.0 open-with]
+    G[📋 v1.6.0 open-with]
     F --> G
-    H[📋 v2.1.0 use-for]
+    H[📋 v1.7.0 use-for]
     G --> H
+    I[📋 v1.8.0 rebranding]
+    H --> I
+    J[📋 v1.9.0 proton-mail]
+    I --> J
 ```
 
 
 
-## v0.1.0
+## v1.1.0
 
 
 **Description:** Universal skill formatting rules (frontmatter, diagrams, statuses)
@@ -49,11 +53,11 @@ graph LR
 - All skills follow same format
 - Companions reference protocol (no drift)
 
-- [ ] **Approve to merge**
+- [x] **Approve to merge**
 
 ---
 
-## v1.0.0
+## v1.1.0
 
 ### arch
 
@@ -76,7 +80,7 @@ graph LR
 
 ---
 
-## v1.1.0
+## v1.2.0
 
 ### i-ching
 
@@ -102,7 +106,7 @@ graph LR
 
 ---
 
-## v2.2.0
+## v1.8.0
 
 ### Rebranding Menu
 
@@ -121,7 +125,7 @@ graph LR
 - [ ] Document SVG best practices (inline resources, SMIL > CSS, sanitizer rules)
 - [ ] Update skills README with new menu
 
-**Details:** [epic-notes/v2.2.0-rebranding-menu.md](epic-notes/v2.2.0-rebranding-menu.md)
+**Details:** [epic-notes/v1.8.0-rebranding-menu.md](epic-notes/v1.8.0-rebranding-menu.md)
 
 **Success Criteria:**
 - SVG menu renders correctly on GitHub
@@ -134,7 +138,7 @@ graph LR
 
 ---
 
-## v1.4.0
+## v1.3.0
 
 ### notify
 
@@ -151,7 +155,7 @@ graph LR
 
 ---
 
-## v1.6.0
+## v1.3.0
 
 ### system-detective
 
@@ -169,7 +173,7 @@ graph LR
 
 ---
 
-## v1.7.0
+## v1.5.0
 
 ### find-books
 
@@ -186,7 +190,7 @@ graph LR
 
 ---
 
-## v2.0.0
+## v1.3.0
 
 ### open-with
 
@@ -219,7 +223,7 @@ graph LR
 
 ---
 
-## v2.1.0
+## v1.5.0
 
 ### use-for
 
@@ -240,7 +244,7 @@ graph LR
 
 ---
 
-## v2.3.0
+## v1.9.0
 
 ### proton-mail-finder
 
@@ -258,7 +262,7 @@ graph LR
 - [ ] Create SKILL.md with examples
 - [ ] Test URL builders (verify links work in Proton Mail web UI)
 
-**Details:** [epic-notes/v2.3.0-proton-mail-finder.md](epic-notes/v2.3.0-proton-mail-finder.md)
+**Details:** [epic-notes/v1.9.0-proton-mail-finder.md](epic-notes/v1.9.0-proton-mail-finder.md)
 
 **Success Criteria:**
 - URL builder creates valid Proton Mail search links
@@ -270,7 +274,7 @@ graph LR
 
 ---
 
-## v2.2.0
+## v1.8.0
 
 ### git-flipbook
 
