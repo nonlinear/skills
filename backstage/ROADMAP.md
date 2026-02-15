@@ -58,7 +58,7 @@ graph LR
 
 ## v1.1.0
 
-### arch
+### Architecture Design Workflow
 
 **Description:** Architecture design exercises
 
