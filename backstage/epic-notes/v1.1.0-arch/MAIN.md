@@ -53,7 +53,21 @@ Display diagram in browser
 
 ## Design Principles
 
-### 1. CSS Variables External (Not Inline)
+### 1. Paridade Visual (CSS as Phases)
+
+**Goal:** Both Nicholas and Kin see the SAME thing.
+
+**How:** CSS colors = diagram states (approved, blocker, pending, in-progress)
+
+**Why paridade matters:**
+- **Shared map:** No ambiguity about current state
+- **Visual sync:** Colors communicate status instantly
+- **Planning exhaustion:** Diagram shows ALL states, ALL transitions
+- **Autonomous work:** Once ambiguities removed, Kin works alone
+
+**Philosophy:** "o engine com css-as-phases, permite que eu VEJA os estados, logo temos paridade no processo. o objetivo do arch eh planejar a exaustão, ate tirar TODAS as ambiguidades, pra que voce possa trabalhar SEM MIM."
+
+### 2. CSS Variables External (Not Inline)
 
 **Problem:** Mermaid doesn't support CSS variables inside diagrams.
 
