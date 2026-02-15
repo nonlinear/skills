@@ -208,3 +208,38 @@ graph LR
 - [ ] **Approve to merge**
 
 ---
+
+## v2.2.0
+
+### git-flipbook
+
+**Description:** Git commit timeline → visual report (quarterly retrospectives, ethical drift detection)
+
+**Concept:** 
+- Parse git log for timeframe → generate slideshow (Marp/reveal.js)
+- Visualize: commits, diffs, milestones, VISION.md alignment
+- Suggest new/updated skills based on repeat patterns
+
+**Tasks:**
+- [ ] Phase 1: Basic flipbook (commits → markdown → slideshow)
+- [ ] Parse git log (--since, --until, --grep for milestones)
+- [ ] Generate slideshow format (Marp or reveal.js)
+- [ ] Phase 2: VISION.md comparison (ethical drift detection)
+- [ ] Flag deviations from VISION.md (manual review)
+- [ ] Phase 3: Calendar triggers (moon-aligned quarterly reports)
+- [ ] Phase 4: Cross-repo aggregation (multiple projects)
+- [ ] Auto-suggest skills based on repeat patterns
+- [ ] Test on 2026-Q1, validate format, iterate
+
+**Integration:**
+- Extends backstage changelog-as-milestone (quarterly-report.sh)
+- Requires: Force commit on core file edits (substrate ready)
+- CHANGELOG commits with trailers = milestones
+
+**Success Criteria:**
+- Quarterly flipbook generated automatically
+- VISION.md drift detected and flagged
+- Skills suggested based on patterns
+- Timeline visualization clear and useful
+
+---
