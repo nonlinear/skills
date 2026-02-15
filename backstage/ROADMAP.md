@@ -34,16 +34,18 @@ graph LR
 
 ## v0.1.0
 
+### protocol
+
 
 **Description:** Universal skill formatting rules (frontmatter, diagrams, statuses)
 
 **Tasks:**
-- [ ] Create skill-protocol.md (frontmatter/formatting rules for all skills)
-- [ ] Update skills/POLICY.md to reference skill-protocol.md
-- [ ] Companion skills reference skill-protocol.md (prevent drift)
-- [ ] Create companion-skills.md blueprint documentation
-- [ ] Document diagram requirements (when mandatory, when optional)
-- [ ] Define status values (draft, testing, stable, published)
+1. [ ] Create skill-protocol.md (frontmatter/formatting rules for all skills)
+2. [ ] Update skills/POLICY.md to reference skill-protocol.md
+3. [ ] Companion skills reference skill-protocol.md (prevent drift)
+4. [ ] Create companion-skills.md blueprint documentation
+5. [ ] Document diagram requirements (when mandatory, when optional)
+6. [ ] Define status values (draft, testing, stable, published)
 
 **Success:**
 - Clear protocol documented
