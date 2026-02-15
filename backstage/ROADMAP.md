@@ -36,7 +36,7 @@ graph LR
 
 
 
-## v1.1.0
+## v1.0.0
 
 
 **Description:** Universal skill formatting rules (frontmatter, diagrams, statuses)
