@@ -103,6 +103,38 @@ graph LR
 
 ---
 
+## v2.2.0
+
+### Rebranding Menu
+
+**Description:** GitHub README SVG menu/banner redesign
+
+**Problem:** Current README navigation needs visual refresh, want custom SVG menu/banner
+
+**Solution:** Design SVG menu following GitHub's sanitization rules
+
+**Tasks:**
+- [ ] Research GitHub SVG rules (allowed: static SVG, SMIL animations, inline CSS; blocked: JavaScript, external resources, event handlers)
+- [ ] Design menu/banner concept (navigation, branding, interactive elements)
+- [ ] Create SVG (inline all resources, base64 images if needed)
+- [ ] Test SMIL animations (hover effects, loading states)
+- [ ] Validate in GitHub preview (no blocked elements)
+- [ ] Document SVG best practices (inline resources, SMIL > CSS, sanitizer rules)
+- [ ] Update skills README with new menu
+
+**Details:** [epic-notes/v2.2.0-rebranding-menu.md](epic-notes/v2.2.0-rebranding-menu.md)
+
+**Success Criteria:**
+- SVG menu renders correctly on GitHub
+- Animations work (SMIL-based)
+- No blocked elements (JavaScript, external resources)
+- Links functional (<a xlink:href>)
+- Documented best practices for future updates
+
+- [ ] **Approve to merge**
+
+---
+
 ## v1.4.0
 
 ### notify
