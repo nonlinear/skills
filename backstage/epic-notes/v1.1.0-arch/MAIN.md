@@ -19,6 +19,34 @@ Build **localhost wrapper engine** for mermaid diagrams with external CSS.
 
 ## Architecture
 
+### Multi-Device Presentation Layer
+
+**Engine = Presentation** (not just local viewer)
+
+**Future scenario (Tailscale network):**
+- **iPhone:** Conversation with Kin (voice/text)
+- **iPad:** Visualize diagrams (engine rendering)
+- **MacBook:** Edit MDs (Typora)
+- **All devices:** See same state (paridade visual)
+
+**Flow:**
+```
+Nicholas speaks (iPhone)
+  ↓
+Kin updates MD (librarian epic-notes)
+  ↓
+Engine detects change (hot reload)
+  ↓
+All devices see update (iPad, MacBook, etc.)
+  ↓
+Visual parity = shared understanding
+```
+
+**Deployment targets:**
+- **Now:** localhost:8080 (development)
+- **Soon:** NAS via Tailscale (multi-device access)
+- **Future:** Mac Studio (permanent server, March 2026)
+
 ### Engine Location
 
 **Path:** `~/Documents/skills/arch/engine/`
@@ -55,17 +83,23 @@ Display diagram in browser
 
 ### 1. Paridade Visual (CSS as Phases)
 
-**Goal:** Both Nicholas and Kin see the SAME thing.
+**Goal:** All devices see the SAME diagram state.
 
-**How:** CSS colors = diagram states (approved, blocker, pending, in-progress)
+**How:** 
+- CSS colors = diagram states (approved, blocker, pending, in-progress)
+- Hot reload = continuous sync (2s polling)
+- Multi-device access = Tailscale network
 
 **Why paridade matters:**
 - **Shared map:** No ambiguity about current state
-- **Visual sync:** Colors communicate status instantly
+- **Visual sync:** Colors communicate status instantly across ALL devices
+- **Multi-device presentation:** iPhone (talk) + iPad (see) + MacBook (edit)
 - **Planning exhaustion:** Diagram shows ALL states, ALL transitions
 - **Autonomous work:** Once ambiguities removed, Kin works alone
 
-**Philosophy:** "o engine com css-as-phases, permite que eu VEJA os estados, logo temos paridade no processo. o objetivo do arch eh planejar a exaustão, ate tirar TODAS as ambiguidades, pra que voce possa trabalhar SEM MIM."
+**Philosophy:** "lembra que eh um engine de APRESENTACAO. ate pq precisamos acessar por outros devices… no futuro posso ter 3 devices conectado contigo via tailscale… conversamos via iphone, mas visualizo mudancas no ipad. conversa muda md, o engine catch e mostra. e todos devices conectados tem acesso."
+
+**Hot reload = CRITICAL:** Not optional feature, core presentation requirement.
 
 ### 2. CSS Variables External (Not Inline)
 
