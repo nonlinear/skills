@@ -101,6 +101,12 @@ Display diagram in browser
 
 **Hot reload = CRITICAL:** Not optional feature, core presentation requirement.
 
+**Future enhancement (v1.2.0?):** CSS hot reload
+- Poll `styles.css` (like MD polling)
+- Detect changes → reload stylesheet
+- No manual refresh for CSS edits
+- Complete hot reload (MD + CSS)
+
 ### 2. CSS Variables External (Not Inline)
 
 **Problem:** Mermaid doesn't support CSS variables inside diagrams.
