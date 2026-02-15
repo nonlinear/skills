@@ -45,7 +45,6 @@ graph LR
 - [x] Create skill-protocol.md (frontmatter/formatting rules for all skills)
 - [x] Update skills/POLICY.md to reference skill-protocol.md
 - [x] Companion skills reference skill-protocol.md (prevent drift)
-- [x] Create companion-skills.md blueprint documentation
 - [x] Define status values (draft, testing, stable, published)
 
 **Success:**
