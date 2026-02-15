@@ -14,8 +14,29 @@
 
 ```mermaid
 graph LR
-    A[✅ v0.1.0 Skill Reordering]
+    A[✅ v1.0.0 Skill Protocol]
+    B[✅ v0.1.0 Skill Reordering]
+    A --> B
 ```
+
+## v1.0.0 - 2026-02-15
+
+### Skill Protocol
+
+**Description:** Universal skill formatting rules (frontmatter, diagrams, statuses)
+
+**Accomplished:**
+- Created skill-protocol.md (frontmatter/formatting rules for all skills)
+- Updated skills/POLICY.md to reference skill-protocol.md
+- Companion skills reference skill-protocol.md (prevent drift)
+- Defined status values (draft, testing, stable, published)
+- Renumbered all epics v1.0.0-v1.9.0 (semantic versioning)
+- Epic-notes folders + mermaid diagram updated
+- Arch learnings documented (morphological computation → transparent equipment)
+
+**Details:** [epic-notes/v1.0.0](epic-notes/) (multiple files from renumbering)
+
+---
 
 ## v0.1.0 - 2026-02-14
 

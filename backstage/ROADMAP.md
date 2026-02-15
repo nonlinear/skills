@@ -36,26 +36,6 @@ graph LR
 
 
 
-## v1.0.0
-
-
-**Description:** Universal skill formatting rules (frontmatter, diagrams, statuses)
-
-**Tasks:**
-- [x] Create skill-protocol.md (frontmatter/formatting rules for all skills)
-- [x] Update skills/POLICY.md to reference skill-protocol.md
-- [x] Companion skills reference skill-protocol.md (prevent drift)
-- [x] Define status values (draft, testing, stable, published)
-
-**Success:**
-- Clear protocol documented
-- All skills follow same format
-- Companions reference protocol (no drift)
-
-- [x] **Approve to merge**
-
----
-
 ## v1.1.0
 
 ### Architecture Design Workflow
