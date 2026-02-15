@@ -38,12 +38,17 @@ graph LR
 
 ### Arch
 
-- [ ] html engine, "wrapping" an md
-- [ ] Bootstrap
-- [ ] Css-as-protocol, everything moves from it
-- [ ] test on librarian, with proper colors/states
-- [ ] how to keep globsl css but be able to see it on github too, WITHOUT engine?
-- [ ] move legend to a modal
+- [x] html engine, "wrapping" an md
+- [x] Bootstrap
+- [x] Css-as-protocol, everything moves from it
+- [x] test on librarian, with proper colors/states
+- [x] how to keep globsl css but be able to see it on github too, WITHOUT engine?
+- [x] move legend to a modal
+- [ ] recent exercices as a list, drop down, tapes to load
+- [ ] open exercise, right away. parity. each exercise is connected iwth an epic.
+- [ ] better header
+- [ ] managing history dropdown. how to load something? jsut asking?
+- [ ] from localstorage pra multi-device history memory
 
 ---
 
