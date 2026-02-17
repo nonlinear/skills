@@ -86,3 +86,54 @@ graph LR
 
 ---
 
+## Inject Skills Frontmatter
+
+**For skills with `type: inject`** (browser/app customization), add `inject:` nested block:
+
+```yaml
+---
+name: skill-name-inject
+type: inject
+version: X.Y.Z
+inject:
+  type: css | service-worker | browser-extension | bookmarklet | userscript
+  app:
+    name: AppName
+    url: https://app-url.com
+    version: X.Y.Z  # tested version
+  platform: web | ios | android | desktop  # optional, default: web
+  browser: chrome | firefox | safari | edge | all  # optional, if web
+  reference: technique-doc.md  # link to canonical technique
+---
+```
+
+**Fields:**
+- `inject.type` - Injection technique (CSS, Service Worker, etc.)
+- `inject.app.name` - Target app name
+- `inject.app.url` - Official app URL
+- `inject.app.version` - Tested version (compatibility tracking)
+- `inject.platform` - Target platform (optional, default: `web`)
+- `inject.browser` - Browser compatibility (optional, if web)
+- `inject.reference` - Link to technique doc (shared across skills)
+
+**Example:**
+```yaml
+---
+name: openclaw-inject
+type: inject
+version: 0.1.0
+inject:
+  type: css
+  app:
+    name: OpenClaw
+    url: https://openclaw.ai
+    version: 2026.2.9
+  browser: chrome
+  reference: css-injection.md
+---
+```
+
+**Canonical technique docs** live in inject repo (`inject/docs/`), skills reference them.
+
+---
+
