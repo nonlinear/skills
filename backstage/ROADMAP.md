@@ -13,28 +13,56 @@
 
 ```mermaid
 graph LR
-    A[🏗️ v1.0.0 Skill Protocol]
-    B[📋 v1.1.0 arch]
+    A[✅ v1.0.0 Skill Protocol]
+    B[✅ v0.1.0 Skill Reordering]
+    C[✅ v0.2.0 Better Apps]
+    D[📋 v1.1.0 arch]
     A --> B
-    C[📋 v1.2.0 i-ching]
     B --> C
-    D[📋 v1.3.0 notify]
     C --> D
-    E[📋 v1.4.0 system-detective]
+    E[📋 v1.2.0 i-ching]
     D --> E
-    F[📋 v1.5.0 find-books]
+    F[📋 v1.3.0 notify]
     E --> F
-    G[📋 v1.6.0 open-with]
+    G[📋 v1.4.0 system-detective]
     F --> G
-    H[📋 v1.7.0 use-for]
+    H[📋 v1.5.0 find-books]
     G --> H
-    I[📋 v1.8.0 rebranding]
+    I[📋 v1.6.0 open-with]
     H --> I
-    J[📋 v1.9.0 proton-mail]
+    J[📋 v1.7.0 use-for]
     I --> J
+<<<<<<< HEAD
 ```
 
 
+=======
+    K[📋 v1.8.0 rebranding]
+    J --> K
+    L[📋 v1.9.0 proton-mail]
+    K --> L
+    M[📋 v1.10.0 design-discrepancy]
+    L --> M
+```
+
+## v0.2.0
+
+### ✅ Better Apps | [notes](epic-notes/v0.2.0-better-apps.md)
+
+**App customization skills (CSS, Service Worker, per-app toggle)**
+
+**Accomplished:**
+- Created better/ namespace (app customizations)
+- better-openclaw (CSS dark theme, minimal UI)
+- better-kavita (Service Worker offline storage)
+- better-komga (Service Worker offline storage)
+- Per-app toggle system (standalone skills)
+- Frontmatter schema (better: nested block)
+
+**Status:** ✅ Complete (merged to main)
+
+---
+>>>>>>> 2f6e8b2 (Add v0.2.0 better-apps epic notes and ROADMAP entry)
 
 ## v1.1.0
 
