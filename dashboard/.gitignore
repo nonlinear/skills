@@ -1,0 +1,17 @@
+# Logs
+logs/
+*.log
+
+# Data files (auto-generated)
+data/*.json
+!data/.gitkeep
+
+# Status files
+.refresh-status
+
+# Python
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store

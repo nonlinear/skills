@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Work Agenda</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            background: #EFEFEF;
+            padding: 0 !important;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        .container-fluid {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        
+        /* Moon phase header padding */
+        #moon-phase {
+            padding-top: 40px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        
+        /* Tab menu padding */
+        .nav-underline {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000 !important;
+            background: #EFEFEF !important;
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+            padding-top: 10px !important;
+            padding-bottom: 5px !important;
+        }
+        
+        /* Tab content padding */
+        .tab-pane {
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+        
+        /* First accordion item - no top border */
+        .accordion > .accordion-item:first-child {
+            border-top: none !important;
+        }
+        
+        a {
+            color: #000;
+            text-decoration: underline;
+        }
+        
+        a:hover {
+            color: #2563eb;
+        }
+        
+        .accordion-item {
+            border-left: 0 !important;
+            border-right: 0 !important;
+            border-color: #ccc !important;
+            background: transparent !important;
+        }
+        
+        .accordion-button {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            background: transparent !important;
+            border-bottom: 0 !important;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: transparent !important;
+            font-weight: bold !important;
+            color: #000 !important;
+        }
+        
+        .accordion-button {
+            color: #000 !important;
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none !important;
+            border-color: transparent !important;
+        }
+        
+        .accordion-body {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            max-height: 300px !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+        }
+        
+        .accordion-button::after {
+            filter: brightness(0) saturate(100%) invert(80%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(95%) contrast(90%);
+            transition: filter 0.2s ease;
+        }
+        
+        .accordion-button:hover::after {
+            filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+        }
+        
+        .item {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        .project {
+            color: #6b7280;
+            font-size: 0.75rem;
+            margin-left: 0.25rem;
+        }
+        
+        .count {
+            color: #6b7280;
+            font-size: 0.75rem;
+            margin-left: 0.25rem;
+            font-weight: 600 !important;
+        }
+        
+        sup {
+            font-weight: 600 !important;
+        }
+        
+        .number {
+            color: #6b7280;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        
+        /* Pills inline (⚙️ tab only - Core Prompts, Backstage, Skills, Gaps, Epic Notes, Memory, Connections, Scripts) */
+        .accordion-body.pills-inline .badge {
+            display: inline-block !important;
+            margin-top: 5px !important;
+            margin-right: -1px !important;
+        }
+        
+        /* Tabs global styles */
+        .nav-underline .nav-link {
+            color: #000 !important;
+            font-size: 1.25rem !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            margin-right: 0 !important;
+        }
+        
+        .nav-underline .nav-link.active {
+            color: #000 !important;
+            border-bottom-color: #000 !important;
+        }
+        
+        .nav-underline .nav-item {
+            margin-right: 0 !important;
+        }
+        
+        /* Pills global styles */
+        .badge {
+            padding: 0.5rem 1rem !important;
+            border-radius: 20px !important;
+            background-color: #ccc !important;
+            color: #000 !important;
+            text-decoration: none !important;
+            font-weight: normal !important;
+            transition: all 0.2s;
+        }
+        
+        .badge:hover {
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+        
+        /* Remove underline from links inside badges */
+        a.badge {
+            text-decoration: none !important;
+        }
+        
+        /* Popover styles */
+        .popover {
+            max-width: 300px !important;
+        }
+        
+        .popover-body {
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .popover-body a {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            margin: 0.125rem;
+            background-color: #ccc;
+            color: #000;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        
+        .popover-body a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="max-width: 800px;">
+        <!-- Moon Phase -->
+        <div style="padding: 40px 40px 20px 40px; display: flex; align-items: center; gap: 1.5rem; position: relative;">
+            <!-- Reload button - top right absolute -->
+            <button id="reloadTasksBtn" class="badge" style="cursor: pointer; border: none; position: absolute; top: 10px; right: 30px; margin-top: 10px;">🔄</button>
+            
+            <div style="font-size: 4rem; line-height: 1;" id="moon-emoji">🌙</div>
+            <div style="flex: 1;">
+                <div style="font-size: 1.1rem; margin-bottom: 0.25rem;" id="moon-stage">Loading...</div>
+                <div style="font-size: 0.95rem; color: #666;" id="moon-action">Checking moon calendar...</div>
+            </div>
+        </div>
+        
+        <!-- Bootstrap Tabs -->
+        <ul class="nav nav-underline nav-fill mb-3" id="agendaTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="tasks-tab" data-bs-toggle="tab" data-bs-target="#tasks" type="button" role="tab">Tasks</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="agenda-tab" data-bs-toggle="tab" data-bs-target="#agenda" type="button" role="tab">Agenda</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="life-tab" data-bs-toggle="tab" data-bs-target="#life" type="button" role="tab">Life</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab">Projects</button>
+            </li>
+            <li class="nav-item ms-auto" role="presentation">
+                <button class="nav-link" id="docs-tab" data-bs-toggle="tab" data-bs-target="#docs" type="button" role="tab">⚙️</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="agendaTabsContent">
+            <!-- Tasks Tab -->
+            <div class="tab-pane fade show active" id="tasks" role="tabpanel">
+                <div class="accordion" id="tasksAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOverdue">
+                                🚨 Overdue<sup class="count" id="overdueCount">0</sup>
+                            </button>
+                        </h2>
+                        <div id="collapseOverdue" class="accordion-collapse collapse show" data-bs-parent="">
+                            <div class="accordion-body" id="overdueBody">
+                                <p class="text-muted">Loading Jira tasks...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseToday">
+                                📅 Today<sup class="count" id="todayCount">0</sup>
+                            </button>
+                        </h2>
+                        <div id="collapseToday" class="accordion-collapse collapse" data-bs-parent="">
+                            <div class="accordion-body" id="todayBody">Nothing today</div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSoon">
+                                ⏰ Soon<sup class="count" id="soonCount">0</sup>
+                            </button>
+                        </h2>
+                        <div id="collapseSoon" class="accordion-collapse collapse" data-bs-parent="">
+                            <div class="accordion-body" id="soonBody">Nothing soon</div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBacklog">
+                                📋 Backlog<sup class="count" id="backlogCount">0</sup>
+                            </button>
+                        </h2>
+                        <div id="collapseBacklog" class="accordion-collapse collapse" data-bs-parent="">
+                            <div class="accordion-body" id="backlogBody">No backlog items</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Agenda Tab -->
+            <div class="tab-pane fade" id="agenda" role="tabpanel">
+                <!-- Yesterday -->
+                <div class="accordion mb-3" id="agendaAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#yesterday">
+                                📅 Yesterday<sup class="count" id="yesterdayCount">0</sup>
+                            </button>
+                        </h2>
+                        <div id="yesterday" class="accordion-collapse collapse" data-bs-parent="#agendaAccordion">
+                            <div class="accordion-body" id="yesterdayBody">Loading...</div>
+                        </div>
+                    </div>
+
+                    <!-- Today -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#today">
+                                📅 Today<sup class="count" id="todayEventCount">0 of 0</sup>
+                            </button>
+                        </h2>
+                        <div id="today" class="accordion-collapse collapse show" data-bs-parent="#agendaAccordion">
+                            <div class="accordion-body">
+                                <h6>Timeline</h6>
+                                <div id="timeline-chart" style="margin-bottom: 2rem;"></div>
+                                
+                                <h6>Events</h6>
+                                <div id="calendar-today">Loading...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tomorrow -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tomorrow">
+                                📅 Tomorrow<sup class="count" id="tomorrowCount">0</sup>
+                            </button>
+                        </h2>
+                        <div id="tomorrow" class="accordion-collapse collapse" data-bs-parent="#agendaAccordion">
+                            <div class="accordion-body" id="tomorrowBody">Loading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Life Tab -->
+            <div class="tab-pane fade" id="life" role="tabpanel">
+                <!-- Dynamic Life epics loaded from ROADMAP.md -->
+                <div id="life-epics-container">
+                    <!-- Populated by loadLifeEpics() -->
+                </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div class="tab-pane fade" id="projects" role="tabpanel">
+                <div class="accordion accordion-flush" id="projectsAccordion">
+                    <!-- Populated by loadProjects() -->
+                </div>
+            </div>
+
+            <!-- Docs Tab -->
+            <div class="tab-pane fade" id="docs" role="tabpanel">
+                <div class="accordion accordion-flush" id="docsAccordion">
+                    <!-- Core Prompts -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#docs-core">
+                                📜 Core Prompts<sup class="count">7</sup>
+                            </button>
+                        </h2>
+                        <div id="docs-core" class="accordion-collapse collapse show" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body pills-inline">
+                                <div style="margin-top: 5px;">
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/AGENTS.md'); return false;" class="badge bg-primary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Workspace rules & rituals. Read daily.">AGENTS</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/HEARTBEAT.md'); return false;" class="badge bg-primary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Proactive checks. Execution schedule.">HEARTBEAT</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/IDENTITY.md'); return false;" class="badge bg-primary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Familiar-servitor hybrid. Grounds identity.">IDENTITY</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/SOUL.md'); return false;" class="badge bg-primary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Who I am. Defines personality.">SOUL</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/TOOLS.md'); return false;" class="badge bg-primary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Local setup notes. Environment specifics.">TOOLS</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/USER.md'); return false;" class="badge bg-primary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Who you are. Defines relationship.">USER</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/VISION.md'); return false;" class="badge bg-primary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Metabolic cost ethics. Decision framework.">VISION</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Important Notes -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#docs-important-notes">
+                                Important Notes<sup class="count" id="important-notes-count-sup">3</sup>
+                            </button>
+                        </h2>
+                        <div id="docs-important-notes" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body pills-inline">
+                                <div style="margin-top: 5px;">
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/Documents/life/wiley/links.md'); return false;" class="badge bg-warning" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Wiley credentials, Jira links, SSO URLs">Wiley Links</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/Documents/life/wiley/IEEE_timelog.md'); return false;" class="badge bg-info" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="IEEE work hours tracking & Tempo offset mapping">IEEE Timelog</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/Documents/life/wiley/RPM_design_discrepancy.md'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="RPM Design Discrepancy (MD) - UXPMS-168 parent task">RPM Design</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/Documents/life/wiley/Design-Discrepancy-test.xlsx'); return false;" class="badge bg-primary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="RPM Design Discrepancy Excel tracker (findings)">RPM Excel</a>
+                                    <a href="#" onclick="openInVSCode('/Users/nfrota/Documents/life/AI-redesign/redesign.css'); return false;" class="badge bg-dark" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Custom CSS injected into OpenClaw webchat interface">Redesign CSS</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backstage -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#docs-backstage">
+                                🎭 Backstage
+                            </button>
+                        </h2>
+                        <div id="docs-backstage" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body pills-inline">
+                                <div style="margin-top: 5px;">
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/backstage/CHANGELOG.md'); return false;" class="badge bg-info" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Version history and shipped features.">CHANGELOG</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/backstage/FAILED.md'); return false;" class="badge bg-secondary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Failed experiments. Learn from mistakes.">FAILED</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/backstage/global/HEALTH.md'); return false;" class="badge bg-danger" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Global close/open ritual.">GLOBAL HEALTH</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/backstage/global/POLICY.md'); return false;" class="badge bg-warning" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Global policies across all projects.">GLOBAL POLICY</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/backstage/POLICY.md'); return false;" class="badge bg-warning" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Project-specific policies.">PROJECT POLICY</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/ROADMAP.md'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Life roadmap. Real priorities live here.">ROADMAP</a>
+                                    <span id="roadmap-updated" class="text-muted ms-2" style="font-size: 0.85em;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#docs-skills">
+                                🎯 Skills<sup class="count">9</sup>
+                            </button>
+                        </h2>
+                        <div id="docs-skills" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body pills-inline">
+                                <div style="margin-top: 5px;">
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/skills/apple-reminders-processing/SKILL.md'); return false;" class="badge bg-secondary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Process Apple Reminders without notes (research, shopping, system solutions).<hr><i>Auto-runs 2x/day via heartbeat</i>">apple-reminders-processing</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/skills/backstage/SKILL.md'); return false;" class="badge bg-secondary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="AI-driven project management (POLICY + HEALTH checks, epics, merge workflow).<hr><i>backstage start, epic is completed merge</i>">backstage</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/skills/context-switch/SKILL.md'); return false;" class="badge bg-secondary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Switch between projects/epics with HEALTH checks (morning/evening rituals).<hr><i>bom dia, vamos trabalhar no X, boa noite</i>">context-switch</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/skills/design-architecture/SKILL.md'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="🆕 Collaborative architecture design via mermaid (gray→red→yellow→blue approval flow).<hr><i>let's architect X, we need a flow for Y, vamos desenhar</i>">design-architecture</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/skills/i-ching/SKILL.md'); return false;" class="badge bg-secondary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="I Ching oracle via coin toss (hexagram, changing lines, cosmic way interpretation).<hr><i>I Ching, hexagrama, oracle</i>">i-ching</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/skills/librarian/SKILL.md'); return false;" class="badge bg-secondary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Search books/EPUBs via semantic search (Kavita integration, citation-based research).<hr><i>pesquisa no livro, tarot research, book lookup</i>">librarian</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/skills/librarian-placeholder/SKILL.md'); return false;" class="badge bg-secondary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Placeholder for future librarian features (multi-source, federated search).<hr><i>(no triggers yet)</i>">librarian-placeholder</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/skills/notify/SKILL.md'); return false;" class="badge bg-secondary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Send notifications to paired devices (iOS, Android overlay/system delivery).<hr><i>notify me, send notification</i>">notify</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/skills/system-detective/SKILL.md'); return false;" class="badge bg-secondary" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Investigate system issues (logs, diagnostics, performance analysis).<hr><i>investigate, debug, diagnose</i>">system-detective</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gaps -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#docs-gaps">
+                                ⚠️ Gaps<sup class="count">1</sup>
+                            </button>
+                        </h2>
+                        <div id="docs-gaps" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body pills-inline">
+                                <div>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/backstage/gaps/bluebubbles-private-api.md'); return false;" class="badge bg-danger" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Known gap: BlueBubbles private API missing">bluebubbles-private-api</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Epic Notes -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#docs-epic-notes">
+                                📝 Epic Notes<sup class="count">7</sup>
+                            </button>
+                        </h2>
+                        <div id="docs-epic-notes" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body pills-inline">
+                                <div>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/epic-notes/body-exchange.md'); return false;" class="badge bg-info">body-exchange</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/epic-notes/browser-relay-notifications.md'); return false;" class="badge bg-info">browser-relay-notifications</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/epic-notes/browser-security-workflow.md'); return false;" class="badge bg-info">browser-security-workflow</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/epic-notes/character-design.md'); return false;" class="badge bg-info">character-design</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/epic-notes/claw-override.md'); return false;" class="badge bg-info">claw-override</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/epic-notes/home-assistant-voice.md'); return false;" class="badge bg-info">home-assistant-voice</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/epic-notes/work-personal-modes.md'); return false;" class="badge bg-info">work-personal-modes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Memory -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#docs-memory">
+                                🧠 Memory<sup class="count">16</sup>
+                            </button>
+                        </h2>
+                        <div id="docs-memory" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body pills-inline">
+                                <div>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/research-protocol.md'); return false;" class="badge bg-dark">research-protocol</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/paperless-debug-2026-01-30.md'); return false;" class="badge bg-dark">paperless-debug-2026-01-30</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/librarian-research-flow.md'); return false;" class="badge bg-dark">librarian-research-flow</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/librarian-analytics-roadmap.md'); return false;" class="badge bg-dark">librarian-analytics-roadmap</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/familiar-servitor-spectrum.md'); return false;" class="badge bg-dark">familiar-servitor-spectrum</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/2026-02-06.md'); return false;" class="badge bg-dark">2026-02-06</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/2026-02-05.md'); return false;" class="badge bg-dark">2026-02-05</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/2026-02-05-librarian-metabolic-cost.md'); return false;" class="badge bg-dark">2026-02-05-librarian-metabolic-cost</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/2026-02-04.md'); return false;" class="badge bg-dark">2026-02-04</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/2026-02-03.md'); return false;" class="badge bg-dark">2026-02-03</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/2026-02-02.md'); return false;" class="badge bg-dark">2026-02-02</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/2026-01-31-0350.md'); return false;" class="badge bg-dark">2026-01-31-0350</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/2026-01-30.md'); return false;" class="badge bg-dark">2026-01-30</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/2026-01-30-victory-lap.md'); return false;" class="badge bg-dark">2026-01-30-victory-lap</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/2025-06-01.md'); return false;" class="badge bg-dark">2025-06-01</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/memory/2025-02-05.md'); return false;" class="badge bg-dark">2025-02-05</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Connections -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#docs-connections">
+                                🔌 Connections<sup class="count">8</sup>
+                            </button>
+                        </h2>
+                        <div id="docs-connections" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body pills-inline">
+                                <div>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/connections/figma.md'); return false;" class="badge bg-warning" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Figma feature parity tracking">figma</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/connections/home-assistant.md'); return false;" class="badge bg-warning" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Home Assistant API connection">home-assistant</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/connections/jellyfin.md'); return false;" class="badge bg-warning" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Jellyfin media server (planned)">jellyfin</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/connections/jira.md'); return false;" class="badge bg-warning" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Wiley Jira (work, read-only)">jira</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/connections/onedrive.md'); return false;" class="badge bg-warning" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="OneDrive migration parity tracking">onedrive</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/connections/paperless-ngx.md'); return false;" class="badge bg-warning" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Paperless document management">paperless-ngx</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/connections/proton.md'); return false;" class="badge bg-warning" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="Proton services parity tracking">proton</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/connections/searxng.md'); return false;" class="badge bg-warning" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover" data-bs-content="SearXNG meta-search engine">searxng</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scripts -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#docs-scripts">
+                                🛠️ Scripts<sup class="count">11</sup>
+                            </button>
+                        </h2>
+                        <div id="docs-scripts" class="accordion-collapse collapse" data-bs-parent="#docsAccordion">
+                            <div class="accordion-body pills-inline">
+                                <div>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/scripts/detect-location.sh'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Detect current location (home/work/mobile)">detect-location</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/scripts/generate-projects-json.sh'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Generate projects.json from git repos">generate-projects-json</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/scripts/get-moon-phase.sh'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Get current moon phase from Google Calendar">get-moon-phase</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/scripts/monitor-location.sh'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Monitor location changes (background daemon)">monitor-location</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/scripts/open-agenda.sh'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Open agenda.html in browser">open-agenda</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/scripts/open-in-typora.command'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="AppleScript wrapper for Typora opener">open-in-typora</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/scripts/reload-discrepancy.sh'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Force OneDrive sync + reload browser">reload-discrepancy</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/scripts/searxng_search.py'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Search via SearXNG (self-hosted)">searxng_search</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/scripts/start-typora-opener.sh'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Start Typora HTTP opener service">start-typora-opener</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/scripts/typora-opener-service.sh'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Typora opener daemon (port 7778)">typora-opener-service</a>
+                                    <a href="#" onclick="openInTypora('/Users/nfrota/.openclaw/workspace/scripts/typora-opener.py'); return false;" class="badge bg-success" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Python HTTP server for opening files in Typora">typora-opener</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mermaid Diagram (Core Prompts Relationship) -->
+                <div style="margin-top: 3rem; padding: 0 40px 40px 40px;">
+                    <pre class="mermaid">
+graph TD
+    AGENTS[AGENTS]
+    SOUL[SOUL]
+    USER[USER]
+    IDENTITY[IDENTITY]
+    TOOLS[TOOLS]
+    HEARTBEAT[HEARTBEAT]
+    VISION[VISION]
+    MEMORY[MEMORY]
+    
+    AGENTS --> SOUL
+    AGENTS --> USER
+    AGENTS --> MEMORY
+    
+    SOUL --> IDENTITY
+    USER --> IDENTITY
+    
+    IDENTITY --> VISION
+    
+    TOOLS --> AGENTS
+    HEARTBEAT --> AGENTS
+    
+    VISION --> SOUL
+    VISION --> AGENTS
+    
+    MEMORY --> AGENTS
+    MEMORY --> HEARTBEAT
+    
+    style AGENTS fill:#4f46e5,color:#fff
+    style SOUL fill:#ec4899,color:#fff
+    style USER fill:#f59e0b,color:#fff
+    style IDENTITY fill:#10b981,color:#fff
+    style TOOLS fill:#6366f1,color:#fff
+    style HEARTBEAT fill:#ef4444,color:#fff
+    style VISION fill:#8b5cf6,color:#fff
+    style MEMORY fill:#374151,color:#fff
+                    </pre>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Open file in Typora via local HTTP service
+        async function openInTypora(filePath) {
+            try {
+                await fetch(`http://localhost:7778/open?file=${encodeURIComponent(filePath)}`);
+            } catch (error) {
+                console.error('Failed to open in Typora:', error);
+                alert('Typora opener service not running. Start it with: ~/.openclaw/workspace/scripts/start-typora-opener.sh');
+            }
+        }
+        
+        // Open file in VS Code
+        async function openInVSCode(filePath) {
+            try {
+                const result = await fetch('http://localhost:7778/exec', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: `code "${filePath}"` })
+                });
+                if (!result.ok) {
+                    throw new Error('Failed to open in VS Code');
+                }
+            } catch (error) {
+                console.error('Failed to open in VS Code:', error);
+                alert('Failed to open in VS Code. Check if file-opener service is running: ~/.openclaw/workspace/scripts/start-typora-opener.sh');
+            }
+        }
+        
+        // Open folder in Finder
+        function openInFinder(folderPath) {
+            // Use file:// protocol to open Finder
+            window.location.href = `file://${folderPath}`;
+        }
+        
+        // Load Wiley Links from markdown file
+        async function loadAgenda() {
+            try {
+                const response = await fetch('data/jira.json');
+                const data = await response.json();
+                
+                // Load descriptions
+                let descriptions = {};
+                try {
+                    const descResp = await fetch('data/jira-descriptions.json');
+                    descriptions = await descResp.json();
+                } catch(e) {}
+                
+                // Load active task
+                let activeTask = null;
+                try {
+                    const activeResp = await fetch('data/active-task.json');
+                    const activeData = await activeResp.json();
+                    activeTask = activeData.key;
+                } catch(e) {}
+                
+                // Helper to create task link with popover
+                const createTaskLink = (item, isActive) => {
+                    const key = item.link.split('/browse/')[1];
+                    const desc = descriptions[key] || '(No description)';
+                    const pin = isActive ? '📌 ' : '';
+                    
+                    // Escape for HTML attribute (but preserve HTML tags in content)
+                    const escapedDesc = desc.replace(/'/g, '&#39;');
+                    
+                    return `${pin}<a href="${item.link}" 
+                        target="_blank" 
+                        class="badge bg-secondary text-decoration-none" 
+                        data-bs-toggle="popover" 
+                        data-bs-trigger="hover focus"
+                        data-bs-placement="right"
+                        data-bs-html="true"
+                        data-bs-content='${escapedDesc}'
+                        style="font-weight: normal; font-size: 0.9rem;">${item.title}</a>`;
+                };
+                
+                // Track which section has active task
+                let activeSection = null;
+                
+                // Overdue
+                const hasActiveOverdue = activeTask && data.overdue.some(item => item.link.includes(activeTask));
+                if (hasActiveOverdue) activeSection = 'overdue';
+                
+                document.getElementById('overdueCount').textContent = data.overdue.length;
+                const overdueButton = document.querySelector('[data-bs-target="#collapseOverdue"]');
+                if (hasActiveOverdue) {
+                    overdueButton.innerHTML = '📌 🚨 Overdue<sup class="count" id="overdueCount">' + data.overdue.length + '</sup>';
+                }
+                
+                if (data.overdue.length > 0) {
+                    let html = '';
+                    data.overdue.forEach((item, idx) => {
+                        const isActive = activeTask && item.link.includes(activeTask);
+                        html += `<div class="item"><span class="number">${idx + 1}</span> ${createTaskLink(item, isActive)}<sup class="project">${item.project}</sup> <span class="float-end text-muted">${item.days} days due</span></div>`;
+                    });
+                    document.getElementById('overdueBody').innerHTML = html;
+                    
+                    // Initialize popovers
+                    document.querySelectorAll('#overdueBody [data-bs-toggle="popover"]').forEach(el => {
+                        new bootstrap.Popover(el, {html: true});
+                    });
+                } else {
+                    document.getElementById('overdueBody').innerHTML = '<div style="color: #6b7280; font-style: italic;">✅ Nothing overdue</div>';
+                }
+                
+                // Today
+                const hasActiveToday = activeTask && data.today.some(item => item.link.includes(activeTask));
+                if (hasActiveToday) activeSection = 'today';
+                
+                document.getElementById('todayCount').textContent = data.today.length;
+                const todayButton = document.querySelector('[data-bs-target="#collapseToday"]');
+                if (hasActiveToday) {
+                    todayButton.innerHTML = '📌 📅 Today<sup class="count" id="todayCount">' + data.today.length + '</sup>';
+                }
+                
+                if (data.today.length > 0) {
+                    let html = '';
+                    data.today.forEach((item, idx) => {
+                        const isActive = activeTask && item.link.includes(activeTask);
+                        html += `<div class="item"><span class="number">${idx + 1}</span> ${createTaskLink(item, isActive)}<sup class="project">${item.project}</sup></div>`;
+                    });
+                    document.getElementById('todayBody').innerHTML = html;
+                    document.getElementById('collapseToday').classList.add('show');
+                    
+                    // Initialize popovers
+                    document.querySelectorAll('#todayBody [data-bs-toggle="popover"]').forEach(el => {
+                        new bootstrap.Popover(el, {html: true});
+                    });
+                }
+                
+                // Soon
+                const hasActiveSoon = activeTask && data.soon.some(item => item.link.includes(activeTask));
+                if (hasActiveSoon) activeSection = 'soon';
+                
+                document.getElementById('soonCount').textContent = data.soon.length;
+                const soonButton = document.querySelector('[data-bs-target="#collapseSoon"]');
+                if (hasActiveSoon) {
+                    soonButton.innerHTML = '📌 ⏰ Soon<sup class="count" id="soonCount">' + data.soon.length + '</sup>';
+                }
+                
+                if (data.soon.length > 0) {
+                    let html = '';
+                    data.soon.forEach((item, idx) => {
+                        const isActive = activeTask && item.link.includes(activeTask);
+                        html += `<div class="item"><span class="number">${idx + 1}</span> ${createTaskLink(item, isActive)}<sup class="project">${item.project}</sup> <span class="float-end text-muted">in ${item.days} days</span></div>`;
+                    });
+                    document.getElementById('soonBody').innerHTML = html;
+                    
+                    // Initialize popovers
+                    document.querySelectorAll('#soonBody [data-bs-toggle="popover"]').forEach(el => {
+                        new bootstrap.Popover(el, {html: true});
+                    });
+                }
+                
+                // Backlog
+                let backlogData = {items: []};
+                try {
+                    const backlogResp = await fetch('data/backlog.json');
+                    backlogData = await backlogResp.json();
+                } catch(e) {}
+                
+                const hasActiveBacklog = activeTask && backlogData.items.some(item => item.link.includes(activeTask));
+                if (hasActiveBacklog) activeSection = 'backlog';
+                
+                document.getElementById('backlogCount').textContent = backlogData.items.length;
+                const backlogButton = document.querySelector('[data-bs-target="#collapseBacklog"]');
+                if (hasActiveBacklog) {
+                    backlogButton.innerHTML = '📌 📋 Backlog<sup class="count" id="backlogCount">' + backlogData.items.length + '</sup>';
+                }
+                
+                if (backlogData.items.length > 0) {
+                    let html = '';
+                    backlogData.items.forEach((item, idx) => {
+                        const isActive = activeTask && item.link.includes(activeTask);
+                        html += `<div class="item"><span class="number">${idx + 1}</span> ${createTaskLink(item, isActive)}<sup class="project">${item.project}</sup> <span class="float-end text-muted">${item.daysAgo} days ago</span></div>`;
+                    });
+                    document.getElementById('backlogBody').innerHTML = html;
+                    
+                    // Initialize popovers
+                    document.querySelectorAll('#backlogBody [data-bs-toggle="popover"]').forEach(el => {
+                        new bootstrap.Popover(el, {html: true});
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading agenda:', error);
+                document.getElementById('overdueBody').innerHTML = `<div style="color: red;">Error: ${error.message}</div>`;
+            }
+        }
+        
+        async function loadCalendar() {
+            const container = document.getElementById('calendar-today');
+            try {
+                const response = await fetch('data/calendar-today.json');
+                const data = await response.json();
+                
+                const events = data.events || [];
+                
+                if (events.length === 0) {
+                    container.innerHTML = '<p class="text-muted">No events today</p>';
+                    document.getElementById('todayEventCount').textContent = '0 of 0';
+                    return;
+                }
+                
+                // Calculate current event based on time
+                const now = new Date();
+                const currentHour = now.getHours();
+                const currentMin = now.getMinutes();
+                const currentTime = currentHour * 60 + currentMin;
+                
+                let currentEventIndex = 0;
+                events.forEach((ev, idx) => {
+                    const start = new Date(ev.start.dateTime);
+                    const startTime = start.getHours() * 60 + start.getMinutes();
+                    if (currentTime >= startTime) {
+                        currentEventIndex = idx + 1;
+                    }
+                });
+                
+                // Update count (1 of 3, 2 of 3, etc)
+                document.getElementById('todayEventCount').textContent = 
+                    `${Math.min(currentEventIndex + 1, events.length)} of ${events.length}`;
+                
+                let html = '';
+                events.forEach(event => {
+                    const start = new Date(event.start.dateTime);
+                    const end = new Date(event.end.dateTime);
+                    const timeStr = start.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'}) + 
+                                  ' - ' + end.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'});
+                    
+                    html += `<div class="item">
+                        <strong>${timeStr}</strong> - ${event.summary}
+                    </div>`;
+                });
+                
+                container.innerHTML = html;
+            } catch (error) {
+                console.error('Failed to load calendar:', error);
+                container.innerHTML = '<p class="text-muted">Error loading calendar</p>';
+                document.getElementById('todayEventCount').textContent = '0 of 0';
+            }
+        }
+        
+        async function loadMoonPhase() {
+            try {
+                const response = await fetch('data/moon-phase.json');
+                const data = await response.json();
+                
+                // Update card content
+                document.getElementById('moon-emoji').textContent = data.emoji;
+                document.getElementById('moon-stage').textContent = data.stage;
+                document.getElementById('moon-action').textContent = data.action;
+                
+                // TODO: Dynamic background color (disabled for now)
+                // const color = data.color;
+                // const lighter = lightenColor(color, 0.7);
+                // document.body.style.backgroundColor = lighter;
+                
+            } catch (error) {
+                console.error('Failed to load moon phase:', error);
+                document.getElementById('moon-emoji').textContent = '🌙';
+                document.getElementById('moon-stage').textContent = 'Unknown';
+                document.getElementById('moon-action').textContent = 'Error loading moon phase';
+            }
+        }
+        
+        // Helper: lighten hex color by percentage (0-1)
+        // TODO: Re-enable when moon phase backgrounds are ready
+        function lightenColor(hex, percent) {
+            const num = parseInt(hex.replace('#', ''), 16);
+            const r = (num >> 16) + Math.round((255 - (num >> 16)) * percent);
+            const g = ((num >> 8) & 0x00FF) + Math.round((255 - ((num >> 8) & 0x00FF)) * percent);
+            const b = (num & 0x0000FF) + Math.round((255 - (num & 0x0000FF)) * percent);
+            return '#' + ((r << 16) | (g << 8) | b).toString(16).padStart(6, '0');
+        }
+        
+        async function loadTomorrow() {
+            const container = document.getElementById('tomorrowBody');
+            try {
+                const response = await fetch('data/calendar-tomorrow.json');
+                const data = await response.json();
+                
+                const events = data.events || [];
+                
+                if (events.length === 0) {
+                    container.innerHTML = '<p class="text-muted">No events tomorrow</p>';
+                    document.getElementById('tomorrowCount').textContent = '0';
+                    return;
+                }
+                
+                // Update count
+                document.getElementById('tomorrowCount').textContent = events.length;
+                
+                let html = '';
+                events.forEach(event => {
+                    const start = new Date(event.start.dateTime);
+                    const end = new Date(event.end.dateTime);
+                    const timeStr = start.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'}) + 
+                                  ' - ' + end.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'});
+                    
+                    html += `<div class="item">
+                        <strong>${timeStr}</strong> - ${event.summary}
+                    </div>`;
+                });
+                
+                container.innerHTML = html;
+            } catch (error) {
+                console.error('Failed to load tomorrow:', error);
+                container.innerHTML = '<p class="text-muted">Error loading tomorrow</p>';
+                document.getElementById('tomorrowCount').textContent = '0';
+            }
+        }
+        
+        async function loadYesterday() {
+            const container = document.getElementById('yesterdayBody');
+            try {
+                const response = await fetch('data/calendar-yesterday.json');
+                const data = await response.json();
+                
+                const events = data.events || [];
+                
+                if (events.length === 0) {
+                    container.innerHTML = '<p class="text-muted">No events yesterday</p>';
+                    document.getElementById('yesterdayCount').textContent = '0';
+                    return;
+                }
+                
+                // Update count
+                document.getElementById('yesterdayCount').textContent = events.length;
+                
+                let html = '';
+                events.forEach(event => {
+                    const start = new Date(event.start.dateTime);
+                    const end = new Date(event.end.dateTime);
+                    const timeStr = start.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'}) + 
+                                  ' - ' + end.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'});
+                    
+                    html += `<div class="item">
+                        <strong>${timeStr}</strong> - ${event.summary}
+                    </div>`;
+                });
+                
+                container.innerHTML = html;
+            } catch (error) {
+                console.error('Failed to load yesterday:', error);
+                container.innerHTML = '<p class="text-muted">No data for yesterday</p>';
+                document.getElementById('yesterdayCount').textContent = '0';
+            }
+        }
+        
+        async function loadTimeline() {
+            try {
+                const response = await fetch('data/calendar-today.json');
+                const data = await response.json();
+                
+                if (!data.events || data.events.length === 0) {
+                    document.getElementById('timeline-chart').innerHTML = '<p class="text-muted">No events today</p>';
+                    return;
+                }
+                
+                const now = new Date();
+                
+                // Build simple visual timeline
+                let html = '<div style="font-family: monospace; line-height: 1.8;">';
+                
+                // Sort events by start time
+                const events = data.events.sort((a, b) => 
+                    new Date(a.start.dateTime) - new Date(b.start.dateTime)
+                );
+                
+                let lastEnd = null;
+                
+                events.forEach((event, idx) => {
+                    const start = new Date(event.start.dateTime);
+                    const end = new Date(event.end.dateTime);
+                    
+                    // Show gap if there's free time
+                    if (lastEnd && start > lastEnd) {
+                        const gapMins = Math.round((start - lastEnd) / 60000);
+                        let gapStr;
+                        if (gapMins >= 60) {
+                            const hours = gapMins / 60;
+                            gapStr = hours % 1 === 0 ? `${hours}h` : `${hours.toFixed(1)}h`;
+                        } else {
+                            gapStr = `${gapMins} min`;
+                        }
+                        html += `<div style="color: #999; margin: 0.5rem 0;">`;
+                        html += `⬜ Free time (${gapStr})`;
+                        html += `</div>`;
+                    }
+                    
+                    // Event block
+                    const isNow = now >= start && now <= end;
+                    const isPast = now > end;
+                    const isFuture = now < start;
+                    
+                    let color = '#666';
+                    let marker = '📅';
+                    if (isNow) {
+                        color = 'red';
+                        marker = '🔴';
+                    } else if (isPast) {
+                        color = '#999';
+                        marker = '✅';
+                    }
+                    
+                    const timeStr = start.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'}) + 
+                                  ' - ' + end.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'});
+                    
+                    html += `<div style="color: ${color}; margin: 0.5rem 0; ${isNow ? 'font-weight: bold; background: #ffe0e0; padding: 0.5rem; border-left: 3px solid red;' : ''}">`;
+                    html += `${marker} <strong>${timeStr}</strong> - ${event.summary}`;
+                    html += `</div>`;
+                    
+                    lastEnd = end;
+                });
+                
+                html += '</div>';
+                
+                document.getElementById('timeline-chart').innerHTML = html;
+                
+            } catch (error) {
+                console.error('Failed to load timeline:', error);
+                document.getElementById('timeline-chart').innerHTML = `<p class="text-danger">Error: ${error.message}</p>`;
+            }
+        }
+        
+        // Load Projects
+        async function loadProjects() {
+            try {
+                const response = await fetch('data/projects.json');
+                const data = await response.json();
+                
+                // Helper: human-readable time ago
+                const timeAgo = (timestamp) => {
+                    const now = Math.floor(Date.now() / 1000);
+                    const diff = now - timestamp;
+                    const days = Math.floor(diff / 86400);
+                    
+                    if (days === 0) return 'today';
+                    if (days === 1) return 'yesterday';
+                    if (days < 7) return `${days} days ago`;
+                    if (days < 30) {
+                        const weeks = Math.floor(days / 7);
+                        return `${weeks} week${weeks > 1 ? 's' : ''} ago`;
+                    }
+                    const months = Math.floor(days / 30);
+                    return `${months} month${months > 1 ? 's' : ''} ago`;
+                };
+                
+                // Sort by last modified (most recent first)
+                const projects = data.projects.sort((a, b) => b.lastModified - a.lastModified);
+                
+                const accordion = document.getElementById('projectsAccordion');
+                accordion.innerHTML = projects.map((project, index) => {
+                    const statusBadge = project.status === 'Pending' 
+                        ? '<em style="color: #6c757d; font-size: 0.9em;">Pending</em>' 
+                        : '';
+                    
+                    return `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button ${index === 0 ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#project-${project.name}">
+                                ${project.emoji} ${project.name} ${statusBadge} <sup class="count">${timeAgo(project.lastModified)}</sup>
+                            </button>
+                        </h2>
+                        <div id="project-${project.name}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" data-bs-parent="#projectsAccordion">
+                            <div class="accordion-body">
+                                <p class="text-muted">${project.name} project epics coming soon...</p>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }).join('');
+            } catch (error) {
+                console.error('Error loading projects:', error);
+            }
+        }
+        
+        // Update counts for Core Prompts, Important Notes, Tasks, and Backstage
+        function updateCounts() {
+            // Tasks count (updated via loadTasks function)
+            // Core Prompts is static (7)
+            
+            // Important Notes count (count badges in that section)
+            const importantNotesSection = document.querySelector('#docs-important-notes .accordion-body');
+            if (importantNotesSection) {
+                const badges = importantNotesSection.querySelectorAll('.badge');
+                const countSup = document.getElementById('important-notes-count-sup');
+                if (countSup) {
+                    countSup.textContent = badges.length;
+                }
+            }
+            
+            // Backstage count (epic count from backstage/main/)
+            const backstageSection = document.querySelector('#docs-backstage .accordion-body');
+            if (backstageSection) {
+                const epicBadges = backstageSection.querySelectorAll('.badge');
+                const backstageHeader = document.querySelector('[data-bs-target="#docs-backstage"]');
+                const existingCount = backstageHeader.querySelector('.count');
+                if (existingCount) {
+                    existingCount.textContent = epicBadges.length;
+                } else {
+                    const countSpan = document.createElement('sup');
+                    countSpan.className = 'count';
+                    countSpan.textContent = epicBadges.length;
+                    backstageHeader.appendChild(countSpan);
+                }
+            }
+        }
+        
+        async function loadDocs() {
+            try {
+                const response = await fetch('data/docs.json');
+                const data = await response.json();
+                
+                // Helper function to create badge links
+                const createBadge = (item, color = 'secondary') => {
+                    const name = item.name || item.stem;
+                    const path = item.path;
+                    return `<a href="#" onclick="openInTypora('${path}'); return false;" class="badge bg-${color}">${name}</a>`;
+                };
+                
+                // Important Notes (life project root - .md files)
+                const importantNotesBody = document.querySelector('#docs-important-notes .accordion-body > div');
+                if (importantNotesBody && data.important_notes.length > 0) {
+                    importantNotesBody.innerHTML = data.important_notes.map(item => createBadge(item, 'warning')).join('\n');
+                }
+                
+                // Backstage (life/backstage/*.md)
+                const backstageBody = document.querySelector('#docs-backstage .accordion-body > div');
+                if (backstageBody && data.backstage.length > 0) {
+                    backstageBody.innerHTML = data.backstage.map(item => createBadge(item, 'info')).join('\n');
+                }
+                
+                // Skills (life/skills/*/SKILL.md)
+                const skillsBody = document.querySelector('#docs-skills .accordion-body > div');
+                if (skillsBody && data.skills.length > 0) {
+                    skillsBody.innerHTML = data.skills.map(item => createBadge(item, 'secondary')).join('\n');
+                    const skillsCount = document.querySelector('[data-bs-target="#docs-skills"] .count');
+                    if (skillsCount) skillsCount.textContent = data.skills.length;
+                }
+                
+                // Gaps (life/backstage/gaps/*.md)
+                const gapsBody = document.querySelector('#docs-gaps .accordion-body > div');
+                if (gapsBody && data.gaps.length > 0) {
+                    gapsBody.innerHTML = data.gaps.map(item => createBadge(item, 'danger')).join('\n');
+                    const gapsCount = document.querySelector('[data-bs-target="#docs-gaps"] .count');
+                    if (gapsCount) gapsCount.textContent = data.gaps.length;
+                }
+                
+                // Epic Notes (life/backstage/epic-notes/*.md)
+                const epicNotesBody = document.querySelector('#docs-epic-notes .accordion-body > div');
+                if (epicNotesBody && data.epic_notes.length > 0) {
+                    epicNotesBody.innerHTML = data.epic_notes.map(item => createBadge(item, 'info')).join('\n');
+                    const epicNotesCount = document.querySelector('[data-bs-target="#docs-epic-notes"] .count');
+                    if (epicNotesCount) epicNotesCount.textContent = data.epic_notes.length;
+                }
+                
+                // Memory (workspace/memory/*.md)
+                const memoryBody = document.querySelector('#docs-memory .accordion-body > div');
+                if (memoryBody && data.memory.length > 0) {
+                    memoryBody.innerHTML = data.memory.map(item => createBadge(item, 'dark')).join('\n');
+                    const memoryCount = document.querySelector('[data-bs-target="#docs-memory"] .count');
+                    if (memoryCount) memoryCount.textContent = data.memory.length;
+                }
+                
+                // Connections (life/connections/*.md)
+                const connectionsBody = document.querySelector('#docs-connections .accordion-body > div');
+                if (connectionsBody && data.connections.length > 0) {
+                    connectionsBody.innerHTML = data.connections.map(item => createBadge(item, 'warning')).join('\n');
+                    const connectionsCount = document.querySelector('[data-bs-target="#docs-connections"] .count');
+                    if (connectionsCount) connectionsCount.textContent = data.connections.length;
+                }
+                
+                // Scripts (workspace/scripts/*)
+                const scriptsBody = document.querySelector('#docs-scripts .accordion-body > div');
+                if (scriptsBody && data.scripts.length > 0) {
+                    scriptsBody.innerHTML = data.scripts.map(item => createBadge(item, 'success')).join('\n');
+                    const scriptsCount = document.querySelector('[data-bs-target="#docs-scripts"] .count');
+                    if (scriptsCount) scriptsCount.textContent = data.scripts.length;
+                }
+                
+            } catch (error) {
+                console.error('Failed to load docs:', error);
+            }
+        }
+        
+        async function loadTasks() {
+            try {
+                const response = await fetch('data/jira-tasks.json');
+                const data = await response.json();
+                
+                const tasksList = document.getElementById('tasks-list');
+                const overdueCount = document.getElementById('overdueCount');
+                
+                if (!data.tasks || data.tasks.length === 0) {
+                    tasksList.innerHTML = '<p class="text-muted">No active tasks</p>';
+                    if (overdueCount) overdueCount.textContent = '0';
+                    return;
+                }
+                
+                // For now, all tasks go to "Overdue" section
+                // TODO: split by Overdue/Today/Soon/Backlog based on due dates
+                if (overdueCount) overdueCount.textContent = data.tasks.length;
+                
+                tasksList.innerHTML = data.tasks.map(task => `
+                    <div class="mb-2">
+                        <span class="badge bg-primary">${task.key}</span>
+                        <a href="${task.url}" target="_blank" class="ms-2">${task.summary}</a>
+                        <span class="text-muted ms-2">${task.status}</span>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading tasks:', error);
+                document.getElementById('tasks-list').innerHTML = '<p class="text-muted">Error loading tasks</p>';
+                const overdueCount = document.getElementById('overdueCount');
+                if (overdueCount) overdueCount.textContent = '0';
+            }
+        }
+        
+        async function loadRoadmapUpdated() {
+            try {
+                const response = await fetch('/Users/nfrota/.openclaw/workspace/ROADMAP.md');
+                const text = await response.text();
+                
+                // Extract "Last updated: YYYY-MM-DD" from footer
+                const match = text.match(/\*Last updated: ([\d-]+)\*/);
+                if (match) {
+                    document.getElementById('roadmap-updated').textContent = `(updated ${match[1]})`;
+                }
+            } catch (error) {
+                console.error('Error loading roadmap updated date:', error);
+            }
+        }
+        
+        async function loadLifeEpics() {
+            try {
+                const response = await fetch('data/life-epics.json');
+                const epics = await response.json();
+                
+                const container = document.getElementById('life-epics-container');
+                if (!container) return;
+                
+                let html = '';
+                let epicNumber = 1;
+                
+                epics.forEach(epic => {
+                    const epicId = `life-epic-${epicNumber}`;
+                    const numberEmoji = getNumberEmoji(epicNumber);
+                    
+                    // Convert content string to HTML (preserve markdown-like formatting)
+                    const contentHtml = epic.content
+                        .split('\n')
+                        .map(line => {
+                            line = line.trim();
+                            if (!line) return '';
+                            if (line.startsWith('- [x]')) return `<p>✅ ${line.substring(5)}</p>`;
+                            if (line.startsWith('- [ ]')) return `<p>⬜ ${line.substring(5)}</p>`;
+                            if (line.startsWith('- ')) return `<p>• ${line.substring(2)}</p>`;
+                            if (line.startsWith('**')) return `<p><strong>${line.replace(/\*\*/g, '')}</strong></p>`;
+                            return `<p>${line}</p>`;
+                        })
+                        .filter(l => l)
+                        .join('');
+                    
+                    html += `
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${epicId}">
+                                        ${numberEmoji} ${epic.title}
+                                    </button>
+                                </h2>
+                                <div id="${epicId}" class="accordion-collapse collapse" data-bs-parent="">
+                                    <div class="accordion-body">
+                                        ${contentHtml}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    epicNumber++;
+                });
+                
+                container.innerHTML = html;
+            } catch (error) {
+                console.error('Failed to load life epics:', error);
+            }
+        }
+        
+        function getNumberEmoji(num) {
+            const emojis = ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟','1️⃣1️⃣','1️⃣2️⃣','1️⃣3️⃣','1️⃣4️⃣','1️⃣5️⃣','1️⃣6️⃣','1️⃣7️⃣'];
+            return emojis[num - 1] || num;
+        }
+        
+        loadMoonPhase();
+        loadAgenda();
+        loadCalendar();
+        loadYesterday();
+        loadTomorrow();
+        loadTimeline();
+        loadProjects();
+        loadTasks();
+        loadLifeEpics();
+        loadDocs();
+        loadRoadmapUpdated();
+        updateCounts();
+        setInterval(loadAgenda, 30000);
+        
+        // Poll refresh status (cronjob indicator)
+        let lastKnownRun = null;
+        async function checkRefreshStatus() {
+            try {
+                const response = await fetch('http://localhost:8766/status');
+                const data = await response.json();
+                const btn = document.getElementById('reloadTasksBtn');
+                
+                if (data.running && !btn.disabled) {
+                    // Cronjob started
+                    btn.textContent = '⏳';
+                    btn.disabled = true;
+                } else if (!data.running && btn.disabled && btn.textContent === '⏳') {
+                    // Cronjob finished - reload data
+                    if (lastKnownRun !== data.last_run) {
+                        lastKnownRun = data.last_run;
+                        await Promise.all([
+                            loadAgenda(),
+                            loadCalendar(),
+                            loadYesterday(),
+                            loadTomorrow(),
+                            loadTimeline(),
+                            loadProjects(),
+                            loadTasks(),
+                            loadLifeEpics(),
+                            loadDocs()
+                        ]);
+                        btn.textContent = '✅';
+                        setTimeout(() => {
+                            btn.textContent = '🔄';
+                            btn.disabled = false;
+                        }, 1500);
+                    }
+                }
+            } catch(e) {
+                // Ignore errors
+            }
+        }
+        setInterval(checkRefreshStatus, 5000); // Check every 5s
+        
+        // Reload button - just refetch jira.json (heartbeat updates it)
+        // Button click: refresh + reload page
+        document.getElementById('reloadTasksBtn').addEventListener('click', async function() {
+            this.textContent = '⏳';
+            this.disabled = true;
+            
+            try {
+                // Call refresh backend (regenerates all JSONs)
+                const refreshResponse = await fetch('http://localhost:8766/refresh');
+                const refreshData = await refreshResponse.json();
+                
+                if (refreshData.status !== 'success') {
+                    throw new Error('Refresh failed: ' + (refreshData.error || 'Unknown error'));
+                }
+                
+                // Reload page to show updated data
+                location.reload();
+                
+            } catch(error) {
+                console.error('Reload failed:', error);
+                this.textContent = '❌';
+                setTimeout(() => {
+                    this.textContent = '🔄';
+                    this.disabled = false;
+                }, 2000);
+            }
+        });
+        
+        // Poll for cronjob updates (every 30s)
+        let lastKnownRun = null;
+        async function checkRefreshStatus() {
+            try {
+                const response = await fetch('http://localhost:8766/status');
+                const data = await response.json();
+                const btn = document.getElementById('reloadTasksBtn');
+                
+                // Initialize on first poll
+                if (lastKnownRun === null) {
+                    lastKnownRun = data.last_run;
+                    return;
+                }
+                
+                // Detect cronjob refresh (last_run changed, button not disabled)
+                if (data.last_run && data.last_run > lastKnownRun && !btn.disabled) {
+                    btn.textContent = '🌟'; // Indicate new data available
+                    lastKnownRun = data.last_run;
+                }
+                
+                // Show running indicator if cronjob is active
+                if (data.running && !btn.disabled) {
+                    btn.textContent = '⏳';
+                }
+                
+            } catch(error) {
+                // Silently fail (server might be down)
+                console.debug('Status poll failed:', error);
+            }
+        }
+        
+        // Poll every 30s for cronjob updates
+        setInterval(checkRefreshStatus, 30000);
+        checkRefreshStatus(); // Initial check
+        
+        // Initialize Mermaid
+        mermaid.initialize({ startOnLoad: false, theme: 'default' });
+        
+        // Render mermaid when ⚙️ tab is shown
+        document.getElementById('docs-tab').addEventListener('shown.bs.tab', () => {
+            setTimeout(() => {
+                mermaid.run();
+            }, 100);
+        });
+        
+        // Initialize all popovers globally (top/bottom only)
+        document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => {
+            new bootstrap.Popover(el, {
+                html: true,
+                placement: 'auto',
+                fallbackPlacements: ['top', 'bottom']
+            });
+        });
+    </script>
+</body>
+</html>
