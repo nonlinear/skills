@@ -2,7 +2,7 @@
 name: better-kavita
 type: better
 version: 0.1.0
-status: experimental
+status: draft
 description: Offline reading for Kavita (Service Worker cache for comics/books)
 author: nonlinear
 license: MIT
