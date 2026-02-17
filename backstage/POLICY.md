@@ -86,16 +86,16 @@ graph LR
 
 ---
 
-## Inject Skills Frontmatter
+## Better Skills Frontmatter
 
-**For skills with `type: inject`** (browser/app customization), add `inject:` nested block:
+**For skills in `better/` folder** (browser/app customization), add `better:` nested block:
 
 ```yaml
 ---
-name: skill-name-inject
-type: inject
+name: skill-name
+type: better
 version: X.Y.Z
-inject:
+better:
   type: css | service-worker | browser-extension | bookmarklet | userscript
   app:
     name: AppName
@@ -108,32 +108,44 @@ inject:
 ```
 
 **Fields:**
-- `inject.type` - Injection technique (CSS, Service Worker, etc.)
-- `inject.app.name` - Target app name
-- `inject.app.url` - Official app URL
-- `inject.app.version` - Tested version (compatibility tracking)
-- `inject.platform` - Target platform (optional, default: `web`)
-- `inject.browser` - Browser compatibility (optional, if web)
-- `inject.reference` - Link to technique doc (shared across skills)
+- `better.type` - Customization technique (CSS, Service Worker, etc.)
+- `better.app.name` - Target app name
+- `better.app.url` - Official app URL
+- `better.app.version` - Tested version (compatibility tracking)
+- `better.platform` - Target platform (optional, default: `web`)
+- `better.browser` - Browser compatibility (optional, if web)
+- `better.reference` - Link to technique doc (shared across skills)
 
 **Example:**
 ```yaml
 ---
-name: openclaw-inject
-type: inject
+name: openclaw
+type: better
 version: 0.1.0
-inject:
+better:
   type: css
   app:
     name: OpenClaw
     url: https://openclaw.ai
     version: 2026.2.9
   browser: chrome
-  reference: css-injection.md
+  reference: css-customization.md
 ---
 ```
 
-**Canonical technique docs** live in inject repo (`inject/docs/`), skills reference them.
+**Structure:**
+```
+skills/better/
+├── SKILL.md (master skill - better group)
+├── openclaw/
+│   └── SKILL.md
+├── kavita/
+│   └── SKILL.md
+└── komga/
+    └── SKILL.md
+```
+
+**Canonical technique docs** live in better/ repo docs, skills reference them.
 
 ---
 
