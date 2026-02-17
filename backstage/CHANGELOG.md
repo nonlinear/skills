@@ -16,8 +16,35 @@
 graph LR
     A[✅ v1.0.0 Skill Protocol]
     B[✅ v0.1.0 Skill Reordering]
+    C[✅ v0.2.0 Better Apps]
     A --> B
+    B --> C
 ```
+
+## v0.2.0 - 2026-02-17
+
+### Better Apps Architecture
+
+**Description:** App customization skills (CSS, Service Worker, per-app toggle)
+
+**Accomplished:**
+- Created better/ folder structure (app customization namespace)
+- Created better-openclaw (CSS injection, dark theme, minimal UI)
+- Created better-kavita (Service Worker offline storage)
+- Created better-komga (Service Worker offline storage)
+- Per-app toggle system (better/{app}/toggle.sh)
+- Standalone skills (no shared dependencies)
+- Updated POLICY.md (better frontmatter schema: type, app, platform, browser)
+- Epic notes: v0.4.0-offline-browser-storage.md (Service Worker research)
+
+**Skills created:**
+- `better-openclaw` (CSS customization)
+- `better-kavita` (offline reading)
+- `better-komga` (offline reading)
+
+**Details:** [epic-notes/v0.4.0-offline-browser-storage.md](epic-notes/v0.4.0-offline-browser-storage.md)
+
+---
 
 ## v1.0.0 - 2026-02-15
 
