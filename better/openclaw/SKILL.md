@@ -1,5 +1,5 @@
 ---
-name: openclaw
+name: better-openclaw
 type: better
 version: 0.1.0
 status: stable

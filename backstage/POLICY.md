@@ -88,11 +88,34 @@ graph LR
 
 ## Better Skills Frontmatter
 
-**For skills in `better/` folder** (browser/app customization), add `better:` nested block:
+**For skills in `better/` folder** (browser/app customization):
+
+### Folder vs Name Convention
+
+**Folder structure:** `skills/better/{app}/`  
+**Skill name:** `better-{app}`
+
+Example:
+```
+skills/better/openclaw/SKILL.md  ← folder: better/openclaw/
+name: better-openclaw            ← skill name (published)
+```
+
+**Why:**
+- **Folder** = organization (grouped by better/)
+- **Name** = identity (published as better-openclaw)
+- **Best of both:** Visual grouping + independent packages
+
+### Frontmatter Schema
+
+**All skills in `better/` folder must:**
+1. Use `type: better`
+2. Use `name: better-{app}` format
+3. Include `better:` nested block
 
 ```yaml
 ---
-name: skill-name
+name: better-{app}
 type: better
 version: X.Y.Z
 better:
@@ -119,7 +142,7 @@ better:
 **Example:**
 ```yaml
 ---
-name: openclaw
+name: better-openclaw
 type: better
 version: 0.1.0
 better:
@@ -138,11 +161,11 @@ better:
 skills/better/
 ├── SKILL.md (master skill - better group)
 ├── openclaw/
-│   └── SKILL.md
+│   └── SKILL.md (name: better-openclaw)
 ├── kavita/
-│   └── SKILL.md
+│   └── SKILL.md (name: better-kavita)
 └── komga/
-    └── SKILL.md
+    └── SKILL.md (name: better-komga)
 ```
 
 **Canonical technique docs** live in better/ repo docs, skills reference them.
