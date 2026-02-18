@@ -16,33 +16,30 @@ graph LR
     A[✅ v1.0.0 Skill Protocol]
     B[✅ v0.1.0 Skill Reordering]
     C[✅ v0.2.0 Better Apps]
-    D[📋 v1.1.0 arch]
+    D[📋 v1.1.0 Roadmap Skill]
     A --> B
     B --> C
     C --> D
-    E[📋 v1.2.0 i-ching]
+    E[📋 v1.2.0 arch]
     D --> E
-    F[📋 v1.3.0 notify]
+    F[📋 v1.3.0 i-ching]
     E --> F
-    G[📋 v1.4.0 system-detective]
+    G[📋 v1.4.0 notify]
     F --> G
-    H[📋 v1.5.0 find-books]
+    H[📋 v1.5.0 system-detective]
     G --> H
-    I[📋 v1.6.0 open-with]
+    I[📋 v1.6.0 find-books]
     H --> I
-    J[📋 v1.7.0 use-for]
+    J[📋 v1.7.0 open-with]
     I --> J
-<<<<<<< HEAD
-```
-
-
-=======
-    K[📋 v1.8.0 rebranding]
+    K[📋 v1.8.0 use-for]
     J --> K
-    L[📋 v1.9.0 proton-mail]
+    L[📋 v1.9.0 rebranding]
     K --> L
-    M[📋 v1.10.0 design-discrepancy]
+    M[📋 v1.10.0 proton-mail]
     L --> M
+    N[📋 v1.11.0 design-discrepancy]
+    M --> N
 ```
 
 ## v0.2.0
@@ -65,6 +62,30 @@ graph LR
 >>>>>>> 2f6e8b2 (Add v0.2.0 better-apps epic notes and ROADMAP entry)
 
 ## v1.1.0
+
+### Roadmap Skill
+
+**Description:** Localhost wrapper (like arch) that loads ROADMAP.md and displays as interactive to-do list organized by epics
+
+**Goal:** Visual epic management with automatic renumbering and task reordering
+
+**Tasks:**
+- [ ] Phase 1: Load ROADMAP.md (read-only viewer)
+- [ ] Phase 2: Check tasks (mark complete)
+- [ ] Phase 3: Add/remove/reorder tasks within epics
+- [ ] Phase 4: Reorder epics
+- [ ] Phase 5: Automatic renumbering (v0.X.0 → v0.Y.0 on reorder)
+
+**Success:**
+- Interactive ROADMAP viewer (localhost)
+- Task completion (checkboxes work)
+- Drag-and-drop epic reordering
+- Auto-renumber on epic move
+- Saves back to ROADMAP.md
+
+---
+
+## v1.2.0
 
 ### Architecture Design Workflow
 
