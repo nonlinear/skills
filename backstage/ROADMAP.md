@@ -1,15 +1,12 @@
 # Skills - Roadmap
+
 > 🤖
-> | Backstage files | Description |
-> | --------------- | ----------- |
-> | [README](../README.md) | Our project |
-> | [ROADMAP](ROADMAP.md) | What we wanna do |
-> | [CHANGELOG](CHANGELOG.md) | What we did |
-> | [POLICY](POLICY.md) | How we do it |
-> | [HEALTH](HEALTH.md) | What we accept |
+> This project follows [backstage protocol](https://github.com/nonlinear/backstage) v0.3.4
 >
-> We use **[backstage protocol](https://github.com/nonlinear/backstage)**, v0.3.4
+> - [README](../README.md) 👏 [ROADMAP](ROADMAP.md) 👏 [CHANGELOG](CHANGELOG.md) 👏 checks: [local](checks/local/) <sup>3</sup>, [global](checks/global/) <sup>28</sup>
+>
 > 🤖
+
 
 ```mermaid
 graph LR
@@ -42,7 +39,7 @@ graph LR
     M --> N
 ```
 
-## v0.2.0
+## v0.2.0 | [notes](epic-notes/v0.2.0-better-apps.md)
 
 ### ✅ Better Apps | [notes](epic-notes/v0.2.0-better-apps.md)
 
@@ -61,7 +58,7 @@ graph LR
 ---
 >>>>>>> 2f6e8b2 (Add v0.2.0 better-apps epic notes and ROADMAP entry)
 
-## v1.1.0
+## v1.1.0 | [notes](epic-notes/v1.1.0-arch/)
 
 ### Roadmap Skill
 
@@ -134,7 +131,7 @@ graph LR
 
 ---
 
-## v1.8.0
+## v1.8.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
 
 ### Rebranding Menu
 
@@ -272,7 +269,7 @@ graph LR
 
 ---
 
-## v1.9.0
+## v1.9.0 | [notes](epic-notes/v1.9.0-proton-mail-finder.md)
 
 ### proton-mail-finder
 
@@ -302,7 +299,7 @@ graph LR
 
 ---
 
-## v1.8.0
+## v1.8.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
 
 ### git-flipbook
 

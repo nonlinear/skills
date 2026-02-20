@@ -84,17 +84,15 @@
 
 ---
 
+
 > 🤖
-> | Backstage files | Description |
-> | --------------- | ----------- |
-> | [README](README.md) | Our project |
-> | [ROADMAP](backstage/ROADMAP.md) | What we wanna do |
-> | [CHANGELOG](backstage/CHANGELOG.md) | What we did |
-> | [POLICY](backstage/POLICY.md) | How we do it |
-> | [HEALTH](backstage/HEALTH.md) | What we accept |
 >
-> We use **[backstage protocol](https://github.com/nonlinear/backstage)**
+> This project follows [backstage protocol](https://github.com/nonlinear/backstage) v0.3.4
+>
+> [README](README.md) 👏 [ROADMAP](backstage/ROADMAP.md) 👏 [CHANGELOG](backstage/CHANGELOG.md) 👏 checks: [local](backstage/checks/local/) <sup>3</sup>, [global](backstage/checks/global/) <sup>28</sup>
+>
 > 🤖
+
 
 ```mermaid
 graph LR
