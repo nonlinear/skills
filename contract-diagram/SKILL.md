@@ -26,7 +26,7 @@ flowchart TD
     SUPERVISED["Supervised phase 3️⃣"]
     SIGNOFF["Sign-off phase 4️⃣"]
     DEVELOPMENT["Development phase 5️⃣"]
-    TESTS{"Passed tests? 6️⃣"}
+    TESTS{"Pass checks? 6️⃣"}
     PUBLISH["Publish"]
     
     TRIGGER --> CHECK_CONTRACT
@@ -67,7 +67,7 @@ flowchart TD
 
 **5️⃣** Development phase: AI implements based on approved diagram + notes. Cycle back to supervised if blockers found.
 
-**6️⃣** Passed tests?: Validate implementation. Yes = publish. No = back to supervised for fixes.
+**6️⃣** Pass checks?: Validate implementation. Yes = publish. No = back to supervised for fixes.
 
 ---
 
