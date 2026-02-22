@@ -21,7 +21,7 @@ graph LR
     A --> B
     B --> C
     C --> D
-    E[📋 v1.2.0 arch]
+    E[📋 v1.2.0 Contract Diagrams]
     D --> E
     F[📋 v1.3.0 i-ching]
     E --> F
@@ -88,9 +88,9 @@ graph LR
 
 ## v1.2.0
 
-### Architecture Design Workflow
+### Contract Diagrams
 
-**Description:** Architecture design exercises
+**Description:** Architecture design exercises with contract diagrams
 
 **Tasks:**
 - [ ] https://social.praxis.nyc/@nonlinear/116037514895910044
