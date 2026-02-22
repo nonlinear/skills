@@ -28,7 +28,8 @@ if [ $missing_count -gt 0 ]; then
   echo ""
   echo "⚠️ $missing_count skill(s) need symlinks"
   echo "Fix: ln -s ~/Documents/skills/SKILL-NAME ~/.openclaw/workspace/skills/SKILL-NAME"
-  exit 0  # Fail (missing symlinks)
+  exit 1  # Fail (missing symlinks)
 fi
 
-exit 1  # Pass (all symlinks present)
+echo "✅ All skills have symlinks in workspace"
+exit 0  # Pass (all symlinks present)
