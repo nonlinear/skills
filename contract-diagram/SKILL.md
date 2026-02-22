@@ -1,6 +1,6 @@
 ---
 name: contract-diagram
-description: "Collaborative contract diagram design via mermaid. Design before coding through iterative AI refinement. Triggers: 'design contract for X', 'let's diagram Y', 'vamos desenhar contrato de Z', 'before coding let's map this'. Use for: system architecture, API contracts, database models, workflows, infrastructure planning."
+description: "Collaborative contract diagram design via mermaid diagrams with AI."
 type: public
 version: 1.0.0
 status: stable
