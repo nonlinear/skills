@@ -34,15 +34,6 @@ flowchart TD
     CHECK_DIAGRAM -->|yes, more than one| ERROR
 ```
 
-🖊️ **Contract diagram, PHASE phase. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**
-
-
-🖊️ **Contract diagram, PHASE phase. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**
-
-
-🖊️ **Contract diagram, PHASE phase. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**
-
-
 **1️⃣** Claiming a diagram: inject title + CSS
 
 **2️⃣** Contract violated stability rule. Each contract file can have ONLY ONE mermaid diagram. Multiple diagrams = noise, breaks muscle memory, prevents visual diff. If user needs multiple views: create separate contract files (e.g., deployment-contract.md, data-contract.md) OR refactor existing diagram to show all concerns in one unified view.
