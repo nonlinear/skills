@@ -167,6 +167,18 @@ AI:
 
 ---
 
+## Epic: Frontmatter Enhancement (LATER)
+
+**Problem:** Frontmatter visible in MD but hidden in wrapper (NOW = hidden to reduce noise).
+
+**Future options:**
+1. **Present frontmatter better** - styled metadata card (name, version, status, dependencies)
+2. **Auto-scroll to diagram** - skip frontmatter, jump straight to first mermaid
+
+**Decision:** Defer until v1.2.0+ (after core protocol stable).
+
+---
+
 ## Enforcement Protocol
 
 **When I detect "contract: [topic]" trigger:**
