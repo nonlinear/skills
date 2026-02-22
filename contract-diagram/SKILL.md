@@ -37,6 +37,9 @@ flowchart TD
     CHECK_DIAGRAM -->|yes, more than one| ERROR
 ```
 
+**Contract diagram, PHASE gray. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**
+
+
 **1️⃣** When creating new diagram: add header text below mermaid: `**Contract diagram, PHASE gray. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**`
 
 When claiming existing diagram (has one mermaid already):
