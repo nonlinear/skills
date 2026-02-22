@@ -26,7 +26,8 @@ flowchart TD
     SUPERVISED["Supervised phase 3️⃣"]
     SIGNOFF["Sign-off phase 4️⃣"]
     DEVELOPMENT["Development phase 5️⃣"]
-    DONE["DONE"]
+    TESTS{"Passed tests? 6️⃣"}
+    PUBLISH["Publish"]
     
     TRIGGER --> CHECK_CONTRACT
     CHECK_CONTRACT -->|yes| OPEN
@@ -43,7 +44,9 @@ flowchart TD
     SUPERVISED --> SIGNOFF
     SIGNOFF --> DEVELOPMENT
     DEVELOPMENT --> SUPERVISED
-    DEVELOPMENT --> DONE
+    DEVELOPMENT --> TESTS
+    TESTS -->|yes| PUBLISH
+    TESTS -->|no| SUPERVISED
     
     classDef default fill:#e0e0e0,stroke:#666,color:#000
     classDef approved fill:#4A90E2,stroke:#2E5C8A,color:#fff
@@ -51,7 +54,7 @@ flowchart TD
     
     class TRIGGER,CHECK_CONTRACT,OPEN,CLARIFY approved
     class CHECK_DIAGRAM,CREATE,CLAIM,ERROR developed
-    class SUPERVISED,SIGNOFF,DEVELOPMENT,DONE default
+    class SUPERVISED,SIGNOFF,DEVELOPMENT,TESTS,PUBLISH default
 ```
 
 **1️⃣** Claiming: Wrapper injects title + CSS on first load
@@ -63,6 +66,8 @@ flowchart TD
 **4️⃣** Sign-off phase: Verify dependencies and auth needed for unsupervised development
 
 **5️⃣** Development phase: AI implements based on approved diagram + notes. Cycle back to supervised if blockers found.
+
+**6️⃣** Passed tests?: Validate implementation. Yes = publish. No = back to supervised for fixes.
 
 ---
 
