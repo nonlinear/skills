@@ -132,7 +132,7 @@
                 
                 // If missing in MD → CLAIM (write to file)
                 if (!hasHeaderInMD) {
-                    const headerText = '\n\n**Contract diagram, PHASE gray. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**\n';
+                    const headerText = '\n\n**Contract diagram, PHASE phase. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**\n';
                     const modifiedMarkdown = markdown.replace(/(```mermaid[\s\S]*?```)/, `$1${headerText}`);
                     
                     // POST to /write endpoint
@@ -153,7 +153,7 @@
                 // Show header in DOM (even if write pending)
                 if (!nextElement || !nextElement.textContent.match(headerRegex)) {
                     const header = document.createElement('p');
-                    header.innerHTML = '<strong>Contract diagram, PHASE gray. <a href="https://github.com/nonlinear/skills/tree/main/contract-diagram#readme">Rules</a></strong>';
+                    header.innerHTML = '<strong>Contract diagram, PHASE phase. <a href="https://github.com/nonlinear/skills/tree/main/contract-diagram#readme">Rules</a></strong>';
                     firstMermaid.insertAdjacentElement('afterend', header);
                 }
                 
