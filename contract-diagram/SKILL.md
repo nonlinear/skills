@@ -35,9 +35,9 @@ flowchart TD
     CHECK_DIAGRAM -->|yes, one| CLAIM
 ```
 
-**1️⃣:** Diagram = mermaid + header text: "This is a contract diagram, [view rules](link to github README.md)"
+1️⃣ Diagram = mermaid + header text: "This is a contract diagram, [view rules](link to github README.md)"
 
-**2️⃣:** Assign numbered note to existing diagram (continue numbering from existing notes)
+2️⃣ Assign numbered note to existing diagram (continue numbering from existing notes)
 
 ---
 
