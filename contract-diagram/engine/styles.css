@@ -30,8 +30,9 @@ body {
 }
 
 main.container {
-    padding: 15px;
-    border: 3px solid red;
+    padding: 15px !important;
+    border: 3px solid red !important;
+    background: yellow !important; /* DEBUG */
 }
 
 /* Mermaid container */
