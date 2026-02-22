@@ -88,7 +88,7 @@ graph LR
 
 ## v1.2.0
 
-### Contract Diagrams
+### Contract Diagram
 
 **Description:** Architecture design exercises with contract diagrams
 
