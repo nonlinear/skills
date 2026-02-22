@@ -3,7 +3,7 @@
 **Contract diagram aims to enforce a legible document between AIs and humans**
 
 ```mermaid
-flowchart LR
+flowchart TD
     DEFAULT["1️⃣ .default"]:::default
     APPROVED["2️⃣ .approved"]:::approved
     BLOCKER["3️⃣ .blocker"]:::blocker

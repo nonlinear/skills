@@ -16,7 +16,7 @@ license: MIT
 **Alias:** `contract` (contract = agreement before implementation)
 
 ```mermaid
-flowchart LR
+flowchart TD
     TRIGGER["🎤 User Trigger<br/>'design X'"]
     CREATE["👷 Create MD<br/>epic-notes/"]
     DRAFT["⚫ Gray Flow<br/>Structure only"]
@@ -74,6 +74,30 @@ flowchart LR
 ```
 
 **Notes without numbers = just explanations, turn yellow when approved.**
+
+---
+
+## Localhost Trigger
+
+**Trigger:** "lets diagram [PATH]"
+
+**Assumes:** File at PATH already has mermaid diagram.
+
+**Action:**
+1. Start localhost server (port 8080)
+2. Open browser: `http://localhost:8080/?md=[PATH]`
+3. Diagram renders with color protocol
+
+**Example:**
+```
+User: "lets diagram epic-notes/webhook-contract.md"
+AI: 
+  cd ~/Documents/skills/contract-diagram/engine
+  ./serve.sh &
+  open "http://localhost:8080/?md=../../[PROJECT]/epic-notes/webhook-contract.md"
+```
+
+**Hot reload enabled by default** (2s interval).
 
 ---
 
