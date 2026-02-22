@@ -150,6 +150,38 @@
             }
         }
 
+        // Ensure ALL nodes have a class (default: class-1-gray)
+        function ensureNodeClasses(mermaidCode) {
+            const lines = mermaidCode.split('\n');
+            const result = [];
+            const nodesSeen = new Set();
+            
+            for (let line of lines) {
+                // Skip empty, comments, init blocks
+                if (!line.trim() || line.trim().startsWith('%%')) {
+                    result.push(line);
+                    continue;
+                }
+                
+                // Match node definitions: NODE_ID["label"] or NODE_ID("label") or NODE_ID{label}
+                const nodeDefMatch = line.match(/^\s*(\w+)([\[\(\{])/);
+                if (nodeDefMatch) {
+                    const nodeId = nodeDefMatch[1];
+                    nodesSeen.add(nodeId);
+                    
+                    // Check if line already has :::class
+                    if (!line.includes(':::class-')) {
+                        // Add default class
+                        line = line.trimEnd() + ':::class-1-gray';
+                    }
+                }
+                
+                result.push(line);
+            }
+            
+            return result.join('\n');
+        }
+
         async function renderMarkdownWithMermaid(markdown) {
             const container = document.querySelector('.container');
             
@@ -234,6 +266,9 @@
                         
                         // Remove existing %%{init:...}%% declarations
                         mermaidCode = mermaidCode.replace(/%%\{init:[\s\S]*?\}%%\n?/g, '');
+                        
+                        // Ensure ALL nodes have classes
+                        mermaidCode = ensureNodeClasses(mermaidCode);
                         
                         // Inject OUR CSS from styles.css (source of truth)
                         const ourInit = await getThemeFromCSS();
