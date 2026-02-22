@@ -17,34 +17,15 @@ license: MIT
 
 ```mermaid
 flowchart TD
-    TRIGGER["🎤 User Trigger<br/>'design X'"]
-    CREATE["👷 Create MD<br/>epic-notes/"]
-    DRAFT["⚫ Gray Flow<br/>Structure only"]
-    NOTES["🔴 Red Notes<br/>Discussions"]
-    RESEARCH["📚 Validate<br/>Books/Docs"]
-    APPROVE["🟨 Yellow<br/>All approved"]
-    EXECUTE["🔵 Blue<br/>Implementation"]
-    ERROR["🔴 Red Again<br/>Roadblocks"]
+    TRIGGER["Trigger + Contract"]
+    CHECK{"Has .md?"}
+    OPEN["Open Contract"]
+    CLARIFY["Clarify"]
     
-    TRIGGER --> CREATE
-    CREATE --> DRAFT
-    DRAFT --> NOTES
-    NOTES --> RESEARCH
-    RESEARCH -->|New issues| NOTES
-    RESEARCH -->|Validated| APPROVE
-    APPROVE --> EXECUTE
-    EXECUTE -->|Success| EXECUTE
-    EXECUTE -->|Blocked| ERROR
-    ERROR --> NOTES
-    
-    style TRIGGER fill:#E8EAF6,stroke:#5C6BC0,color:#000
-    style CREATE fill:#FFF9C4,stroke:#F9A825,color:#000
-    style DRAFT fill:#CECECE,stroke:#9E9E9E,color:#000
-    style NOTES fill:#FAB3AE,stroke:#E57373,color:#000
-    style RESEARCH fill:#C5E1A5,stroke:#7CB342,color:#000
-    style APPROVE fill:#FFE083,stroke:#FFB74D,color:#000
-    style EXECUTE fill:#90CAF9,stroke:#64B5F6,color:#000
-    style ERROR fill:#FAB3AE,stroke:#E57373,color:#000
+    TRIGGER --> CHECK
+    CHECK -->|Yes| OPEN
+    CHECK -->|No| CLARIFY
+    CLARIFY --> TRIGGER
 ```
 
 ---

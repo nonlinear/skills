@@ -4,11 +4,11 @@
 
 ```mermaid
 flowchart TD
-    DEFAULT["1️⃣ .default"]:::default
-    APPROVED["2️⃣ .approved"]:::approved
-    BLOCKER["3️⃣ .blocker"]:::blocker
-    DEVELOPED["4️⃣ .developed"]:::developed
-    DEVELOPED_NOTES["5️⃣ .developed-notes"]:::developed-notes
+    DEFAULT[".default"]:::default
+    APPROVED[".approved"]:::approved
+    BLOCKER[".blocker"]:::blocker
+    DEVELOPED[".developed"]:::developed
+    DEVELOPED_NOTES[".developed-notes"]:::developed-notes
     
     DEFAULT -->|"Approved"| APPROVED
     APPROVED -->|"Not approved"| BLOCKER
