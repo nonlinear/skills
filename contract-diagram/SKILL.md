@@ -22,8 +22,8 @@ flowchart TD
     OPEN["open contract"]
     CLARIFY["clarify"]
     CHECK_DIAGRAM{"has diagram?"}
-    CREATE["create diagram for exercise 1️⃣"]
-    CLAIM["claim diagram for exercise 1️⃣"]
+    CREATE["create diagram 1️⃣"]
+    CLAIM["claim diagram 1️⃣"]
     ERROR["Error: one mermaid per contract 2️⃣"]
     
     TRIGGER --> CHECK_CONTRACT
