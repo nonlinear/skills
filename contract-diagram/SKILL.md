@@ -18,15 +18,26 @@ license: MIT
 ```mermaid
 flowchart TD
     TRIGGER["trigger + contract"]
-    CHECK{"has contract?"}
+    CHECK_CONTRACT{"has contract?"}
     OPEN["open contract"]
     CLARIFY["clarify"]
+    CHECK_DIAGRAM{"has diagram?"}
+    CREATE["create diagram for exercise"]
+    CLAIM["claim diagram for exercise"]
     
-    TRIGGER --> CHECK
-    CHECK -->|yes| OPEN
-    CHECK -->|no| CLARIFY
+    TRIGGER --> CHECK_CONTRACT
+    CHECK_CONTRACT -->|yes| OPEN
+    CHECK_CONTRACT -->|no| CLARIFY
     CLARIFY --> TRIGGER
+    
+    OPEN --> CHECK_DIAGRAM
+    CHECK_DIAGRAM -->|no| CREATE
+    CHECK_DIAGRAM -->|yes, one| CLAIM
 ```
+
+**Notes:**
+- **create diagram** = mermaid + header text: "This is a contract diagram, [view rules](link to github README.md)"
+- **claim diagram** = assign numbered note to existing diagram (e.g., 1️⃣, 2️⃣, etc.)
 
 ---
 
