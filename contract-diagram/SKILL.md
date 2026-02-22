@@ -35,9 +35,9 @@ flowchart TD
     CLARIFY --> TRIGGER
     
     OPEN --> CHECK_DIAGRAM
-    CHECK_DIAGRAM -->|no| CREATE
-    CHECK_DIAGRAM -->|yes, one| CLAIM
     CHECK_DIAGRAM -->|yes, more<br/>than one| ERROR
+    CHECK_DIAGRAM -->|yes, one| CLAIM
+    CHECK_DIAGRAM -->|no| CREATE
     
     CREATE --> SUPERVISED
     CLAIM --> SUPERVISED
