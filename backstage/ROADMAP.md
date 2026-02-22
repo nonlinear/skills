@@ -17,11 +17,11 @@ graph LR
     A[✅ v1.0.0 Skill Protocol]
     B[✅ v0.1.0 Skill Reordering]
     C[✅ v0.2.0 Better Apps]
-    D[📋 v1.1.0 Roadmap Skill]
+    D[📋 v1.1.0 Contract Diagrams]
     A --> B
     B --> C
     C --> D
-    E[📋 v1.2.0 Contract Diagrams]
+    E[📋 v1.2.0 Roadmap Skill]
     D --> E
     F[📋 v1.3.0 i-ching]
     E --> F
@@ -62,7 +62,30 @@ graph LR
 ---
 >>>>>>> 2f6e8b2 (Add v0.2.0 better-apps epic notes and ROADMAP entry)
 
-## v1.1.0 | [notes](epic-notes/v1.1.0-arch/)
+## v1.1.0
+
+### Contract Diagram
+
+**Description:** Architecture design exercises with contract diagrams
+
+**Tasks:**
+- [ ] https://social.praxis.nyc/@nonlinear/116037514895910044
+- [ ] how do we promote it?
+- [ ] how you START an exercise? how you CONTINUE? how you do 2 at same time?
+- [ ] Add SKILL.md with frontmatter
+- [ ] Diary?
+- [ ] Test and validate
+
+**Success:**
+- Architecture exercises documented
+- Clear workflow (start, continue, parallel)
+- Integration with librarian (optional)
+
+- [ ] **Approve to merge**
+
+---
+
+## v1.2.0 | [notes](epic-notes/v1.1.0-arch/)
 
 ### Roadmap Skill
 
@@ -86,30 +109,7 @@ graph LR
 
 ---
 
-## v1.2.0
-
-### Contract Diagram
-
-**Description:** Architecture design exercises with contract diagrams
-
-**Tasks:**
-- [ ] https://social.praxis.nyc/@nonlinear/116037514895910044
-- [ ] how do we promote it?
-- [ ] how you START an exercise? how you CONTINUE? how you do 2 at same time?
-- [ ] Add SKILL.md with frontmatter
-- [ ] Diary?
-- [ ] Test and validate
-
-**Success:**
-- Architecture exercises documented
-- Clear workflow (start, continue, parallel)
-- Integration with librarian (optional)
-
-- [ ] **Approve to merge**
-
----
-
-## v1.2.0
+## v1.3.0
 
 ### i-ching
 
@@ -135,7 +135,7 @@ graph LR
 
 ---
 
-## v1.8.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
+## v1.9.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
 
 ### Rebranding Menu
 
@@ -167,7 +167,7 @@ graph LR
 
 ---
 
-## v1.3.0
+## v1.4.0
 
 ### notify
 
@@ -184,7 +184,7 @@ graph LR
 
 ---
 
-## v1.3.0
+## v1.5.0
 
 ### system-detective
 
@@ -202,7 +202,7 @@ graph LR
 
 ---
 
-## v1.5.0
+## v1.6.0
 
 ### find-books
 
@@ -219,7 +219,7 @@ graph LR
 
 ---
 
-## v1.3.0
+## v1.7.0
 
 ### open-with
 
@@ -252,7 +252,7 @@ graph LR
 
 ---
 
-## v1.5.0
+## v1.8.0
 
 ### use-for
 
@@ -273,7 +273,7 @@ graph LR
 
 ---
 
-## v1.9.0 | [notes](epic-notes/v1.9.0-proton-mail-finder.md)
+## v1.10.0 | [notes](epic-notes/v1.9.0-proton-mail-finder.md)
 
 ### proton-mail-finder
 
@@ -303,7 +303,7 @@ graph LR
 
 ---
 
-## v1.8.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
+## v1.11.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
 
 ### git-flipbook
 
