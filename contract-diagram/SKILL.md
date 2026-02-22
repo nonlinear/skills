@@ -9,12 +9,6 @@ author: nonlinear
 license: MIT
 ---
 
-# Contract Diagram Skill
-
-**Collaborative contract diagram design via mermaid diagrams with AI.**
-
-**Alias:** `contract` (contract = agreement before implementation)
-
 ## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![phase-PHASE](https://img.shields.io/badge/phase-PHASE-lightgray)
 
 ```mermaid
