@@ -124,15 +124,12 @@
             // INJECT CONTRACT HEADER (if missing) + CLAIM (write to MD)
             const firstMermaid = container.querySelector('.mermaid');
             if (firstMermaid) {
-                const nextElement = firstMermaid.nextElementSibling;
-                const headerRegex = /^\*\*Contract diagram, PHASE \w+\./;
-                
-                // Check if header already exists in markdown
-                const hasHeaderInMD = markdown.match(/```mermaid[\s\S]*?```\s*\*\*Contract diagram, PHASE/);
+                // Check if header already exists in markdown (after mermaid closing)
+                const hasHeaderInMD = /```mermaid[\s\S]*?```\s*\n+\*\*Contract diagram, PHASE/.test(markdown);
                 
                 // If missing in MD → CLAIM (write to file)
                 if (!hasHeaderInMD) {
-                    const headerText = '\n\n**Contract diagram, PHASE phase. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**\n';
+                    const headerText = '\n\n🖊️ **Contract diagram, PHASE phase. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**\n';
                     const modifiedMarkdown = markdown.replace(/(```mermaid[\s\S]*?```)/, `$1${headerText}`);
                     
                     // POST to /write endpoint
@@ -147,14 +144,7 @@
                               lastContent = modifiedMarkdown; // Update cache to prevent re-render
                           }
                       })
-                      .catch(err => console.error('Failed to claim:', err));
-                }
-                
-                // Show header in DOM (even if write pending)
-                if (!nextElement || !nextElement.textContent.match(headerRegex)) {
-                    const header = document.createElement('p');
-                    header.innerHTML = '<strong>Contract diagram, PHASE phase. <a href="https://github.com/nonlinear/skills/tree/main/contract-diagram#readme">Rules</a></strong>';
-                    firstMermaid.insertAdjacentElement('afterend', header);
+                      .catch(err => console.error('❌ Failed to claim:', err));
                 }
                 
                 // AUTO-SCROLL to first mermaid diagram
