@@ -19,13 +19,13 @@ flowchart TD
     OPEN["open contract"]
     CLARIFY["clarify"]
     CHECK_DIAGRAM{"has diagram?"}
-    CREATE["create diagram"]
-    CLAIM["claim diagram"]
-    ERROR["Error: multiple diagrams"]
+    CREATE["create diagram 1️⃣"]
+    CLAIM["claim diagram 1️⃣"]
+    ERROR["Error: multiple diagrams 2️⃣"]
     
-    SUPERVISED["Supervised phase<br/>(AI + human iterate)"]
-    SIGNOFF["Sign-off phase<br/>(verify dependencies)"]
-    DEVELOPMENT["Development phase<br/>(AI implements)"]
+    SUPERVISED["Supervised phase 3️⃣"]
+    SIGNOFF["Sign-off phase 4️⃣"]
+    DEVELOPMENT["Development phase 5️⃣"]
     DONE["DONE"]
     
     TRIGGER --> CHECK_CONTRACT
@@ -54,9 +54,15 @@ flowchart TD
     class SUPERVISED,SIGNOFF,DEVELOPMENT,DONE default
 ```
 
-**1️⃣** Claiming a diagram: inject title + CSS
+**1️⃣** Claiming: Wrapper injects title + CSS on first load
 
-**2️⃣** Contract violated stability rule. Each contract file can have ONLY ONE mermaid diagram. Multiple diagrams = noise, breaks muscle memory, prevents visual diff. If user needs multiple views: create separate contract files (e.g., deployment-contract.md, data-contract.md) OR refactor existing diagram to show all concerns in one unified view.
+**2️⃣** One diagram rule: Multiple diagrams break muscle memory. Create separate files if needed.
+
+**3️⃣** Supervised phase: AI + human iterate on flow, discuss blockers, approve nodes
+
+**4️⃣** Sign-off phase: Verify dependencies and auth needed for unsupervised development
+
+**5️⃣** Development phase: AI implements based on approved diagram + notes. Cycle back to supervised if blockers found.
 
 ---
 
