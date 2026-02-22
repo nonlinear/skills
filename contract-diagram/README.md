@@ -1,4 +1,4 @@
-# Design Architecture Skill
+# Contract Diagram Skill
 
 **Collaborative architecture design via mermaid diagrams with AI.**
 
@@ -7,17 +7,17 @@
 ## Quick Start
 
 ```bash
-# Start new architecture design
-design-architecture start my-system
+# Start new contract diagram
+contract-diagram start my-system
 
 # AI will help you iterate on the diagram
 # When done, it's saved in epic-notes/
 
-# List saved architectures
-design-architecture list
+# List saved contracts
+contract-diagram list
 
 # Re-open to edit
-design-architecture open my-system
+contract-diagram open my-system
 ```
 
 ---
@@ -50,7 +50,7 @@ design-architecture open my-system
 
 Add to ROADMAP:
 ```markdown
-- [ ] **Exercise:** Design [system] architecture (mermaid diagram)
+- [ ] **Exercise:** Design [system] contract diagram (mermaid diagram)
 ```
 
 Iterate with AI → save to `epic-notes/[name]-architecture.md` → mark done
@@ -60,7 +60,7 @@ Iterate with AI → save to `epic-notes/[name]-architecture.md` → mark done
 ## Files
 
 - `SKILL.md` - Full documentation + templates
-- `design-architecture.sh` - CLI tool
+- `contract-diagram.sh` - CLI tool
 - `README.md` - This file
 
 ---

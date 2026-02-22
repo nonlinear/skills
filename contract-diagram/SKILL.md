@@ -1,6 +1,6 @@
 ---
-name: arch
-description: "Collaborative architecture design via mermaid diagrams. Design before coding through iterative AI refinement. Triggers: 'design architecture for X', 'let's architect Y', 'vamos desenhar fluxo de Z', 'before coding let's map this'. Use for: system architecture, API design, database models, workflows, infrastructure planning."
+name: contract-diagram
+description: "Collaborative contract diagram design via mermaid. Design before coding through iterative AI refinement. Triggers: 'design contract for X', 'let's diagram Y', 'vamos desenhar contrato de Z', 'before coding let's map this'. Use for: system architecture, API contracts, database models, workflows, infrastructure planning."
 type: public
 version: 1.0.0
 status: stable
@@ -9,11 +9,11 @@ author: nonlinear
 license: MIT
 ---
 
-# Arch Skill
+# Contract Diagram Skill
 
-**Collaborative architecture design via mermaid diagrams with AI.**
+**Collaborative contract diagram design via mermaid diagrams with AI.**
 
-**Alias:** `arch` (short for architecture + arc of system)
+**Alias:** `contract` (contract = agreement before implementation)
 
 ```mermaid
 flowchart LR
