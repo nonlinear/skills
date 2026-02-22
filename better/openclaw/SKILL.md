@@ -1,7 +1,7 @@
 ---
 name: better-openclaw
 type: better
-version: 0.1.0
+version: 0.2.0
 status: stable
 description: Clean OpenClaw webchat UI (dark theme, minimal layout, hide noise)
 author: nonlinear
@@ -13,7 +13,7 @@ better:
     url: https://openclaw.ai
     version: 2026.2.9
   platform: web
-  browser: chrome
+  injection: server-side
   reference: css-customization.md
 ---
 
@@ -34,36 +34,53 @@ better:
 
 ## How to Use
 
-**1. Run injection script:**
+**Toggle ON/OFF:**
 ```bash
-./open-claw.sh
+~/.openclaw/workspace/skills/better/openclaw/toggle.sh
 ```
 
-**2. Script automatically:**
-- Opens Chrome DevTools
-- Injects `redesign.css` into OpenClaw webchat
-- Keeps running (hot reload on CSS changes)
+**Script automatically:**
+- Detects current state (ON vs OFF)
+- **ON:** Injects CSS into OpenClaw gateway HTML
+- **OFF:** Restores original HTML
+- Prompts to reload webchat
 
-**3. Edit CSS:**
+**Edit CSS:**
 - Modify `redesign.css`
-- Changes apply immediately (hot reload)
+- Run `toggle.sh` twice (OFF → ON) to reload changes
+
+---
+
+## How It Works
+
+**Server-side CSS injection:**
+1. OpenClaw gateway serves HTML at `/opt/homebrew/lib/node_modules/openclaw/dist/control-ui/index.html`
+2. `toggle.sh` modifies this file directly:
+   - **ON:** Injects `<style>...</style>` before `</head>`
+   - **OFF:** Restores original HTML (no CSS)
+3. Reload webchat → CSS applies to all browsers (Safari, Firefox, Chrome, etc.)
+
+**No browser-specific dependencies** (no Chrome DevTools Protocol, no extensions).
 
 ---
 
 ## Files
 
-- **`redesign.css`** - Custom stylesheet
-- **`open-claw.sh`** - Injection script (Chrome DevTools Protocol)
+- **`redesign.css`** - Custom stylesheet (source of truth)
+- **`toggle.sh`** - Toggle ON/OFF (modifies gateway HTML)
+- **`index.html.better`** - Cached version with CSS injected
 
 ---
 
 ## Technique
 
-**CSS injection via Chrome DevTools Protocol**
+**Direct HTML modification**
+
+Gateway serves static HTML → modify before serving → CSS applies universally.
 
 See: `css-customization.md` for canonical technique documentation.
 
 ---
 
-**Updated:** 2026-02-17  
+**Updated:** 2026-02-21  
 **Part of:** better/ skills (app customization)
