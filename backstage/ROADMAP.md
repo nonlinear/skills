@@ -23,7 +23,7 @@ graph LR
     A[✅ v1.0.0 Skill Protocol]
     B[✅ v0.1.0 Skill Reordering]
     C[✅ v0.2.0 Better Apps]
-    D[📋 v1.1.0 Contract Diagrams]
+    D[✅ v1.1.0 Contract Diagrams]
     A --> B
     B --> C
     C --> D
@@ -48,45 +48,6 @@ graph LR
     N[📋 v1.11.0 design-discrepancy]
     M --> N
 ```
-
-## v0.2.0 | [notes](epic-notes/v0.2.0-better-apps.md)
-
-### ✅ Better Apps | [notes](epic-notes/v0.2.0-better-apps.md)
-
-**App customization skills (CSS, Service Worker, per-app toggle)**
-
-**Accomplished:**
-- Created better/ namespace (app customizations)
-- better-openclaw (CSS dark theme, minimal UI)
-- better-kavita (Service Worker offline storage)
-- better-komga (Service Worker offline storage)
-- Per-app toggle system (standalone skills)
-- Frontmatter schema (better: nested block)
-
-**Status:** ✅ Complete (merged to main)
-
----
-
-### Contract Diagram
-
-**Description:** Architecture design exercises with contract diagrams
-
-**Tasks:**
-- [ ] https://social.praxis.nyc/@nonlinear/116037514895910044
-- [ ] how do we promote it?
-- [ ] how you START an exercise? how you CONTINUE? how you do 2 at same time?
-- [ ] Add SKILL.md with frontmatter
-- [ ] Diary?
-- [ ] Test and validate
-
-**Success:**
-- Architecture exercises documented
-- Clear workflow (start, continue, parallel)
-- Integration with librarian (optional)
-
-- [ ] **Approve to merge**
-
----
 
 ## v1.2.0 | [notes](epic-notes/v1.1.0-arch/)
 

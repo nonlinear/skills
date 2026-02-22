@@ -24,9 +24,52 @@ graph LR
     A[✅ v1.0.0 Skill Protocol]
     B[✅ v0.1.0 Skill Reordering]
     C[✅ v0.2.0 Better Apps]
+    D[✅ v1.1.0 Contract Diagrams]
     A --> B
     B --> C
+    C --> D
+    E[📋 v1.2.0 Roadmap Skill]
+    D --> E
+    F[📋 v1.3.0 i-ching]
+    E --> F
+    G[📋 v1.4.0 notify]
+    F --> G
+    H[📋 v1.5.0 system-detective]
+    G --> H
+    I[📋 v1.6.0 find-books]
+    H --> I
+    J[📋 v1.7.0 open-with]
+    I --> J
+    K[📋 v1.8.0 use-for]
+    J --> K
+    L[📋 v1.9.0 rebranding]
+    K --> L
+    M[📋 v1.10.0 proton-mail]
+    L --> M
+    N[📋 v1.11.0 design-discrepancy]
+    M --> N
 ```
+
+## v1.1.0 - 2026-02-22
+
+### Contract Diagram
+
+**Description:** Architecture design exercises with contract diagrams
+
+**Accomplished:**
+- Added mermaid workflow diagram to SKILL.md (trigger → draft → notes → research → approve → execute)
+- Converted from submodule to regular folder (removed .git, integrated into skills repo)
+- Documented architecture patterns (gray/red/yellow/blue color protocol)
+- Research/validation phase (Phase 3.5) before approval
+- Visual diff for async collaboration
+- Contract stability rules (single file, stable position, edit in place)
+
+**Skills updated:**
+- `contract-diagram` (arch skill with full protocol documentation)
+
+**Status:** ✅ Complete
+
+---
 
 ## v0.2.0 - 2026-02-17
 
