@@ -40,7 +40,7 @@ flowchart TD
 **Contract diagram, PHASE gray. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**
 
 
-**1️⃣** Claiming a diagram: inject sig + CSS
+**1️⃣** Claiming a diagram: inject title + CSS
 
 **2️⃣** Contract violated stability rule. Each contract file can have ONLY ONE mermaid diagram. Multiple diagrams = noise, breaks muscle memory, prevents visual diff. If user needs multiple views: create separate contract files (e.g., deployment-contract.md, data-contract.md) OR refactor existing diagram to show all concerns in one unified view.
 

@@ -165,14 +165,14 @@
                 querySelector: '.mermaid'
             });
             
-            // INJECT CONTRACT HEADER (if missing) + CLAIM (write to MD)
+            // INJECT CONTRACT TITLE (if missing) + CLAIM (write to MD)
             const firstMermaid = container.querySelector('.mermaid');
             if (firstMermaid) {
-                // Check if header already exists in markdown (after mermaid closing)
-                const hasHeaderInMD = /```mermaid[\s\S]*?```\s*\n+\*\*Contract diagram, PHASE/.test(markdown);
+                // Check if title already exists in markdown (BEFORE mermaid)
+                const hasTitleInMD = /##\s*Contract diagram\s*ℹ️/.test(markdown);
                 
                 // If missing in MD → CLAIM (write to file)
-                if (!hasHeaderInMD) {
+                if (!hasTitleInMD) {
                     // Extract mermaid block
                     const mermaidMatch = markdown.match(/(```mermaid\n)([\s\S]*?)(```)/);
                     if (mermaidMatch) {
@@ -187,9 +187,9 @@
                         // Rebuild mermaid block with our CSS
                         const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${mermaidCode.trim()}\n${mermaidMatch[3]}`;
                         
-                        // Add header after mermaid
-                        const headerText = '\n\n🖊️ **Contract diagram, PHASE phase. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**\n';
-                        const modifiedMarkdown = markdown.replace(/(```mermaid\n[\s\S]*?```)/, claimedMermaid + headerText);
+                        // Add title BEFORE mermaid
+                        const titleText = '## Contract diagram ℹ️ <span style="background:#e0e0e0;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:normal;">PHASE</span> [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)\n\n';
+                        const modifiedMarkdown = markdown.replace(/(```mermaid\n[\s\S]*?```)/, titleText + claimedMermaid);
                         
                         // POST to /write endpoint
                         fetch('/write', {
@@ -199,7 +199,7 @@
                         }).then(res => res.json())
                           .then(data => {
                               if (data.success) {
-                                  console.log('✅ Claimed diagram (CSS + header added to MD)');
+                                  console.log('✅ Claimed diagram (title + CSS added to MD)');
                                   lastContent = modifiedMarkdown; // Update cache to prevent re-render
                               }
                           })
