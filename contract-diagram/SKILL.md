@@ -22,8 +22,8 @@ flowchart TD
     OPEN["open contract"]
     CLARIFY["clarify"]
     CHECK_DIAGRAM{"has diagram?"}
-    CREATE["create diagram for exercise"]
-    CLAIM["claim diagram for exercise"]
+    CREATE["create diagram for exercise 1️⃣"]
+    CLAIM["claim diagram for exercise 2️⃣"]
     
     TRIGGER --> CHECK_CONTRACT
     CHECK_CONTRACT -->|yes| OPEN
@@ -36,8 +36,8 @@ flowchart TD
 ```
 
 **Notes:**
-- **create diagram** = mermaid + header text: "This is a contract diagram, [view rules](link to github README.md)"
-- **claim diagram** = assign numbered note to existing diagram (e.g., 1️⃣, 2️⃣, etc.)
+- **1️⃣:** Diagram = mermaid + header text: "This is a contract diagram, [view rules](link to github README.md)"
+- **2️⃣:** Assign numbered note to existing diagram (continue numbering from existing notes)
 
 ---
 
