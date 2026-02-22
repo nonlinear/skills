@@ -15,8 +15,6 @@ license: MIT
 
 **Alias:** `contract` (contract = agreement before implementation)
 
-## Contract diagram ℹ️ <span style="background:#e0e0e0;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:normal;">PHASE</span> [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)
-
 ## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![phase-PHASE](https://img.shields.io/badge/phase-PHASE-lightgray)
 
 ```mermaid
