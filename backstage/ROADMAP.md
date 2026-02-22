@@ -2,12 +2,16 @@
 
 
 
+
+
 > 🤖
 > This project follows [backstage protocol](https://github.com/nonlinear/backstage) v0.3.4
 >
-> - [README](../README.md) 👏 [ROADMAP](ROADMAP.md) 👏 [CHANGELOG](CHANGELOG.md) 👏 checks: [local](checks/local/) <sup>3</sup>, [global](checks/global/) <sup>0</sup>
+> - [README](../README.md) 👏 [ROADMAP](ROADMAP.md) 👏 [CHANGELOG](CHANGELOG.md) 👏 checks: [local](checks/local/) <sup>5</sup>, [global](checks/global/) <sup>0</sup>
 >
 > 🤖
+
+
 
 
 
@@ -62,7 +66,7 @@ graph LR
 ---
 >>>>>>> 2f6e8b2 (Add v0.2.0 better-apps epic notes and ROADMAP entry)
 
-## v1.1.0
+## v1.1.0 | [notes](epic-notes/v1.1.0-arch/)
 
 ### Contract Diagram
 
@@ -252,7 +256,7 @@ graph LR
 
 ---
 
-## v1.8.0
+## v1.8.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
 
 ### use-for
 
