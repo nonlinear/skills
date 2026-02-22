@@ -63,7 +63,6 @@ graph LR
 - [ ] Diary?
 - [x] Test and validate
 - [x] Add mermaid workflow diagram
-- [ ] **Epic:** Frontmatter enhancement (styled card OR auto-scroll to diagram)
 
 **Success:**
 - Architecture exercises documented

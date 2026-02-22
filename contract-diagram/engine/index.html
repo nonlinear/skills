@@ -336,6 +336,12 @@ flowchart LR
             await mermaid.run({
                 querySelector: '.mermaid'
             });
+            
+            // AUTO-SCROLL to first mermaid diagram
+            const firstMermaid = container.querySelector('.mermaid');
+            if (firstMermaid) {
+                firstMermaid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
         
         function injectLinkStyles(mermaidCode) {
