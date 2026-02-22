@@ -12,7 +12,7 @@ license: MIT
 ## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![phase-PHASE](https://img.shields.io/badge/phase-PHASE-lightgray)
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables':{"primaryColor":"#4A90E2","primaryTextColor":"#fff","primaryBorderColor":"#2E5C8A","lineColor":"#666","secondaryColor":"#50E3C2","tertiaryColor":"#FFD700"}}}%%
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#4A90E2','primaryTextColor':'#fff','primaryBorderColor':'#2E5C8A','lineColor':'#666','secondaryColor':'#50E3C2','tertiaryColor':'#FFD700'}}}%%
 flowchart TD
     TRIGGER["trigger + contract"]
     CHECK_CONTRACT{"has contract?"}
@@ -33,6 +33,15 @@ flowchart TD
     CHECK_DIAGRAM -->|yes, one| CLAIM
     CHECK_DIAGRAM -->|yes, more than one| ERROR
 ```
+
+🖊️ **Contract diagram, PHASE phase. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**
+
+
+🖊️ **Contract diagram, PHASE phase. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**
+
+
+🖊️ **Contract diagram, PHASE phase. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**
+
 
 **1️⃣** Claiming a diagram: inject title + CSS
 
