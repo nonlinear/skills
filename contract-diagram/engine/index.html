@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 </head>
 <body>
-    <main id="diagram-container">
+    <main class="container">
         <!-- Markdown content renders here -->
     </main>
 
@@ -37,7 +37,7 @@
         let lastContent = '';
 
         if (!mdPath) {
-            document.getElementById('diagram-container').innerHTML = `
+            document.querySelector('.container').innerHTML = `
                 <div class="error">
                     <h2>No tape loaded</h2>
                     <p>Usage: <code>?md=/path/to/file.md</code></p>
@@ -88,7 +88,7 @@
         }
 
         async function renderMarkdownWithMermaid(markdown) {
-            const container = document.getElementById('diagram-container');
+            const container = document.querySelector('.container');
             
             // Replace mermaid code blocks with placeholder divs BEFORE marked.parse
             let mermaidCounter = 0;
