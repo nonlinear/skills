@@ -37,7 +37,14 @@ flowchart TD
     CHECK_DIAGRAM -->|yes, more than one| ERROR
 ```
 
-**1️⃣** Diagram = mermaid + header text: "This is a contract diagram, [view rules](link to github README.md)". When claiming existing diagram, continue numbering from existing notes.
+**1️⃣** When creating new diagram: add header text below mermaid: `**Contract diagram, PHASE gray. [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)**`
+
+When claiming existing diagram (has one mermaid already):
+- If header missing → inject it
+- If header exists → update PHASE (gray/yellow/red/blue based on contract state)
+- Continue numbering notes from existing ones
+
+Wrapper auto-injects header if missing (meta: this skill describes its own behavior).
 
 **2️⃣** Contract violated stability rule. Each contract file can have ONLY ONE mermaid diagram. Multiple diagrams = noise, breaks muscle memory, prevents visual diff. If user needs multiple views: create separate contract files (e.g., deployment-contract.md, data-contract.md) OR refactor existing diagram to show all concerns in one unified view.
 

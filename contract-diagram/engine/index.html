@@ -121,9 +121,21 @@
                 querySelector: '.mermaid'
             });
             
-            // AUTO-SCROLL to first mermaid diagram
+            // INJECT CONTRACT HEADER (if missing)
             const firstMermaid = container.querySelector('.mermaid');
             if (firstMermaid) {
+                const nextElement = firstMermaid.nextElementSibling;
+                const headerRegex = /^\*\*Contract diagram, PHASE \w+\./;
+                
+                // Check if header already exists
+                if (!nextElement || !nextElement.textContent.match(headerRegex)) {
+                    // Create header
+                    const header = document.createElement('p');
+                    header.innerHTML = '<strong>Contract diagram, PHASE gray. <a href="https://github.com/nonlinear/skills/tree/main/contract-diagram#readme">Rules</a></strong>';
+                    firstMermaid.insertAdjacentElement('afterend', header);
+                }
+                
+                // AUTO-SCROLL to first mermaid diagram
                 firstMermaid.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
