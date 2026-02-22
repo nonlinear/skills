@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arch Engine - Mermaid Diagram Viewer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <header class="text-center py-4">
+            <!-- Row 1: Title + Dropdown -->
+            <div class="mb-3">
+                <span class="h4">Design Architecture:</span>
+                <div class="dropdown d-inline-block ms-2">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="currentTapeBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select design architecture exercise
+                    </button>
+                    <ul class="dropdown-menu" id="recentTapesDropdown">
+                        <li><a class="dropdown-item disabled" href="#">No recent tapes</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Row 2: Button group -->
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#legendsModal">
+                    📖 Legends
+                </button>
+                <button type="button" class="btn btn-outline-primary" id="openNotesBtn" disabled>
+                    📝 Open Notes
+                </button>
+                <a href="https://github.com/nonlinear/backstage?tab=readme-ov-file#backstage" target="_blank" class="btn btn-outline-dark">
+                    📋 Backstage
+                </a>
+            </div>
+        </header>
+        
+        <main id="diagram-container" class="container">
+            <!-- Markdown content renders here -->
+        </main>
+        
+        <footer class="text-center py-4 text-muted">
+            <p>Tape machine architecture: <code>?md=/path/to/file.md</code></p>
+            <p>Hot reload: <code>&hot=true&interval=2000</code> (default: enabled, 2s)</p>
+        </footer>
+    </div>
+
+    <!-- Legends Modal -->
+    <div class="modal fade" id="legendsModal" tabindex="-1" aria-labelledby="legendsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 90vw;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="legendsModalLabel">📖 Legends & Symbols</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Visual legend (mermaid flowchart) -->
+                    <div class="mermaid">
+flowchart LR
+    DEFAULT[".default"]:::default
+    APPROVED[".approved"]:::approved
+    BLOCKER[".blocker"]:::blocker
+    DEVELOPED[".developed"]:::developed
+    DEVELOPED_NOTES[".developed-notes"]:::developed-notes
+    
+    DEFAULT -->|"Approved"| APPROVED
+    APPROVED -->|"Not approved"| BLOCKER
+    BLOCKER -->|"Resolved"| APPROVED
+    APPROVED -->|"All nodes approved,<br/>developed"| DEVELOPED
+                    </div>
+                    
+                    <!-- Table removed (diagram shows all states visually) -->
+                    
+                    <!--
+                    <p><strong>Symbols:</strong></p>
+                    <ul>
+                        <li>🎤 Skill (SKILL.md, AI prompts) - Conversational layer</li>
+                        <li>👷 Shell (wrapper script) - Protocol enforcement</li>
+                        <li>⚙️ Python (research.py) - Heavy lifting</li>
+                    </ul>
+                    -->
+
+                    <!--
+                    <p><strong>Arrow Types:</strong></p>
+
+                    <table>
+                        <tr>
+                            <th>Syntax</th>
+                            <th>Visual</th>
+                            <th>Name</th>
+                            <th>Use when...</th>
+                        </tr>
+                        <tr>
+                            <td>A --&gt; B</td>
+                            <td>—→</td>
+                            <td>Normal flow</td>
+                            <td>Standard sequential process (currently used)</td>
+                        </tr>
+                        <tr>
+                            <td>A -.-&gt; B</td>
+                            <td>⋯→</td>
+                            <td>Optional/conditional</td>
+                            <td>Sometimes happens, edge cases, fallback paths</td>
+                        </tr>
+                        <tr>
+                            <td>A ==&gt; B</td>
+                            <td>═→</td>
+                            <td>Critical/main path</td>
+                            <td>Happy path, most important flow, primary route</td>
+                        </tr>
+                        <tr>
+                            <td>A --- B</td>
+                            <td>—</td>
+                            <td>Bidirectional/state</td>
+                            <td>Shares state, no direction, mutual relationship</td>
+                        </tr>
+                        <tr>
+                            <td>A --label B</td>
+                            <td>—label→</td>
+                            <td>Labeled transition</td>
+                            <td>Decision outcomes, conditions, context</td>
+                        </tr>
+                    </table>
+
+                    <p><strong>Arrow colors:</strong></p>
+                    <ul>
+                        <li>Success/working path: blue</li>
+                        <li>Error/failure path: red</li>
+                        <li>Warning/needs attention: yellow</li>
+                        <li>Partial/some work: purple</li>
+                    </ul>
+                    -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize mermaid
+        mermaid.initialize({ 
+            startOnLoad: false,
+            theme: 'base',
+            themeVariables: {
+                // Base colors from CSS variables (mermaid doesn't use CSS vars directly)
+                primaryColor: '#4A90E2',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#2E5C8A',
+                lineColor: '#666',
+                secondaryColor: '#50E3C2',
+                tertiaryColor: '#FFD700'
+            }
+        });
+        
+        // Render modal legend on page load (even if hidden)
+        window.addEventListener('DOMContentLoaded', async () => {
+            const modalMermaid = document.querySelector('#legendsModal .modal-body .mermaid');
+            if (modalMermaid) {
+                await mermaid.run({ nodes: [modalMermaid] });
+                console.log('Modal legend rendered on page load');
+            }
+        });
+
+        // Get MD file path from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const mdPath = urlParams.get('md');
+        const hotReload = urlParams.get('hot') !== 'false'; // Default: enabled
+        const pollInterval = parseInt(urlParams.get('interval') || '2000'); // Default: 2 seconds
+
+        // Recent tapes management (localStorage)
+        function getRecentTapes() {
+            const recent = localStorage.getItem('recentTapes');
+            return recent ? JSON.parse(recent) : [];
+        }
+        
+        function addRecentTape(path) {
+            let recent = getRecentTapes();
+            // Remove duplicates, add to front
+            recent = recent.filter(p => p !== path);
+            recent.unshift(path);
+            // Keep last 10
+            recent = recent.slice(0, 10);
+            localStorage.setItem('recentTapes', JSON.stringify(recent));
+            updateRecentTapesDropdown();
+            updateCurrentTapeButton(path);
+        }
+        
+        function updateCurrentTapeButton(path) {
+            const btn = document.getElementById('currentTapeBtn');
+            if (path) {
+                const filename = path.split('/').pop().replace('.md', '');
+                // Extract project from path (e.g., "librarian" from "librarian/backstage/...")
+                const pathParts = path.split('/');
+                const project = pathParts[0] === '..' ? pathParts[3] : pathParts[0]; // Handle ../../../librarian/...
+                btn.textContent = `${project} ${filename}`;
+            } else {
+                btn.textContent = 'Select design architecture exercise';
+            }
+        }
+        
+        function updateRecentTapesDropdown() {
+            const recent = getRecentTapes();
+            const dropdown = document.getElementById('recentTapesDropdown');
+            
+            if (recent.length === 0) {
+                dropdown.innerHTML = '<li><a class="dropdown-item disabled" href="#">No recent tapes</a></li>';
+            } else {
+                dropdown.innerHTML = recent.map(path => {
+                    const filename = path.split('/').pop();
+                    return `<li><a class="dropdown-item" href="?md=${encodeURIComponent(path)}">${filename}</a></li>`;
+                }).join('');
+            }
+        }
+        
+        // Open Notes button logic
+        function updateOpenNotesButton(path) {
+            const btn = document.getElementById('openNotesBtn');
+            if (path) {
+                btn.disabled = false;
+                btn.onclick = () => {
+                    // Open MD in Typora (file:// protocol, may not work in all browsers)
+                    window.location.href = `file://${window.location.pathname.replace('/engine/index.html', '')}/${path}`;
+                };
+            } else {
+                btn.disabled = true;
+            }
+        }
+        
+        // Initialize dropdown on page load
+        updateRecentTapesDropdown();
+
+        let lastContent = '';
+
+        if (!mdPath) {
+            document.getElementById('diagram-container').innerHTML = `
+                <div class="error">
+                    <h2>No tape loaded</h2>
+                    <p>Usage: <code>?md=/path/to/file.md</code></p>
+                    <p>Hot reload: <code>&hot=true&interval=2000</code> (default: enabled, 2s)</p>
+                    <p>Example: <code>?md=../../../librarian/backstage/epic-notes/v0.15.0-skill-protocol.md</code></p>
+                </div>
+            `;
+            updateOpenNotesButton(null);
+        } else {
+            addRecentTape(mdPath);
+            updateOpenNotesButton(mdPath);
+            loadTape(mdPath);
+            
+            // Hot reload polling
+            if (hotReload) {
+                setInterval(() => loadTape(mdPath, true), pollInterval);
+                console.log(`🔥 Hot reload enabled (${pollInterval}ms interval)`);
+            }
+        }
+
+        async function loadTape(path, silent = false) {
+            if (!silent) {
+                // Extract filename from path
+                const filename = path.split('/').pop();
+                document.getElementById('tape-name').textContent = filename;
+                document.getElementById('tape-path').textContent = `Path: ${path}`;
+            }
+            
+            try {
+                const response = await fetch(path + '?t=' + Date.now()); // Cache bust
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                
+                const markdown = await response.text();
+                
+                // Skip re-render if content hasn't changed
+                if (hotReload && markdown === lastContent) {
+                    return;
+                }
+                lastContent = markdown;
+                
+                renderMarkdownWithMermaid(markdown);
+                
+                if (!silent && hotReload) {
+                    console.log('🔄 Tape reloaded');
+                }
+                
+            } catch (error) {
+                if (!silent) {
+                    document.getElementById('diagram-container').innerHTML = `
+                        <div class="error">
+                            <h2>Failed to load tape</h2>
+                            <p>${error.message}</p>
+                            <p>Path: <code>${path}</code></p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        async function renderMarkdownWithMermaid(markdown) {
+            const container = document.getElementById('diagram-container');
+            
+            // Replace mermaid code blocks with placeholder divs BEFORE marked.parse
+            let mermaidCounter = 0;
+            const mermaidBlocks = [];
+            
+            const processedMarkdown = markdown.replace(/```mermaid\n([\s\S]*?)```/g, (match, code) => {
+                const id = `mermaid-${mermaidCounter++}`;
+                mermaidBlocks.push({ id, code: code.trim() });
+                return `<div class="mermaid-placeholder" data-id="${id}"></div>`;
+            });
+            
+            // Parse markdown to HTML
+            const html = marked.parse(processedMarkdown);
+            container.innerHTML = html;
+            
+            // Render mermaid diagrams
+            for (const block of mermaidBlocks) {
+                const placeholder = container.querySelector(`[data-id="${block.id}"]`);
+                if (placeholder) {
+                    const pre = document.createElement('pre');
+                    pre.className = 'mermaid';
+                    // INJECT linkStyle based on node classes (arrow inherits border color)
+                    pre.textContent = injectLinkStyles(block.code);
+                    placeholder.replaceWith(pre);
+                }
+            }
+            
+            // Render all mermaid diagrams
+            await mermaid.run({
+                querySelector: '.mermaid'
+            });
+        }
+        
+        function injectLinkStyles(mermaidCode) {
+            // Parse mermaid code to find nodes with classes
+            // Format: NODE_ID["label"]:::className
+            const nodeClassMap = {};
+            const classColorMap = {
+                'default': '#666',           // --node-border
+                'approved': '#F9A825',       // --approved-border
+                'blocker': '#D32F2F',        // --blocker-border
+                'developed': '#388E3C',      // --developed-border
+                'developed-notes': '#1976D2', // --developed-notes-border
+                'partial': '#7B1FA2'         // --partial-border
+            };
+            
+            // Extract node definitions with classes
+            const nodeRegex = /(\w+)\[.*?\]:::(\w+)/g;
+            let match;
+            while ((match = nodeRegex.exec(mermaidCode)) !== null) {
+                const [, nodeId, className] = match;
+                nodeClassMap[nodeId] = className;
+            }
+            
+            // Extract arrows and build linkStyle
+            const arrowRegex = /(\w+)\s*(?:-->|==>|-\.->|---)\s*(?:\|.*?\|)?\s*(\w+)/g;
+            const linkStyles = [];
+            let arrowIndex = 0;
+            
+            while ((match = arrowRegex.exec(mermaidCode)) !== null) {
+                const [, fromNode] = match;
+                const className = nodeClassMap[fromNode];
+                if (className && classColorMap[className]) {
+                    linkStyles.push(`    linkStyle ${arrowIndex} stroke:${classColorMap[className]}`);
+                }
+                arrowIndex++;
+            }
+            
+            // Inject linkStyle at end (if any arrows found)
+            if (linkStyles.length > 0) {
+                return mermaidCode + '\n\n' + linkStyles.join('\n');
+            }
+            
+            return mermaidCode;
+        }
+        
+        // Render modal mermaid when opened
+        const legendsModal = document.getElementById('legendsModal');
+        if (legendsModal) {
+            legendsModal.addEventListener('shown.bs.modal', async function () {
+                console.log('Modal opened, rendering mermaid...');
+                const modalMermaid = this.querySelector('.modal-body .mermaid');
+                if (modalMermaid) {
+                    console.log('Found mermaid in modal:', modalMermaid.textContent.substring(0, 50));
+                    if (!modalMermaid.hasAttribute('data-processed')) {
+                        await mermaid.run({ querySelector: '#legendsModal .mermaid' });
+                        console.log('Mermaid rendered in modal');
+                    } else {
+                        console.log('Mermaid already processed');
+                    }
+                } else {
+                    console.log('No mermaid found in modal');
+                }
+            });
+        }
+    </script>
+    
+    <!-- Modal backdrop (for open-by-default modal) -->
+    <!-- Modal backdrop removed (modal closed by default) -->
+</body>
+</html>

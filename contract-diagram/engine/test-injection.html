@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+<body>
+    <div class="mermaid">
+flowchart LR
+    A[".default"]:::default --> B[".approved"]:::approved
+    B --> C[".blocker"]:::blocker
+    
+    linkStyle 0 stroke:#666
+    linkStyle 1 stroke:#F9A825
+    </div>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+        
+        function injectLinkStyles(code) {
+            const nodeClassMap = {};
+            const classColorMap = {
+                'default': '#666',
+                'approved': '#F9A825',
+                'blocker': '#D32F2F',
+                'developed': '#388E3C',
+                'developed-notes': '#1976D2',
+                'partial': '#7B1FA2'
+            };
+            
+            const nodeRegex = /(\w+)\[.*?\]:::(\w+)/g;
+            let match;
+            while ((match = nodeRegex.exec(code)) !== null) {
+                const [, nodeId, className] = match;
+                nodeClassMap[nodeId] = className;
+                console.log('Node found:', nodeId, '→', className);
+            }
+            
+            const arrowRegex = /(\w+)\s*(?:-->|==>|-\.->|---)\s*(?:\|.*?\|)?\s*(\w+)/g;
+            const linkStyles = [];
+            let arrowIndex = 0;
+            
+            while ((match = arrowRegex.exec(code)) !== null) {
+                const [, fromNode] = match;
+                const className = nodeClassMap[fromNode];
+                console.log('Arrow', arrowIndex, ':', fromNode, '→ class:', className);
+                if (className && classColorMap[className]) {
+                    linkStyles.push(`    linkStyle ${arrowIndex} stroke:${classColorMap[className]}`);
+                }
+                arrowIndex++;
+            }
+            
+            console.log('Link styles:', linkStyles);
+            return code;
+        }
+        
+        const testCode = `flowchart LR
+    A[".default"]:::default --> B[".approved"]:::approved
+    B --> C[".blocker"]:::blocker`;
+        
+        console.log('Testing injection:');
+        injectLinkStyles(testCode);
+    </script>
+</body>
+</html>

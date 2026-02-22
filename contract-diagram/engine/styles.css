@@ -1,0 +1,265 @@
+/* Arch Engine Styles - Minimal + CSS Variables */
+
+:root {
+    /* Librarian mermaid colors */
+    --default-bg: #e0e0e0;
+    --default-border: #666;
+    --approved-bg: #FFF9C4;
+    --approved-border: #F9A825;
+    --blocker-bg: #FFCDD2;
+    --blocker-border: #D32F2F;
+    --developed-bg: #C8E6C9;
+    --developed-border: #388E3C;
+    --developed-notes-bg: #BBDEFB;
+    --developed-notes-border: #1976D2;
+    --partial-bg: #E1BEE7;
+    --partial-border: #7B1FA2;
+    --border-radius: 10px;
+    
+    /* Legacy */
+    --in-progress-bg: #4A90E2;
+    --pending-bg: #FFD700;
+}
+
+/* Base */
+body {
+    background: white;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Mermaid container */
+.mermaid {
+    background: transparent;
+}
+
+/* Modal mermaid: stretch to fit */
+.modal-body .mermaid svg {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+}
+
+/* === MERMAID NODE CUSTOMIZATION === */
+
+/* Base styling (applies to ALL nodes) */
+.node rect, .node polygon, .node circle, .node path, .node ellipse {
+  stroke-width: 2px !important;
+}
+
+/* Node text (universal) */
+.mermaid .nodeLabel,
+.mermaid .label,
+.node text,
+g.node text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  fill: black !important;
+  color: black !important;
+}
+
+g.node > * {
+  stroke-width: 2px !important;
+}
+
+g.node rect {
+  rx: var(--border-radius) !important;
+  ry: var(--border-radius) !important;
+}
+
+/* Default state (explicit) */
+.default rect, .default polygon, .default circle, .default path, .default ellipse {
+  fill: var(--default-bg) !important;
+  stroke: var(--default-border) !important;
+}
+
+g.node.default path {
+  fill: var(--default-bg) !important;
+  stroke: var(--default-border) !important;
+  stroke-width: 2px !important;
+}
+
+g.node.default polygon {
+  stroke-width: 2px !important;
+}
+.approved rect, .approved polygon, .approved circle, .approved path, .approved ellipse {
+  fill: var(--approved-bg) !important;
+  stroke: var(--approved-border) !important;
+}
+
+g.node.approved path {
+  fill: var(--approved-bg) !important;
+  stroke: var(--approved-border) !important;
+  stroke-width: 2px !important;
+}
+
+g.node.approved polygon {
+  stroke-width: 2px !important;
+}
+
+/* Blocker state */
+.blocker rect, .blocker polygon, .blocker circle, .blocker path, .blocker ellipse {
+  fill: var(--blocker-bg) !important;
+  stroke: var(--blocker-border) !important;
+}
+
+g.node.blocker path {
+  fill: var(--blocker-bg) !important;
+  stroke: var(--blocker-border) !important;
+  stroke-width: 2px !important;
+}
+
+g.node.blocker polygon {
+  stroke-width: 2px !important;
+}
+
+/* Developed state */
+.developed rect, .developed polygon, .developed circle, .developed path, .developed ellipse {
+  fill: var(--developed-bg) !important;
+  stroke: var(--developed-border) !important;
+}
+
+g.node.developed path {
+  fill: var(--developed-bg) !important;
+  stroke: var(--developed-border) !important;
+  stroke-width: 2px !important;
+}
+
+g.node.developed polygon {
+  stroke-width: 2px !important;
+}
+
+/* Developed-notes state */
+.developed-notes rect, .developed-notes polygon, .developed-notes circle, .developed-notes path, .developed-notes ellipse {
+  fill: var(--developed-notes-bg) !important;
+  stroke: var(--developed-notes-border) !important;
+}
+
+g.node.developed-notes path {
+  fill: var(--developed-notes-bg) !important;
+  stroke: var(--developed-notes-border) !important;
+  stroke-width: 2px !important;
+}
+
+g.node.developed-notes polygon {
+  stroke-width: 2px !important;
+}
+
+/* Partial state */
+.partial rect, .partial polygon, .partial circle, .partial path, .partial ellipse {
+  fill: var(--partial-bg) !important;
+  stroke: var(--partial-border) !important;
+}
+
+g.node.partial path {
+  fill: var(--partial-bg) !important;
+  stroke: var(--partial-border) !important;
+  stroke-width: 2px !important;
+}
+
+g.node.partial polygon {
+  stroke-width: 2px !important;
+}
+
+/* Default (explicit class) */
+g.node.default path {
+  fill: var(--node-bg) !important;
+  stroke: var(--node-border) !important;
+  stroke-width: 2px !important;
+}
+
+g.node.default polygon {
+  stroke-width: 2px !important;
+}
+
+/* Edge styling */
+.edgePath path,
+path.edgePath,
+.flowchart-link {
+  stroke: var(--default-border) !important;
+  stroke-width: 2px !important;
+  fill: none !important;
+}
+
+/* Edge labels */
+.edgeLabel {
+  opacity: 1 !important;
+}
+
+.edgeLabel rect,
+.edgeLabel foreignObject {
+  fill: var(--default-border) !important;
+  stroke: none !important;
+  rx: var(--border-radius) !important;
+  ry: var(--border-radius) !important;
+  opacity: 1 !important;
+}
+
+.edgeLabel .labelBkg,
+.edgeLabel div {
+  background-color: var(--default-border) !important;
+  opacity: 1 !important;
+  border-radius: var(--border-radius) !important;
+  padding: 5px 10px !important;
+}
+
+.labelBkg {
+  opacity: 1 !important;
+  background-color: var(--default-border) !important;
+  border-radius: var(--border-radius) !important;
+  padding: 5px 10px !important;
+}
+
+div.labelBkg {
+  opacity: 1 !important;
+  background-color: var(--default-border) !important;
+  border-radius: var(--border-radius) !important;
+  padding: 5px 10px !important;
+}
+
+foreignObject:has(.labelBkg) {
+  opacity: 1 !important;
+}
+
+span.edgeLabel {
+  background: var(--default-border) !important;
+  border: none !important;
+  border-radius: var(--border-radius) !important;
+  padding: 5px 10px !important;
+  color: white !important;
+  font-size: 12px !important;
+  font-weight: normal !important;
+  line-height: 1.4 !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  max-width: 150px !important;
+  display: inline-block !important;
+}
+
+.edgeLabel text {
+  transform: rotate(0deg) !important;
+  writing-mode: horizontal-tb !important;
+  fill: black !important;
+}
+
+/* Force ALL children of node groups */
+g.node > * {
+  stroke-width: 2px !important;
+}
+
+/* Rounded corners for all node shapes */
+g.node rect {
+  rx: var(--border-radius) !important;
+  ry: var(--border-radius) !important;
+}
+
+/* Legacy compatibility */
+.mermaid .node.in-progress rect,
+.mermaid .node.in-progress polygon {
+    fill: var(--in-progress-bg) !important;
+}
+
+.mermaid .node.pending rect,
+.mermaid .node.pending polygon {
+    fill: var(--pending-bg) !important;
+}
