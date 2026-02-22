@@ -66,9 +66,6 @@ graph LR
 **Status:** ✅ Complete (merged to main)
 
 ---
->>>>>>> 2f6e8b2 (Add v0.2.0 better-apps epic notes and ROADMAP entry)
-
-## v1.1.0 | [notes](epic-notes/v1.1.0-arch/)
 
 ### Contract Diagram
 
