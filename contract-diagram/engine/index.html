@@ -47,7 +47,6 @@
             `;
         } else {
             loadTape(mdPath);
-            loadTape(mdPath);
             
             // Hot reload polling
             if (hotReload) {
@@ -57,13 +56,6 @@
         }
 
         async function loadTape(path, silent = false) {
-            if (!silent) {
-                // Extract filename from path
-                const filename = path.split('/').pop();
-                document.getElementById('tape-name').textContent = filename;
-                document.getElementById('tape-path').textContent = `Path: ${path}`;
-            }
-            
             try {
                 const response = await fetch(path + '?t=' + Date.now()); // Cache bust
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
