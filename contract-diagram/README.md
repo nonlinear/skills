@@ -8,11 +8,11 @@
 
 ```mermaid
 flowchart LR
-    DEFAULT[".default"]:::default
-    APPROVED[".approved"]:::approved
-    BLOCKER[".blocker"]:::blocker
-    DEVELOPED[".developed"]:::developed
-    DEVELOPED_NOTES[".developed-notes"]:::developed-notes
+    DEFAULT["1️⃣ .default"]:::default
+    APPROVED["2️⃣ .approved"]:::approved
+    BLOCKER["3️⃣ .blocker"]:::blocker
+    DEVELOPED["4️⃣ .developed"]:::developed
+    DEVELOPED_NOTES["5️⃣ .developed-notes"]:::developed-notes
     
     DEFAULT -->|"Approved"| APPROVED
     APPROVED -->|"Not approved"| BLOCKER
@@ -21,11 +21,11 @@ flowchart LR
 ```
 
 **Color meanings:**
-- **Gray (.default):** Draft/backlog, not discussed yet
-- **Yellow (.approved):** Agreed by stakeholders, ready for development
-- **Red (.blocker):** Needs discussion OR failed implementation (always has numbered note)
-- **Blue (.developed):** Agreed and implemented, ready for testing
-- **Orange (.developed-notes):** Implemented but developer made decisions needing discussion
+- **1️⃣ Gray (.default):** Draft/backlog, not discussed yet
+- **2️⃣ Yellow (.approved):** Agreed by stakeholders, ready for development
+- **3️⃣ Red (.blocker):** Needs discussion OR failed implementation (always has numbered note)
+- **4️⃣ Blue (.developed):** Agreed and implemented, ready for testing
+- **5️⃣ Orange (.developed-notes):** Implemented but developer made decisions needing discussion
 
 ---
 
