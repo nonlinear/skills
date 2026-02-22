@@ -14,14 +14,19 @@ license: MIT
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#4A90E2','primaryTextColor':'#fff','primaryBorderColor':'#2E5C8A','lineColor':'#666','secondaryColor':'#50E3C2','tertiaryColor':'#FFD700'}}}%%
 flowchart TD
-    TRIGGER["trigger + contract"]
-    CHECK_CONTRACT{"has contract?"}
-    OPEN["open contract"]
-    CLARIFY["clarify"]
-    CHECK_DIAGRAM{"has diagram?"}
-    CREATE["create diagram 1️⃣"]
-    CLAIM["claim diagram 1️⃣"]
-    ERROR["Error 2️⃣"]
+    TRIGGER["trigger + contract"]:::class-1-gray
+    CHECK_CONTRACT{"has contract?"}:::class-1-gray
+    OPEN["open contract"]:::class-1-gray
+    CLARIFY["clarify"]:::class-1-gray
+    CHECK_DIAGRAM{"has diagram?"}:::class-1-gray
+    CREATE["create diagram"]:::class-1-gray
+    CLAIM["claim diagram"]:::class-1-gray
+    ERROR["Error: multiple diagrams"]:::class-1-gray
+    
+    SUPERVISED["SUPERVISED"]:::class-1-gray
+    SIGNOFF["SIGNOFF"]:::class-1-gray
+    DEVELOPMENT["DEVELOPMENT"]:::class-1-gray
+    DONE["DONE"]:::class-1-gray
     
     TRIGGER --> CHECK_CONTRACT
     CHECK_CONTRACT -->|yes| OPEN
@@ -32,6 +37,13 @@ flowchart TD
     CHECK_DIAGRAM -->|no| CREATE
     CHECK_DIAGRAM -->|yes, one| CLAIM
     CHECK_DIAGRAM -->|yes, more than one| ERROR
+    
+    CREATE --> SUPERVISED
+    CLAIM --> SUPERVISED
+    SUPERVISED --> SIGNOFF
+    SIGNOFF --> DEVELOPMENT
+    DEVELOPMENT --> SUPERVISED
+    DEVELOPMENT --> DONE
 ```
 
 **1️⃣** Claiming a diagram: inject title + CSS
