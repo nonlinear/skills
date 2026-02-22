@@ -30,6 +30,13 @@ flowchart TD
 
 ---
 
+- contract: .md file
+- diagram: mermaid
+
+
+
+
+
 ## Numbered Notes (1️⃣ 2️⃣ 3️⃣)
 
 **When to use:**
