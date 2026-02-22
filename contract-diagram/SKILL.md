@@ -49,26 +49,6 @@ flowchart LR
 
 ---
 
-## Color Protocol
-
-| Color | Meaning | When to Use |
-|-------|---------|-------------|
-| ⚫ Gray | Draft Flow | Initial structure, not finalized |
-| 🔴 Red | Discussion / Error | Needs decision OR hit roadblock |
-| 🟨 Yellow | Approved / TODO | Ready to execute OR in queue |
-| 🔵 Blue | Executed | Already implemented and working |
-
-**Flow:**
-```
-Gray (structure) → Red (notes) → Yellow (approved) → Blue (executed)
-                       ↓ (discuss)
-                  Research/Validate → New Reds (back to discuss)
-                       ↓ (if error during execution)
-                     Red (roadblock) → resolve → Yellow → Blue
-```
-
----
-
 ## Numbered Notes (1️⃣ 2️⃣ 3️⃣)
 
 **When to use:**
