@@ -23,8 +23,8 @@ flowchart TD
     CLARIFY["clarify"]
     CHECK_DIAGRAM{"has diagram?"}
     CREATE["create diagram for exercise 1️⃣"]
-    CLAIM["claim diagram for exercise 2️⃣"]
-    ERROR["Error: one mermaid per contract 3️⃣"]
+    CLAIM["claim diagram for exercise 1️⃣"]
+    ERROR["Error: one mermaid per contract 2️⃣"]
     
     TRIGGER --> CHECK_CONTRACT
     CHECK_CONTRACT -->|yes| OPEN
@@ -37,11 +37,9 @@ flowchart TD
     CHECK_DIAGRAM -->|yes, more than one| ERROR
 ```
 
-**1️⃣** Diagram = mermaid + header text: "This is a contract diagram, [view rules](link to github README.md)"
+**1️⃣** Diagram = mermaid + header text: "This is a contract diagram, [view rules](link to github README.md)". When claiming existing diagram, continue numbering from existing notes.
 
-**2️⃣** Assign numbered note to existing diagram (continue numbering from existing notes)
-
-**3️⃣** Contract violated stability rule. Each contract file can have ONLY ONE mermaid diagram. Multiple diagrams = noise, breaks muscle memory, prevents visual diff. If user needs multiple views: create separate contract files (e.g., deployment-contract.md, data-contract.md) OR refactor existing diagram to show all concerns in one unified view.
+**2️⃣** Contract violated stability rule. Each contract file can have ONLY ONE mermaid diagram. Multiple diagrams = noise, breaks muscle memory, prevents visual diff. If user needs multiple views: create separate contract files (e.g., deployment-contract.md, data-contract.md) OR refactor existing diagram to show all concerns in one unified view.
 
 ---
 
