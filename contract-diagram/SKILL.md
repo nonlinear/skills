@@ -19,8 +19,8 @@ flowchart TD
     OPEN["open contract"]
     CLARIFY["clarify"]
     CHECK_DIAGRAM{"has diagram?"}
-    CREATE["Create 1️⃣"]
-    CLAIM["Claim 1️⃣"]
+    CREATE["New 1️⃣"]
+    CLAIM["Claimed 1️⃣"]
     ERROR["Error 2️⃣"]
     
     SUPERVISED["Supervised phase 3️⃣"]
