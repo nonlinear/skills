@@ -21,7 +21,7 @@ flowchart TD
     CHECK_DIAGRAM{"has diagram?"}
     CREATE["create diagram 1️⃣"]
     CLAIM["claim diagram 1️⃣"]
-    ERROR["Error: multiple diagrams 2️⃣"]
+    ERROR["Error 2️⃣"]
     
     SUPERVISED["Supervised phase 3️⃣"]
     SIGNOFF["Sign-off phase 4️⃣"]
