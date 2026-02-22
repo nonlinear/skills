@@ -15,7 +15,10 @@ license: MIT
 
 **Alias:** `contract` (contract = agreement before implementation)
 
+## Contract diagram ℹ️ <span style="background:#e0e0e0;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:normal;">PHASE</span> [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)
+
 ```mermaid
+%%{init: {'theme':'base','themeVariables':{"primaryColor":"#4A90E2","primaryTextColor":"#fff","primaryBorderColor":"#2E5C8A","lineColor":"#666","secondaryColor":"#50E3C2","tertiaryColor":"#FFD700"}}}%%
 flowchart TD
     TRIGGER["trigger + contract"]
     CHECK_CONTRACT{"has contract?"}
