@@ -14,14 +14,19 @@ license: MIT
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#4A90E2','primaryTextColor':'#fff','primaryBorderColor':'#2E5C8A','lineColor':'#666','secondaryColor':'#50E3C2','tertiaryColor':'#FFD700'}}}%%
 flowchart TD
-    TRIGGER["trigger + contract"]
-    CHECK_CONTRACT{"has contract?"}
-    OPEN["open contract"]
-    CLARIFY["clarify"]
-    CHECK_DIAGRAM{"has diagram?"}
-    CREATE["create diagram 1️⃣"]
-    CLAIM["claim diagram 1️⃣"]
-    ERROR["Error 2️⃣"]
+    TRIGGER["trigger + contract"]:::class-1-gray
+    CHECK_CONTRACT{"has contract?"}:::class-1-gray
+    OPEN["open contract"]:::class-1-gray
+    CLARIFY["clarify"]:::class-1-gray
+    CHECK_DIAGRAM{"has diagram?"}:::class-1-gray
+    CREATE["create diagram"]:::class-1-gray
+    CLAIM["claim diagram"]:::class-1-gray
+    ERROR["Error: multiple diagrams"]:::class-3-red
+    
+    SUPERVISED["SUPERVISED phase"]:::class-1-gray
+    SIGNOFF["SIGNOFF phase"]:::class-1-gray
+    DEVELOPMENT["DEVELOPMENT phase"]:::class-1-gray
+    DONE["Contract complete"]:::class-2-blue
     
     TRIGGER --> CHECK_CONTRACT
     CHECK_CONTRACT -->|yes| OPEN
@@ -32,11 +37,25 @@ flowchart TD
     CHECK_DIAGRAM -->|no| CREATE
     CHECK_DIAGRAM -->|yes, one| CLAIM
     CHECK_DIAGRAM -->|yes, more than one| ERROR
+    
+    CREATE --> SUPERVISED
+    CLAIM --> SUPERVISED
+    
+    SUPERVISED -->|nodes agreed| SIGNOFF
+    SIGNOFF -->|ready to code| DEVELOPMENT
+    DEVELOPMENT -->|blockers found| SUPERVISED
+    DEVELOPMENT -->|all developed| DONE
 ```
 
-**1️⃣** Claiming a diagram: inject title + CSS
+**Claiming a diagram:** Wrapper injects title + CSS on first load.
 
-**2️⃣** Contract violated stability rule. Each contract file can have ONLY ONE mermaid diagram. Multiple diagrams = noise, breaks muscle memory, prevents visual diff. If user needs multiple views: create separate contract files (e.g., deployment-contract.md, data-contract.md) OR refactor existing diagram to show all concerns in one unified view.
+**One diagram per contract:** Multiple diagrams = noise, breaks muscle memory. If needed: create separate files.
+
+**Contract phases (meta-flow):**
+- **SUPERVISED**: AI + human iterate on flow, discuss blockers, approve nodes
+- **SIGNOFF**: Verify all dependencies/auth needed for unsupervised development
+- **DEVELOPMENT**: AI implements based on approved diagram + notes
+- **Cycle**: Blockers found -> back to SUPERVISED -> iterate -> reattempt
 
 ---
 
