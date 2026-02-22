@@ -188,7 +188,7 @@
                         const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${mermaidCode.trim()}\n${mermaidMatch[3]}`;
                         
                         // Add title BEFORE mermaid
-                        const titleText = '## Contract diagram ℹ️ <span style="background:#e0e0e0;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:normal;">PHASE</span> [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)\n\n';
+                        const titleText = '## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) <span style="background:#e0e0e0;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:normal;">PHASE</span>\n\n';
                         const modifiedMarkdown = markdown.replace(/(```mermaid\n[\s\S]*?```)/, titleText + claimedMermaid);
                         
                         // POST to /write endpoint
