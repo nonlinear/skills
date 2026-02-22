@@ -23,9 +23,9 @@ flowchart TD
     CLAIM["claim diagram"]
     ERROR["Error: multiple diagrams"]
     
-    SUPERVISED["SUPERVISED"]
-    SIGNOFF["SIGNOFF"]
-    DEVELOPMENT["DEVELOPMENT"]
+    SUPERVISED["Supervised phase<br/>(AI + human iterate)"]
+    SIGNOFF["Sign-off phase<br/>(verify dependencies)"]
+    DEVELOPMENT["Development phase<br/>(AI implements)"]
     DONE["DONE"]
     
     TRIGGER --> CHECK_CONTRACT
@@ -46,7 +46,12 @@ flowchart TD
     DEVELOPMENT --> DONE
     
     classDef default fill:#e0e0e0,stroke:#666,color:#000
-    class TRIGGER,CHECK_CONTRACT,OPEN,CLARIFY,CHECK_DIAGRAM,CREATE,CLAIM,ERROR,SUPERVISED,SIGNOFF,DEVELOPMENT,DONE default
+    classDef approved fill:#4A90E2,stroke:#2E5C8A,color:#fff
+    classDef developed fill:#50E3C2,stroke:#3aa89e,color:#000
+    
+    class TRIGGER,CHECK_CONTRACT,OPEN,CLARIFY approved
+    class CHECK_DIAGRAM,CREATE,CLAIM,ERROR developed
+    class SUPERVISED,SIGNOFF,DEVELOPMENT,DONE default
 ```
 
 **1️⃣** Claiming a diagram: inject title + CSS
