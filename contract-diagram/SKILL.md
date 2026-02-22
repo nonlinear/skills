@@ -17,14 +17,14 @@ license: MIT
 
 ```mermaid
 flowchart TD
-    TRIGGER["Trigger + Contract"]
-    CHECK{"Has .md?"}
-    OPEN["Open Contract"]
-    CLARIFY["Clarify"]
+    TRIGGER["trigger + contract"]
+    CHECK{"has contract?"}
+    OPEN["open contract"]
+    CLARIFY["clarify"]
     
     TRIGGER --> CHECK
-    CHECK -->|Yes| OPEN
-    CHECK -->|No| CLARIFY
+    CHECK -->|yes| OPEN
+    CHECK -->|no| CLARIFY
     CLARIFY --> TRIGGER
 ```
 
