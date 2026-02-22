@@ -1,10 +1,6 @@
 # Contract Diagram Skill
 
-**Collaborative architecture design via mermaid diagrams with AI.**
-
----
-
-## Legend (Color Protocol)
+**Contract diagram aims to enforce a legible document between AIs and humans**
 
 ```mermaid
 flowchart LR
@@ -20,18 +16,13 @@ flowchart LR
     APPROVED -->|"All nodes approved,<br/>developed"| DEVELOPED
 ```
 
-**Color meanings:**
+****
+
 - **1️⃣ Gray (.default):** Draft/backlog, not discussed yet
 - **2️⃣ Yellow (.approved):** Agreed by stakeholders, ready for development
 - **3️⃣ Red (.blocker):** Needs discussion OR failed implementation (always has numbered note)
 - **4️⃣ Blue (.developed):** Agreed and implemented, ready for testing
 - **5️⃣ Orange (.developed-notes):** Implemented but developer made decisions needing discussion
-
----
-
-## Goals
-
-Contract diagram aims to enforce a document, legible by both AIs and humans. 
 
 ---
 
