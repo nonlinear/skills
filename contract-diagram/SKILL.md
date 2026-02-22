@@ -17,6 +17,8 @@ license: MIT
 
 ## Contract diagram ℹ️ <span style="background:#e0e0e0;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:normal;">PHASE</span> [Rules](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme)
 
+## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![phase-PHASE](https://img.shields.io/badge/phase-PHASE-lightgray)
+
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{"primaryColor":"#4A90E2","primaryTextColor":"#fff","primaryBorderColor":"#2E5C8A","lineColor":"#666","secondaryColor":"#50E3C2","tertiaryColor":"#FFD700"}}}%%
 flowchart TD
