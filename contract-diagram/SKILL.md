@@ -37,7 +37,7 @@ flowchart TD
     OPEN --> CHECK_DIAGRAM
     CHECK_DIAGRAM -->|no| CREATE
     CHECK_DIAGRAM -->|yes, one| CLAIM
-    CHECK_DIAGRAM -->|yes, more than one| ERROR
+    CHECK_DIAGRAM -->|yes, more<br/>than one| ERROR
     
     CREATE --> SUPERVISED
     CLAIM --> SUPERVISED
