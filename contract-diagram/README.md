@@ -28,7 +28,9 @@ flowchart TD
 
 ## Requirements
 
-- Node.js (for engine server)
+**Wrapper can claim (edit) contracts:**
+- Contract MDs must be in engine's domain (`engine/` folder or symlinked)
+- Node.js server enables read/write via `/write` endpoint
 
 ---
 
