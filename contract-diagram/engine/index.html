@@ -79,7 +79,7 @@
                 
             } catch (error) {
                 if (!silent) {
-                    document.getElementById('diagram-container').innerHTML = `
+                    document.querySelector('.container').innerHTML = `
                         <div class="error">
                             <h2>Failed to load tape</h2>
                             <p>${error.message}</p>
