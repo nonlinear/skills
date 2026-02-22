@@ -24,7 +24,7 @@ graph LR
     A[✅ v1.0.0 Skill Protocol]
     B[✅ v0.1.0 Skill Reordering]
     C[✅ v0.2.0 Better Apps]
-    D[✅ v1.1.0 Contract Diagrams]
+    D[📋 v1.1.0 Contract Diagrams]
     A --> B
     B --> C
     C --> D

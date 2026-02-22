@@ -23,7 +23,7 @@ graph LR
     A[✅ v1.0.0 Skill Protocol]
     B[✅ v0.1.0 Skill Reordering]
     C[✅ v0.2.0 Better Apps]
-    D[✅ v1.1.0 Contract Diagrams]
+    D[📋 v1.1.0 Contract Diagrams]
     A --> B
     B --> C
     C --> D
@@ -48,6 +48,30 @@ graph LR
     N[📋 v1.11.0 design-discrepancy]
     M --> N
 ```
+
+## v1.1.0
+
+### Contract Diagram
+
+**Description:** Architecture design exercises with contract diagrams
+
+**Tasks:**
+- [x] https://social.praxis.nyc/@nonlinear/116037514895910044
+- [ ] how do we promote it?
+- [ ] how you START an exercise? how you CONTINUE? how you do 2 at same time?
+- [x] Add SKILL.md with frontmatter
+- [ ] Diary?
+- [x] Test and validate
+- [x] Add mermaid workflow diagram
+
+**Success:**
+- Architecture exercises documented
+- Clear workflow (start, continue, parallel)
+- Integration with librarian (optional)
+
+- [ ] **Approve to merge**
+
+---
 
 ## v1.2.0 | [notes](epic-notes/v1.1.0-arch/)
 
