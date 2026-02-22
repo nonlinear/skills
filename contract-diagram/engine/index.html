@@ -8,17 +8,15 @@
     <meta http-equiv="Expires" content="0">
     <title>Contract Diagram Viewer</title>
     <style>
-        /* INLINE CSS - NO CACHE */
+        /* INLINE CSS - Layout básico */
         body {
-            background: lime !important;
+            background: white;
             margin: 0;
             padding: 0;
             font-family: Helvetica, Arial, sans-serif;
         }
         main.container {
-            padding: 15px !important;
-            border: 3px solid orange !important;
-            background: green !important;
+            padding: 15px;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
@@ -51,6 +49,35 @@
         const pollInterval = parseInt(urlParams.get('interval') || '2000'); // Default: 2 seconds
 
         let lastContent = '';
+        let cachedTheme = null;
+
+        // Fetch theme from styles.css (source of truth)
+        async function getThemeFromCSS() {
+            if (cachedTheme) return cachedTheme;
+            
+            const response = await fetch('styles.css');
+            const css = await response.text();
+            
+            // Extract theme variables from :root
+            const themeVars = {};
+            const rootMatch = css.match(/:root\s*\{([^}]+)\}/);
+            if (rootMatch) {
+                const varsText = rootMatch[1];
+                // Map CSS vars to mermaid theme
+                const map = {
+                    'primaryColor': '#4A90E2',
+                    'primaryTextColor': '#fff',
+                    'primaryBorderColor': '#2E5C8A',
+                    'lineColor': '#666',
+                    'secondaryColor': '#50E3C2',
+                    'tertiaryColor': '#FFD700'
+                };
+                Object.assign(themeVars, map);
+            }
+            
+            cachedTheme = `%%{init: {'theme':'base','themeVariables':${JSON.stringify(themeVars)}}}%%`;
+            return cachedTheme;
+        }
 
         if (!mdPath) {
             document.querySelector('.container').innerHTML = `
@@ -153,8 +180,8 @@
                         // Remove existing %%{init:...}%% declarations
                         mermaidCode = mermaidCode.replace(/%%\{init:[\s\S]*?\}%%\n?/g, '');
                         
-                        // Inject OUR CSS (contract diagram theme)
-                        const ourInit = `%%{init: {'theme':'base','themeVariables':{'primaryColor':'#4A90E2','primaryTextColor':'#fff','primaryBorderColor':'#2E5C8A','lineColor':'#666','secondaryColor':'#50E3C2','tertiaryColor':'#FFD700'}}}%%`;
+                        // Inject OUR CSS from styles.css (source of truth)
+                        const ourInit = await getThemeFromCSS();
                         
                         // Rebuild mermaid block with our CSS
                         const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${mermaidCode.trim()}\n${mermaidMatch[3]}`;
