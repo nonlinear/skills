@@ -2,12 +2,14 @@
 
 
 
+
 > 🤖
 > This project follows [backstage protocol](https://github.com/nonlinear/backstage) v0.3.4
 >
-> - [README](../README.md) 👏 [ROADMAP](ROADMAP.md) 👏 [CHANGELOG](CHANGELOG.md) 👏 checks: [local](checks/local/) <sup>3</sup>, [global](checks/global/) <sup>28</sup>
+> - [README](../README.md) 👏 [ROADMAP](ROADMAP.md) 👏 [CHANGELOG](CHANGELOG.md) 👏 checks: [local](checks/local/) <sup>3</sup>, [global](checks/global/) <sup>0</sup>
 >
 > 🤖
+
 
 
 
