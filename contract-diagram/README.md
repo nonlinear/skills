@@ -26,6 +26,12 @@ flowchart TD
 
 ---
 
+## Requirements
+
+- Node.js (for engine server)
+
+---
+
 ## Policies
 
 In order for this exercise to work, you need:
