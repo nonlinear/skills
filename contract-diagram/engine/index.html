@@ -324,11 +324,14 @@
                         const phase = detectPhase(mermaidCode);
                         const badgeLabel = phase.replace(/ /g, '%20'); // URL encode spaces
                         
+                        // Extract filename from mdPath (without .md extension)
+                        const filename = mdPath.split('/').pop().replace('.md', '');
+                        
                         // Rebuild mermaid block with our CSS
                         const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${mermaidCode.trim()}\n${mermaidMatch[3]}`;
                         
-                        // Add title BEFORE mermaid with detected phase
-                        const titleText = `## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)\n\n`;
+                        // Add title BEFORE mermaid with filename + detected phase
+                        const titleText = `## ${filename} contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)\n\n`;
                         const modifiedMarkdown = markdown.replace(/(```mermaid\n[\s\S]*?```)/, titleText + claimedMermaid);
                         
                         // POST to /write endpoint
@@ -413,18 +416,19 @@
                 const currentPhase = detectPhase(mermaidCode);
                 
                 // Check if badge needs update
-                const titleMatch = markdown.match(/##\s*Contract diagram.*?!\[(.*?)\]\(https:\/\/img\.shields\.io/);
+                const titleMatch = markdown.match(/##\s*(.*?)\s*contract diagram.*?!\[(.*?)\]\(https:\/\/img\.shields\.io/);
                 if (!titleMatch) return; // No badge yet (unclaimed)
                 
-                const badgePhase = titleMatch[1].replace(/%20/g, ' ');
+                const filename = titleMatch[1];
+                const badgePhase = titleMatch[2].replace(/%20/g, ' ');
                 
                 if (badgePhase !== currentPhase) {
                     console.log(`🔄 Phase changed: "${badgePhase}" → "${currentPhase}"`);
                     
-                    // Update badge in title
+                    // Update badge in title (preserve filename)
                     const badgeLabel = currentPhase.replace(/ /g, '%20');
-                    const newTitle = `## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)`;
-                    const updatedMarkdown = markdown.replace(/##\s*Contract diagram.*/, newTitle);
+                    const newTitle = `## ${filename} contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)`;
+                    const updatedMarkdown = markdown.replace(/##\s*.*?\s*contract diagram.*/, newTitle);
                     
                     // POST update
                     await fetch('/write', {
