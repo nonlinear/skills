@@ -100,7 +100,14 @@
                 Object.assign(themeVars, map);
             }
             
-            cachedTheme = `%%{init: {'theme':'base','themeVariables':${JSON.stringify(themeVars)}}}%%`;
+            const flowchartConfig = {
+                'nodeSpacing': 50,
+                'rankSpacing': 50,
+                'padding': 15,
+                'curve': 'basis'
+            };
+            
+            cachedTheme = `%%{init: {'theme':'base','themeVariables':${JSON.stringify(themeVars)},'flowchart':${JSON.stringify(flowchartConfig)}}}%%`;
             return cachedTheme;
         }
 
