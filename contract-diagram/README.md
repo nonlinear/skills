@@ -5,11 +5,11 @@
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{'primaryColor':'#e0e0e0','primaryTextColor':'#000','primaryBorderColor':'#666','lineColor':'#666','secondaryColor':'#FFF9C4','tertiaryColor':'#FFCDD2','nodeBorder':'#666','mainBkg':'#e0e0e0','secondaryBkg':'#FFF9C4','tertiaryBkg':'#FFCDD2'},'flowchart':{'nodeSpacing':50,'rankSpacing':50,'padding':15,'curve':'basis'}}}%%
 flowchart TD
-    DEFAULT[".default"]:::default
-    APPROVED[".approved"]:::approved
-    BLOCKER[".blocker"]:::blocker
-    DEVELOPED[".developed"]:::developed
-    DEVELOPED_NOTES[".developed-notes"]:::developed-notes
+    DEFAULT[".default"]
+    APPROVED[".approved"]
+    BLOCKER[".blocker"]
+    DEVELOPED[".developed"]
+    DEVELOPED_NOTES[".developed-notes"]
     
     DEFAULT -->|"Approved"| APPROVED
     APPROVED -->|"Not approved"| BLOCKER
@@ -21,6 +21,12 @@ flowchart TD
     classDef blocker fill:#FFCDD2,stroke:#D32F2F,color:#000
     classDef developed fill:#D5F5D5,stroke:#388E3C,color:#000
     classDef developed-notes fill:#E3F2FD,stroke:#1976D2,color:#000
+    
+    class DEFAULT default
+    class APPROVED approved
+    class BLOCKER blocker
+    class DEVELOPED developed
+    class DEVELOPED_NOTES developed-notes
 ```
 
 ****
