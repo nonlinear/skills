@@ -50,6 +50,34 @@ graph LR
     M --> N
 ```
 
+## v1.1.1 - 2026-02-22
+
+### Security Fixes
+
+**Description:** Address OpenClaw security review findings
+
+**Fixed:**
+- ✅ **Vendor CDN dependencies:** marked.js + mermaid.js now bundled locally (offline/air-gapped support, no supply-chain risk)
+- ✅ **Path whitelist:** server.js now restricts file reads to allowed directories (HOME/Documents, skills root, engine dir) - blocks path traversal attacks
+- ✅ Validated security: `?md=../../../../etc/passwd` → Access denied
+
+**Impact:**
+- Skill works offline (no CDN dependency)
+- Protected against arbitrary file reads
+- Safe for air-gapped/restricted environments
+
+**Files changed:**
+- `contract-diagram/marked.min.js` (new, 39KB)
+- `contract-diagram/mermaid.min.js` (new, 2.8MB)
+- `contract-diagram/index.html` (CDN → local imports)
+- `contract-diagram/server.js` (path validation)
+
+**Reference:** OpenClaw security review 2026-02-22 (HIGH CONFIDENCE findings addressed)
+
+**Status:** ✅ Published to clawhub
+
+---
+
 ## v1.1.0 - 2026-02-22
 
 ### Contract Diagram
