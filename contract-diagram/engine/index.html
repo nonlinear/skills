@@ -304,7 +304,7 @@
             const firstMermaid = container.querySelector('.mermaid');
             if (firstMermaid) {
                 // Check if title already exists in markdown (any format)
-                const hasTitleInMD = /##\s*Contract diagram/.test(markdown);
+                const hasTitleInMD = /##\s*.*?\s*contract diagram/.test(markdown);
                 
                 // If missing in MD → CLAIM (write to file)
                 if (!hasTitleInMD) {
