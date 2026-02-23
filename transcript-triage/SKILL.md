@@ -3,7 +3,7 @@ name: transcript-triage
 description: "Parse AI conversation transcripts into actionable topics (NOW/LATER/BACKLOG). Triggers: 'triage transcript', 'parse conversation', 'organize chat'. Use for: grooming decisions from external AI chats, extracting action items, planning epic tasks."
 type: public
 version: 0.1.0
-status: draft
+status: published
 dependencies: []
 author: nonlinear
 license: MIT

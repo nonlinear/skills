@@ -376,3 +376,24 @@ graph LR
 - Timeline visualization clear and useful
 
 ---
+
+
+## v1.13.0
+
+### Automate Clawhub Publication
+
+**Description:** Script to publish skills to clawhub from CLI (reduce manual steps)
+
+**Tasks:**
+- [ ] Research clawhub publication API/CLI
+- [ ] Create publish-skill.sh (inputs: skill name, validates frontmatter, publishes)
+- [ ] Integrate with ROADMAP workflow (epic complete → publish prompt)
+- [ ] Update .gitignore automatically (remove published skills)
+- [ ] Update README.md automatically (add published skill section)
+
+**Success:**
+- One command publishes skill to clawhub
+- Frontmatter validated before publish
+- .gitignore + README auto-updated
+
+---
