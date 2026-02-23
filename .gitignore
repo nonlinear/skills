@@ -1,15 +1,25 @@
 # Private skills (work-specific, sensitive data)
 # DO NOT COMMIT these to public repos
 
+# System files
+.DS_Store
+renumber-epics.rb
+
 # Unpublished skills (not yet on clawhub)
+backstage/
 better/
 context-switch/
+dashboard/
 design-discrepancy/
 find-books/
+fitness/
 i-ching/
 notify/
+reels-library/
+reminder-research/
 roadmap/
 system-detective/
+token-management/
 use-for/
 
 # Wiley work
