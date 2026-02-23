@@ -43,8 +43,8 @@ flowchart TD
     SIGNOFF["Ready to approve"]
     DEVELOPMENT["Developing..."]
     BLOCKERS{"Has blockers?"}
-    TESTS{"Pass checks?"}
-    PUBLISH["Publish"]
+    TESTS{"Pass checks? 3️⃣"}
+    PUBLISH["Publish 3️⃣"]
     
     TRIGGER --> CHECK_CONTRACT
     CHECK_CONTRACT -->|Yes| OPEN
@@ -81,6 +81,8 @@ flowchart TD
 **1️⃣** Claiming: Wrapper auto-injects title + phase badge + CSS on first load.
 
 **2️⃣** One diagram rule: Multiple diagrams break muscle memory. Create separate files if needed.
+
+**3️⃣** Checks and publication: Depend on what and where final product goes, at user discretion.
 
 --- 
 
