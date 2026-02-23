@@ -8,13 +8,15 @@
     --approved-border: #F9A825;
     --blocker-bg: #FFCDD2;
     --blocker-border: #D32F2F;
-    --developed-bg: #C8E6C9;
+    --developed-bg: #D5F5D5;
     --developed-border: #388E3C;
-    --developed-notes-bg: #BBDEFB;
-    --developed-notes-border: #1976D2;
+    --notes-bg: #E3F2FD;
+    --notes-border: #1976D2;
+    --outside-bg: #D5F5D5;
+    --outside-border: #388E3C;
     --partial-bg: #E1BEE7;
     --partial-border: #7B1FA2;
-    --border-radius: 10px;
+    --border-radius: 5px;
     
     /* Legacy */
     --in-progress-bg: #4A90E2;
@@ -23,10 +25,16 @@
 
 /* Base */
 body {
-    background: white;
+    background: lime !important; /* DEBUG: se aparecer verde = CSS carrega */
     margin: 0;
     padding: 0;
     font-family: Helvetica, Arial, sans-serif;
+}
+
+main.container {
+    padding: 15px !important;
+    border: 3px solid red !important;
+    background: yellow !important; /* DEBUG */
 }
 
 /* Mermaid container */
@@ -63,8 +71,8 @@ g.node > * {
 }
 
 g.node rect {
-  rx: var(--border-radius) !important;
-  ry: var(--border-radius) !important;
+  rx: 5px !important;
+  ry: 5px !important;
 }
 
 /* Default state (explicit) */
@@ -130,19 +138,38 @@ g.node.developed polygon {
 }
 
 /* Developed-notes state */
-.developed-notes rect, .developed-notes polygon, .developed-notes circle, .developed-notes path, .developed-notes ellipse {
-  fill: var(--developed-notes-bg) !important;
-  stroke: var(--developed-notes-border) !important;
+.notes rect, .notes polygon, .notes circle, .notes path, .notes ellipse {
+  fill: var(--notes-bg) !important;
+  stroke: var(--notes-border) !important;
 }
 
-g.node.developed-notes path {
-  fill: var(--developed-notes-bg) !important;
-  stroke: var(--developed-notes-border) !important;
+g.node.notes path {
+  fill: var(--notes-bg) !important;
+  stroke: var(--notes-border) !important;
   stroke-width: 2px !important;
 }
 
-g.node.developed-notes polygon {
+g.node.notes polygon {
   stroke-width: 2px !important;
+}
+
+/* Outside-system state (green with dashed borders) */
+.outside rect, .outside polygon, .outside circle, .outside path, .outside ellipse {
+  fill: var(--outside-bg) !important;
+  stroke: var(--outside-border) !important;
+  stroke-dasharray: 5 5 !important;
+}
+
+g.node.outside path {
+  fill: var(--outside-bg) !important;
+  stroke: var(--outside-border) !important;
+  stroke-width: 2px !important;
+  stroke-dasharray: 5 5 !important;
+}
+
+g.node.outside polygon {
+  stroke-width: 2px !important;
+  stroke-dasharray: 5 5 !important;
 }
 
 /* Partial state */
@@ -181,7 +208,7 @@ path.edgePath,
   fill: none !important;
 }
 
-/* Edge labels */
+/* Edge labels - match arrow color */
 .edgeLabel {
   opacity: 1 !important;
 }
@@ -190,8 +217,8 @@ path.edgePath,
 .edgeLabel foreignObject {
   fill: var(--default-border) !important;
   stroke: none !important;
-  rx: var(--border-radius) !important;
-  ry: var(--border-radius) !important;
+  rx: 5px !important;
+  ry: 5px !important;
   opacity: 1 !important;
 }
 
@@ -199,21 +226,21 @@ path.edgePath,
 .edgeLabel div {
   background-color: var(--default-border) !important;
   opacity: 1 !important;
-  border-radius: var(--border-radius) !important;
+  border-radius: 5px !important;
   padding: 5px 10px !important;
 }
 
 .labelBkg {
   opacity: 1 !important;
   background-color: var(--default-border) !important;
-  border-radius: var(--border-radius) !important;
+  border-radius: 5px !important;
   padding: 5px 10px !important;
 }
 
 div.labelBkg {
   opacity: 1 !important;
   background-color: var(--default-border) !important;
-  border-radius: var(--border-radius) !important;
+  border-radius: 5px !important;
   padding: 5px 10px !important;
 }
 
@@ -224,12 +251,12 @@ foreignObject:has(.labelBkg) {
 span.edgeLabel {
   background: var(--default-border) !important;
   border: none !important;
-  border-radius: var(--border-radius) !important;
+  border-radius: 5px !important;
   padding: 5px 10px !important;
   color: white !important;
-  font-size: 12px !important;
+  font-size: 80% !important;
   font-weight: normal !important;
-  line-height: 1.4 !important;
+  line-height: 100% !important;
   white-space: normal !important;
   word-wrap: break-word !important;
   max-width: 150px !important;
@@ -239,7 +266,9 @@ span.edgeLabel {
 .edgeLabel text {
   transform: rotate(0deg) !important;
   writing-mode: horizontal-tb !important;
-  fill: black !important;
+  fill: white !important;
+  font-size: 80% !important;
+  line-height: 100% !important;
 }
 
 /* Force ALL children of node groups */
