@@ -230,7 +230,10 @@
                 else if (className === 'developed') counts.developed += nodeCount;
                 else if (className === 'blocker') counts.blocker += nodeCount;
                 else if (className === 'developed-notes') counts.developedNotes += nodeCount;
-                else if (className === 'outside') counts.outside += nodeCount;
+                else if (className === 'outside') {
+                    console.log('🔍 Found outside:', nodeCount, 'nodes');
+                    counts.outside += nodeCount;
+                }
                 
                 counts.total += nodeCount;
             });
