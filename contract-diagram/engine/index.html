@@ -338,6 +338,11 @@
             
             // Parse markdown to HTML
             const html = marked.parse(processedMarkdown);
+            
+            console.log('🔍 Body markdown (first 500 chars):', bodyMarkdown.substring(0, 500));
+            console.log('🔍 Processed markdown (first 500 chars):', processedMarkdown.substring(0, 500));
+            console.log('🔍 HTML output (first 500 chars):', html.substring(0, 500));
+            
             container.innerHTML = frontmatterHTML + html;
             
             // Render mermaid diagrams
