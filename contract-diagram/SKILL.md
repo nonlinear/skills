@@ -8,19 +8,16 @@ dependencies: []
 author: nonlinear
 
 license: MIT
---- 
+---
 
-<span style="background-color:#e0e0e0; border:2px solid #666; padding:5px 10px; border-radius:5px; color:#000;">default</span> not discussed yet
-
-<span style="background-color:#FFF9C4; border:2px solid #F9A825; padding:5px 10px; border-radius:5px; color:#000;">approved</span> Agreed by stakeholders
-
-<span style="background-color:#FFCDD2; border:2px solid #D32F2F; padding:5px 10px; border-radius:5px; color:#000;">blocker</span> Needs discussion/failed implementation (always has notes)
-
-<span style="background-color:#D5F5D5; border:2px solid #388E3C; padding:5px 10px; border-radius:5px; color:#000;">developed</span> Agreed and implemented
-
-<span style="background-color:#E3F2FD; border:2px solid #1976D2; padding:5px 10px; border-radius:5px; color:#000;">notes</span> Implemented but developer made decisions (in notes)
-
-<span style="background-color:#D5F5D5; border:2px dashed #388E3C; padding:5px 10px; border-radius:5px; color:#000;">outside</span> To be performed outside system
+| Node Class | Description |
+|------------|-------------|
+| **default** (gray) | Not discussed yet |
+| **approved** (yellow) | Agreed by stakeholders |
+| **blocker** (red) | Needs discussion/failed implementation (always has notes) |
+| **developed** (green) | Agreed and implemented |
+| **notes** (blue) | Implemented but developer made decisions (in notes) |
+| **outside** (green dashed) | To be performed outside system |
 
 ---
 
