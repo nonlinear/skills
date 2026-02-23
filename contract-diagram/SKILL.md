@@ -17,7 +17,7 @@ license: MIT
 | ![blocker](https://img.shields.io/badge/blocker-red) | Needs discussion/failed implementation (always has notes) |
 | ![developed](https://img.shields.io/badge/developed-lightgreen) | Agreed and implemented |
 | ![notes](https://img.shields.io/badge/notes-blue) | Implemented but developer made decisions (in notes) |
-| ![outside](https://img.shields.io/badge/outside-green?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+) | To be performed outside system |
+| ![outside](https://img.shields.io/badge/outside-lightgreen) | To be performed outside system (dashed border) |
 
 ---
 
