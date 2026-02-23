@@ -309,9 +309,6 @@
                         // Remove existing %%{init:...}%% declarations
                         mermaidCode = mermaidCode.replace(/%%\{init:[\s\S]*?\}%%\n?/g, '');
                         
-                        // Ensure ALL nodes have classes
-                        mermaidCode = ensureNodeClasses(mermaidCode);
-                        
                         // Inject OUR CSS from styles.css (source of truth)
                         const ourInit = await getThemeFromCSS();
                         
