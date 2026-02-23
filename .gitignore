@@ -1,6 +1,18 @@
 # Private skills (work-specific, sensitive data)
 # DO NOT COMMIT these to public repos
 
+# Unpublished skills (not yet on clawhub)
+better/
+context-switch/
+design-discrepancy/
+find-books/
+i-ching/
+notify/
+roadmap/
+system-detective/
+transcript-triage/
+use-for/
+
 # Wiley work
 
 # Add other private skills here

@@ -2,8 +2,8 @@
 name: contract-diagram
 description: "Diagram as contract for agreed-upon AI development"
 type: public
-version: 1.0.0
-status: stable
+version: 1.1.1
+status: published
 dependencies: []
 author: nonlinear
 
