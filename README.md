@@ -10,6 +10,13 @@ Manage backstage workflow in projects (ROADMAP, POLICY, HEALTH, CHANGELOG). Trig
 
 Companion for [backstage](https://github.com/nonlinear/backstage)
 
+**Install:**
+```bash
+openclaw skill install backstage
+# or
+curl -O https://clawhub.com/skills/backstage/install.sh && bash install.sh
+```
+
 [Published](https://clawhub.com/skills/backstage) · [View diagram](https://github.com/backstage/skills/backstage/SKILL.md#diagram)
 
 ---
@@ -17,6 +24,14 @@ Companion for [backstage](https://github.com/nonlinear/backstage)
 ## contract diagram
 
 Diagram as contract for agreed-upon AI development
+
+**Install:**
+```bash
+openclaw skill install nonlinear/contract-diagram
+# or
+git clone https://github.com/nonlinear/skills.git
+cd skills/contract-diagram && ./serve.sh
+```
 
 [Published](https://clawhub.ai/nonlinear/contract-diagram) · [View diagram](contract-diagram/SKILL.md#diagram)
 
@@ -28,6 +43,12 @@ OpenClaw conversational interface for semantic book search.
 
 Companion for [librarian](https://github.com/nonlinear/librarian)
 
+**Install:**
+```bash
+openclaw skill install nonlinear/librarian
+# or see librarian project README
+```
+
 [Published](https://clawhub.ai/nonlinear/librarian) · [View diagram](https://github.com/librarian/skill/SKILL.md#diagram)
 
 ---
@@ -35,6 +56,11 @@ Companion for [librarian](https://github.com/nonlinear/librarian)
 ## transcript triage
 
 Parses long transcripts into topics under ordered lists, to triage in your notes system
+
+**Install:**
+```bash
+openclaw skill install nonlinear/transcript-triage
+```
 
 [Published](https://clawhub.ai/nonlinear/transcript-triage)
 
