@@ -10,14 +10,14 @@ author: nonlinear
 license: MIT
 ---
 
-| Node Class | Description |
-|------------|-------------|
-| **default** | Not discussed yet |
-| **approved** | Agreed by stakeholders |
-| **blocker** | Needs discussion/failed implementation (always has notes) |
-| **developed** | Agreed and implemented |
-| **notes** | Implemented but developer made decisions (in notes) |
-| **outside** | To be performed outside system |
+| Legend | Description |
+|--------|-------------|
+| ![default](https://img.shields.io/badge/default-lightgray) | Not discussed yet |
+| ![approved](https://img.shields.io/badge/approved-yellow) | Agreed by stakeholders |
+| ![blocker](https://img.shields.io/badge/blocker-red) | Needs discussion/failed implementation (always has notes) |
+| ![developed](https://img.shields.io/badge/developed-lightgreen) | Agreed and implemented |
+| ![notes](https://img.shields.io/badge/notes-blue) | Implemented but developer made decisions (in notes) |
+| ![outside](https://img.shields.io/badge/outside-green?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+) | To be performed outside system |
 
 ---
 
