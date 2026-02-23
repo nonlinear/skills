@@ -72,8 +72,8 @@ flowchart TD
     classDef developed-notes fill:#E3F2FD,stroke:#1976D2,color:#000
     classDef outside-system fill:#D5F5D5,stroke:#388E3C,stroke-dasharray:5 5,color:#000
     
-    class TRIGGER,CHECK_CONTRACT,OPEN,CLARIFY,DESIGN,DEVELOPMENT,BLOCKERS approved
-    class CHECK_DIAGRAM,CREATE,CLAIM,ERROR,SIGNOFF developed
+    class TRIGGER,CHECK_CONTRACT,OPEN,CLARIFY approved
+    class CHECK_DIAGRAM,CREATE,CLAIM,ERROR,SIGNOFF,DESIGN,DEVELOPMENT,BLOCKERS developed
     class PUBLISH,TESTS outside-system
 ```
 
