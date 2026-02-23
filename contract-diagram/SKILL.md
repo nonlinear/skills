@@ -14,11 +14,11 @@ license: MIT
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{"primaryColor":"#4A90E2","primaryTextColor":"#fff","primaryBorderColor":"#2E5C8A","lineColor":"#666","secondaryColor":"#50E3C2","tertiaryColor":"#FFD700"}}}%%
 flowchart TD
-    TRIGGER["trigger + contract"]
-    CHECK_CONTRACT{"has contract?"}
-    OPEN["open contract"]
-    CLARIFY["clarify"]
-    CHECK_DIAGRAM{"has diagram?"}
+    TRIGGER["Trigger + contract"]
+    CHECK_CONTRACT{"Has contract?"}
+    OPEN["Open contract"]
+    CLARIFY["Clarify"]
+    CHECK_DIAGRAM{"Has diagram?"}
     CREATE["New 1️⃣"]
     CLAIM["Claimed 1️⃣"]
     ERROR["Error 2️⃣"]
@@ -31,24 +31,24 @@ flowchart TD
     PUBLISH["Publish"]
     
     TRIGGER --> CHECK_CONTRACT
-    CHECK_CONTRACT -->|yes| OPEN
-    CHECK_CONTRACT -->|no| CLARIFY
+    CHECK_CONTRACT -->|Yes| OPEN
+    CHECK_CONTRACT -->|No| CLARIFY
     CLARIFY --> TRIGGER
     
     OPEN --> CHECK_DIAGRAM
-    CHECK_DIAGRAM -->|yes, more<br/>than one| ERROR
-    CHECK_DIAGRAM -->|yes, one| CLAIM
-    CHECK_DIAGRAM -->|no| CREATE
+    CHECK_DIAGRAM -->|Yes, more<br/>than one| ERROR
+    CHECK_DIAGRAM -->|Yes, one| CLAIM
+    CHECK_DIAGRAM -->|No| CREATE
     
     CREATE --> DESIGN
     CLAIM --> DESIGN
     DESIGN --> SIGNOFF
     SIGNOFF --> DEVELOPMENT
     DEVELOPMENT --> BLOCKERS
-    BLOCKERS -->|yes| DESIGN
-    BLOCKERS -->|no| TESTS
-    TESTS -->|yes| PUBLISH
-    TESTS -->|no| DESIGN
+    BLOCKERS -->|Yes| DESIGN
+    BLOCKERS -->|No| TESTS
+    TESTS -->|Yes| PUBLISH
+    TESTS -->|No| DESIGN
     
     classDef default fill:#e0e0e0,stroke:#666,color:#000
     classDef approved fill:#4A90E2,stroke:#2E5C8A,color:#fff
