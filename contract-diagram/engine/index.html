@@ -211,7 +211,7 @@
         // Detect phase from node class counts
         function detectPhase(mermaidCode) {
             const lines = mermaidCode.split('\n');
-            const counts = { default: 0, approved: 0, developed: 0, blocker: 0, developedNotes: 0, total: 0 };
+            const counts = { default: 0, approved: 0, developed: 0, blocker: 0, developedNotes: 0, outsideSystem: 0, total: 0 };
 
             lines.forEach(line => {
                 if (!line.includes('class ')) return;
@@ -224,32 +224,30 @@
                 const className = match[2];
                 const nodeCount = nodeList.length;
                 
-                // Ignore outside-system (user actions, not wrapper)
-                if (className === 'outside-system') return;
-                
                 // Map class names to counts
                 if (className === 'default') counts.default += nodeCount;
                 else if (className === 'approved') counts.approved += nodeCount;
                 else if (className === 'developed') counts.developed += nodeCount;
                 else if (className === 'blocker') counts.blocker += nodeCount;
                 else if (className === 'developed-notes') counts.developedNotes += nodeCount;
+                else if (className === 'outside-system') counts.outsideSystem += nodeCount;
                 
                 counts.total += nodeCount;
             });
 
             console.log('🔍 Phase detection counts:', counts);
 
-            // Apply rules (Nicholas's logic 2026-02-22, updated 2026-02-22 21:31)
+            // Apply rules (Nicholas's logic 2026-02-22, updated 2026-02-22 21:38)
             // Design phase: has default OR blocker
             if (counts.default > 0 || counts.blocker > 0) return "Design phase";
             
             // Ready to approve: ALL approved
             if (counts.approved === counts.total) return "Ready to approve";
             
-            // Ready to check: ALL developed (no approved)
-            if (counts.developed + counts.developedNotes === counts.total) return "Ready to check";
+            // Ready to check: ALL developed + outside-system (wrapper done + user ready)
+            if (counts.developed + counts.developedNotes + counts.outsideSystem === counts.total) return "Ready to check";
             
-            // Developing...: mix of approved/developed/developed-notes (no blocker/default)
+            // Developing...: mix (work in progress)
             return "Developing...";
         }
 
