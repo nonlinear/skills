@@ -389,6 +389,12 @@ graph LR
 **Description:** Script to publish skills to clawhub from CLI (reduce manual steps)
 
 **Tasks:**
+- [ ] **Test `openclaw skill` commands:** Verify install/uninstall/list work correctly
+  - Test: `openclaw skill install nonlinear/contract-diagram`
+  - Test: `openclaw skill list` (shows installed skills)
+  - Test: `openclaw skill uninstall nonlinear/contract-diagram`
+  - Validate: Skills actually work after installation
+  - Document: Any gotchas or edge cases
 - [ ] **Dual-repo strategy:** Commit locally (all skills), push selectively (published only)
   - Research: pre-push hook vs dual-branch (main/public) vs separate repo
   - Design: "commit locally ≠ push to GitHub" workflow
