@@ -76,36 +76,9 @@ flowchart TD
     class PUBLISH,TESTS outside-system
 ```
 
-**1️⃣** Claiming: Wrapper detects phase (from node classes), injects title + phase badge + CSS on first load
+**1️⃣** Claiming: Wrapper auto-injects title + phase badge + CSS on first load.
 
 **2️⃣** One diagram rule: Multiple diagrams break muscle memory. Create separate files if needed.
-
-**3️⃣** Design phase: Stakeholders (AI + humans) iterate on flow, discuss blockers, approve nodes. Default or blocker nodes = still designing.
-
-**4️⃣** Ready to approve: All nodes approved (yellow). Wrapper checks file permissions (write access). If OK, asks user: "Ready to develop?" Permission granted = proceed to Development.
-
-**5️⃣** Development phase: AI builds, updates nodes to developed (green), developed-notes (yellow), or blocker (red).
-
-**6️⃣** Has blockers?: Check if development hit blockers. Yes → back to Design phase. No → proceed to checks.
-
-**7️⃣** Pass checks?: Validate implementation (external tests). Yes = publish. No = back to Design phase for fixes.
-
----
-
-## Development Order (Unsupervised Implementation)
-
-**Logic:** Dependency-first, bottom-up (build foundation, then compose).
-
-**Order:**
-1. **DESIGN, DEVELOPMENT, BLOCKERS** - Phase detection (already working via detectPhase)
-2. **OPEN** - File loading (wrapper already does this)
-3. **CHECK_CONTRACT** - Verify file exists + editable (foundation for TRIGGER)
-4. **CLARIFY** - Error handling when file not found
-5. **TRIGGER** - Skill activation (last, depends on CHECK_CONTRACT)
-
-**Each node:** implement → test → mark as `developed` in diagram → commit.
-
-**Blocker rule:** If stuck >2min → stop, report blocker, ask for help.
 
 ---
 
