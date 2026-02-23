@@ -187,40 +187,39 @@ path.edgePath,
   fill: none !important;
 }
 
-/* Edge labels */
+/* Edge labels - match arrow color */
 .edgeLabel {
   opacity: 1 !important;
 }
 
 .edgeLabel rect,
 .edgeLabel foreignObject {
-  fill: white !important;
-  stroke: var(--default-border) !important;
-  stroke-width: 1px !important;
-  rx: var(--border-radius) !important;
-  ry: var(--border-radius) !important;
+  fill: var(--default-border) !important;
+  stroke: none !important;
+  rx: 5px !important;
+  ry: 5px !important;
   opacity: 1 !important;
 }
 
 .edgeLabel .labelBkg,
 .edgeLabel div {
-  background-color: white !important;
+  background-color: var(--default-border) !important;
   opacity: 1 !important;
-  border-radius: var(--border-radius) !important;
+  border-radius: 5px !important;
   padding: 5px 10px !important;
 }
 
 .labelBkg {
   opacity: 1 !important;
-  background-color: white !important;
-  border-radius: var(--border-radius) !important;
+  background-color: var(--default-border) !important;
+  border-radius: 5px !important;
   padding: 5px 10px !important;
 }
 
 div.labelBkg {
   opacity: 1 !important;
-  background-color: white !important;
-  border-radius: var(--border-radius) !important;
+  background-color: var(--default-border) !important;
+  border-radius: 5px !important;
   padding: 5px 10px !important;
 }
 
@@ -229,11 +228,11 @@ foreignObject:has(.labelBkg) {
 }
 
 span.edgeLabel {
-  background: white !important;
-  border: 1px solid var(--default-border) !important;
-  border-radius: var(--border-radius) !important;
+  background: var(--default-border) !important;
+  border: none !important;
+  border-radius: 5px !important;
   padding: 5px 10px !important;
-  color: black !important;
+  color: white !important;
   font-size: 12px !important;
   font-weight: normal !important;
   line-height: 1.4 !important;
@@ -246,7 +245,7 @@ span.edgeLabel {
 .edgeLabel text {
   transform: rotate(0deg) !important;
   writing-mode: horizontal-tb !important;
-  fill: black !important;
+  fill: white !important;
 }
 
 /* Force ALL children of node groups */
