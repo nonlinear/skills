@@ -1,4 +1,4 @@
---- 
+---
 name: contract-diagram
 description: "Diagram as contract for agreed-upon AI development"
 type: public
@@ -6,22 +6,24 @@ version: 1.0.0
 status: stable
 dependencies: []
 author: nonlinear
+
 license: MIT
 --- 
 
 <span style="background-color:#e0e0e0; border:2px solid #666; padding:5px 10px; border-radius:5px; color:#000;">default</span> not discussed yet
 
-<span style="background-color:#FFF9C4; border:2px solid #F9A825; padding:5px 10px; border-radius:5px; color:#000;">approved</span> Agreed by stakeholders (all approved, ready for development)
+<span style="background-color:#FFF9C4; border:2px solid #F9A825; padding:5px 10px; border-radius:5px; color:#000;">approved</span> Agreed by stakeholders
 
-<span style="background-color:#FFCDD2; border:2px solid #D32F2F; padding:5px 10px; border-radius:5px; color:#000;">blocker</span> Needs discussion/failed implementation (always has note)
+<span style="background-color:#FFCDD2; border:2px solid #D32F2F; padding:5px 10px; border-radius:5px; color:#000;">blocker</span> Needs discussion/failed implementation (always has notes)
 
-<span style="background-color:#D5F5D5; border:2px solid #388E3C; padding:5px 10px; border-radius:5px; color:#000;">developed</span> Agreed and implemented, ready for testing
+<span style="background-color:#D5F5D5; border:2px solid #388E3C; padding:5px 10px; border-radius:5px; color:#000;">developed</span> Agreed and implemented
 
 <span style="background-color:#E3F2FD; border:2px solid #1976D2; padding:5px 10px; border-radius:5px; color:#000;">developed-notes</span> Implemented but developer made decisions (in notes)
 
 <span style="background-color:#D5F5D5; border:2px dashed #388E3C; padding:5px 10px; border-radius:5px; color:#000;">outside</span> To be performed outside system
 
---- 
+---
+
 
 
 
@@ -89,7 +91,7 @@ flowchart TD
 
 **3️⃣** Checks and publication depend on what and where final product goes, so it's user discretion.
 
---- 
+---
 
 - contract: .md file
 - diagram: mermaid
@@ -124,7 +126,7 @@ flowchart TD
 
 **Notes without numbers = just explanations, turn yellow when approved.**
 
---- 
+---
 
 ## Localhost Trigger
 
@@ -148,7 +150,7 @@ AI:
 
 **Hot reload enabled by default** (2s interval).
 
---- 
+---
 
 ## Research/Validation Phase (Phase 3.5)
 
@@ -174,7 +176,7 @@ AI:
 - All discussions resolved (red → yellow)
 - All validations complete (tested against knowledge)
 
---- 
+---
 
 ## Contract Stability = Communication Efficiency
 
@@ -193,7 +195,7 @@ AI:
 
 **If you change file, diagram, or position → NOISE. Lack of parity.**
 
---- 
+---
 
 ## Visual Diff = Async Collaboration
 
@@ -211,7 +213,7 @@ AI:
 
 **WITHOUT reading a single word.**
 
---- 
+---
 
 ## Enforcement Protocol
 
@@ -234,7 +236,7 @@ AI:
    git commit -m "contract: [topic] - [gray/yellow/blue] phase (updated existing)"
    ```
 
---- 
+---
 
 ## Integration with Backstage
 
@@ -250,6 +252,6 @@ AI:
 4. AI executes (yellow → blue)
 5. Reference in commits: `git commit -m "feat: webhook (see epic-notes/webhook-contract.md)"`
 
---- 
+---
 
 **This protocol = CRITICAL. Don't lose this knowledge.** 🔒
