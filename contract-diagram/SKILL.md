@@ -1,6 +1,6 @@
 ---
 name: contract-diagram
-description: "Collaborative contract diagram design with AI."
+description: "Diagram as contract for agreed-upon AI development"
 type: public
 version: 1.0.0
 status: stable
