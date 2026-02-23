@@ -347,8 +347,14 @@
                     }
                 }
                 
-                // AUTO-SCROLL to first mermaid diagram
-                firstMermaid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // AUTO-SCROLL to title (h2 "Contract diagram")
+                const title = container.querySelector('h2');
+                if (title) {
+                    title.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    // Fallback: scroll to first mermaid
+                    firstMermaid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         }
         
