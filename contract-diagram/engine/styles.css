@@ -10,8 +10,8 @@
     --blocker-border: #D32F2F;
     --developed-bg: #D5F5D5;
     --developed-border: #388E3C;
-    --developed-notes-bg: #E3F2FD;
-    --developed-notes-border: #1976D2;
+    --notes-bg: #E3F2FD;
+    --notes-border: #1976D2;
     --outside-bg: #D5F5D5;
     --outside-border: #388E3C;
     --partial-bg: #E1BEE7;
@@ -138,18 +138,18 @@ g.node.developed polygon {
 }
 
 /* Developed-notes state */
-.developed-notes rect, .developed-notes polygon, .developed-notes circle, .developed-notes path, .developed-notes ellipse {
-  fill: var(--developed-notes-bg) !important;
-  stroke: var(--developed-notes-border) !important;
+.notes rect, .notes polygon, .notes circle, .notes path, .notes ellipse {
+  fill: var(--notes-bg) !important;
+  stroke: var(--notes-border) !important;
 }
 
-g.node.developed-notes path {
-  fill: var(--developed-notes-bg) !important;
-  stroke: var(--developed-notes-border) !important;
+g.node.notes path {
+  fill: var(--notes-bg) !important;
+  stroke: var(--notes-border) !important;
   stroke-width: 2px !important;
 }
 
-g.node.developed-notes polygon {
+g.node.notes polygon {
   stroke-width: 2px !important;
 }
 

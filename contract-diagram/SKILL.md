@@ -18,7 +18,7 @@ license: MIT
 
 <span style="background-color:#D5F5D5; border:2px solid #388E3C; padding:5px 10px; border-radius:5px; color:#000;">developed</span> Agreed and implemented
 
-<span style="background-color:#E3F2FD; border:2px solid #1976D2; padding:5px 10px; border-radius:5px; color:#000;">developed-notes</span> Implemented but developer made decisions (in notes)
+<span style="background-color:#E3F2FD; border:2px solid #1976D2; padding:5px 10px; border-radius:5px; color:#000;">notes</span> Implemented but developer made decisions (in notes)
 
 <span style="background-color:#D5F5D5; border:2px dashed #388E3C; padding:5px 10px; border-radius:5px; color:#000;">outside</span> To be performed outside system
 
@@ -78,7 +78,7 @@ flowchart TD
     classDef approved fill:#FFF9C4,stroke:#F9A825,color:#000
     classDef developed fill:#D5F5D5,stroke:#388E3C,color:#000
     classDef blocker fill:#FFCDD2,stroke:#D32F2F,color:#000
-    classDef developed-notes fill:#E3F2FD,stroke:#1976D2,color:#000
+    classDef notes fill:#E3F2FD,stroke:#1976D2,color:#000
     classDef outside fill:#D5F5D5,stroke:#388E3C,stroke-dasharray:5 5,color:#000
     
     class CHECK_DIAGRAM,CREATE,CLAIM,ERROR,SIGNOFF,DESIGN,DEVELOPMENT,BLOCKERS,CHECK_CONTRACT,OPEN,CLARIFY,TRIGGER developed

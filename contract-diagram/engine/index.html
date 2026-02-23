@@ -211,7 +211,7 @@
         // Detect phase from node class counts
         function detectPhase(mermaidCode) {
             const lines = mermaidCode.split('\n');
-            const counts = { default: 0, approved: 0, developed: 0, blocker: 0, developedNotes: 0, outside: 0, total: 0 };
+            const counts = { default: 0, approved: 0, developed: 0, blocker: 0, notes: 0, outside: 0, total: 0 };
 
             lines.forEach(line => {
                 if (!line.includes('class ')) return;
@@ -230,7 +230,7 @@
                 else if (className === 'approved') counts.approved += nodeCount;
                 else if (className === 'developed') counts.developed += nodeCount;
                 else if (className === 'blocker') counts.blocker += nodeCount;
-                else if (className === 'developed-notes') counts.developedNotes += nodeCount;
+                else if (className === 'notes') counts.notes += nodeCount;
                 else if (className === 'outside') {
                     counts.outside += nodeCount;
                 }
@@ -250,7 +250,7 @@
             if (counts.approved === wrapperTotal) return "Ready to approve";
             
             // Ready to check: ALL wrapper nodes developed
-            if (counts.developed + counts.developedNotes === wrapperTotal) return "Ready to check";
+            if (counts.developed + counts.notes === wrapperTotal) return "Ready to check";
             
             // Developing...: mix (work in progress)
             return "Developing...";
@@ -432,7 +432,7 @@
                 'approved': '#F9A825',       // --approved-border
                 'blocker': '#D32F2F',        // --blocker-border
                 'developed': '#388E3C',      // --developed-border
-                'developed-notes': '#1976D2', // --developed-notes-border
+                'notes': '#1976D2', // --notes-border
                 'partial': '#7B1FA2'         // --partial-border
             };
             
