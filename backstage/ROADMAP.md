@@ -74,10 +74,9 @@ graph LR
 - [x] Test
 - [x] publish as contract-diagram on claw
 - [ ] check errors
-- [ ] **Security enhancement:** Restrict server.js file reads to safe directory (prevent arbitrary path traversal via `?md=` parameter)
-  - Current: Server reads ANY path passed in `md` param (OpenClaw flagged as HIGH CONFIDENCE suspicious)
-  - Fix: Whitelist allowed directories OR validate resolved path is inside engine dir
-  - Also: Vendor CDN dependencies (marked, mermaid) for offline/air-gapped usage
+- [x] **Security enhancement:** Restrict server.js file reads to safe directory (DONE v1.1.1)
+  - ✅ Vendored CDN dependencies (marked, mermaid) - offline/air-gapped support
+  - ✅ Path whitelist (HOME/Documents, skills root, engine dir) - blocks path traversal
   - Reference: OpenClaw security review 2026-02-22
 
 **Success:**
