@@ -27,26 +27,28 @@ graph LR
     A --> B
     B --> C
     C --> D
-    E[📋 v1.2.0 Roadmap Skill]
+    E[📋 v1.2.0 Contract Diagram Updates]
     D --> E
-    F[📋 v1.3.0 i-ching]
+    F[📋 v1.3.0 Roadmap Skill]
     E --> F
-    G[📋 v1.4.0 notify]
+    G[📋 v1.4.0 i-ching]
     F --> G
-    H[📋 v1.5.0 system-detective]
+    H[📋 v1.5.0 notify]
     G --> H
-    I[📋 v1.6.0 find-books]
+    I[📋 v1.6.0 system-detective]
     H --> I
-    J[📋 v1.7.0 open-with]
+    J[📋 v1.7.0 find-books]
     I --> J
-    K[📋 v1.8.0 use-for]
+    K[📋 v1.8.0 open-with]
     J --> K
-    L[📋 v1.9.0 rebranding]
+    L[📋 v1.9.0 use-for]
     K --> L
-    M[📋 v1.10.0 proton-mail]
+    M[📋 v1.10.0 rebranding]
     L --> M
-    N[📋 v1.11.0 design-discrepancy]
+    N[📋 v1.11.0 proton-mail]
     M --> N
+    O[📋 v1.12.0 design-discrepancy]
+    N --> O
 ```
 
 ## v1.1.0
@@ -63,6 +65,7 @@ graph LR
 - [ ] Diary?
 - [x] Test and validate
 - [x] Add mermaid workflow diagram
+- [ ] Mermaid lint/check (define standards, prevent syntax errors) - research for v1.2.0
 
 **Success:**
 - Architecture exercises documented
@@ -73,7 +76,38 @@ graph LR
 
 ---
 
-## v1.2.0 | [notes](epic-notes/v1.1.0-arch/)
+## v1.12.0
+
+### Contract Diagram Updates
+
+**Description:** Advanced contract diagram features (domains, timeline, multi-device)
+
+**Tasks:**
+- [ ] Mermaid lint/check (define standards, prevent syntax errors)
+- [ ] Git timeline navigation (slider through commit history)
+- [ ] Domain system (departments claim nodes, become stakeholders)
+- [ ] Cross-product pattern detection (domains scan all contracts)
+- [ ] Stakeholder orchestration (multi-agent supervised phase)
+- [ ] Meta diagrams (pipelines as contracts)
+- [ ] Mermaid type support (gantt, ER, sequential, mind maps)
+- [ ] Backstage integration (epic-aware contracts)
+- [ ] Voice + Multi-Device (iPhone chat + iPad view sync)
+- [ ] Hypercare → Autonomy transition (check maturity gates)
+- [ ] Diagram history (recent contracts quick-load)
+- [ ] Diagram type suggestions (AI recommends best format)
+
+**Success:**
+- Mermaid validation prevents broken diagrams
+- Timeline slider shows contract evolution
+- Domains claim nodes across products
+- Multi-agent supervised workflows
+- Voice-driven contract editing
+
+**Notes:** [epic-notes/v1.2.0-contract-diagram-updates.md](epic-notes/v1.2.0-contract-diagram-updates.md)
+
+---
+
+## v1.12.0 | [notes](epic-notes/v1.1.0-arch/)
 
 ### Roadmap Skill
 
@@ -97,7 +131,7 @@ graph LR
 
 ---
 
-## v1.3.0
+## v1.12.0
 
 ### i-ching
 
@@ -123,7 +157,7 @@ graph LR
 
 ---
 
-## v1.9.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
+## v1.12.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
 
 ### Rebranding Menu
 
@@ -155,7 +189,7 @@ graph LR
 
 ---
 
-## v1.4.0
+## v1.12.0
 
 ### notify
 
@@ -172,7 +206,7 @@ graph LR
 
 ---
 
-## v1.5.0
+## v1.12.0
 
 ### system-detective
 
@@ -190,7 +224,7 @@ graph LR
 
 ---
 
-## v1.6.0
+## v1.12.0
 
 ### find-books
 
@@ -207,7 +241,7 @@ graph LR
 
 ---
 
-## v1.7.0
+## v1.12.0
 
 ### open-with
 
@@ -240,7 +274,7 @@ graph LR
 
 ---
 
-## v1.8.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
+## v1.12.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
 
 ### use-for
 
@@ -261,7 +295,7 @@ graph LR
 
 ---
 
-## v1.10.0 | [notes](epic-notes/v1.9.0-proton-mail-finder.md)
+## v1.12.0 | [notes](epic-notes/v1.9.0-proton-mail-finder.md)
 
 ### proton-mail-finder
 
@@ -291,7 +325,7 @@ graph LR
 
 ---
 
-## v1.11.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
+## v1.12.0 | [notes](epic-notes/v1.8.0-rebranding-menu.md)
 
 ### git-flipbook
 
