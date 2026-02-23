@@ -83,7 +83,7 @@ flowchart TD
 
 **3️⃣** Design phase: Stakeholders (AI + humans) iterate on flow, discuss blockers, approve nodes. Default or blocker nodes = still designing.
 
-**4️⃣** Ready to approve: All nodes approved (blue). AI checks permissions/auth, asks user to start development.
+**4️⃣** Ready to approve: All nodes approved (yellow). Wrapper checks file permissions (write access). If OK, asks user: "Ready to develop?" Permission granted = proceed to Development.
 
 **5️⃣** Development phase: AI builds, updates nodes to developed (green), developed-notes (yellow), or blocker (red).
 
