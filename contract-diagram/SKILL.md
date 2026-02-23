@@ -78,11 +78,11 @@ flowchart TD
     class PUBLISH,TESTS outside-system
 ```
 
-**1️⃣** Claiming: Wrapper auto-injects title + phase badge + CSS on first load.
+**1️⃣** Wrapper auto-injects title + phase badge + CSS on first load and watches for change of phase on badge.
 
-**2️⃣** One diagram rule: Multiple diagrams break muscle memory. Create separate files if needed.
+**2️⃣** More than one diagram confuses system. For now, only one per md in order to run.
 
-**3️⃣** Checks and publication: Depend on what and where final product goes, at user discretion.
+**3️⃣** Checks and publication depend on what and where final product goes, so it's user discretion.
 
 --- 
 
