@@ -501,6 +501,9 @@
                     
                     console.log(`✅ Badge updated to: ${currentPhase}`);
                     lastContent = updatedMarkdown; // Prevent reload loop
+                    
+                    // Force visual refresh (re-render with new badge)
+                    setTimeout(() => loadTape(mdPath, true), 100);
                 }
             } catch (err) {
                 console.error('Phase check failed:', err);
