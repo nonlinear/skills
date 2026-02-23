@@ -312,14 +312,12 @@
                         const ourInit = await getThemeFromCSS();
                         
                         // Ensure all nodes have classes
-                        const processedCode = ensureNodeClasses(mermaidCode);
-                        
-                        // Detect phase from node classes
-                        const phase = detectPhase(processedCode);
+                        // Detect phase from node classes (use raw code, class statements already exist)
+                        const phase = detectPhase(mermaidCode);
                         const badgeLabel = phase.replace(/ /g, '%20'); // URL encode spaces
                         
                         // Rebuild mermaid block with our CSS
-                        const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${processedCode.trim()}\n${mermaidMatch[3]}`;
+                        const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${mermaidCode.trim()}\n${mermaidMatch[3]}`;
                         
                         // Add title BEFORE mermaid with detected phase
                         const titleText = `## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)\n\n`;
