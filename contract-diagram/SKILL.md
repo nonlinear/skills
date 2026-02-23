@@ -9,6 +9,16 @@ author: nonlinear
 license: MIT
 ---
 
+| Node Class | Description |
+|------------|-------------|
+| <span style="background-color:#e0e0e0; border:2px solid #666; padding:5px 10px; border-radius:5px; color:#000;">default</span> | Draft/backlog, not discussed yet |
+| <span style="background-color:#FFF9C4; border:2px solid #F9A825; padding:5px 10px; border-radius:5px; color:#000;">approved</span> | Agreed by stakeholders, ready for development |
+| <span style="background-color:#FFCDD2; border:2px solid #D32F2F; padding:5px 10px; border-radius:5px; color:#000;">blocker</span> | Needs discussion OR failed implementation (always has numbered note) |
+| <span style="background-color:#D5F5D5; border:2px solid #388E3C; padding:5px 10px; border-radius:5px; color:#000;">developed</span> | Agreed and implemented, ready for testing |
+| <span style="background-color:#E3F2FD; border:2px solid #1976D2; padding:5px 10px; border-radius:5px; color:#000;">developed-notes</span> | Implemented but developer made decisions needing discussion |
+
+---
+
 ## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![Design%20phase](https://img.shields.io/badge/Design%20phase-lightgray)
 
 ```mermaid
