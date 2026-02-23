@@ -162,6 +162,52 @@
             }
         }
 
+        // Check file write permissions and show SIGNOFF banner
+        async function checkAndShowSignoffBanner(mdPath) {
+            try {
+                // Test write access with empty write (no actual change)
+                const testResponse = await fetch('/write', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ path: mdPath, content: '' })
+                });
+                
+                const canWrite = testResponse.ok;
+                
+                // Remove existing banner if present
+                const existingBanner = document.querySelector('.signoff-banner');
+                if (existingBanner) existingBanner.remove();
+                
+                // Create banner
+                const banner = document.createElement('div');
+                banner.className = 'signoff-banner';
+                banner.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 15px 20px;
+                    border-radius: 8px;
+                    font-weight: bold;
+                    z-index: 9999;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    ${canWrite 
+                        ? 'background: #D5F5D5; border: 2px solid #388E3C; color: #1B5E20;'
+                        : 'background: #FFCDD2; border: 2px solid #D32F2F; color: #B71C1C;'
+                    }
+                `;
+                banner.textContent = canWrite 
+                    ? '✅ Ready to develop? All nodes approved.'
+                    : '❌ No write access. Grant permissions first.';
+                
+                document.body.appendChild(banner);
+                
+                // Auto-hide after 10s
+                setTimeout(() => banner.remove(), 10000);
+            } catch (err) {
+                console.error('Failed to check write permissions:', err);
+            }
+        }
+
         // Detect phase from node class counts
         function detectPhase(mermaidCode) {
             const lines = mermaidCode.split('\n');
@@ -352,6 +398,11 @@
                               if (data.success) {
                                   console.log('✅ Claimed diagram (title + CSS added to MD)');
                                   lastContent = modifiedMarkdown; // Update cache to prevent re-render
+                                  
+                                  // Check if Ready to approve phase
+                                  if (phase === "Ready to approve") {
+                                      checkAndShowSignoffBanner(mdPath);
+                                  }
                               }
                           })
                           .catch(err => console.error('❌ Failed to claim:', err));
