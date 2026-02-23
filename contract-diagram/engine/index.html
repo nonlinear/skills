@@ -328,7 +328,7 @@
                         const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${mermaidCode.trim()}\n${mermaidMatch[3]}`;
                         
                         // Add title BEFORE mermaid with detected phase
-                        const titleText = `## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)\n\n`;
+                        const titleText = `## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)\n\n`;
                         const modifiedMarkdown = markdown.replace(/(```mermaid\n[\s\S]*?```)/, titleText + claimedMermaid);
                         
                         // POST to /write endpoint
@@ -423,7 +423,7 @@
                     
                     // Update badge in title
                     const badgeLabel = currentPhase.replace(/ /g, '%20');
-                    const newTitle = `## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)`;
+                    const newTitle = `## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)`;
                     const updatedMarkdown = markdown.replace(/##\s*Contract diagram.*/, newTitle);
                     
                     // POST update
