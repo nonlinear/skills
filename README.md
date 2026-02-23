@@ -4,7 +4,7 @@
 
 ---
 
-## contract-diagram
+## contract diagram
 
 Diagram as contract for agreed-upon AI development
 
