@@ -160,8 +160,8 @@
             const counts = { gray: 0, blue: 0, red: 0, green: 0, total: 0 };
 
             lines.forEach(line => {
+                // Count class-N-name statements
                 if (line.includes('class ') && line.includes('class-')) {
-                    // Count nodes in each class statement
                     // Example: "class NODE1,NODE2,NODE3 class-1-gray"
                     const match = line.match(/class\s+([\w,]+)\s+class-(\d)/);
                     if (match) {
@@ -174,6 +174,18 @@
                         else if (classNum === 3) counts.red += nodeCount;   // red (blocker)
                         else if (classNum === 4) counts.green += nodeCount; // green (developed)
 
+                        counts.total += nodeCount;
+                    }
+                }
+                
+                // Count 'default' class (also gray/undecided)
+                if (line.includes('class ') && line.includes(' default')) {
+                    // Example: "class DESIGN,SIGNOFF,DEVELOPMENT default"
+                    const match = line.match(/class\s+([\w,]+)\s+default/);
+                    if (match) {
+                        const nodeList = match[1].split(',');
+                        const nodeCount = nodeList.length;
+                        counts.gray += nodeCount; // default = gray (not decided yet)
                         counts.total += nodeCount;
                     }
                 }
