@@ -1,6 +1,5 @@
 # Skills
 
-
 [Nonlinear](https://nonlinear.nyc)'s openclaw skills collection
 
 <table>
@@ -10,9 +9,9 @@
 <th align="left">Status</th>
 </tr>
 <tr valign="top">
-<td><strong>arch</strong></td>
-<td>Collaborative architecture design via mermaid diagrams. Design before coding through iterative AI refinement. Triggers: 'design architecture for X', 'let's architect Y', 'vamos desenhar fluxo de Z', 'before coding let's map this'. Use for: system architecture, API design, database models, workflows, infrastructure planning.</td>
-<td>stable</td>
+<td><strong>contract-diagram</strong><br><a href="contract-diagram/SKILL.md#diagram">flow diagram</a></td>
+<td>Diagram as contract for agreed-upon AI development</td>
+<td><a href="https://clawhub.ai/nonlinear/contract-diagram">published</a></td>
 </tr>
 <tr valign="top">
 <td><strong>context-switch</strong></td>
@@ -65,6 +64,7 @@
 <td>stable</td>
 </tr>
 </table>
+
 ## Companion Skills
 
 ### belong to other projects
@@ -76,11 +76,17 @@
 <th align="left">Status</th>
 </tr>
 <tr valign="top">
-<td><strong>backstage</strong><br><a href="https://clawhub.com/skills/backstage">published</a><br><a href="../backstage/skill/SKILL.md#diagram">flow diagram</a></td>
+<td><strong>backstage companion</strong><br><a href="https://github.com/backstage/skills/backstage/SKILL.md#diagram">flow diagram</a></td>
 <td>Manage backstage workflow in projects (ROADMAP, POLICY, HEALTH, CHANGELOG). Triggers: 'backstage start', 'vamos trabalhar no X', 'backstage health'. Installs protocol if missing, updates global rules, runs health checks, shows active epics. Use for: epic planning, project setup, quality enforcement, context switching.<br>companion for <a href="https://github.com/nonlinear/backstage">backstage</a></td>
-<td>published</td>
+<td><a href="https://clawhub.com/skills/backstage">published</a></td>
+</tr>
+<tr valign="top">
+<td><strong>librarian companion</strong><br><a href="https://github.com/librarian/skill/SKILL.md#diagram">flow diagram</a></td>
+<td>OpenClaw conversational interface for semantic book search.<br>companion for <a href="https://github.com/nonlinear/librarian">backstage</a></td>
+<td><a href="https://clawhub.ai/nonlinear/librarian">published</a></td>
 </tr>
 </table>
+
 
 ---
 
