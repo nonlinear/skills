@@ -57,13 +57,12 @@ graph LR
 
 **Tasks:**
 1. [x] Initial announcement https://social.praxis.nyc/@nonlinear/116037514895910044
-2. [ ] How you START an exercise? how you CONTINUE? how you do 2 at same time?
+2. [x] How you START an exercise? how you CONTINUE? how you do 2 at same time? (Phases agreed: Design → Ready to approve → Development → Has blockers? → Pass checks? → Publish)
 3. [x] Add SKILL.md with frontmatter
-4. [ ] Diary integration?
-5. [x] Test and validate
-6. [x] Add mermaid workflow diagram
-7. [ ] Research mermaid customization (padding, spacing) for future improvements
-8. [ ] How do we promote it?
+4. [x] Test and validate
+5. [x] Add mermaid workflow diagram
+6. [x] Research mermaid customization (padding, spacing) - documented in v1.2.0 Topic 13
+7. [ ] How do we promote it?
 
 **Success:**
 - Architecture exercises documented
