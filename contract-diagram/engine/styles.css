@@ -233,9 +233,9 @@ span.edgeLabel {
   border-radius: 5px !important;
   padding: 5px 10px !important;
   color: white !important;
-  font-size: 12px !important;
+  font-size: 80% !important;
   font-weight: normal !important;
-  line-height: 1.4 !important;
+  line-height: 100% !important;
   white-space: normal !important;
   word-wrap: break-word !important;
   max-width: 150px !important;
@@ -246,6 +246,8 @@ span.edgeLabel {
   transform: rotate(0deg) !important;
   writing-mode: horizontal-tb !important;
   fill: white !important;
+  font-size: 80% !important;
+  line-height: 100% !important;
 }
 
 /* Force ALL children of node groups */
