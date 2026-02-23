@@ -19,7 +19,7 @@ license: MIT
 
 <span style="background-color:#E3F2FD; border:2px solid #1976D2; padding:5px 10px; border-radius:5px; color:#000;">developed-notes</span> Implemented but developer made decisions (in notes)
 
-<span style="background-color:#D5F5D5; border:2px dashed #388E3C; padding:5px 10px; border-radius:5px; color:#000;">outside-system</span> To be performed outside system
+<span style="background-color:#D5F5D5; border:2px dashed #388E3C; padding:5px 10px; border-radius:5px; color:#000;">outside</span> To be performed outside system
 
 --- 
 
@@ -28,7 +28,7 @@ license: MIT
 
 
 
-## SKILL contract diagram ![Ready%20to%20check](https://img.shields.io/badge/Ready%20to%20check-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)
+## SKILL contract diagram ![Developing...](https://img.shields.io/badge/Developing...-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{"primaryColor":"#4A90E2","primaryTextColor":"#fff","primaryBorderColor":"#2E5C8A","lineColor":"#666","secondaryColor":"#50E3C2","tertiaryColor":"#FFD700","edgeLabelBackground":"#666"},'flowchart':{"nodeSpacing":50,"rankSpacing":50,"padding":15,"curve":"basis"}}}%%
@@ -75,10 +75,10 @@ flowchart TD
     classDef developed fill:#D5F5D5,stroke:#388E3C,color:#000
     classDef blocker fill:#FFCDD2,stroke:#D32F2F,color:#000
     classDef developed-notes fill:#E3F2FD,stroke:#1976D2,color:#000
-    classDef outside-system fill:#D5F5D5,stroke:#388E3C,stroke-dasharray:5 5,color:#000
+    classDef outside fill:#D5F5D5,stroke:#388E3C,stroke-dasharray:5 5,color:#000
     
     class CHECK_DIAGRAM,CREATE,CLAIM,ERROR,SIGNOFF,DESIGN,DEVELOPMENT,BLOCKERS,CHECK_CONTRACT,OPEN,CLARIFY,TRIGGER developed
-    class PUBLISH,TESTS outside-system
+    class PUBLISH,TESTS outside
 ```
 
 **1️⃣** Wrapper auto-injects title + phase badge + CSS on first load and watches for change of phase on badge.
