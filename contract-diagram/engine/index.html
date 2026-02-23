@@ -396,7 +396,7 @@
                             const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${mermaidCode.trim()}\n${mermaidMatch[3]}`;
                             
                             // Add title BEFORE first mermaid (wherever it is)
-                            const titleText = `## ${filename} contract diagram ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)\n\n`;
+                            const titleText = `## ${filename} contract diagram ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray) <a href="https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md" target="_blank">ℹ️</a>\n\n`;
                             
                             // Replace first mermaid block with title + claimed mermaid
                             const modifiedMarkdown = markdown.replace(/(```mermaid\n[\s\S]*?```)/, titleText + claimedMermaid);
@@ -508,7 +508,7 @@
                     
                     // Update badge in title (preserve filename)
                     const badgeLabel = currentPhase.replace(/ /g, '%20');
-                    const newTitle = `## ${filename} contract diagram ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)`;
+                    const newTitle = `## ${filename} contract diagram ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray) <a href="https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md" target="_blank">ℹ️</a>`;
                     const updatedMarkdown = markdown.replace(/##\s*.*?\s*contract diagram.*/, newTitle);
                     
                     // POST update
