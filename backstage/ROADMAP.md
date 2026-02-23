@@ -57,7 +57,6 @@ graph LR
 
 **Tasks:**
 - [x] https://social.praxis.nyc/@nonlinear/116037514895910044
-- [ ] how do we promote it?
 - [ ] how you START an exercise? how you CONTINUE? how you do 2 at same time?
 - [x] Add SKILL.md with frontmatter
 - [ ] Diary?
