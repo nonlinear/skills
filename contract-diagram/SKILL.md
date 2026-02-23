@@ -29,6 +29,7 @@ license: MIT
 
 
 
+
 ## SKILL contract diagram ![Developing...](https://img.shields.io/badge/Developing...-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)
 
 ```mermaid
