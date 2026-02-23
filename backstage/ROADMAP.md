@@ -63,6 +63,7 @@ graph LR
 - [ ] Diary?
 - [x] Test and validate
 - [x] Add mermaid workflow diagram
+- [ ] Research mermaid customization (padding, spacing) for future improvements
 
 **Success:**
 - Architecture exercises documented
