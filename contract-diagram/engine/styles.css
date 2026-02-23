@@ -194,8 +194,9 @@ path.edgePath,
 
 .edgeLabel rect,
 .edgeLabel foreignObject {
-  fill: var(--default-border) !important;
-  stroke: none !important;
+  fill: white !important;
+  stroke: var(--default-border) !important;
+  stroke-width: 1px !important;
   rx: var(--border-radius) !important;
   ry: var(--border-radius) !important;
   opacity: 1 !important;
@@ -203,7 +204,7 @@ path.edgePath,
 
 .edgeLabel .labelBkg,
 .edgeLabel div {
-  background-color: var(--default-border) !important;
+  background-color: white !important;
   opacity: 1 !important;
   border-radius: var(--border-radius) !important;
   padding: 5px 10px !important;
@@ -211,14 +212,14 @@ path.edgePath,
 
 .labelBkg {
   opacity: 1 !important;
-  background-color: var(--default-border) !important;
+  background-color: white !important;
   border-radius: var(--border-radius) !important;
   padding: 5px 10px !important;
 }
 
 div.labelBkg {
   opacity: 1 !important;
-  background-color: var(--default-border) !important;
+  background-color: white !important;
   border-radius: var(--border-radius) !important;
   padding: 5px 10px !important;
 }
@@ -228,11 +229,11 @@ foreignObject:has(.labelBkg) {
 }
 
 span.edgeLabel {
-  background: var(--default-border) !important;
-  border: none !important;
+  background: white !important;
+  border: 1px solid var(--default-border) !important;
   border-radius: var(--border-radius) !important;
   padding: 5px 10px !important;
-  color: white !important;
+  color: black !important;
   font-size: 12px !important;
   font-weight: normal !important;
   line-height: 1.4 !important;
