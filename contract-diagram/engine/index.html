@@ -224,6 +224,8 @@
                 const className = match[2];
                 const nodeCount = nodeList.length;
                 
+                console.log(`🔍 Class detected: "${className}" (${nodeCount} nodes)`);
+                
                 // Map class names to counts
                 if (className === 'default') counts.default += nodeCount;
                 else if (className === 'approved') counts.approved += nodeCount;
