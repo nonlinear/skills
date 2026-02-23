@@ -34,7 +34,7 @@ Companion for [librarian](https://github.com/nonlinear/librarian)
 
 ## transcript triage
 
-Parse AI conversation transcripts into actionable topics (NOW/LATER/BACKLOG). Triggers: 'triage transcript', 'parse conversation', 'organize chat'. Use for: grooming decisions from external AI chats, extracting action items, planning epic tasks.
+Parses long transcripts into topics under ordered lists, to triage in your notes system
 
 [Published](https://clawhub.ai/nonlinear/transcript-triage)
 
