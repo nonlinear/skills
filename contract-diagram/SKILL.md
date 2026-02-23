@@ -19,6 +19,8 @@ license: MIT
 
 <span style="background-color:#E3F2FD; border:2px solid #1976D2; padding:5px 10px; border-radius:5px; color:#000;">developed-notes</span> Implemented but developer made decisions (in notes)
 
+<span style="background-color:#E1BEE7; border:2px solid #8E24AA; padding:5px 10px; border-radius:5px; color:#000;">outside-system</span> Made outside system (user action, not wrapper)
+
 ---
 
 ## SKILL contract diagram ![Design%20phase](https://img.shields.io/badge/Design%20phase-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)
@@ -68,10 +70,11 @@ flowchart TD
     classDef developed fill:#D5F5D5,stroke:#388E3C,color:#000
     classDef blocker fill:#FFCDD2,stroke:#D32F2F,color:#000
     classDef developed-notes fill:#E3F2FD,stroke:#1976D2,color:#000
+    classDef outside-system fill:#E1BEE7,stroke:#8E24AA,color:#000
     
-    class TRIGGER,CHECK_CONTRACT,OPEN,CLARIFY,DESIGN,SIGNOFF,DEVELOPMENT,BLOCKERS,TESTS approved
+    class TRIGGER,CHECK_CONTRACT,OPEN,CLARIFY,DESIGN,SIGNOFF,DEVELOPMENT,BLOCKERS approved
     class CHECK_DIAGRAM,CREATE,CLAIM,ERROR developed
-    class PUBLISH default
+    class PUBLISH,TESTS outside-system
 ```
 
 **1️⃣** Claiming: Wrapper detects phase (from node classes), injects title + phase badge + CSS on first load

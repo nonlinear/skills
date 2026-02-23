@@ -12,6 +12,8 @@
     --developed-border: #388E3C;
     --developed-notes-bg: #E3F2FD;
     --developed-notes-border: #1976D2;
+    --outside-system-bg: #E1BEE7;
+    --outside-system-border: #8E24AA;
     --partial-bg: #E1BEE7;
     --partial-border: #7B1FA2;
     --border-radius: 5px;
@@ -148,6 +150,22 @@ g.node.developed-notes path {
 }
 
 g.node.developed-notes polygon {
+  stroke-width: 2px !important;
+}
+
+/* Outside-system state */
+.outside-system rect, .outside-system polygon, .outside-system circle, .outside-system path, .outside-system ellipse {
+  fill: var(--outside-system-bg) !important;
+  stroke: var(--outside-system-border) !important;
+}
+
+g.node.outside-system path {
+  fill: var(--outside-system-bg) !important;
+  stroke: var(--outside-system-border) !important;
+  stroke-width: 2px !important;
+}
+
+g.node.outside-system polygon {
   stroke-width: 2px !important;
 }
 
