@@ -237,15 +237,18 @@
                 counts.total += nodeCount;
             });
 
-            // Apply rules (Nicholas's logic 2026-02-22)
+            // Apply rules (Nicholas's logic 2026-02-22, updated 2026-02-22 21:31)
             // Design phase: has default OR blocker
             if (counts.default > 0 || counts.blocker > 0) return "Design phase";
             
             // Ready to approve: ALL approved
             if (counts.approved === counts.total) return "Ready to approve";
             
-            // Development phase: mix of approved/developed/developed-notes (no blocker/default)
-            return "Development phase";
+            // Ready to check: ALL developed (no approved)
+            if (counts.developed + counts.developedNotes === counts.total) return "Ready to check";
+            
+            // Developing...: mix of approved/developed/developed-notes (no blocker/default)
+            return "Developing...";
         }
 
         // Ensure ALL nodes have a class (default: class-1-gray)

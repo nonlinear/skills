@@ -37,11 +37,11 @@ flowchart TD
     CLAIM["Claimed 1️⃣"]
     ERROR["Error 2️⃣"]
     
-    DESIGN["Design phase 3️⃣"]
-    SIGNOFF["Ready to approve 4️⃣"]
-    DEVELOPMENT["Development phase 5️⃣"]
-    BLOCKERS{"Has blockers? 6️⃣"}
-    TESTS{"Pass checks? 7️⃣"}
+    DESIGN["Design phase"]
+    SIGNOFF["Ready to approve"]
+    DEVELOPMENT["Developing..."]
+    BLOCKERS{"Has blockers?"}
+    TESTS{"Pass checks?"}
     PUBLISH["Publish"]
     
     TRIGGER --> CHECK_CONTRACT
