@@ -93,6 +93,10 @@ graph LR
 **Description:** Advanced contract diagram features (domains, timeline, multi-device)
 
 **Tasks:**
+- [ ] **README installation instructions:** Instead of "published" badge, show "How to install" section
+  - Example: `curl -O url && chmod +x script.sh` or `git clone` or clawhub install
+  - Make installation obvious (don't assume user knows clawhub CLI)
+  - Keep published link (for discovery), add install steps
 - [ ] **Local check:** Scan all SKILL.md frontmatter (validate required fields: name, description, version, status)
   - Check: name matches folder name
   - Check: version is semver
