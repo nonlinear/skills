@@ -134,8 +134,7 @@ flowchart TD
 
 **Action:**
 1. Start localhost server (port 8080)
-2. Open browser: `http://localhost:8080/?md=[PATH]`
-3. Diagram renders with color protocol
+2. Open browser with diagram
 
 **Example:**
 ```
