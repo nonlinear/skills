@@ -9,25 +9,25 @@ author: nonlinear
 license: MIT
 ---
 
-## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![phase-PHASE](https://img.shields.io/badge/phase-PHASE-lightgray)
+## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![Ready%20to%20approve](https://img.shields.io/badge/Ready%20to%20approve-lightgray)
 
 ```mermaid
-%%{init: {'theme':'base','themeVariables':{'primaryColor':'#4A90E2','primaryTextColor':'#fff','primaryBorderColor':'#2E5C8A','lineColor':'#666','secondaryColor':'#50E3C2','tertiaryColor':'#FFD700'}}}%%
+%%{init: {'theme':'base','themeVariables':{"primaryColor":"#4A90E2","primaryTextColor":"#fff","primaryBorderColor":"#2E5C8A","lineColor":"#666","secondaryColor":"#50E3C2","tertiaryColor":"#FFD700"}}}%%
 flowchart TD
-    TRIGGER["trigger + contract"]
-    CHECK_CONTRACT{"has contract?"}
-    OPEN["open contract"]
-    CLARIFY["clarify"]
-    CHECK_DIAGRAM{"has diagram?"}
-    CREATE["New 1️⃣"]
-    CLAIM["Claimed 1️⃣"]
-    ERROR["Error 2️⃣"]
+    TRIGGER["trigger + contract"]:::class-1-gray
+    CHECK_CONTRACT{"has contract?"}:::class-1-gray
+    OPEN["open contract"]:::class-1-gray
+    CLARIFY["clarify"]:::class-1-gray
+    CHECK_DIAGRAM{"has diagram?"}:::class-1-gray
+    CREATE["New 1️⃣"]:::class-1-gray
+    CLAIM["Claimed 1️⃣"]:::class-1-gray
+    ERROR["Error 2️⃣"]:::class-1-gray
     
-    DESIGN["Design 3️⃣"]
-    SIGNOFF["Ready to approve 4️⃣"]
-    DEVELOPMENT["Development 5️⃣"]
-    TESTS{"Pass checks? 6️⃣"}
-    PUBLISH["Publish"]
+    DESIGN["Design 3️⃣"]:::class-1-gray
+    SIGNOFF["Ready to approve 4️⃣"]:::class-1-gray
+    DEVELOPMENT["Development 5️⃣"]:::class-1-gray
+    TESTS{"Pass checks? 6️⃣"}:::class-1-gray
+    PUBLISH["Publish"]:::class-1-gray
     
     TRIGGER --> CHECK_CONTRACT
     CHECK_CONTRACT -->|yes| OPEN
@@ -57,7 +57,7 @@ flowchart TD
     class DESIGN,SIGNOFF,DEVELOPMENT,TESTS,PUBLISH default
 ```
 
-**1️⃣** Claiming: Wrapper injects title + CSS on first load
+**1️⃣** Claiming: Wrapper detects phase (from node classes), injects title + phase badge + CSS on first load
 
 **2️⃣** One diagram rule: Multiple diagrams break muscle memory. Create separate files if needed.
 
