@@ -56,19 +56,24 @@ graph LR
 **Description:** Architecture design exercises with contract diagrams
 
 **Tasks:**
-1. [x] Initial announcement https://social.praxis.nyc/@nonlinear/116037514895910044
-2. [x] How you START an exercise? how you CONTINUE? how you do 2 at same time? (Phases agreed: Design → Ready to approve → Development → Has blockers? → Pass checks? → Publish)
-3. [x] Add SKILL.md with frontmatter
-4. [x] Test and validate
-5. [x] Add mermaid workflow diagram
-6. [x] Research mermaid customization (padding, spacing) - documented in v1.2.0 Topic 13
+- [x] Initial announcement https://social.praxis.nyc/@nonlinear/116037514895910044
+
+- [x] How you START an exercise? how you CONTINUE? how you do 2 at same time? (Phases agreed: Design → Ready to approve → Development → Has blockers? → Pass checks? → Publish)
+
+- [x] Add SKILL.md with frontmatter
+
+- [x] Test and validate
+
+- [x] Add mermaid workflow diagram
+
+- [x] Research mermaid customization (padding, spacing) - documented in v1.2.0 Topic 13
+- [ ] publish as contract-diagram on claw
+- [ ] check errors
 
 **Success:**
 - Architecture exercises documented
 - Clear workflow (start, continue, parallel)
 - Integration with librarian (optional)
-
-- [ ] **Approve to merge**
 
 ---
 
