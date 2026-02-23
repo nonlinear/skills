@@ -1,6 +1,6 @@
 ---
 name: contract-diagram
-description: "Collaborative contract diagram design via mermaid diagrams with AI."
+description: "Collaborative contract diagram design with AI."
 type: public
 version: 1.0.0
 status: stable
