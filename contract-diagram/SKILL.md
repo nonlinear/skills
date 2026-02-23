@@ -26,7 +26,8 @@ flowchart TD
     DESIGN["Design phase 3️⃣"]
     SIGNOFF["Ready to approve 4️⃣"]
     DEVELOPMENT["Development phase 5️⃣"]
-    TESTS{"Pass checks? 6️⃣"}
+    BLOCKERS{"Has blockers? 6️⃣"}
+    TESTS{"Pass checks? 7️⃣"}
     PUBLISH["Publish"]
     
     TRIGGER --> CHECK_CONTRACT
@@ -43,8 +44,9 @@ flowchart TD
     CLAIM --> DESIGN
     DESIGN --> SIGNOFF
     SIGNOFF --> DEVELOPMENT
-    DEVELOPMENT --> DESIGN
-    DEVELOPMENT --> TESTS
+    DEVELOPMENT --> BLOCKERS
+    BLOCKERS -->|yes| DESIGN
+    BLOCKERS -->|no| TESTS
     TESTS -->|yes| PUBLISH
     TESTS -->|no| DESIGN
     
@@ -54,20 +56,22 @@ flowchart TD
     
     class TRIGGER,CHECK_CONTRACT,OPEN,CLARIFY approved
     class CHECK_DIAGRAM,CREATE,CLAIM,ERROR developed
-    class DESIGN,SIGNOFF,DEVELOPMENT,TESTS,PUBLISH default
+    class DESIGN,SIGNOFF,DEVELOPMENT,BLOCKERS,TESTS,PUBLISH default
 ```
 
 **1️⃣** Claiming: Wrapper detects phase (from node classes), injects title + phase badge + CSS on first load
 
 **2️⃣** One diagram rule: Multiple diagrams break muscle memory. Create separate files if needed.
 
-**3️⃣** Design phase: Stakeholders (AI + humans) iterate on flow, discuss blockers, approve nodes. Gray or red nodes = still designing.
+**3️⃣** Design phase: Stakeholders (AI + humans) iterate on flow, discuss blockers, approve nodes. Default or blocker nodes = still designing.
 
-**4️⃣** Ready to approve: All nodes approved (blue). Verify dependencies and auth needed before development.
+**4️⃣** Ready to approve: All nodes approved (blue). AI checks permissions/auth, asks user to start development.
 
-**5️⃣** Development phase: Build implementation based on approved diagram. Some nodes green (developed), not all yet. If blockers found → back to design phase.
+**5️⃣** Development phase: AI builds, updates nodes to developed (green), developed-notes (yellow), or blocker (red).
 
-**6️⃣** Pass checks?: All nodes green (developed). Validate implementation. Yes = publish. No = back to design phase for fixes.
+**6️⃣** Has blockers?: Check if development hit blockers. Yes → back to Design phase. No → proceed to checks.
+
+**7️⃣** Pass checks?: Validate implementation (external tests). Yes = publish. No = back to Design phase for fixes.
 
 ---
 
