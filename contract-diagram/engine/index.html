@@ -192,12 +192,12 @@
             });
 
             // Apply rules
-            if (counts.gray > 0 || counts.red > 0) return "Design";
+            if (counts.gray > 0 || counts.red > 0) return "Design phase";
             if (counts.blue === counts.total && counts.green === 0) return "Ready to approve";
-            if (counts.green > 0 && counts.green < counts.total) return "Development";
+            if (counts.green > 0 && counts.green < counts.total) return "Development phase";
             if (counts.green === counts.total) return "Ready to test";
 
-            return "Design"; // fallback
+            return "Design phase"; // fallback
         }
 
         // Ensure ALL nodes have a class (default: class-1-gray)
