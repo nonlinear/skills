@@ -420,6 +420,12 @@
                 // AUTO-SCROLL to title (always exists after claiming)
                 const title = container.querySelector('h2');
                 title.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                // Update page title to match h2 (extract text without badge/emoji)
+                if (title) {
+                    const titleText = title.textContent.replace(/[📊ℹ️]/g, '').trim();
+                    document.title = titleText;
+                }
             }
         }
         
