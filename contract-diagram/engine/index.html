@@ -241,15 +241,18 @@
             });
 
 
-            // Apply rules (Nicholas's logic 2026-02-22, updated 2026-02-22 21:38)
+            // Apply rules (Nicholas's logic 2026-02-22, updated 2026-02-22 21:43)
+            // Count wrapper nodes (discount outside - user actions)
+            const wrapperTotal = counts.total - counts.outside;
+            
             // Design phase: has default OR blocker
             if (counts.default > 0 || counts.blocker > 0) return "Design phase";
             
-            // Ready to approve: ALL approved
-            if (counts.approved === counts.total) return "Ready to approve";
+            // Ready to approve: ALL wrapper nodes approved
+            if (counts.approved === wrapperTotal) return "Ready to approve";
             
-            // Ready to check: ALL developed + outside (wrapper done + user ready)
-            if (counts.developed + counts.developedNotes + counts.outside === counts.total) return "Ready to check";
+            // Ready to check: ALL wrapper nodes developed
+            if (counts.developed + counts.developedNotes === wrapperTotal) return "Ready to check";
             
             // Developing...: mix (work in progress)
             return "Developing...";
