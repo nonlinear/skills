@@ -9,6 +9,22 @@ const url = require('url');
 const PORT = 8080;
 const ENGINE_DIR = __dirname;
 
+// Security: Allowed directories for reading markdown files
+const ALLOWED_DIRS = [
+  ENGINE_DIR,  // Contract diagram folder
+  path.join(ENGINE_DIR, '..'),  // Skills project root
+  path.resolve(process.env.HOME, 'Documents'),  // ~/Documents
+];
+
+// Validate path is within allowed directories
+function isPathAllowed(targetPath) {
+  const resolvedPath = path.resolve(targetPath);
+  return ALLOWED_DIRS.some(dir => {
+    const resolvedDir = path.resolve(dir);
+    return resolvedPath.startsWith(resolvedDir + path.sep) || resolvedPath === resolvedDir;
+  });
+}
+
 const mimeTypes = {
   '.html': 'text/html',
   '.js': 'text/javascript',
@@ -25,6 +41,14 @@ const server = http.createServer((req, res) => {
     try {
       const filePath = parsedUrl.query.path;
       const fullPath = path.join(ENGINE_DIR, filePath);
+      
+      // Security: Validate path is allowed
+      if (!isPathAllowed(fullPath)) {
+        res.writeHead(403, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Access denied: path outside allowed directories' }));
+        return;
+      }
+      
       const realPath = fs.realpathSync(fullPath);
       const basename = path.basename(realPath);
       res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -65,7 +89,20 @@ const server = http.createServer((req, res) => {
   
   // READ endpoint (GET files)
   let filePath = parsedUrl.pathname === '/' ? '/index.html' : parsedUrl.pathname;
-  filePath = path.join(ENGINE_DIR, filePath);
+  
+  // Handle ?md= parameter (markdown files)
+  if (parsedUrl.query.md) {
+    filePath = path.join(ENGINE_DIR, parsedUrl.query.md);
+    
+    // Security: Validate markdown path is allowed
+    if (!isPathAllowed(filePath)) {
+      res.writeHead(403);
+      res.end('Access denied: markdown path outside allowed directories');
+      return;
+    }
+  } else {
+    filePath = path.join(ENGINE_DIR, filePath);
+  }
   
   const ext = path.extname(filePath);
   const contentType = mimeTypes[ext] || 'application/octet-stream';
