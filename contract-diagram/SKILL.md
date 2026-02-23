@@ -23,8 +23,8 @@ flowchart TD
     CLAIM["Claimed 1️⃣"]
     ERROR["Error 2️⃣"]
     
-    SUPERVISED["Supervised phase 3️⃣"]
-    SIGNOFF["Sign-off phase 4️⃣"]
+    DESIGN["Design phase 3️⃣"]
+    SIGNOFF["Ready to approve 4️⃣"]
     DEVELOPMENT["Development phase 5️⃣"]
     TESTS{"Pass checks? 6️⃣"}
     PUBLISH["Publish"]
@@ -39,14 +39,14 @@ flowchart TD
     CHECK_DIAGRAM -->|yes, one| CLAIM
     CHECK_DIAGRAM -->|no| CREATE
     
-    CREATE --> SUPERVISED
-    CLAIM --> SUPERVISED
-    SUPERVISED --> SIGNOFF
+    CREATE --> DESIGN
+    CLAIM --> DESIGN
+    DESIGN --> SIGNOFF
     SIGNOFF --> DEVELOPMENT
-    DEVELOPMENT --> SUPERVISED
+    DEVELOPMENT --> DESIGN
     DEVELOPMENT --> TESTS
     TESTS -->|yes| PUBLISH
-    TESTS -->|no| SUPERVISED
+    TESTS -->|no| DESIGN
     
     classDef default fill:#e0e0e0,stroke:#666,color:#000
     classDef approved fill:#4A90E2,stroke:#2E5C8A,color:#fff
@@ -54,20 +54,20 @@ flowchart TD
     
     class TRIGGER,CHECK_CONTRACT,OPEN,CLARIFY approved
     class CHECK_DIAGRAM,CREATE,CLAIM,ERROR developed
-    class SUPERVISED,SIGNOFF,DEVELOPMENT,TESTS,PUBLISH default
+    class DESIGN,SIGNOFF,DEVELOPMENT,TESTS,PUBLISH default
 ```
 
 **1️⃣** Claiming: Wrapper injects title + CSS on first load
 
 **2️⃣** One diagram rule: Multiple diagrams break muscle memory. Create separate files if needed.
 
-**3️⃣** Supervised phase: AI + human iterate on flow, discuss blockers, approve nodes
+**3️⃣** Design phase: Stakeholders (AI + humans) iterate on flow, discuss blockers, approve nodes. Gray or red nodes = still designing.
 
-**4️⃣** Sign-off phase: Verify dependencies and auth needed for unsupervised development
+**4️⃣** Ready to approve: All nodes approved (blue). Verify dependencies and auth needed before development.
 
-**5️⃣** Development phase: AI implements based on approved diagram + notes. Cycle back to supervised if blockers found.
+**5️⃣** Development phase: Build implementation based on approved diagram. Some nodes green (developed), not all yet. If blockers found → back to design phase.
 
-**6️⃣** Pass checks?: Validate implementation. Yes = publish. No = back to supervised for fixes.
+**6️⃣** Pass checks?: All nodes green (developed). Validate implementation. Yes = publish. No = back to design phase for fixes.
 
 ---
 

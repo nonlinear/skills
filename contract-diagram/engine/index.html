@@ -154,6 +154,40 @@
             }
         }
 
+        // Detect phase from node class counts
+        function detectPhase(mermaidCode) {
+            const lines = mermaidCode.split('\n');
+            const counts = { gray: 0, blue: 0, red: 0, green: 0, total: 0 };
+
+            lines.forEach(line => {
+                if (line.includes('class ') && line.includes('class-')) {
+                    // Count nodes in each class statement
+                    // Example: "class NODE1,NODE2,NODE3 class-1-gray"
+                    const match = line.match(/class\s+([\w,]+)\s+class-(\d)/);
+                    if (match) {
+                        const nodeList = match[1].split(',');
+                        const classNum = parseInt(match[2]);
+                        const nodeCount = nodeList.length;
+
+                        if (classNum === 1) counts.gray += nodeCount;       // gray (default)
+                        else if (classNum === 2) counts.blue += nodeCount;  // blue (approved)
+                        else if (classNum === 3) counts.red += nodeCount;   // red (blocker)
+                        else if (classNum === 4) counts.green += nodeCount; // green (developed)
+
+                        counts.total += nodeCount;
+                    }
+                }
+            });
+
+            // Apply rules
+            if (counts.gray > 0 || counts.red > 0) return "Design phase";
+            if (counts.blue === counts.total && counts.green === 0) return "Ready to approve";
+            if (counts.green > 0 && counts.green < counts.total) return "Development phase";
+            if (counts.green === counts.total) return "Ready to test";
+
+            return "Design phase"; // fallback
+        }
+
         // Ensure ALL nodes have a class (default: class-1-gray)
         function ensureNodeClasses(mermaidCode) {
             const lines = mermaidCode.split('\n');
@@ -277,11 +311,18 @@
                         // Inject OUR CSS from styles.css (source of truth)
                         const ourInit = await getThemeFromCSS();
                         
-                        // Rebuild mermaid block with our CSS
-                        const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${mermaidCode.trim()}\n${mermaidMatch[3]}`;
+                        // Ensure all nodes have classes
+                        const processedCode = ensureNodeClasses(mermaidCode);
                         
-                        // Add title BEFORE mermaid
-                        const titleText = '## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![phase-PHASE](https://img.shields.io/badge/phase-PHASE-lightgray)\n\n';
+                        // Detect phase from node classes
+                        const phase = detectPhase(processedCode);
+                        const badgeLabel = phase.replace(/ /g, '%20'); // URL encode spaces
+                        
+                        // Rebuild mermaid block with our CSS
+                        const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${processedCode.trim()}\n${mermaidMatch[3]}`;
+                        
+                        // Add title BEFORE mermaid with detected phase
+                        const titleText = `## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)\n\n`;
                         const modifiedMarkdown = markdown.replace(/(```mermaid\n[\s\S]*?```)/, titleText + claimedMermaid);
                         
                         // POST to /write endpoint
