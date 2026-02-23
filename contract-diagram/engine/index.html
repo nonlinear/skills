@@ -217,7 +217,7 @@
                 if (!line.includes('class ')) return;
                 
                 // Match: "class NODE1,NODE2,NODE3 className"
-                const match = line.match(/class\s+([\w,]+)\s+(\w+)/);
+                const match = line.match(/class\s+([\w,]+)\s+([\w-]+)/);
                 if (!match) return;
                 
                 const nodeList = match[1].split(',');
