@@ -51,12 +51,14 @@ flowchart TD
     TESTS -->|No| DESIGN
     
     classDef default fill:#e0e0e0,stroke:#666,color:#000
-    classDef approved fill:#4A90E2,stroke:#2E5C8A,color:#fff
-    classDef developed fill:#50E3C2,stroke:#3aa89e,color:#000
+    classDef approved fill:#FFF9C4,stroke:#F9A825,color:#000
+    classDef developed fill:#D5F5D5,stroke:#388E3C,color:#000
+    classDef blocker fill:#FFCDD2,stroke:#D32F2F,color:#000
+    classDef developed-notes fill:#E3F2FD,stroke:#1976D2,color:#000
     
-    class TRIGGER,CHECK_CONTRACT,OPEN,CLARIFY approved
+    class TRIGGER,CHECK_CONTRACT,OPEN,CLARIFY,DESIGN,SIGNOFF,DEVELOPMENT,BLOCKERS,TESTS approved
     class CHECK_DIAGRAM,CREATE,CLAIM,ERROR developed
-    class DESIGN,SIGNOFF,DEVELOPMENT,BLOCKERS,TESTS,PUBLISH default
+    class PUBLISH default
 ```
 
 **1️⃣** Claiming: Wrapper detects phase (from node classes), injects title + phase badge + CSS on first load
