@@ -67,10 +67,15 @@ graph LR
 - [x] Add mermaid workflow diagram
 
 - [x] Research mermaid customization (padding, spacing) - documented in v1.2.0 Topic 13
-- [ ] develop
-- [ ] Test
-- [ ] publish as contract-diagram on claw
+- [x] develop
+- [x] Test
+- [x] publish as contract-diagram on claw
 - [ ] check errors
+- [ ] **Security enhancement:** Restrict server.js file reads to safe directory (prevent arbitrary path traversal via `?md=` parameter)
+  - Current: Server reads ANY path passed in `md` param (OpenClaw flagged as HIGH CONFIDENCE suspicious)
+  - Fix: Whitelist allowed directories OR validate resolved path is inside engine dir
+  - Also: Vendor CDN dependencies (marked, mermaid) for offline/air-gapped usage
+  - Reference: OpenClaw security review 2026-02-22
 
 **Success:**
 - Architecture exercises documented
