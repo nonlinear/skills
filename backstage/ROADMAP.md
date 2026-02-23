@@ -385,10 +385,15 @@ graph LR
 **Description:** Script to publish skills to clawhub from CLI (reduce manual steps)
 
 **Tasks:**
+- [ ] **Dual-repo strategy:** Commit locally (all skills), push selectively (published only)
+  - Research: pre-push hook vs dual-branch (main/public) vs separate repo
+  - Design: "commit locally ≠ push to GitHub" workflow
+  - Goal: Unpublished skills versioned locally, hidden from GitHub
+  - Future-proof: When "open project" decouples epics from projects, this becomes critical
 - [ ] Research clawhub publication API/CLI
 - [ ] Create publish-skill.sh (inputs: skill name, validates frontmatter, publishes)
 - [ ] Integrate with ROADMAP workflow (epic complete → publish prompt)
-- [ ] Update .gitignore automatically (remove published skills)
+- [ ] Auto-update git tracking (add to public branch/repo when published)
 - [ ] Update README.md automatically (add published skill section)
 
 **Success:**
