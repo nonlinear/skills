@@ -93,6 +93,23 @@ flowchart TD
 
 ---
 
+## Development Order (Unsupervised Implementation)
+
+**Logic:** Dependency-first, bottom-up (build foundation, then compose).
+
+**Order:**
+1. **DESIGN, DEVELOPMENT, BLOCKERS** - Phase detection (already working via detectPhase)
+2. **OPEN** - File loading (wrapper already does this)
+3. **CHECK_CONTRACT** - Verify file exists + editable (foundation for TRIGGER)
+4. **CLARIFY** - Error handling when file not found
+5. **TRIGGER** - Skill activation (last, depends on CHECK_CONTRACT)
+
+**Each node:** implement → test → mark as `developed` in diagram → commit.
+
+**Blocker rule:** If stuck >2min → stop, report blocker, ask for help.
+
+---
+
 - contract: .md file
 - diagram: mermaid
 
