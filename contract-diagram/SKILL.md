@@ -23,9 +23,9 @@ flowchart TD
     CLAIM["Claimed 1️⃣"]
     ERROR["Error 2️⃣"]
     
-    DESIGN["Design phase 3️⃣"]
+    DESIGN["Design 3️⃣"]
     SIGNOFF["Ready to approve 4️⃣"]
-    DEVELOPMENT["Development phase 5️⃣"]
+    DEVELOPMENT["Development 5️⃣"]
     TESTS{"Pass checks? 6️⃣"}
     PUBLISH["Publish"]
     
