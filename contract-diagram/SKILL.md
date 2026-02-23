@@ -140,8 +140,14 @@ flowchart TD
 **Example:**
 ```
 User: "lets diagram epic-notes/webhook-contract.md"
-AI: 
+
+AI executes:
   cd ~/Documents/skills/contract-diagram/engine
+  ./serve.sh &
+  open "http://localhost:8080/?md=../../epic-notes/webhook-contract.md"
+```
+
+**Hot reload enabled by default** (2s interval).
 
 ---
 
