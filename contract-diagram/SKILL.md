@@ -44,6 +44,7 @@ flowchart TD
     
     TRIGGER --> CHECK_CONTRACT
     CHECK_CONTRACT -->|Yes| OPEN
+    CHECK_CONTRACT -->|Yes but<br/>not editable| ERROR
     CHECK_CONTRACT -->|No| CLARIFY
     CLARIFY --> TRIGGER
     
