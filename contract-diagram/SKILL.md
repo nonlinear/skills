@@ -1,4 +1,4 @@
----
+--- 
 name: contract-diagram
 description: "Diagram as contract for agreed-upon AI development"
 type: public
@@ -7,7 +7,7 @@ status: stable
 dependencies: []
 author: nonlinear
 license: MIT
----
+--- 
 
 <span style="background-color:#e0e0e0; border:2px solid #666; padding:5px 10px; border-radius:5px; color:#000;">default</span> not discussed yet
 
@@ -21,9 +21,11 @@ license: MIT
 
 <span style="background-color:#D5F5D5; border:2px dashed #388E3C; padding:5px 10px; border-radius:5px; color:#000;">outside-system</span> To be performed outside system
 
----
+--- 
 
-## SKILL contract diagram ![Development%20phase](https://img.shields.io/badge/Development%20phase-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)
+
+
+## SKILL contract diagram ![Developing...](https://img.shields.io/badge/Developing...-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{"primaryColor":"#4A90E2","primaryTextColor":"#fff","primaryBorderColor":"#2E5C8A","lineColor":"#666","secondaryColor":"#50E3C2","tertiaryColor":"#FFD700","edgeLabelBackground":"#666"},'flowchart':{"nodeSpacing":50,"rankSpacing":50,"padding":15,"curve":"basis"}}}%%
@@ -80,7 +82,7 @@ flowchart TD
 
 **2️⃣** One diagram rule: Multiple diagrams break muscle memory. Create separate files if needed.
 
----
+--- 
 
 - contract: .md file
 - diagram: mermaid
@@ -115,7 +117,7 @@ flowchart TD
 
 **Notes without numbers = just explanations, turn yellow when approved.**
 
----
+--- 
 
 ## Localhost Trigger
 
@@ -139,7 +141,7 @@ AI:
 
 **Hot reload enabled by default** (2s interval).
 
----
+--- 
 
 ## Research/Validation Phase (Phase 3.5)
 
@@ -165,7 +167,7 @@ AI:
 - All discussions resolved (red → yellow)
 - All validations complete (tested against knowledge)
 
----
+--- 
 
 ## Contract Stability = Communication Efficiency
 
@@ -184,7 +186,7 @@ AI:
 
 **If you change file, diagram, or position → NOISE. Lack of parity.**
 
----
+--- 
 
 ## Visual Diff = Async Collaboration
 
@@ -202,7 +204,7 @@ AI:
 
 **WITHOUT reading a single word.**
 
----
+--- 
 
 ## Enforcement Protocol
 
@@ -225,7 +227,7 @@ AI:
    git commit -m "contract: [topic] - [gray/yellow/blue] phase (updated existing)"
    ```
 
----
+--- 
 
 ## Integration with Backstage
 
@@ -241,6 +243,6 @@ AI:
 4. AI executes (yellow → blue)
 5. Reference in commits: `git commit -m "feat: webhook (see epic-notes/webhook-contract.md)"`
 
----
+--- 
 
 **This protocol = CRITICAL. Don't lose this knowledge.** 🔒
