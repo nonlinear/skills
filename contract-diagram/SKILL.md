@@ -33,6 +33,7 @@ license: MIT
 
 
 
+
 ## SKILL contract diagram ![Ready%20to%20check](https://img.shields.io/badge/Ready%20to%20check-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)
 
 ```mermaid
