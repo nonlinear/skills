@@ -24,6 +24,8 @@ license: MIT
 
 
 
+## SKILL contract diagram ![Published](https://img.shields.io/badge/Published-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)
+
 
 
 
