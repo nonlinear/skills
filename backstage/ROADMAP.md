@@ -67,6 +67,8 @@ graph LR
 - [x] Add mermaid workflow diagram
 
 - [x] Research mermaid customization (padding, spacing) - documented in v1.2.0 Topic 13
+- [ ] develop
+- [ ] Test
 - [ ] publish as contract-diagram on claw
 - [ ] check errors
 
