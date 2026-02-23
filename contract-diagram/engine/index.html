@@ -295,13 +295,12 @@
             let frontmatter = null;
             let bodyMarkdown = markdown;
             
-            // Match: --- frontmatter --- legend --- body
-            const fullMatch = markdown.match(/^---\n([\s\S]*?)\n---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+            // Match: --- frontmatter --- body (everything after frontmatter)
+            const frontmatterMatch = markdown.match(/^---\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
             
-            if (fullMatch) {
-                const yamlText = fullMatch[1];
-                // fullMatch[2] = legend (skip it)
-                bodyMarkdown = fullMatch[3]; // Body after 3rd ---
+            if (frontmatterMatch) {
+                const yamlText = frontmatterMatch[1];
+                bodyMarkdown = frontmatterMatch[2]; // Everything after frontmatter (includes legend)
                 
                 // Simple YAML parser (key: value pairs)
                 frontmatter = {};
