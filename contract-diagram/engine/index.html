@@ -157,47 +157,38 @@
         // Detect phase from node class counts
         function detectPhase(mermaidCode) {
             const lines = mermaidCode.split('\n');
-            const counts = { gray: 0, blue: 0, red: 0, green: 0, total: 0 };
+            const counts = { default: 0, approved: 0, developed: 0, blocker: 0, developedNotes: 0, total: 0 };
 
             lines.forEach(line => {
-                // Count class-N-name statements
-                if (line.includes('class ') && line.includes('class-')) {
-                    // Example: "class NODE1,NODE2,NODE3 class-1-gray"
-                    const match = line.match(/class\s+([\w,]+)\s+class-(\d)/);
-                    if (match) {
-                        const nodeList = match[1].split(',');
-                        const classNum = parseInt(match[2]);
-                        const nodeCount = nodeList.length;
-
-                        if (classNum === 1) counts.gray += nodeCount;       // gray (default)
-                        else if (classNum === 2) counts.blue += nodeCount;  // blue (approved)
-                        else if (classNum === 3) counts.red += nodeCount;   // red (blocker)
-                        else if (classNum === 4) counts.green += nodeCount; // green (developed)
-
-                        counts.total += nodeCount;
-                    }
-                }
+                if (!line.includes('class ')) return;
                 
-                // Count 'default' class (also gray/undecided)
-                if (line.includes('class ') && line.includes(' default')) {
-                    // Example: "class DESIGN,SIGNOFF,DEVELOPMENT default"
-                    const match = line.match(/class\s+([\w,]+)\s+default/);
-                    if (match) {
-                        const nodeList = match[1].split(',');
-                        const nodeCount = nodeList.length;
-                        counts.gray += nodeCount; // default = gray (not decided yet)
-                        counts.total += nodeCount;
-                    }
-                }
+                // Match: "class NODE1,NODE2,NODE3 className"
+                const match = line.match(/class\s+([\w,]+)\s+(\w+)/);
+                if (!match) return;
+                
+                const nodeList = match[1].split(',');
+                const className = match[2];
+                const nodeCount = nodeList.length;
+                
+                // Map class names to counts
+                if (className === 'default') counts.default += nodeCount;
+                else if (className === 'approved') counts.approved += nodeCount;
+                else if (className === 'developed') counts.developed += nodeCount;
+                else if (className === 'blocker') counts.blocker += nodeCount;
+                else if (className === 'developed-notes') counts.developedNotes += nodeCount;
+                
+                counts.total += nodeCount;
             });
 
-            // Apply rules
-            if (counts.gray > 0 || counts.red > 0) return "Design phase";
-            if (counts.blue === counts.total && counts.green === 0) return "Ready to approve";
-            if (counts.green > 0 && counts.green < counts.total) return "Development phase";
-            if (counts.green === counts.total) return "Ready to test";
-
-            return "Design phase"; // fallback
+            // Apply rules (Nicholas's logic 2026-02-22)
+            // Design phase: has default OR blocker
+            if (counts.default > 0 || counts.blocker > 0) return "Design phase";
+            
+            // Ready to approve: ALL approved
+            if (counts.approved === counts.total) return "Ready to approve";
+            
+            // Development phase: mix of approved/developed/developed-notes (no blocker/default)
+            return "Development phase";
         }
 
         // Ensure ALL nodes have a class (default: class-1-gray)
@@ -398,6 +389,51 @@
             
             return mermaidCode;
         }
+        
+        // Periodic phase check + badge update
+        setInterval(async () => {
+            const mdPath = new URLSearchParams(window.location.search).get('md');
+            if (!mdPath) return;
+            
+            try {
+                const res = await fetch(`/md?path=${encodeURIComponent(mdPath)}`);
+                const markdown = await res.text();
+                
+                // Extract mermaid code
+                const mermaidMatch = markdown.match(/(```mermaid\n)([\s\S]*?)(```)/);
+                if (!mermaidMatch) return;
+                
+                const mermaidCode = mermaidMatch[2];
+                const currentPhase = detectPhase(mermaidCode);
+                
+                // Check if badge needs update
+                const titleMatch = markdown.match(/##\s*Contract diagram.*?!\[(.*?)\]\(https:\/\/img\.shields\.io/);
+                if (!titleMatch) return; // No badge yet (unclaimed)
+                
+                const badgePhase = titleMatch[1].replace(/%20/g, ' ');
+                
+                if (badgePhase !== currentPhase) {
+                    console.log(`🔄 Phase changed: "${badgePhase}" → "${currentPhase}"`);
+                    
+                    // Update badge in title
+                    const badgeLabel = currentPhase.replace(/ /g, '%20');
+                    const newTitle = `## Contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram#readme) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)`;
+                    const updatedMarkdown = markdown.replace(/##\s*Contract diagram.*/, newTitle);
+                    
+                    // POST update
+                    await fetch('/write', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ path: mdPath, content: updatedMarkdown })
+                    });
+                    
+                    console.log(`✅ Badge updated to: ${currentPhase}`);
+                    lastContent = updatedMarkdown; // Prevent reload loop
+                }
+            } catch (err) {
+                console.error('Phase check failed:', err);
+            }
+        }, 5000); // Check every 5 seconds
         
     </script>
 </body>
