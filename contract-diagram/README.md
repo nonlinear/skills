@@ -3,6 +3,7 @@
 **Contract diagram aims to enforce a legible document between AIs and humans**
 
 ```mermaid
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e0e0e0','primaryTextColor':'#000','primaryBorderColor':'#666','lineColor':'#666','secondaryColor':'#FFF9C4','tertiaryColor':'#FFCDD2','nodeBorder':'#666','mainBkg':'#e0e0e0','secondaryBkg':'#FFF9C4','tertiaryBkg':'#FFCDD2'},'flowchart':{'nodeSpacing':50,'rankSpacing':50,'padding':15,'curve':'basis'}}}%%
 flowchart TD
     DEFAULT[".default"]:::default
     APPROVED[".approved"]:::approved
@@ -14,6 +15,12 @@ flowchart TD
     APPROVED -->|"Not approved"| BLOCKER
     BLOCKER -->|"Resolved"| APPROVED
     APPROVED -->|"All nodes approved,<br/>developed"| DEVELOPED
+    
+    classDef default fill:#e0e0e0,stroke:#666,color:#000
+    classDef approved fill:#FFF9C4,stroke:#F9A825,color:#000
+    classDef blocker fill:#FFCDD2,stroke:#D32F2F,color:#000
+    classDef developed fill:#D5F5D5,stroke:#388E3C,color:#000
+    classDef developed-notes fill:#E3F2FD,stroke:#1976D2,color:#000
 ```
 
 ****
