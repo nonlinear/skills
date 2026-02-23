@@ -178,6 +178,9 @@
                 const className = match[2];
                 const nodeCount = nodeList.length;
                 
+                // Ignore outside-system (user actions, not wrapper)
+                if (className === 'outside-system') return;
+                
                 // Map class names to counts
                 if (className === 'default') counts.default += nodeCount;
                 else if (className === 'approved') counts.approved += nodeCount;
