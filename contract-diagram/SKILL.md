@@ -142,3 +142,30 @@ flowchart TD
 User: "lets diagram epic-notes/webhook-contract.md"
 AI: 
   cd ~/Documents/skills/contract-diagram/engine
+
+---
+
+## Publishing Workflow (Example)
+
+**This is one way to do it (Nicholas's method), not a requirement.**
+
+**When all wrapper nodes are developed (Ready to check):**
+
+1. **User tests** (Pass checks?)
+   - Manual testing, edge cases
+   - Review diagram vs implementation
+   - Check documentation
+
+2. **If tests pass:**
+   - Merge epic branch → main
+   - Tag version (optional)
+   - Publish to clawhub (if skill)
+   - Update CHANGELOG
+
+3. **If tests fail:**
+   - Mark failing nodes as blocker (red)
+   - Add numbered notes explaining failures
+   - Back to Design phase
+   - Fix → re-test → repeat
+
+**Your workflow may differ. This is just an example.**
