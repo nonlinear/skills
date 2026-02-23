@@ -14,7 +14,7 @@
     --developed-notes-border: #1976D2;
     --partial-bg: #E1BEE7;
     --partial-border: #7B1FA2;
-    --border-radius: 10px;
+    --border-radius: 5px;
     
     /* Legacy */
     --in-progress-bg: #4A90E2;
@@ -52,6 +52,7 @@ main.container {
 /* Base styling (applies to ALL nodes) */
 .node rect, .node polygon, .node circle, .node path, .node ellipse {
   stroke-width: 2px !important;
+  padding: 5px 10px !important;
 }
 
 /* Node text (universal) */
@@ -62,6 +63,7 @@ g.node text {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
   fill: black !important;
   color: black !important;
+  padding: 5px 10px !important;
 }
 
 g.node > * {
@@ -69,8 +71,9 @@ g.node > * {
 }
 
 g.node rect {
-  rx: var(--border-radius) !important;
-  ry: var(--border-radius) !important;
+  rx: 5px !important;
+  ry: 5px !important;
+  padding: 5px 10px !important;
 }
 
 /* Default state (explicit) */
