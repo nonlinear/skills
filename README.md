@@ -4,14 +4,6 @@
 
 ---
 
-## contract diagram
-
-Diagram as contract for agreed-upon AI development
-
-[Published](https://clawhub.ai/nonlinear/contract-diagram) · [View diagram](contract-diagram/SKILL.md#diagram)
-
----
-
 ## backstage companion
 
 Manage backstage workflow in projects (ROADMAP, POLICY, HEALTH, CHANGELOG). Triggers: 'backstage start', 'vamos trabalhar no X', 'backstage health'. Installs protocol if missing, updates global rules, runs health checks, shows active epics. Use for: epic planning, project setup, quality enforcement, context switching.
@@ -19,6 +11,14 @@ Manage backstage workflow in projects (ROADMAP, POLICY, HEALTH, CHANGELOG). Trig
 Companion for [backstage](https://github.com/nonlinear/backstage)
 
 [Published](https://clawhub.com/skills/backstage) · [View diagram](https://github.com/backstage/skills/backstage/SKILL.md#diagram)
+
+---
+
+## contract diagram
+
+Diagram as contract for agreed-upon AI development
+
+[Published](https://clawhub.ai/nonlinear/contract-diagram) · [View diagram](contract-diagram/SKILL.md#diagram)
 
 ---
 
