@@ -13,7 +13,7 @@ Companion for [backstage](https://github.com/nonlinear/backstage)
 **Install:**
 
 ```bash
-openclaw skill install backstage
+openclaw skill install nonlinear/backstage
 ```
 
 [Published](https://clawhub.com/skills/backstage) · [View diagram](https://github.com/backstage/skills/backstage/SKILL.md#diagram)
@@ -25,7 +25,7 @@ openclaw skill install backstage
 Diagram as contract for agreed-upon AI development
 
 ```bash
-openclaw skill install contract-diagram
+openclaw skill install nonlinear/contract-diagram
 ```
 
 [Published](https://clawhub.ai/nonlinear/contract-diagram) · [View diagram](contract-diagram/SKILL.md#diagram)
@@ -39,7 +39,7 @@ OpenClaw conversational interface for semantic book search.
 Companion for [librarian](https://github.com/nonlinear/librarian)
 
 ```bash
-openclaw skill install librarian
+openclaw skill install nonlinear/librarian
 ```
 
 [Published](https://clawhub.ai/nonlinear/librarian) · [View diagram](https://github.com/librarian/skill/SKILL.md#diagram)
@@ -51,7 +51,7 @@ openclaw skill install librarian
 Parses long transcripts into topics under ordered lists, to triage in your notes system
 
 ```bash
-openclaw skill install transcript-triage
+openclaw skill install nonlinear/transcript-triage
 ```
 
 [Published](https://clawhub.ai/nonlinear/transcript-triage)
