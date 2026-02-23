@@ -14,20 +14,20 @@ license: MIT
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{"primaryColor":"#4A90E2","primaryTextColor":"#fff","primaryBorderColor":"#2E5C8A","lineColor":"#666","secondaryColor":"#50E3C2","tertiaryColor":"#FFD700"}}}%%
 flowchart TD
-    TRIGGER["trigger + contract"]:::class-1-gray
-    CHECK_CONTRACT{"has contract?"}:::class-1-gray
-    OPEN["open contract"]:::class-1-gray
-    CLARIFY["clarify"]:::class-1-gray
-    CHECK_DIAGRAM{"has diagram?"}:::class-1-gray
-    CREATE["New 1️⃣"]:::class-1-gray
-    CLAIM["Claimed 1️⃣"]:::class-1-gray
-    ERROR["Error 2️⃣"]:::class-1-gray
+    TRIGGER["trigger + contract"]
+    CHECK_CONTRACT{"has contract?"}
+    OPEN["open contract"]
+    CLARIFY["clarify"]
+    CHECK_DIAGRAM{"has diagram?"}
+    CREATE["New 1️⃣"]
+    CLAIM["Claimed 1️⃣"]
+    ERROR["Error 2️⃣"]
     
-    DESIGN["Design 3️⃣"]:::class-1-gray
-    SIGNOFF["Ready to approve 4️⃣"]:::class-1-gray
-    DEVELOPMENT["Development 5️⃣"]:::class-1-gray
-    TESTS{"Pass checks? 6️⃣"}:::class-1-gray
-    PUBLISH["Publish"]:::class-1-gray
+    DESIGN["Design 3️⃣"]
+    SIGNOFF["Ready to approve 4️⃣"]
+    DEVELOPMENT["Development 5️⃣"]
+    TESTS{"Pass checks? 6️⃣"}
+    PUBLISH["Publish"]
     
     TRIGGER --> CHECK_CONTRACT
     CHECK_CONTRACT -->|yes| OPEN
