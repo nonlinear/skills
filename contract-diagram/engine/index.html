@@ -464,7 +464,8 @@
             if (!mdPath) return;
             
             try {
-                const res = await fetch(`/md?path=${encodeURIComponent(mdPath)}`);
+                const res = await fetch(mdPath + '?t=' + Date.now()); // Direct fetch with cache bust
+                if (!res.ok) return;
                 const markdown = await res.text();
                 
                 // Extract mermaid code
