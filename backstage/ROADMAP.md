@@ -93,6 +93,13 @@ graph LR
 **Description:** Advanced contract diagram features (domains, timeline, multi-device)
 
 **Tasks:**
+- [ ] **Local check:** Scan all SKILL.md frontmatter (validate required fields: name, description, version, status)
+  - Check: name matches folder name
+  - Check: version is semver
+  - Check: status is valid (published, stable, testing, draft)
+  - Check: description exists and non-empty
+  - Exit 1 if any skill fails validation
+  - Location: `backstage/checks/local/skill-frontmatter.sh`
 - [ ] Mermaid lint/check (define standards, prevent syntax errors)
 - [ ] Git timeline navigation (slider through commit history)
 - [ ] Domain system (departments claim nodes, become stakeholders)
