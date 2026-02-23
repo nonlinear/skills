@@ -12,12 +12,12 @@ license: MIT
 
 | Node Class | Description |
 |------------|-------------|
-| **default** (gray) | Not discussed yet |
-| **approved** (yellow) | Agreed by stakeholders |
-| **blocker** (red) | Needs discussion/failed implementation (always has notes) |
-| **developed** (green) | Agreed and implemented |
-| **notes** (blue) | Implemented but developer made decisions (in notes) |
-| **outside** (green dashed) | To be performed outside system |
+| **default** | Not discussed yet |
+| **approved** | Agreed by stakeholders |
+| **blocker** | Needs discussion/failed implementation (always has notes) |
+| **developed** | Agreed and implemented |
+| **notes** | Implemented but developer made decisions (in notes) |
+| **outside** | To be performed outside system |
 
 ---
 
