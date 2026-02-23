@@ -390,23 +390,11 @@
                             // Rebuild mermaid block with our CSS
                             const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${mermaidCode.trim()}\n${mermaidMatch[3]}`;
                             
-                            // Find last --- separator before mermaid (after legend)
-                            const legendSeparatorMatch = markdown.match(/([\s\S]*?---\s*\n)([\s\S]*?)(```mermaid)/);
+                            // Add title BEFORE first mermaid (wherever it is)
+                            const titleText = `## ${filename} contract diagram ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)\n\n`;
                             
-                            // Add title AFTER legend separator, BEFORE mermaid
-                            const titleText = `\n\n## ${filename} contract diagram ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray) [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md)\n\n`;
-                            
-                            let modifiedMarkdown;
-                            if (legendSeparatorMatch) {
-                                // Has legend: insert title after separator
-                                modifiedMarkdown = markdown.replace(
-                                    /(---\s*\n)([\s\S]*?)(```mermaid\n[\s\S]*?```)/,
-                                    `$1${titleText}${claimedMermaid}`
-                                );
-                            } else {
-                                // No legend: insert title before mermaid
-                                modifiedMarkdown = markdown.replace(/(```mermaid\n[\s\S]*?```)/, titleText + claimedMermaid);
-                            }
+                            // Replace first mermaid block with title + claimed mermaid
+                            const modifiedMarkdown = markdown.replace(/(```mermaid\n[\s\S]*?```)/, titleText + claimedMermaid);
                             
                             // POST to /write endpoint
                             return fetch('/write', {
