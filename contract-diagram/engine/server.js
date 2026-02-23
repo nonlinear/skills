@@ -20,6 +20,22 @@ const mimeTypes = {
 const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
   
+  // REALPATH endpoint (GET /realpath?path=...)
+  if (req.method === 'GET' && parsedUrl.pathname === '/realpath') {
+    try {
+      const filePath = parsedUrl.query.path;
+      const fullPath = path.join(ENGINE_DIR, filePath);
+      const realPath = fs.realpathSync(fullPath);
+      const basename = path.basename(realPath);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ basename }));
+    } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: error.message }));
+    }
+    return;
+  }
+  
   // WRITE endpoint (POST /write)
   if (req.method === 'POST' && parsedUrl.pathname === '/write') {
     let body = '';

@@ -324,22 +324,27 @@
                         const phase = detectPhase(mermaidCode);
                         const badgeLabel = phase.replace(/ /g, '%20'); // URL encode spaces
                         
-                        // Extract filename from mdPath (without .md extension)
-                        const filename = mdPath.split('/').pop().replace('.md', '');
-                        
-                        // Rebuild mermaid block with our CSS
-                        const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${mermaidCode.trim()}\n${mermaidMatch[3]}`;
-                        
-                        // Add title BEFORE mermaid with filename + detected phase
-                        const titleText = `## ${filename} contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)\n\n`;
-                        const modifiedMarkdown = markdown.replace(/(```mermaid\n[\s\S]*?```)/, titleText + claimedMermaid);
-                        
-                        // POST to /write endpoint
-                        fetch('/write', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ path: mdPath, content: modifiedMarkdown })
-                        }).then(res => res.json())
+                        // Fetch real filename (resolve symlinks)
+                        fetch(`/realpath?path=${encodeURIComponent(mdPath)}`)
+                          .then(r => r.json())
+                          .then(data => {
+                            const filename = data.basename.replace('.md', '');
+                            
+                            // Rebuild mermaid block with our CSS
+                            const claimedMermaid = `${mermaidMatch[1]}${ourInit}\n${mermaidCode.trim()}\n${mermaidMatch[3]}`;
+                            
+                            // Add title BEFORE mermaid with filename + detected phase
+                            const titleText = `## ${filename} contract diagram [ℹ️](https://github.com/nonlinear/skills/tree/main/contract-diagram/SKILL.md) ![${badgeLabel}](https://img.shields.io/badge/${badgeLabel}-lightgray)\n\n`;
+                            const modifiedMarkdown = markdown.replace(/(```mermaid\n[\s\S]*?```)/, titleText + claimedMermaid);
+                            
+                            // POST to /write endpoint
+                            return fetch('/write', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ path: mdPath, content: modifiedMarkdown })
+                            });
+                          })
+                          .then(res => res.json())
                           .then(data => {
                               if (data.success) {
                                   console.log('✅ Claimed diagram (title + CSS added to MD)');
