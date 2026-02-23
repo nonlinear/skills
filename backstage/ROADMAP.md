@@ -62,7 +62,6 @@ graph LR
 4. [x] Test and validate
 5. [x] Add mermaid workflow diagram
 6. [x] Research mermaid customization (padding, spacing) - documented in v1.2.0 Topic 13
-7. [ ] How do we promote it?
 
 **Success:**
 - Architecture exercises documented
