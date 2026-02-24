@@ -1,6 +1,6 @@
 ---
 name: reminder-research
-description: "Natural language task queue via Apple Reminders. Agent executor: use skills (i-ching, librarian), edit files (ROADMAP, calendar), call APIs (GitHub, HA). Result tracking with 🤖 signifier. Triggers: reminders with notes (no 🤖), heartbeat automated processing."
+description: "Natural language task queue via Apple Reminders. Agent executor with 🤖 tracking."
 type: public
 version: 2.0.0
 status: published
