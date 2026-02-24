@@ -120,7 +120,7 @@ flowchart TD
 **Problem:** Contract diagram reads `.md` files via `file://` protocol (works local, breaks remote).
 
 **Current behavior:**
-- Local (Mac): ✅ Works (`http://localhost:8080/?md=../path/to/file.md`)
+- Local (Mac): ✅ Works (`http://localhost:8767/?md=../path/to/file.md`)
 - Remote (iPad): ❌ Breaks (can't access Mac filesystem via `file://`)
 
 **Solution needed:**
@@ -146,7 +146,7 @@ flowchart TD
 **Assumes:** File at PATH already has mermaid diagram.
 
 **Action:**
-1. Start localhost server (port 8080)
+1. Start localhost server (port 8767)
 2. Open browser with diagram
 
 **Example:**
@@ -154,9 +154,9 @@ flowchart TD
 User: "lets diagram epic-notes/webhook-contract.md"
 
 AI executes:
-  cd ~/Documents/skills/contract-diagram/engine
+  cd ~/Documents/skills/contract-diagram
   ./serve.sh &
-  open "http://localhost:8080/?md=../../epic-notes/webhook-contract.md"
+  open "http://localhost:8767/?md=../../epic-notes/webhook-contract.md"
 ```
 
 **Hot reload enabled by default** (2s interval).
