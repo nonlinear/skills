@@ -114,6 +114,31 @@ flowchart TD
 
 ---
 
+## 🚧 Known Issues / Enhancements Needed
+
+### Remote Access (HTTPS via Tailscale)
+**Problem:** Contract diagram reads `.md` files via `file://` protocol (works local, breaks remote).
+
+**Current behavior:**
+- Local (Mac): ✅ Works (`http://localhost:8080/?md=../path/to/file.md`)
+- Remote (iPad): ❌ Breaks (can't access Mac filesystem via `file://`)
+
+**Solution needed:**
+1. **Embed MD in URL** (like CSS inline):
+   - Read `.md` content server-side
+   - Serve as data/base64 in HTML
+   - OR: Pass MD content via query param/POST
+
+2. **OR: Tailscale file access** (if exists):
+   - Serve files via Tailscale (not just HTTP proxy)
+   - Allow remote devices to read Mac filesystem
+
+**Impact:** Contract diagrams not usable on iPad until fixed.
+
+**Priority:** Medium (OpenClaw remote access works, diagram is nice-to-have)
+
+---
+
 ## Localhost Trigger
 
 **Trigger:** "lets diagram [PATH]"
