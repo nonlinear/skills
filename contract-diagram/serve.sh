@@ -2,7 +2,7 @@
 # Contract Diagram Engine - Read/Write Server Launcher
 
 ENGINE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PORT=8080
+PORT=8767
 
 echo "🏴 Contract Diagram Engine starting..."
 echo "Engine: $ENGINE_DIR"
