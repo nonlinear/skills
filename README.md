@@ -48,7 +48,7 @@ openclaw skill install nonlinear/librarian
 
 ## reminder research
 
-Natural language task queue via Apple Reminders. Agent executor with 🤖 tracking.
+Natural language task queue via Apple Reminders: Agent executor with 🤖 tracking
 
 ```bash
 openclaw skill install nonlinear/reminder-research
@@ -66,7 +66,7 @@ Parses long transcripts into topics under ordered lists, to triage in your notes
 openclaw skill install nonlinear/transcript-triage
 ```
 
-[Published](https://clawhub.ai/nonlinear/transcript-triage)
+[Published](https://clawhub.ai/nonlinear/transcript-triage) · [View diagram](transcript-triage/SKILL.md#flow)
 
 ---
 

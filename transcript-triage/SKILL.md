@@ -15,6 +15,22 @@ license: MIT
 
 ### Flow
 
+```mermaid
+graph TD
+    A[Transcript] -->|user provides| B[Parse]
+    B -->|extracts| C{Classify}
+    
+    C -->|urgent| D[NOW]
+    C -->|planned| E[LATER]
+    C -->|ideas| F[BACKLOG]
+    C -->|log| G[DECISIONS]
+    
+    D -->|add to| H[Current Epic]
+    E -->|add to| I[ROADMAP]
+    F -->|park| J[Ideas]
+    G -->|log| K[Memory]
+```
+
 1. **Trigger:** User provides transcript (MD format)
 2. **Parse:** AI extracts topics, decisions, action items
 3. **Triage:** Classify by urgency/importance:
