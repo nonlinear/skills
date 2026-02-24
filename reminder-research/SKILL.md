@@ -41,13 +41,12 @@ license: MIT
    `brew install steipete/tap/remindctl jq`
 
 2. Authorize reminders access
-
    `remindctl authorize`
 
 3. Install skill
-   `clawd whatever put code here`
+   `openclaw skill install nonlinear/reminder-research`
 
-1. Setup cronjob
+4. Setup cron (LaunchAgent recommended, 3AM daily)
 
 ---
 
